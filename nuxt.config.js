@@ -14,13 +14,38 @@ module.exports = {
     ]
   },
   /*
+  ** CSS
+  */
+  css: [
+    { src: '@assets/buefy-custom.scss', lang: 'sass' }
+  ],
+  /*
+  ** Plugins
+  */
+  plugins: ['@plugins/buefy'],
+  /*
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
+  generate: {
+    minify: {
+      collapseWhitespace: false
+    }
+  },
   /*
   ** Build configuration
   */
   build: {
+    /*
+    ** Silence PostCSS Bulma error
+    */
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': {
+          warnings: false
+        }
+      }
+    },
     /*
     ** Run ESLint on save
     */
