@@ -8,9 +8,49 @@
       <h2 class="subtitle">
         Personal DM tools
       </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+      <div style="text-align:left">
+        <h2 @click="showNone = !showNone">None</h2>
+        <ul v-if="showNone" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='None'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
+        <h2 @click="showCommon = !showCommon">Common</h2>
+        <ul v-if="showCommon" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='Common'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
+        <h2 @click="showUncommon = !showUncommon">Uncommon</h2>
+        <ul v-if="showUncommon" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='Uncommon'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
+        <h2 @click="showRare = !showRare">Rare</h2>
+        <ul v-if="showRare" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='Rare'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
+        <h2 @click="showVeryRare = !showVeryRare">Very Rare</h2>
+        <ul v-if="showVeryRare" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='Very Rare'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
+        <h2 @click="showLegendary = !showLegendary">Legendary</h2>
+        <ul v-if="showLegendary" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='Legendary'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
+        <h2 @click="showArtifact = !showArtifact">Artifact</h2>
+        <ul v-if="showArtifact" v-for="item in items.item" :key="item.name">
+          <li v-if="item.rarity=='Artifact'">
+            {{ item.name }} - {{ item.rarity }}
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -18,10 +58,23 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import items from '~/data/items.json'
 
 export default {
   components: {
     Logo
+  },
+  data () {
+    return {
+      items,
+      showNone: false,
+      showCommon: false,
+      showUncommon: false,
+      showRare: false,
+      showVeryRare: false,
+      showLegendary: false,
+      showArtifact: false
+    }
   }
 }
 </script>
@@ -29,10 +82,11 @@ export default {
 <style>
 .container {
   min-height: 100vh;
+  widht:80vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .title {
