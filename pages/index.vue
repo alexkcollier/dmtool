@@ -26,9 +26,9 @@
               <p v-for="entry in item.entries" :key="entry.index">{{ entry }}</p>
               <p>{{ item.source }}, page {{ item.page }}</p>
             </div>
-
           </div>
         </div>
+        <hr>
       </div>
     </div>
   </section>
@@ -65,7 +65,7 @@ export default {
 <style>
 .container {
   min-height: 100vh;
-  width:80vw;
+  width: 80vw;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -88,6 +88,10 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+div {
+  width: inherit;
 }
 
 .items, .items h2, .items h3 {
