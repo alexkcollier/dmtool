@@ -8,49 +8,27 @@
       <h2 class="subtitle">
         Personal DM tools
       </h2>
-      <div style="text-align:left">
-        <h2 @click="showNone = !showNone">None</h2>
-        <ul v-if="showNone" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='None'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
-        <h2 @click="showCommon = !showCommon">Common</h2>
-        <ul v-if="showCommon" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='Common'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
-        <h2 @click="showUncommon = !showUncommon">Uncommon</h2>
-        <ul v-if="showUncommon" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='Uncommon'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
-        <h2 @click="showRare = !showRare">Rare</h2>
-        <ul v-if="showRare" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='Rare'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
-        <h2 @click="showVeryRare = !showVeryRare">Very Rare</h2>
-        <ul v-if="showVeryRare" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='Very Rare'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
-        <h2 @click="showLegendary = !showLegendary">Legendary</h2>
-        <ul v-if="showLegendary" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='Legendary'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
-        <h2 @click="showArtifact = !showArtifact">Artifact</h2>
-        <ul v-if="showArtifact" v-for="item in items.item" :key="item.name">
-          <li v-if="item.rarity=='Artifact'">
-            {{ item.name }} - {{ item.rarity }}
-          </li>
-        </ul>
+
+      <!-- Create section for each rarity -->
+      <div class="items" v-for="level in rarities" :key="level.key" style="text-align:left">
+
+        <!-- Make rarities collapsible -->
+        <h2 @click="showRarity == level ? showRarity = null : showRarity = level">{{ level }}</h2>
+        <div v-if="showRarity === level">
+
+          <!-- Loop through items -->
+          <div v-for="item in items.item" :key="item.name" v-if="item.rarity == level">
+
+            <!-- Make items collapsible -->
+            <h3 @click="showItem == item.name ? showItem = null : showItem = item.name">{{ item.name }}</h3>
+            <div v-if="showItem === item.name">
+              <h4><span v-if="item.wondrous">Wondrous item</span><span v-else>{{ item.type }}</span>, {{ item.rarity }}</h4>
+              <p v-for="entry in item.entries" :key="entry.index">{{ entry }}</p>
+              <p>{{ item.source }}, page {{ item.page }}</p>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -67,13 +45,18 @@ export default {
   data () {
     return {
       items,
-      showNone: false,
-      showCommon: false,
-      showUncommon: false,
-      showRare: false,
-      showVeryRare: false,
-      showLegendary: false,
-      showArtifact: false
+      showRarity: null,
+      showItem: null,
+      rarities: {
+        unknown: 'Unknown',
+        none: 'None',
+        uncommon: 'Uncommon',
+        common: 'Common',
+        rare: 'Rare',
+        veryRare: 'Very Rare',
+        legendary: 'Legendary',
+        artifact: 'Artifact'
+      }
     }
   }
 }
@@ -82,11 +65,12 @@ export default {
 <style>
 .container {
   min-height: 100vh;
-  widht:80vw;
+  width:80vw;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   text-align: left;
+  margin:auto;
 }
 
 .title {
@@ -106,7 +90,11 @@ export default {
   padding-bottom: 15px;
 }
 
-.links {
+.items, .items h2, .items h3 {
   padding-top: 15px;
+}
+
+.items h2, .items.h3 {
+  cursor: pointer;
 }
 </style>
