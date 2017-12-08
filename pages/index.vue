@@ -1,114 +1,24 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <logo/>
-      <h1 class="title">
-        dmtool
-      </h1>
-      <h2 class="subtitle">
-        Personal DM tools
-      </h2>
-
-      <div class="content">
-        <!-- Create section for each rarity -->
-        <div class="items" v-for="level in rarities" :key="level.key" style="text-align:left">
-
-          <!-- Only expand one rarity at a time. Always collapse items when changing rarity -->
-          <h2 @click="showRarity(level)">{{ level }}</h2>
-          <transition name="fade-grow">
-            <div v-show="activeRarity === level">
-
-              <!-- Loop through items -->
-              <div v-for="item in orderedItems" :key="item.name" v-if="item.rarity === level">
-
-                <!-- Only display one item at a time -->
-                <h3 @click="showItem(item.name)">{{ item.name }}</h3>
-                <transition name="fade-grow">
-                  <div v-show="activeItem === item.name">
-
-                    <!-- Item types, rarity, and attunement -->
-                    <h4>
-                      <span v-if="item.wondrous">Wondrous item</span>
-                      <span v-else>{{ item.type }}</span>
-                      <span>, {{ item.rarity }}</span>
-
-                      <!-- Attunement options -->
-                      <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
-                      <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune }})</span>
-                    </h4>
-
-                    <!-- Iterate item entries -->
-                    <!-- TODO: cleaner implementation -->
-                    <template v-for="entry in item.entries" >
-
-                      <!-- Paragraphs -->
-                      <p v-if="!entry.type" :key="entry.index">
-                        {{ entry }}
-                      </p>
-
-                      <!-- Lists -->
-                      <ul v-else-if="entry.type =='list'" :key="entry.index">
-                        <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
-                      </ul>
-
-                      <!-- Tables -->
-                      <table v-else-if="entry.type == 'table'" :key="entry.index">
-                        <thead>
-                          <tr>
-                            <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="row in entry.rows" :key="row.index">
-                            <td v-for="cell in row" :key="cell.index">{{ cell }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-
-                      <!-- Entries -->
-                      <template v-else-if="entry.type =='entries'">
-                        <h5 :key="entry.name">{{ entry.name }}</h5>
-                        <template v-for="entry in entry.entries">
-
-                          <!-- Lists -->
-                          <ul v-if="entry.type =='list'" :key="entry.index">
-                            <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
-                          </ul>
-
-                          <!-- Paragraphs -->
-                          <p v-else :key="entry.index">
-                            {{ entry }}
-                          </p>
-
-                        </template>
-                      </template>
-
-                      <!-- Highlight entries of unexpected type. -->
-                      <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
-
-                    </template>
-                    <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
-                  </div>
-                </transition>
-              </div>
-            </div>
-          </transition>
-          <hr>
-        </div>
+  <section class="hero is-primary is-bold is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-size-1">
+          dmtool
+        </h1>
+        <h2 class="subtitle is-size-3">
+          Personal DM tools
+        </h2>
+        <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import lodash from 'lodash'
 import items from '~/data/items.json'
 
 export default {
-  components: {
-    Logo
-  },
   data () {
     return {
       items,
