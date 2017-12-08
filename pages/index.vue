@@ -160,7 +160,7 @@ $fade-time: 500ms;
 .fade-grow {
   &-enter-active, &-leave-active {
     transition: all $fade-time ease-in-out;
-    max-height: 30vh;
+    max-height: 300vh;
     overflow: hidden;
   }
   &-enter, &-leave-to {
