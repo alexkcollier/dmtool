@@ -13063,7 +13063,7 @@
 			"name": "Dancing Monkey Fruit",
 			"type": "G",
 			"value": "5gp",
-			"rarity": "Unknown",
+			"rarity": "Rare",
 			"source": "ToA",
 			"page": "205",
 			"entries": [
@@ -13076,7 +13076,7 @@
 			"type": "G",
 			"value": "2gp",
 			"weight": "1",
-			"rarity": "Unknown",
+			"rarity": "Uncommon",
 			"source": "ToA",
 			"page": "205",
 			"entries": [
@@ -13089,7 +13089,7 @@
 			"type": "G",
 			"value": "50gp",
 			"weight": "0.1",
-			"rarity": "Unknown",
+			"rarity": "Uncommon",
 			"source": "ToA",
 			"page": "205",
 			"entries": [
@@ -13101,7 +13101,7 @@
 			"type": "G",
 			"value": "5gp",
 			"weight": "1",
-			"rarity": "Unknown",
+			"rarity": "Uncommon",
 			"source": "ToA",
 			"page": "205",
 			"entries": [
@@ -13114,7 +13114,7 @@
 			"type": "G",
 			"value": "25gp",
 			"weight": "1",
-			"rarity": "Unknown",
+			"rarity": "None",
 			"source": "ToA",
 			"page": "205",
 			"entries": [
@@ -13126,7 +13126,7 @@
 			"type": "G",
 			"value": "1gp",
 			"weight": "0.1",
-			"rarity": "Unknown",
+			"rarity": "Uncommon",
 			"source": "ToA",
 			"page": "205",
 			"entries": [
