@@ -116,7 +116,7 @@ export default {
   data () {
     return {
       items,
-      search: 'Azurite',
+      search: '',
       activeRarity: null,
       activeItem: null,
       rarities: {
@@ -134,9 +134,10 @@ export default {
     orderedItems () {
       return lodash.orderBy(this.items.item, 'name')
     },
-    // TODO: make this work properly
     filteredItems () {
-      return lodash.filter(this.orderedItems, {'name': this.search})
+      return lodash.filter(this.orderedItems, (item) => {
+        return lodash.includes(lodash.toLower(item.name), this.search)
+      })
     }
   },
   methods: {
