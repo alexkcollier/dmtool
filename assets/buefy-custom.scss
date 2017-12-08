@@ -21,6 +21,12 @@ $colors: (
   "twitter": ($twitter, $twitter-invert)
 );
 
+// Typography helper
+.is-italic {
+  font-style: italic;
+}
+
+// Fix button margins
 .button {
   margin: auto 0.25em;
 }
