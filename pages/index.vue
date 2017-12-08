@@ -1,23 +1,34 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column  has-text-centered">
-          <logo/>
-          <h1 class="title">
-            dmtool
-          </h1>
-          <h2 class="subtitle">
-            Personal DM tools
-          </h2>
-          <a href="https://nuxtjs.org/" target="_blank" class="button is-primary">Documentation</a>
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button">GitHub</a>
-          <div v-for="(description, item) in jsonItems" :key="item">
-            <h2>{{ item }}</h2>
-            <div>{{ description.content }}</div>
+  <section class="container">
+    <div>
+      <logo/>
+      <h1 class="title">
+        dmtool
+      </h1>
+      <h2 class="subtitle">
+        Personal DM tools
+      </h2>
+
+      <!-- Create section for each rarity -->
+      <div class="items" v-for="level in rarities" :key="level.key" style="text-align:left">
+
+        <!-- Make rarities collapsible -->
+        <h2 @click="showRarity == level ? showRarity = null : showRarity = level">{{ level }}</h2>
+        <div v-if="showRarity === level">
+
+          <!-- Loop through items -->
+          <div v-for="item in items.item" :key="item.name" v-if="item.rarity == level">
+
+            <!-- Make items collapsible -->
+            <h3 @click="showItem == item.name ? showItem = null : showItem = item.name">{{ item.name }}</h3>
+            <div v-if="showItem === item.name">
+              <h4><span v-if="item.wondrous">Wondrous item</span><span v-else>{{ item.type }}</span>, {{ item.rarity }}</h4>
+              <p v-for="entry in item.entries" :key="entry.index">{{ entry }}</p>
+              <p>{{ item.source }}, page {{ item.page }}</p>
+            </div>
           </div>
-          <!-- {{ jsonItems }} -->
         </div>
+        <hr>
       </div>
     </div>
   </section>
@@ -25,6 +36,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import items from '~/data/items.json'
 
 var jsonItems = require('~/static/magicItems.json')
 
@@ -33,9 +45,31 @@ export default {
     Logo
   },
   data () {
-    return { jsonItems }
+    return {
+      items,
+      showRarity: null,
+      showItem: null,
+      rarities: {
+        unknown: 'Unknown',
+        none: 'None',
+        uncommon: 'Uncommon',
+        common: 'Common',
+        rare: 'Rare',
+        veryRare: 'Very Rare',
+        legendary: 'Legendary',
+        artifact: 'Artifact'
+      }
+    }
   }
 }
 </script>
 
+<style>
+.items, .items h2, .items h3 {
+  padding-top: 15px;
+}
 
+.items h2, .items.h3 {
+  cursor: pointer;
+}
+</style>
