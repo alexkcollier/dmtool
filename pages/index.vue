@@ -31,7 +31,10 @@
                       <span v-if="item.wondrous">Wondrous item</span>
                       <span v-else>{{ item.type }}</span>
                       <span>, {{ item.rarity }}</span>
+
+                      <!-- Attunement options -->
                       <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
+                      <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune }})</span>
                     </h4>
 
                     <!-- Iterate item entries -->
