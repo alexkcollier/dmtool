@@ -10,10 +10,9 @@
 
       <div class="content">
         <input type="text" v-model="search" />
-        <div v-for="item in filteredItems" :key="item.index"> {{ item.name }} </div>
-        <div>
-          {{ items.item[0] }}
-        </div>
+        <template v-if="search">
+          <div v-for="item in filteredItems" :key="item.index"> {{ item.name }} </div>
+        </template>
 
         <!-- Create section for each rarity -->
         <div class="items" v-for="level in rarities" :key="level.key" style="text-align:left">
@@ -136,7 +135,7 @@ export default {
     },
     filteredItems () {
       return lodash.filter(this.orderedItems, (item) => {
-        return lodash.includes(lodash.toLower(item.name), this.search)
+        return lodash.includes(lodash.toLower(item.name), lodash.toLower(this.search))
       })
     }
   },
