@@ -19,7 +19,7 @@
             <div v-if="activeRarity === level">
 
               <!-- Loop through items -->
-              <div v-for="item in items.item" :key="item.name" v-if="item.rarity === level">
+              <div v-for="item in orderedItems" :key="item.name" v-if="item.rarity === level">
 
                 <!-- Only display one item at a time -->
                 <h3 @click="showItem(item.name)">{{ item.name }}</h3>
@@ -102,6 +102,7 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import lodash from 'lodash'
 import items from '~/data/items.json'
 
 export default {
@@ -122,6 +123,11 @@ export default {
         legendary: 'Legendary',
         artifact: 'Artifact'
       }
+    }
+  },
+  computed: {
+    orderedItems () {
+      return lodash.orderBy(this.items.item, 'name')
     }
   },
   methods: {
