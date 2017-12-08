@@ -16,7 +16,7 @@
           <!-- Only expand one rarity at a time. Always collapse items when changing rarity -->
           <h2 @click="showRarity(level)">{{ level }}</h2>
           <transition name="fade-grow">
-            <div v-if="activeRarity === level">
+            <div v-show="activeRarity === level">
 
               <!-- Loop through items -->
               <div v-for="item in orderedItems" :key="item.name" v-if="item.rarity === level">
@@ -24,7 +24,7 @@
                 <!-- Only display one item at a time -->
                 <h3 @click="showItem(item.name)">{{ item.name }}</h3>
                 <transition name="fade-grow">
-                  <div v-if="activeItem === item.name">
+                  <div v-show="activeItem === item.name">
 
                     <!-- Item types, rarity, and attunement -->
                     <h4>
@@ -159,11 +159,12 @@ $fade-time: 500ms;
 
 .fade-grow {
   &-enter-active, &-leave-active {
-    transition: max-height $fade-time ease-in-out, opacity $fade-time ease-in-out;
+    transition: all $fade-time ease-in-out;
+    max-height: 30vh;
     overflow: hidden;
-    max-height: 400vh;
   }
   &-enter, &-leave-to {
+    max-height: 0;
     opacity: 0;
   }
 }
