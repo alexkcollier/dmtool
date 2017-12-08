@@ -9,6 +9,12 @@
       </h2>
 
       <div class="content">
+        <input type="text" v-model="search" />
+        <div v-for="item in filteredItems" :key="item.index"> {{ item.name }} </div>
+        <div>
+          {{ items.item[0] }}
+        </div>
+
         <!-- Create section for each rarity -->
         <div class="items" v-for="level in rarities" :key="level.key" style="text-align:left">
 
@@ -110,6 +116,7 @@ export default {
   data () {
     return {
       items,
+      search: 'Azurite',
       activeRarity: null,
       activeItem: null,
       rarities: {
@@ -126,6 +133,10 @@ export default {
   computed: {
     orderedItems () {
       return lodash.orderBy(this.items.item, 'name')
+    },
+    // TODO: make this work properly
+    filteredItems () {
+      return lodash.filter(this.orderedItems, {'name': this.search})
     }
   },
   methods: {
