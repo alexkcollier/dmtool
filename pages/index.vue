@@ -14,17 +14,17 @@
         <div class="items" v-for="level in rarities" :key="level.key" style="text-align:left">
 
           <!-- Only expand one rarity at a time. Always collapse items when changing rarity -->
-          <h2 @click="(showRarity === level ? showRarity = null : showRarity = level, showItem = null)">{{ level }}</h2>
+          <h2 @click="showRarity(level)">{{ level }}</h2>
           <transition name="fade-grow">
-            <div v-if="showRarity === level">
+            <div v-if="activeRarity === level">
 
               <!-- Loop through items -->
               <div v-for="item in items.item" :key="item.name" v-if="item.rarity === level">
 
                 <!-- Only display one item at a time -->
-                <h3 @click="showItem === item.name ? showItem = null : showItem = item.name">{{ item.name }}</h3>
+                <h3 @click="showItem(item.name)">{{ item.name }}</h3>
                 <transition name="fade-grow">
-                  <div v-if="showItem === item.name">
+                  <div v-if="activeItem === item.name">
 
                     <!-- Item types, rarity, and attunement -->
                     <h4>
@@ -39,41 +39,41 @@
                     <template v-for="entry in item.entries" >
 
                       <!-- Paragraphs -->
-                      <p v-if="!entry.type">
+                      <p v-if="!entry.type" :key="entry.index">
                         {{ entry }}
                       </p>
 
                       <!-- Lists -->
-                      <ul v-else-if="entry.type =='list'">
-                        <li v-for="item in entry.items">{{ item }}</li>
+                      <ul v-else-if="entry.type =='list'" :key="entry.index">
+                        <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
                       </ul>
 
                       <!-- Tables -->
-                      <table v-else-if="entry.type == 'table'">
+                      <table v-else-if="entry.type == 'table'" :key="entry.index">
                         <thead>
                           <tr>
-                            <th v-for="label in entry.colLabels">{{ label }}</th>
+                            <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="row in entry.rows">
-                            <td v-for="cell in row">{{ cell }}</td>
+                          <tr v-for="row in entry.rows" :key="row.index">
+                            <td v-for="cell in row" :key="cell.index">{{ cell }}</td>
                           </tr>
                         </tbody>
                       </table>
 
                       <!-- Entries -->
                       <template v-else-if="entry.type =='entries'">
-                        <h5>{{ entry.name }}</h5>
+                        <h5 :key="entry.name">{{ entry.name }}</h5>
                         <template v-for="entry in entry.entries">
 
                           <!-- Lists -->
-                          <ul v-if="entry.type =='list'">
-                            <li v-for="item in entry.items">{{ item }}</li>
+                          <ul v-if="entry.type =='list'" :key="entry.index">
+                            <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
                           </ul>
 
                           <!-- Paragraphs -->
-                          <p v-else>
+                          <p v-else :key="entry.index">
                             {{ entry }}
                           </p>
 
@@ -81,7 +81,7 @@
                       </template>
 
                       <!-- Highlight entries of unexpected type. -->
-                      <p v-else style="color: red;">{{ entry }}</p>
+                      <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
 
                     </template>
                     <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
@@ -108,8 +108,8 @@ export default {
   data () {
     return {
       items,
-      showRarity: null,
-      showItem: null,
+      activeRarity: null,
+      activeItem: null,
       rarities: {
         // none: 'None',
         common: 'Common',
@@ -119,6 +119,27 @@ export default {
         legendary: 'Legendary',
         artifact: 'Artifact'
       }
+    }
+  },
+  methods: {
+    showRarity (arg) {
+      // Only display one rarity at a time and collapse items when changing rarity
+      if (this.activeRarity === arg) {
+        this.activeRarity = null
+      } else {
+        this.activeRarity = arg
+      }
+      this.activeItem = null
+      return [this.activeRarity, this.activeItem]
+    },
+    showItem (arg) {
+      // Only display one item at a time
+      if (this.activeItem === arg) {
+        this.activeItem = null
+      } else {
+        this.activeItem = arg
+      }
+      return this.activeItem
     }
   }
 }
