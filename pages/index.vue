@@ -19,6 +19,9 @@ import lodash from 'lodash'
 import items from '~/data/items.json'
 
 export default {
+  head () {
+    return { title: 'Home' }
+  },
   data () {
     return {
       items,

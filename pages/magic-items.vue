@@ -104,6 +104,9 @@ import lodash from 'lodash'
 import items from '~/data/items.json'
 
 export default {
+  head () {
+    return { title: 'Magic Items' }
+  },
   data () {
     return {
       items,
