@@ -22,7 +22,7 @@
               <div v-for="item in items.item" :key="item.name" v-if="item.rarity === level">
 
                 <!-- Only display one item at a time -->
-                <h3 class="subtitle" @click="showItem === item.name ? showItem = null : showItem = item.name">{{ item.name }}</h3>
+                <h3 @click="showItem === item.name ? showItem = null : showItem = item.name">{{ item.name }}</h3>
                 <transition name="fade-grow">
                   <div v-if="showItem === item.name">
 
