@@ -11,9 +11,11 @@
       <div class="content">
         <div class="columns">
           <div class="column">
-            <input class="input" type="text" v-model="search" placeholder="Search for items"/>
+            <form>
+              <input class="input" type="text" @keyup="makeQuery" v-model="search" placeholder="Search for items"/>
+            </form>
             <!-- Loop through items -->
-            <div v-show="search" v-for="item in filteredItems" :key="item.index">
+            <div v-for="item in filteredItems" :key="item.index">
               <!-- Only display one item at a time -->
               <h3 @click="showItem(item.name)">{{ item.name }}</h3>
               <transition name="fade-grow">
@@ -104,6 +106,7 @@ export default {
     return {
       items,
       search: '',
+      query: '',
       activeItem: null
     }
   },
@@ -127,7 +130,8 @@ export default {
         this.activeItem = arg
       }
       return this.activeItem
-    }
+    },
+    makeQuery: lodash.debounce(function () { this.query = this.search }, 500)
   }
 }
 </script>
@@ -146,7 +150,7 @@ $fade-time: 500ms;
     opacity: 0;
   }
 }
-
+.height-0 { height: 0; }
 .items h2, .items h3 {
   cursor: pointer;
 }
