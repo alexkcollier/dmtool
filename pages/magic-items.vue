@@ -11,82 +11,80 @@
       <div class="content">
         <div class="columns">
           <div class="column">
-            <input type="text" v-model="search" />
-            <template v-if="search">
-              <!-- Loop through items -->
-              <div v-for="item in filteredItems" :key="item.index">
-                <!-- Only display one item at a time -->
-                <h3 @click="showItem(item.name)">{{ item.name }}</h3>
-                <transition name="fade-grow">
-                  <div v-if="activeItem === item.name">
+            <input class="input" type="text" v-model="search" placeholder="Search for items"/>
+            <!-- Loop through items -->
+            <div v-show="search" v-for="item in filteredItems" :key="item.index">
+              <!-- Only display one item at a time -->
+              <h3 @click="showItem(item.name)">{{ item.name }}</h3>
+              <transition name="fade-grow">
+                <div v-if="activeItem === item.name">
 
-                    <!-- Item types, rarity, and attunement -->
-                    <h4>
-                      <span v-if="item.wondrous">Wondrous item</span>
-                      <span v-else>{{ item.type }}</span>
-                      <span>, {{ item.rarity }}</span>
+                  <!-- Item types, rarity, and attunement -->
+                  <h4>
+                    <span v-if="item.wondrous">Wondrous item</span>
+                    <span v-else>{{ item.type }}</span>
+                    <span>, {{ item.rarity }}</span>
 
-                      <!-- Attunement options -->
-                      <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
-                      <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune }})</span>
-                    </h4>
+                    <!-- Attunement options -->
+                    <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
+                    <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune }})</span>
+                  </h4>
 
-                    <!-- Iterate item entries -->
-                    <!-- TODO: cleaner implementation -->
-                    <template v-for="entry in item.entries" >
+                  <!-- Iterate item entries -->
+                  <!-- TODO: cleaner implementation -->
+                  <template v-for="entry in item.entries" >
 
-                      <!-- Paragraphs -->
-                      <p v-if="!entry.type" :key="entry.index">
-                        {{ entry }}
-                      </p>
+                    <!-- Paragraphs -->
+                    <p v-if="!entry.type" :key="entry.index">
+                      {{ entry }}
+                    </p>
 
-                      <!-- Lists -->
-                      <ul v-else-if="entry.type =='list'" :key="entry.index">
-                        <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
-                      </ul>
+                    <!-- Lists -->
+                    <ul v-else-if="entry.type =='list'" :key="entry.index">
+                      <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
+                    </ul>
 
-                      <!-- Tables -->
-                      <table v-else-if="entry.type == 'table'" :key="entry.index">
-                        <thead>
-                          <tr>
-                            <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="row in entry.rows" :key="row.index">
-                            <td v-for="cell in row" :key="cell.index">{{ cell }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <!-- Tables -->
+                    <table v-else-if="entry.type == 'table'" :key="entry.index">
+                      <thead>
+                        <tr>
+                          <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="row in entry.rows" :key="row.index">
+                          <td v-for="cell in row" :key="cell.index">{{ cell }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-                      <!-- Entries -->
-                      <template v-else-if="entry.type =='entries'">
-                        <h5 :key="entry.name">{{ entry.name }}</h5>
-                        <template v-for="entry in entry.entries">
+                    <!-- Entries -->
+                    <template v-else-if="entry.type =='entries'">
+                      <h5 :key="entry.name">{{ entry.name }}</h5>
+                      <template v-for="entry in entry.entries">
 
-                          <!-- Lists -->
-                          <ul v-if="entry.type =='list'" :key="entry.index">
-                            <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
-                          </ul>
+                        <!-- Lists -->
+                        <ul v-if="entry.type =='list'" :key="entry.index">
+                          <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
+                        </ul>
 
-                          <!-- Paragraphs -->
-                          <p v-else :key="entry.index">
-                            {{ entry }}
-                          </p>
+                        <!-- Paragraphs -->
+                        <p v-else :key="entry.index">
+                          {{ entry }}
+                        </p>
 
-                        </template>
                       </template>
-
-                      <!-- Highlight entries of unexpected type. -->
-                      <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
-
                     </template>
-                    <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
-                    <hr>
-                  </div>
-                </transition>
-              </div>
-            </template>
+
+                    <!-- Highlight entries of unexpected type. -->
+                    <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
+
+                  </template>
+                  <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
+                  <hr>
+                </div>
+              </transition>
+            </div>
           </div>
         </div>
       </div>
@@ -106,17 +104,7 @@ export default {
     return {
       items,
       search: '',
-      // activeRarity: null,
       activeItem: null
-      // rarities: {
-      //   // none: 'None',
-      //   common: 'Common',
-      //   uncommon: 'Uncommon',
-      //   rare: 'Rare',
-      //   veryRare: 'Very Rare',
-      //   legendary: 'Legendary',
-      //   artifact: 'Artifact'
-      // }
     }
   },
   computed: {
@@ -125,21 +113,12 @@ export default {
     },
     filteredItems () {
       return lodash.filter(this.orderedItems, (item) => {
-        return lodash.includes(lodash.toLower(item.name), lodash.toLower(this.search))
+        // startsWithis faster, but includes gives better results
+        return lodash.includes(lodash.toLower(item.name), lodash.toLower(this.query))
       })
     }
   },
   methods: {
-    // showRarity (arg) {
-    //   // Only display one rarity at a time and collapse items when changing rarity
-    //   if (this.activeRarity === arg) {
-    //     this.activeRarity = null
-    //   } else {
-    //     this.activeRarity = arg
-    //   }
-    //   this.activeItem = null
-    //   return [this.activeRarity, this.activeItem]
-    // },
     showItem (arg) {
       // Only display one item at a time
       if (this.activeItem === arg) {
