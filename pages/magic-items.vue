@@ -11,9 +11,22 @@
       <div class="content">
         <div class="columns">
           <div class="column">
-            <form>
-              <input class="input" type="text" @keyup="makeQuery" v-model="search" placeholder="Search for items"/>
-            </form>
+
+            <b-field grouped>
+              <div class="control is-expanded has-icons-left">
+                <input 
+                  :class="{'is-danger': !filteredItems.length}"
+                  @keyup="makeQuery"
+                  v-model="search" 
+                  class="input"
+                  type="text"
+                  placeholder="Search for items">
+                  <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
+              </div>
+              <!-- TODO: add rarity filter -->
+              <b-switch>Hi</b-switch>
+            </b-field>
+
             <!-- Loop through items -->
             <div v-for="item in filteredItems" :key="item.index">
               <!-- Only display one item at a time -->
@@ -116,8 +129,9 @@ export default {
     },
     filteredItems () {
       return lodash.filter(this.orderedItems, (item) => {
-        // startsWithis faster, but includes gives better results
+        // TODO: Include rarity filter
         return lodash.includes(lodash.toLower(item.name), lodash.toLower(this.query))
+        // && (item.rarity === 'Rare') // This sets rarity
       })
     }
   },
