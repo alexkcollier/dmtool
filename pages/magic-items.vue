@@ -122,16 +122,16 @@ export default {
     }
   },
   methods: {
-    showItem (arg) {
+    showItem (item) {
       // Only display one item at a time
-      if (this.activeItem === arg) {
+      if (this.activeItem === item) {
         this.activeItem = null
       } else {
-        this.activeItem = arg
+        this.activeItem = item
       }
       return this.activeItem
     },
-    makeQuery: lodash.debounce(function () { this.query = this.search }, 500)
+    makeQuery: lodash.debounce(function () { this.query = this.search; this.activeItem = null }, 500)
   }
 }
 </script>
