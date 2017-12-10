@@ -4,25 +4,26 @@
       <h1 class="title">
         <nuxt-link to="/">dmtool</nuxt-link>
       </h1>
-      <h2 class="subtitle">
-        Personal DM tools
-      </h2>
 
       <div class="content">
-
-        <b-field grouped>
-          <div class="control is-expanded has-icons-left">
+        <h1>Magic Item Search</h1>
+        <b-field>
+          <div class="control has-icons-left">
             <input 
               :class="{'is-danger': !filteredItems.length}"
-              @keyup="makeQuery"
+              @keyup="makeSearchQuery"
               v-model="search" 
               class="input"
               type="text"
               placeholder="Search for items">
               <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
           </div>
-          <!-- TODO: add rarity filter -->
-          <!-- <b-switch>Hi</b-switch> -->
+        </b-field>
+        
+        <b-field horizontal grouped group-multiline>
+          <div v-for="level in rarity" :key="level.name" class="control">
+            <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
+          </div>
         </b-field>
         <hr>
 
@@ -31,7 +32,7 @@
           
           <!-- Item name and rarity -->
           <!-- Only display one item at a time -->
-          <div @click="showItem(item.name)" class="">
+          <div @click="showItem(item.name)">
             <a>
               <h3 class="title">{{ item.name }}</h3>
 
@@ -125,8 +126,18 @@ export default {
     return {
       items,
       search: '',
-      query: '',
-      activeItem: null
+      searchQuery: '',
+      rarity: [
+        {name: 'None', value: false},
+        {name: 'Common', value: true},
+        {name: 'Uncommon', value: true},
+        {name: 'Rare', value: true},
+        {name: 'Very Rare', value: true},
+        {name: 'Legendary', value: true},
+        {name: 'Artifact', value: true}
+      ],
+      rarityQuery: [],
+      activeItem: ''
     }
   },
   computed: {
@@ -136,22 +147,40 @@ export default {
     filteredItems () {
       return lodash.filter(this.orderedItems, (item) => {
         // TODO: Include rarity filter
-        return lodash.includes(lodash.toLower(item.name), lodash.toLower(this.query)) &&
-        (item.rarity !== 'None') // This sets rarity
+        return lodash.includes(
+          lodash.toLower(item.name), lodash.toLower(this.searchQuery)) &&
+            lodash.includes(this.rarityQuery, item.rarity) // This sets rarity
       })
+    },
+    rarityFilter () {
+      return lodash.map(
+        lodash.filter(this.rarity,
+          (rarity) => {
+            if (rarity.value === true) {
+              return rarity.name
+            }
+          }
+        ), 'name'
+      )
     }
+  },
+  created () {
+    this.rarityQuery = this.rarityFilter
   },
   methods: {
     showItem (item) {
       // Only display one item at a time
       if (this.activeItem === item) {
-        this.activeItem = null
+        this.activeItem = ''
       } else {
         this.activeItem = item
       }
       return this.activeItem
     },
-    makeQuery: lodash.debounce(function () { this.query = this.search; this.activeItem = null }, 500)
+    // debounce
+    makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
+    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 200)
+
   }
 }
 </script>
