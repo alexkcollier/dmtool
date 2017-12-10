@@ -11,6 +11,8 @@ $body-background-color: #e5e5d9;
 
 $input-background-color: #f5f4ef;
 
+$danger: hsl(0, 59%, 38%);
+
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
   "white": ($white, $black),
