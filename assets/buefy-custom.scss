@@ -1,11 +1,15 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
+// Import typekit
+@import url("https://use.typekit.net/fnw1iwa.css");
+
 // Set your colors
-$primary: #8c67ef;
+$primary: #3d4f5d;
 $primary-invert: findColorInvert($primary);
-$twitter: #4099FF;
-$twitter-invert: findColorInvert($twitter);
+$body-background-color: #e5e5d9;
+
+$input-background-color: #f5f4ef;
 
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
@@ -17,9 +21,20 @@ $colors: (
   "info": ($info, $info-invert),
   "success": ($success, $success-invert),
   "warning": ($warning, $warning-invert),
-  "danger": ($danger, $danger-invert),
-  "twitter": ($twitter, $twitter-invert)
+  "danger": ($danger, $danger-invert)
 );
+
+// Typography
+$family-serif: "bookmania", Georgia, 'Times New Roman', Times, serif;
+$family-primary: $family-serif;
+
+h1, h2, h3 {
+  font-family: "mrs-eaves-roman-small-caps", $family-serif;
+}
+
+h4, h5, h6 {
+  font-family: $family-serif 
+}
 
 // Typography helper
 .is-italic {
@@ -35,6 +50,11 @@ $colors: (
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
+
+// Controls
+.switch input[type=checkbox]+.check:before {
+  background: $input-background-color;
+}
 
 // Import Bulma and Buefy styles
 @import "~bulma";
