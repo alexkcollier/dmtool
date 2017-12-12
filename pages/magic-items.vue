@@ -10,7 +10,7 @@
         <b-field>
           <div class="control has-icons-left">
             <input 
-              :class="{'is-danger': !filteredItems.length}"
+              :class="{'is-danger': (!filteredItems.length && !pageLoad)}"
               @keyup="makeSearchQuery"
               v-model="search" 
               class="input"
@@ -137,7 +137,8 @@ export default {
         {name: 'Artifact', value: true}
       ],
       rarityQuery: [],
-      activeItem: ''
+      activeItem: '',
+      pageLoad: true
     }
   },
   computed: {
@@ -146,26 +147,25 @@ export default {
     },
     filteredItems () {
       return lodash.filter(this.orderedItems, (item) => {
-        // TODO: Include rarity filter
         return lodash.includes(
-          lodash.toLower(item.name), lodash.toLower(this.searchQuery)) &&
-            lodash.includes(this.rarityQuery, item.rarity) // This sets rarity
+          item.name.toLowerCase(), this.searchQuery.toLowerCase()) && this.rarityQuery.includes(item.rarity)
       })
     },
     rarityFilter () {
       return lodash.map(
-        lodash.filter(this.rarity,
-          (rarity) => {
-            if (rarity.value === true) {
-              return rarity.name
-            }
+        lodash.filter(this.rarity, (rarity) => {
+          if (rarity.value === true) {
+            return rarity.name
           }
-        ), 'name'
+        }), 'name'
       )
     }
   },
   created () {
-    this.rarityQuery = this.rarityFilter
+    setTimeout(() => {
+      this.rarityQuery = this.rarityFilter
+      this.pageLoad = false
+    }, 200)
   },
   methods: {
     showItem (item) {
@@ -179,7 +179,7 @@ export default {
     },
     // debounce
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
-    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 200)
+    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300)
 
   }
 }
@@ -188,6 +188,5 @@ export default {
 <style lang="scss">
 .is-item-rarity {
   padding-top:0.3em;
-  // margin-bottom: 0!important;
 }
 </style>
