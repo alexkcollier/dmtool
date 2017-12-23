@@ -1,41 +1,53 @@
 // Import Bulma's core
-@import "~bulma/sass/utilities/_all";
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
 
 // Import typekit
 @import url("https://use.typekit.net/fnw1iwa.css");
 
-// Set your colors
+// Custom colors
 $primary: #3d4f5d;
-$primary-invert: findColorInvert($primary);
 $body-background-color: #e5e5d9;
-
 $input-background-color: #f5f4ef;
+$red: rgb(128, 0, 0);
+$danger: $red;
+$gold: rgb(194, 174, 109);
+$gold-invert: findColorInvert($gold);
+$navbtn: rgb(70, 90, 100);
+$navbtn-invert: findColorInvert($navbtn);
 
-$danger: hsl(0, 59%, 38%);
-
-// Setup $colors to use as bulma classes (e.g. 'is-twitter')
-$colors: (
-  "white": ($white, $black),
-  "black": ($black, $white),
-  "light": ($light, $light-invert),
-  "dark": ($dark, $dark-invert),
-  "primary": ($primary, $primary-invert),
-  "info": ($info, $info-invert),
-  "success": ($success, $success-invert),
-  "warning": ($warning, $warning-invert),
-  "danger": ($danger, $danger-invert)
+// Add custom colors to map
+@import "~bulma/sass/utilities/derived-variables";
+$addColors: (
+  "red": ($red, $red-invert),
+  "gold": ($gold, $gold-invert),
+  "navbtn": ($navbtn, $navbtn-invert)
 );
+$colors: map-merge($colors, $addColors);
 
 // Typography
+$body-size: 18px;
 $family-serif: "bookmania", Georgia, 'Times New Roman', Times, serif;
 $family-primary: $family-serif;
 
-h1, h2, h3 {
-  font-family: "mrs-eaves-roman-small-caps", $family-serif;
+$family-sans-serif: "freight-sans-pro", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+
+$content-heading-color: $red;
+
+h1, h2, h3, h4, h5, .title, .button {
+  font-family: "mrs-eaves-roman-small-caps", $family-primary;
+  font-weight: normal;
+  font-variant: small-caps;
 }
 
-h4, h5, h6 {
-  font-family: $family-serif 
+.content {
+  h2 {
+    border-bottom: 2px solid $gold;
+  }
+  h6 {
+    color: $grey-dark !important;
+    font-variant: unset;
+  }
 }
 
 // Typography helper
@@ -56,6 +68,12 @@ $link-focus-border: $primary;
 // Controls
 .switch input[type=checkbox]+.check:before {
   background: $input-background-color;
+}
+
+// Tables
+table {
+  font-family: $family-sans-serif;
+  font-feature-settings: "lnum";
 }
 
 // Import Bulma and Buefy styles
