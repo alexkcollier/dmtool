@@ -7,6 +7,8 @@
 
       <div class="content">
         <h1>Magic Item Search</h1>
+
+        <!-- Search box -->
         <b-field>
           <div class="control has-icons-left">
             <input 
@@ -20,11 +22,14 @@
           </div>
         </b-field>
         
+        <!-- Rarity filter -->
         <b-field horizontal grouped group-multiline>
           <div v-for="level in rarity" :key="level.name" class="control">
             <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
           </div>
         </b-field>
+
+        <!-- Source filter -->
         <b-field horizontal grouped group-multiline>
           <div v-for="source in sources" :key="source.name" class="control">
             <b-switch v-model="source.value" @input="makeSourceQuery">{{ source.name }}</b-switch>
