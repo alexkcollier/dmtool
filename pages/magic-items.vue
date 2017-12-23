@@ -10,7 +10,7 @@
         <b-field>
           <div class="control has-icons-left">
             <input 
-              :class="{'is-danger': (!filteredItems.length && !pageLoad)}"
+              :class="{'is-danger': (!orderedItems.length && !pageLoad)}"
               @keyup="makeSearchQuery"
               v-model="search" 
               class="input"
@@ -28,7 +28,7 @@
         <hr>
 
         <!-- Loop through items -->
-        <div v-for="item in filteredItems" :key="item.index">
+        <div v-for="item in orderedItems" :key="item.index">
           
           <!-- Item name and rarity -->
           <!-- Only display one item at a time -->
@@ -38,9 +38,7 @@
 
               <!-- Rarity and attunement -->
               <h6 class="subtitle is-item-rarity is-size-6 is-italic">
-                <span v-if="item.wondrous">Wondrous item</span>
-                <span v-else>{{ item.type }}</span>
-                <span>, {{ item.rarity }}</span>
+                <span>{{ item.type }}, {{ item.rarity }}</span>
 
                 <!-- Attunement options -->
                 <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
@@ -68,7 +66,7 @@
                 </ul>
 
                 <!-- Tables -->
-                <table v-else-if="entry.type == 'table'" :key="entry.index">
+                <table v-else-if="entry.type == 'table'" :key="entry.index" class="table">
                   <thead>
                     <tr>
                       <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
@@ -128,13 +126,12 @@ export default {
       search: '',
       searchQuery: '',
       rarity: [
-        {name: 'None', value: false},
         {name: 'Common', value: true},
         {name: 'Uncommon', value: true},
-        {name: 'Rare', value: true},
-        {name: 'Very Rare', value: true},
-        {name: 'Legendary', value: true},
-        {name: 'Artifact', value: true}
+        {name: 'Rare', value: false},
+        {name: 'Very Rare', value: false},
+        {name: 'Legendary', value: false},
+        {name: 'Artifact', value: false}
       ],
       rarityQuery: [],
       activeItem: '',
@@ -142,14 +139,14 @@ export default {
     }
   },
   computed: {
-    orderedItems () {
-      return lodash.orderBy(this.items.item, 'name')
-    },
     filteredItems () {
-      return lodash.filter(this.orderedItems, (item) => {
+      return lodash.filter(this.items.item, (item) => {
         return lodash.includes(
           item.name.toLowerCase(), this.searchQuery.toLowerCase()) && this.rarityQuery.includes(item.rarity)
       })
+    },
+    orderedItems () {
+      return lodash.orderBy(this.filteredItems, 'name')
     },
     rarityFilter () {
       return lodash.map(
