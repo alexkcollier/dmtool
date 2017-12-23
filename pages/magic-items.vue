@@ -25,6 +25,11 @@
             <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
           </div>
         </b-field>
+        <b-field horizontal grouped group-multiline>
+          <div v-for="source in sources" :key="source.name" class="control">
+            <b-switch v-model="source.value" @input="makeSourceQuery">{{ source.name }}</b-switch>
+          </div>
+        </b-field>
         <hr>
 
         <!-- Loop through items -->
@@ -126,23 +131,44 @@ export default {
       search: '',
       searchQuery: '',
       rarity: [
-        {name: 'Common', value: true},
-        {name: 'Uncommon', value: true},
-        {name: 'Rare', value: false},
-        {name: 'Very Rare', value: false},
-        {name: 'Legendary', value: false},
-        {name: 'Artifact', value: false}
+        { name: 'Common', value: true },
+        { name: 'Uncommon', value: true },
+        { name: 'Rare', value: false },
+        { name: 'Very Rare', value: false },
+        { name: 'Legendary', value: false },
+        { name: 'Artifact', value: false }
       ],
       rarityQuery: [],
+      sources: [
+        { name: 'DMG', value: true },
+        { name: 'PotA', value: false },
+        { name: 'SKT', value: false },
+        { name: 'HotDQ', value: false },
+        { name: 'CoS', value: false },
+        { name: 'RoTOS', value: false },
+        { name: 'OotA', value: false },
+        { name: 'RoT', value: false },
+        { name: 'VGM', value: false },
+        { name: 'LMoP', value: false },
+        { name: 'TftYP', value: true },
+        { name: 'XGE', value: true }
+      ],
+      sourceQuery: [],
       activeItem: '',
       pageLoad: true
     }
   },
   computed: {
+    rarityList () {
+      return [...new Set(this.items.item.map(item => item.rarity))]
+    },
+    sourceList () {
+      return [...new Set(this.items.item.map(item => item.source))]
+    },
     filteredItems () {
       return lodash.filter(this.items.item, (item) => {
         return lodash.includes(
-          item.name.toLowerCase(), this.searchQuery.toLowerCase()) && this.rarityQuery.includes(item.rarity)
+          item.name.toLowerCase(), this.searchQuery.toLowerCase()) && this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
     },
     orderedItems () {
@@ -156,11 +182,21 @@ export default {
           }
         }), 'name'
       )
+    },
+    sourceFilter () {
+      return lodash.map(
+        lodash.filter(this.sources, (source) => {
+          if (source.value === true) {
+            return source.name
+          }
+        }), 'name'
+      )
     }
   },
   created () {
     setTimeout(() => {
       this.rarityQuery = this.rarityFilter
+      this.sourceQuery = this.sourceFilter
       this.pageLoad = false
     }, 200)
   },
@@ -176,7 +212,8 @@ export default {
     },
     // debounce
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
-    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300)
+    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
+    makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
 
   }
 }
