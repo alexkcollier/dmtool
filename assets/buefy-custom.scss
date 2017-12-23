@@ -1,6 +1,7 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
+@import "~bulma/sass/utilities/mixins";
 
 // Import typekit
 @import url("https://use.typekit.net/fnw1iwa.css");
@@ -50,6 +51,24 @@ h1, h2, h3, h4, h5, .title, .button {
   }
 }
 
+
+// Add special loading div
+div {
+  &.is-loading {
+      position: relative;
+      pointer-events: none;
+      opacity: 0.5;
+      &:after {
+          @include loader;
+          top: calc(50% - 2.5em);
+          left: calc(50% - 2.5em);
+          width: 5em;
+          height: 5em;
+          border-width: 0.25em;
+      }
+  }
+}
+
 // Typography helper
 .is-italic {
   font-style: italic;
@@ -64,6 +83,12 @@ h1, h2, h3, h4, h5, .title, .button {
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
+
+
+// Card
+.card {
+  font-family: $family-sans-serif;
+}
 
 // Controls
 .switch input[type=checkbox]+.check:before {
