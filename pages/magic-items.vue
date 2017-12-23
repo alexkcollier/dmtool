@@ -21,22 +21,49 @@
               <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
           </div>
         </b-field>
-        
-        <!-- Rarity filter -->
-        <b-field horizontal grouped group-multiline>
-          <div v-for="level in rarity" :key="level.name" class="control">
-            <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
-          </div>
-        </b-field>
 
-        <!-- Source filter -->
-        <b-field horizontal grouped group-multiline>
-          <div v-for="source in sources" :key="source.name" class="control">
-            <b-switch v-model="source.value" @input="makeSourceQuery">{{ source.name }}</b-switch>
+        <div class="card">
+          <div class="card-header">
+            <a @click="collapseFilters = !collapseFilters" class="card-header-title">
+              Filters
+              <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/>
+            </a>
           </div>
-        </b-field>
+
+          <transition name="fade-grow">
+            <div v-show="!collapseFilters">
+
+              <div class="card-header">
+                <a :class="{'is-active': showFilter == 'Rarity'}" @click="showFilter = 'Rarity'" class="card-footer-item">Rarity</a>
+                <a :class="{'is-active': showFilter == 'Source'}" @click="showFilter = 'Source'" class="card-footer-item">Source</a>
+              </div>
+
+              <div class="card-content">
+
+                <!-- Rarity filter -->
+                <div v-show="showFilter == 'Rarity'">
+                  <b-field horizontal grouped group-multiline>
+                    <div v-for="level in rarity" :key="level.name" class="control">
+                      <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
+                    </div>
+                  </b-field>
+                </div>
+
+                <!-- Source filter -->
+                <div v-show="showFilter == 'Source'">
+                  <b-field horizontal grouped group-multiline>
+                    <div v-for="source in sources" :key="source.name" class="control">
+                      <b-switch v-model="source.value" @input="makeSourceQuery">{{ source.name }}</b-switch>
+                    </div>
+                  </b-field>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
         <hr>
-
+        
+        <div v-if="pageLoad" class="is-loading"></div>
         <!-- Loop through items -->
         <div v-for="item in orderedItems" :key="item.index">
           
@@ -160,7 +187,9 @@ export default {
       ],
       sourceQuery: [],
       activeItem: '',
-      pageLoad: true
+      pageLoad: true,
+      collapseFilters: true,
+      showFilter: 'Rarity'
     }
   },
   computed: {
@@ -227,5 +256,11 @@ export default {
 <style lang="scss">
 .is-item-rarity {
   padding-top:0.3em;
+}
+
+.card-header {
+  .is-active {
+    font-weight: 600;
+  }
 }
 </style>
