@@ -79,7 +79,7 @@
 
               <!-- Rarity and attunement -->
               <h6 class="subtitle is-item-rarity is-size-6 is-italic">
-                <span>{{ item.type }}, {{ item.rarity }}</span>
+                <span>{{ item.type }}, {{ item.rarity | lowerCase }}</span>
 
                 <!-- Attunement options -->
                 <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
@@ -277,6 +277,12 @@ export default {
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
     makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
     makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
+  },
+  filters: {
+    lowerCase: str => {
+      if (!str) return ''
+      return str.toLowerCase()
+    }
   }
 }
 </script>
