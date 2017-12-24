@@ -193,7 +193,6 @@
 		{
 			"name": "Armor of Invulnerability",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -206,7 +205,6 @@
 		{
 			"name": "Armor of Vulnerability (Bludgeoning)",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -226,7 +224,6 @@
 		{
 			"name": "Armor of Vulnerability (Piercing)",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -246,7 +243,6 @@
 		{
 			"name": "Armor of Vulnerability (Slashing)",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -761,7 +757,6 @@
 		{
 			"name": "Black Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -840,7 +835,6 @@
 		{
 			"name": "Blue Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1031,7 +1025,6 @@
 		{
 			"name": "Brass Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1057,7 +1050,6 @@
 		{
 			"name": "Bronze Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1395,7 +1387,6 @@
 		{
 			"name": "Copper Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1918,7 +1909,6 @@
 		{
 			"name": "Demon Armor",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2104,7 +2094,6 @@
 		{
 			"name": "Dwarven Plate",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2161,7 +2150,6 @@
 		{
 			"name": "Efreeti Chain",
 			"type": "HA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -2229,7 +2217,6 @@
 		{
 			"name": "Elven Chain",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2554,7 +2541,6 @@
 		{
 			"name": "Glamoured Studded Leather",
 			"type": "LA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2612,7 +2598,6 @@
 		{
 			"name": "Gold Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2644,7 +2629,6 @@
 		{
 			"name": "Green Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4748,7 +4732,6 @@
 		{
 			"name": "Red Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5763,7 +5746,6 @@
 		{
 			"name": "Silver Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -7091,7 +7073,6 @@
 		{
 			"name": "White Dragon Scale Mail",
 			"type": "MA",
-			"armor": true,
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
