@@ -41,23 +41,24 @@
               <div class="card-content">
 
                 <!-- Rarity filter -->
-                <div v-show="showFilter == 'Rarity'">
+                <template v-if="showFilter === 'Rarity'">
                   <b-field horizontal grouped group-multiline>
                     <div v-for="level in rarity" :key="level.name" class="control">
                       <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
                     </div>
                   </b-field>
-                </div>
+                </template>
 
                 <!-- Source filter -->
-                <div v-show="showFilter == 'Source'">
+                <template v-else-if="showFilter === 'Source'">
                   <b-field horizontal grouped group-multiline>
                     <div v-for="source in sources" :key="source.name" class="control">
                       <b-switch v-model="source.value" @input="makeSourceQuery">{{ source.name }}</b-switch>
                     </div>
                   </b-field>
-                </div>
+                </template>
               </div>
+
             </div>
           </transition>
         </div>
@@ -262,5 +263,16 @@ export default {
   .is-active {
     font-weight: 600;
   }
+  &-title, {
+    padding: 0.5em 0.75em;
+  }
+}
+
+.card-footer-item {
+  padding: 0.75em;
+}
+
+.card-content {
+  padding-bottom: 1.25em;
 }
 </style>
