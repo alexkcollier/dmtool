@@ -7,7 +7,7 @@
 
       <div class="content">
         <h1>Magic Item Search</h1>
-
+        
         <!-- Search box -->
         <b-field>
           <div class="control has-icons-left">
@@ -52,8 +52,8 @@
                 <!-- Source filter -->
                 <template v-else-if="showFilter === 'Source'">
                   <b-field horizontal grouped group-multiline>
-                    <div v-for="source in sources" :key="source.name" class="control">
-                      <b-switch v-model="source.value" @input="makeSourceQuery">{{ source.name }}</b-switch>
+                    <div v-for="s in source" :key="s.name" class="control">
+                      <b-switch v-model="s.value" @input="makeSourceQuery">{{ s.name }}</b-switch>
                     </div>
                   </b-field>
                 </template>
@@ -175,7 +175,7 @@ export default {
         { name: 'Artifact', value: false }
       ],
       rarityQuery: [],
-      sources: [
+      source: [
         { name: 'DMG', value: true },
         { name: 'PotA', value: false },
         { name: 'SKT', value: false },
@@ -197,12 +197,6 @@ export default {
     }
   },
   computed: {
-    rarityList () {
-      return [...new Set(this.items.item.map(item => item.rarity))]
-    },
-    sourceList () {
-      return [...new Set(this.items.item.map(item => item.source))]
-    },
     filteredItems () {
       return lodash.filter(this.items.item, (item) => {
         return lodash.includes(item.name.toLowerCase(), this.searchQuery.toLowerCase()) &&
@@ -228,9 +222,9 @@ export default {
     },
     sourceFilter () {
       return lodash.map(
-        lodash.filter(this.sources, (source) => {
-          if (source.value === true) {
-            return source.name
+        lodash.filter(this.source, (s) => {
+          if (s.value === true) {
+            return s.name
           }
         }), 'name'
       )
@@ -241,6 +235,8 @@ export default {
       this.rarityQuery = this.rarityFilter
       this.sourceQuery = this.sourceFilter
       this.pageLoad = false
+      this.compareList('rarity')
+      this.compareList('source')
     }, 200)
   },
   methods: {
@@ -253,11 +249,34 @@ export default {
       }
       return this.activeItem
     },
-    // debounce
+    compareList (list) {
+      // Create array from object keys
+      var current = [...new Set(this[list].map(item => item.name))]
+      var incoming = [...new Set(this.items.item.map(item => item[list]))]
+
+      var missingFromCurrent = []
+      var missingFromIncoming = []
+
+      // Check current list
+      for (let i = 0; i < incoming.length; i++) {
+        if (!lodash.includes(current, incoming[i])) {
+          missingFromCurrent.push(incoming[i])
+          this[list].push({name: incoming[i], value: false})
+        }
+      }
+      if (missingFromCurrent.length > 0) { console.warn('Missing from magic-items.vue', list, 'list', missingFromCurrent) }
+
+      // Check incoming list
+      for (let i = 0; i < current.length; i++) {
+        if (!lodash.includes(incoming, current[i])) {
+          missingFromIncoming.push(current[i])
+        }
+      }
+      if (missingFromIncoming.length > 0) { console.warn('Missing from items.json', list, 'list', missingFromIncoming) }
+    },
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
     makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
     makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
-
   }
 }
 </script>
