@@ -259,20 +259,24 @@ export default {
   padding-top:0.3em;
 }
 
-.card-header {
-  .is-active {
-    font-weight: 600;
+.card {
+  border-radius: 2px;
+  box-shadow: none;
+  &-header {
+    .is-active {
+      font-weight: 600;
+    }
+    &-title, {
+      padding: 0.36em 0.75em;
+    }
   }
-  &-title, {
-    padding: 0.5em 0.75em;
+
+  &-footer-item {
+    padding: 0.75em;
   }
-}
 
-.card-footer-item {
-  padding: 0.75em;
-}
-
-.card-content {
-  padding-bottom: 1.25em;
+  &-content {
+    padding-bottom: 1.25em;
+  }
 }
 </style>
