@@ -62,7 +62,10 @@
             </div>
           </transition>
         </div>
-        <hr>
+        <div class="control">
+          <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
+        </div>
+        <hr style="margin-top:0.25em;">
         
         <div v-if="pageLoad" class="is-loading"></div>
         <!-- Loop through items -->
@@ -202,9 +205,14 @@ export default {
     },
     filteredItems () {
       return lodash.filter(this.items.item, (item) => {
-        return lodash.includes(
-          item.name.toLowerCase(), this.searchQuery.toLowerCase()) && this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
+        return lodash.includes(item.name.toLowerCase(), this.searchQuery.toLowerCase()) &&
+          this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
+    },
+    resultCount () {
+      var o = this.orderedItems
+      var ol = Object.keys(o)
+      return ol.length
     },
     orderedItems () {
       return lodash.orderBy(this.filteredItems, 'name')

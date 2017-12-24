@@ -96,12 +96,7 @@ $link-focus-border: $primary;
   background: $input-background-color;
 }
 
-.input, .control {
-  font-family: $family-sans-serif;
-}
-
-// Tables
-table {
+table, .input, .control {
   font-family: $family-sans-serif;
   font-feature-settings: "lnum";
 }
