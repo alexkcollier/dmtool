@@ -100,7 +100,8 @@
 		},
 		{
 			"name": "Animated Shield",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -261,7 +262,8 @@
 		},
 		{
 			"name": "Arrow-Catching Shield",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -274,7 +276,7 @@
 		{
 			"name": "Axe of the Dwarvish Lords",
 			"type": "Weapon",
-			"weaponType": "battleaxe",
+			"subtype": "battleaxe",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "221",
@@ -771,7 +773,7 @@
 		{
 			"name": "Blackrazor",
 			"type": "Weapon",
-			"weaponType": "greatsword",
+			"subtype": "greatsword",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "216",
@@ -807,7 +809,7 @@
 		{
 			"name": "Blood Spear",
 			"type": "Weapon",
-			"weaponType": "spear",
+			"subtype": "spear",
 			"rarity": "Uncommon",
 			"source": "CoS",
 			"page": "221",
@@ -980,7 +982,7 @@
 		},
 		{
 			"name": "Bottled Breath",
-			"type": "P",
+			"type": "Potion",
 			"rarity": "Uncommon",
 			"source": "PotA",
 			"page": "222",
@@ -1565,7 +1567,7 @@
 		{
 			"name": "Dagger of Venom",
 			"type": "Weapon",
-			"weaponType": "dagger",
+			"subtype": "dagger",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1578,7 +1580,7 @@
 		{
 			"name": "Dawnbringer",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"rarity": "Legendary",
 			"source": "OotA",
 			"page": "222",
@@ -2016,7 +2018,7 @@
 		{
 			"name": "Dragontooth Dagger",
 			"type": "Weapon",
-			"weaponType": "dagger",
+			"subtype": "dagger",
 			"rarity": "Rare",
 			"source": "RoT",
 			"page": "94",
@@ -2041,7 +2043,7 @@
 		{
 			"name": "Drown",
 			"type": "Weapon",
-			"weaponType": "trident",
+			"subtype": "trident",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -2112,7 +2114,7 @@
 		{
 			"name": "Dwarven Thrower",
 			"type": "Weapon",
-			"weaponType": "warhammer",
+			"subtype": "warhammer",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2213,7 +2215,7 @@
 		},
 		{
 			"name": "Elixir of Health",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2664,7 +2666,7 @@
 		{
 			"name": "Gurt's Greataxe",
 			"type": "Weapon",
-			"weaponType": "greataxe",
+			"subtype": "greataxe",
 			"rarity": "Legendary",
 			"source": "SKT",
 			"page": "234",
@@ -2679,7 +2681,7 @@
 		{
 			"name": "Hammer of Thunderbolts",
 			"type": "Weapon",
-			"weaponType": "maul",
+			"subtype": "maul",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -2758,7 +2760,7 @@
 		{
 			"name": "Hazirawn",
 			"type": "Weapon",
-			"weaponType": "greatsword",
+			"subtype": "greatsword",
 			"rarity": "Legendary",
 			"source": "HotDQ",
 			"page": "94",
@@ -3495,7 +3497,7 @@
 		{
 			"name": "Ironfang",
 			"type": "Weapon",
-			"weaponType": "war pick",
+			"subtype": "war pick",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -3522,7 +3524,7 @@
 		{
 			"name": "Javelin of Lightning",
 			"type": "Weapon",
-			"weaponType": "javelin",
+			"subtype": "javelin",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3594,7 +3596,7 @@
 		{
 			"name": "Mace of Disruption",
 			"type": "Weapon",
-			"weaponType": "mace",
+			"subtype": "mace",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3608,7 +3610,7 @@
 		{
 			"name": "Mace of Smiting",
 			"type": "Weapon",
-			"weaponType": "mace",
+			"subtype": "mace",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3621,7 +3623,7 @@
 		{
 			"name": "Mace of Terror",
 			"type": "Weapon",
-			"weaponType": "mace",
+			"subtype": "mace",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3752,7 +3754,7 @@
 		{
 			"name": "Mind Lash",
 			"type": "Weapon",
-			"weaponType": "whip",
+			"subtype": "whip",
 			"rarity": "Rare",
 			"source": "VGM",
 			"page": "81",
@@ -3781,7 +3783,7 @@
 		{
 			"name": "Moonblade",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "217",
@@ -3967,7 +3969,8 @@
 		},
 		{
 			"name": "Oathbow",
-			"type": "R",
+			"type": "Weapon",
+			"subtype": "longbow",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3981,7 +3984,7 @@
 		},
 		{
 			"name": "Oil of Etherealness",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3992,7 +3995,7 @@
 		},
 		{
 			"name": "Oil of Sharpness",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4003,7 +4006,7 @@
 		},
 		{
 			"name": "Oil of Slipperiness",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4078,7 +4081,7 @@
 		{
 			"name": "Orcsplitter",
 			"type": "Weapon",
-			"weaponType": "greataxe",
+			"subtype": "greataxe",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -4165,7 +4168,7 @@
 		},
 		{
 			"name": "Philter of Love",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4241,7 +4244,7 @@
 		{
 			"name": "Potion of Acid Resistance",
 			"resist": "acid",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4249,7 +4252,7 @@
 		},
 		{
 			"name": "Potion of Animal Friendship",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4260,7 +4263,7 @@
 		},
 		{
 			"name": "Potion of Clairvoyance",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4271,7 +4274,7 @@
 		},
 		{
 			"name": "Potion of Climbing",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "DMG",
@@ -4282,7 +4285,7 @@
 		},
 		{
 			"name": "Potion of Cloud Giant Strength",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4295,7 +4298,7 @@
 		{
 			"name": "Potion of Cold Resistance",
 			"resist": "cold",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4303,7 +4306,7 @@
 		},
 		{
 			"name": "Potion of Diminution",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4314,7 +4317,7 @@
 		},
 		{
 			"name": "Potion of Fire Breath",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4325,7 +4328,7 @@
 		},
 		{
 			"name": "Potion of Fire Giant Strength",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4338,7 +4341,7 @@
 		{
 			"name": "Potion of Fire Resistance",
 			"resist": "fire",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4346,7 +4349,7 @@
 		},
 		{
 			"name": "Potion of Flying",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4358,7 +4361,7 @@
 		{
 			"name": "Potion of Force Resistance",
 			"resist": "force",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4366,7 +4369,7 @@
 		},
 		{
 			"name": "Potion of Frost Giant Strength",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4378,7 +4381,7 @@
 		},
 		{
 			"name": "Potion of Gaseous Form",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4389,7 +4392,7 @@
 		},
 		{
 			"name": "Potion of Giant Size",
-			"type": "P",
+			"type": "Potion",
 			"rarity": "Legendary",
 			"source": "SKT",
 			"page": "236",
@@ -4401,7 +4404,7 @@
 		},
 		{
 			"name": "Potion of Greater Healing",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4412,7 +4415,7 @@
 		},
 		{
 			"name": "Potion of Growth",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4423,7 +4426,7 @@
 		},
 		{
 			"name": "Potion of Healing",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "DMG",
@@ -4434,7 +4437,7 @@
 		},
 		{
 			"name": "Potion of Heroism",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4445,7 +4448,7 @@
 		},
 		{
 			"name": "Potion of Hill Giant Strength",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4457,7 +4460,7 @@
 		},
 		{
 			"name": "Potion of Invisibility",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4468,7 +4471,7 @@
 		},
 		{
 			"name": "Potion of Invulnerability",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4480,7 +4483,7 @@
 		{
 			"name": "Potion of Lightning Resistance",
 			"resist": "lightning",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4488,7 +4491,7 @@
 		},
 		{
 			"name": "Potion of Longevity",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4499,7 +4502,7 @@
 		},
 		{
 			"name": "Potion of Mind Reading",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4511,7 +4514,7 @@
 		{
 			"name": "Potion of Necrotic Resistance",
 			"resist": "necrotic",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4519,7 +4522,7 @@
 		},
 		{
 			"name": "Potion of Poison",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4532,7 +4535,7 @@
 		{
 			"name": "Potion of Poison Resistance",
 			"resist": "poison",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4541,7 +4544,7 @@
 		{
 			"name": "Potion of Psychic Resistance",
 			"resist": "psychic",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4550,7 +4553,7 @@
 		{
 			"name": "Potion of Radiant Resistance",
 			"resist": "radiant",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4558,7 +4561,7 @@
 		},
 		{
 			"name": "Potion of Speed",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4569,7 +4572,7 @@
 		},
 		{
 			"name": "Potion of Stone Giant Strength",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4581,7 +4584,7 @@
 		},
 		{
 			"name": "Potion of Storm Giant Strength",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -4593,7 +4596,7 @@
 		},
 		{
 			"name": "Potion of Superior Healing",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4604,7 +4607,7 @@
 		},
 		{
 			"name": "Potion of Supreme Healing",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4616,7 +4619,7 @@
 		{
 			"name": "Potion of Thunder Resistance",
 			"resist": "thunder",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4624,7 +4627,7 @@
 		},
 		{
 			"name": "Potion of Vitality",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -4635,7 +4638,7 @@
 		},
 		{
 			"name": "Potion of Water Breathing",
-			"type": "P",
+			"type": "Potion",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4763,7 +4766,7 @@
 		{
 			"name": "Ring of Acid Resistance",
 			"resist": "acid",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4772,7 +4775,7 @@
 		},
 		{
 			"name": "Ring of Air Elemental Command",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -4795,7 +4798,7 @@
 		},
 		{
 			"name": "Ring of Animal Influence",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4815,7 +4818,7 @@
 		{
 			"name": "Ring of Cold Resistance",
 			"resist": "cold",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4824,7 +4827,7 @@
 		},
 		{
 			"name": "Ring of Djinni Summoning",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -4838,7 +4841,7 @@
 		},
 		{
 			"name": "Ring of Earth Elemental Command",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -4861,7 +4864,7 @@
 		},
 		{
 			"name": "Ring of Evasion",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4873,7 +4876,7 @@
 		},
 		{
 			"name": "Ring of Feather Falling",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4885,7 +4888,7 @@
 		},
 		{
 			"name": "Ring of Fire Elemental Command",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -4908,7 +4911,7 @@
 		{
 			"name": "Ring of Fire Resistance",
 			"resist": "fire",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4918,7 +4921,7 @@
 		{
 			"name": "Ring of Force Resistance",
 			"resist": "force",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4927,7 +4930,7 @@
 		},
 		{
 			"name": "Ring of Free Action",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4939,7 +4942,7 @@
 		},
 		{
 			"name": "Ring of Invisibility",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -4951,7 +4954,7 @@
 		},
 		{
 			"name": "Ring of Jumping",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4964,7 +4967,7 @@
 		{
 			"name": "Ring of Lightning Resistance",
 			"resist": "lightning",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4973,7 +4976,7 @@
 		},
 		{
 			"name": "Ring of Mind Shielding",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4988,7 +4991,7 @@
 		{
 			"name": "Ring of Necrotic Resistance",
 			"resist": "necrotic",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4998,7 +5001,7 @@
 		{
 			"name": "Ring of Poison Resistance",
 			"resist": "poison",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5007,7 +5010,7 @@
 		},
 		{
 			"name": "Ring of Protection",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5020,7 +5023,7 @@
 		{
 			"name": "Ring of Psychic Resistance",
 			"resist": "psychic",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5030,7 +5033,7 @@
 		{
 			"name": "Ring of Radiant Resistance",
 			"resist": "radiant",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5039,7 +5042,7 @@
 		},
 		{
 			"name": "Ring of Regeneration",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5051,7 +5054,7 @@
 		},
 		{
 			"name": "Ring of Shooting Stars",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5070,7 +5073,7 @@
 		},
 		{
 			"name": "Ring of Spell Storing",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5084,7 +5087,7 @@
 		},
 		{
 			"name": "Ring of Spell Turning",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5096,7 +5099,7 @@
 		},
 		{
 			"name": "Ring of Swimming",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5107,7 +5110,7 @@
 		},
 		{
 			"name": "Ring of Telekinesis",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5119,7 +5122,7 @@
 		},
 		{
 			"name": "Ring of Three Wishes",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5131,7 +5134,7 @@
 		{
 			"name": "Ring of Thunder Resistance",
 			"resist": "thunder",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5140,7 +5143,7 @@
 		},
 		{
 			"name": "Ring of Warmth",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5152,7 +5155,7 @@
 		},
 		{
 			"name": "Ring of Water Elemental Command",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5174,7 +5177,7 @@
 		},
 		{
 			"name": "Ring of Water Walking",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5185,7 +5188,7 @@
 		},
 		{
 			"name": "Ring of X-ray Vision",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5198,7 +5201,7 @@
 		},
 		{
 			"name": "Ring of the Ram",
-			"type": "RG",
+			"type": "Ring",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5557,7 +5560,7 @@
 		{
 			"name": "Saint Markovia's Thighbone",
 			"type": "Weapon",
-			"weaponType": "mace",
+			"subtype": "mace",
 			"rarity": "Rare",
 			"source": "CoS",
 			"page": "222",
@@ -5593,7 +5596,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Aberrations",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5604,7 +5607,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Beasts",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5615,7 +5618,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Celestials",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5626,7 +5629,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Elementals",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5637,7 +5640,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Fey",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5648,7 +5651,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Fiends",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5659,7 +5662,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Plants",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5670,7 +5673,7 @@
 		},
 		{
 			"name": "Scroll of Protection from Undead",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5681,7 +5684,8 @@
 		},
 		{
 			"name": "Seeker Dart",
-			"type": "R",
+			"type": "Weapon",
+			"subtype": "dart",
 			"rarity": "Uncommon",
 			"source": "PotA",
 			"page": "223",
@@ -5705,7 +5709,8 @@
 		},
 		{
 			"name": "Sentinel Shield",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5734,7 +5739,8 @@
 		},
 		{
 			"name": "Shield of Far Sight",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"rarity": "Rare",
 			"source": "VGM",
 			"page": "81",
@@ -5745,7 +5751,8 @@
 		},
 		{
 			"name": "Shield of Missile Attraction",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5951,7 +5958,7 @@
 		},
 		{
 			"name": "Spell Scroll (1st Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "DMG",
@@ -5966,7 +5973,7 @@
 		},
 		{
 			"name": "Spell Scroll (2nd Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5981,7 +5988,7 @@
 		},
 		{
 			"name": "Spell Scroll (3rd Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5996,7 +6003,7 @@
 		},
 		{
 			"name": "Spell Scroll (4th Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6011,7 +6018,7 @@
 		},
 		{
 			"name": "Spell Scroll (5th Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6026,7 +6033,7 @@
 		},
 		{
 			"name": "Spell Scroll (6th Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6041,7 +6048,7 @@
 		},
 		{
 			"name": "Spell Scroll (7th Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6056,7 +6063,7 @@
 		},
 		{
 			"name": "Spell Scroll (8th Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6071,7 +6078,7 @@
 		},
 		{
 			"name": "Spell Scroll (9th Level)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -6086,7 +6093,7 @@
 		},
 		{
 			"name": "Spell Scroll (Cantrip)",
-			"type": "SC",
+			"type": "Scroll",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "DMG",
@@ -6101,7 +6108,8 @@
 		},
 		{
 			"name": "Spellguard Shield",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6453,7 +6461,7 @@
 		},
 		{
 			"name": "Storm Boomerang",
-			"type": "R",
+			"type": "Weapon",
 			"rarity": "Uncommon",
 			"source": "PotA",
 			"page": "223",
@@ -6465,7 +6473,7 @@
 		{
 			"name": "Sun Blade",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6479,7 +6487,7 @@
 		{
 			"name": "Sunsword",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"rarity": "Legendary",
 			"source": "CoS",
 			"page": "223",
@@ -6498,7 +6506,7 @@
 		{
 			"name": "Sword of Kas",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "226",
@@ -6582,7 +6590,7 @@
 		{
 			"name": "Tinderstrike",
 			"type": "Weapon",
-			"weaponType": "dagger",
+			"subtype": "dagger",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -6654,7 +6662,7 @@
 		{
 			"name": "Trident of Fish Command",
 			"type": "Weapon",
-			"weaponType": "trident",
+			"subtype": "trident",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6666,7 +6674,7 @@
 		},
 		{
 			"name": "Wand of Binding",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6680,7 +6688,7 @@
 		},
 		{
 			"name": "Wand of Enemy Detection",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6693,7 +6701,7 @@
 		},
 		{
 			"name": "Wand of Fear",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6707,7 +6715,7 @@
 		},
 		{
 			"name": "Wand of Fireballs",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6720,7 +6728,7 @@
 		},
 		{
 			"name": "Wand of Lightning Bolts",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6733,7 +6741,7 @@
 		},
 		{
 			"name": "Wand of Magic Detection",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6744,7 +6752,7 @@
 		},
 		{
 			"name": "Wand of Magic Missiles",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6756,7 +6764,7 @@
 		},
 		{
 			"name": "Wand of Orcus",
-			"type": "WD",
+			"type": "Wand",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "227",
@@ -6791,7 +6799,7 @@
 		},
 		{
 			"name": "Wand of Paralysis",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6804,7 +6812,7 @@
 		},
 		{
 			"name": "Wand of Polymorph",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6817,7 +6825,7 @@
 		},
 		{
 			"name": "Wand of Secrets",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6828,7 +6836,7 @@
 		},
 		{
 			"name": "Wand of Viscid Globs",
-			"type": "WD",
+			"type": "Wand",
 			"rarity": "Rare",
 			"source": "OotA",
 			"page": "223",
@@ -6842,7 +6850,7 @@
 		},
 		{
 			"name": "Wand of Web",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6855,7 +6863,7 @@
 		},
 		{
 			"name": "Wand of Winter",
-			"type": "WD",
+			"type": "Wand",
 			"rarity": "Rare",
 			"source": "HotDQ",
 			"page": "94",
@@ -6867,7 +6875,7 @@
 		},
 		{
 			"name": "Wand of Wonder",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6979,7 +6987,7 @@
 		},
 		{
 			"name": "Wand of the War Mage, +1",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6991,7 +6999,7 @@
 		},
 		{
 			"name": "Wand of the War Mage, +2",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -7003,7 +7011,7 @@
 		},
 		{
 			"name": "Wand of the War Mage, +3",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -7016,7 +7024,7 @@
 		{
 			"name": "Wave",
 			"type": "Weapon",
-			"weaponType": "trident",
+			"subtype": "trident",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "218",
@@ -7062,7 +7070,7 @@
 		{
 			"name": "Whelm",
 			"type": "Weapon",
-			"weaponType": "warhammer",
+			"subtype": "warhammer",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "218",
@@ -7123,7 +7131,7 @@
 		{
 			"name": "Windvane",
 			"type": "Weapon",
-			"weaponType": "spear",
+			"subtype": "spear",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -7313,7 +7321,7 @@
 		},
 		{
 			"name": "Potion of Mind Control (beast)",
-			"type": "P",
+			"type": "Potion",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7324,7 +7332,7 @@
 		},
 		{
 			"name": "Potion of Mind Control (humanoid)",
-			"type": "P",
+			"type": "Potion",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7335,7 +7343,7 @@
 		},
 		{
 			"name": "Potion of Mind Control (monster)",
-			"type": "P",
+			"type": "Potion",
 			"rarity": "Very Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7358,7 +7366,7 @@
 		{
 			"name": "Shatterspike",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"rarity": "Uncommon",
 			"source": "TftYP",
 			"page": "229",
@@ -7370,7 +7378,7 @@
 		{
 			"name": "Spear of Backbiting",
 			"type": "Weapon",
-			"weaponType": "spear",
+			"subtype": "spear",
 			"rarity": "Very Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7390,7 +7398,7 @@
 		{
 			"name": "Javelin of Backbiting",
 			"type": "Weapon",
-			"weaponType": "javelin",
+			"subtype": "javelin",
 			"rarity": "Very Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7427,7 +7435,7 @@
 		},
 		{
 			"name": "Wand of Entangle",
-			"type": "WD",
+			"type": "Wand",
 			"rarity": "Uncommon",
 			"source": "TftYP",
 			"page": "229",
@@ -7440,7 +7448,7 @@
 		{
 			"name": "Waythe",
 			"type": "Weapon",
-			"weaponType": "greatsword",
+			"subtype": "greatsword",
 			"rarity": "Legendary",
 			"source": "TftYP",
 			"page": "229",
@@ -7821,7 +7829,8 @@
 		},
 		{
 			"name": "Shield of Expression",
-			"type": "S",
+			"type": "Armor",
+			"subtype": "shield",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7889,7 +7898,8 @@
 		},
 		{
 			"name": "Unbreakable Arrow",
-			"type": "A",
+			"type": "Weapon",
+			"subtype": "arrow",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7911,7 +7921,7 @@
 		},
 		{
 			"name": "Wand of Conducting",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7923,7 +7933,7 @@
 		},
 		{
 			"name": "Wand of Pyrotechnics",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7935,7 +7945,7 @@
 		},
 		{
 			"name": "Wand of Scowls",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7947,7 +7957,7 @@
 		},
 		{
 			"name": "Wand of Smiles",
-			"type": "WD",
+			"type": "Wand",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7960,7 +7970,7 @@
 		{
 			"name": "Scimitar of Speed",
 			"type": "Weapon",
-			"weaponType": "scimitar",
+			"subtype": "scimitar",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -7973,7 +7983,7 @@
 		{
 			"name": "Sword of Answering (Answerer)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -7988,7 +7998,7 @@
 		{
 			"name": "Sword of Answering (Back Talker)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8003,7 +8013,7 @@
 		{
 			"name": "Sword of Answering (Concluder)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8018,7 +8028,7 @@
 		{
 			"name": "Sword of Answering (Last Quip)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8033,7 +8043,7 @@
 		{
 			"name": "Sword of Answering (Rebutter)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8048,7 +8058,7 @@
 		{
 			"name": "Sword of Answering (Replier)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8063,7 +8073,7 @@
 		{
 			"name": "Sword of Answering (Retorter)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8078,7 +8088,7 @@
 		{
 			"name": "Sword of Answering (Scather)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8093,7 +8103,7 @@
 		{
 			"name": "Sword of Answering (Squelcher)",
 			"type": "Weapon",
-			"weaponType": "longsword",
+			"subtype": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",

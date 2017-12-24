@@ -79,11 +79,11 @@
 
               <!-- Rarity and attunement -->
               <h6 class="subtitle is-item-rarity is-size-6 is-italic">
-                <span>{{ item.type }}, {{ item.rarity | lowerCase }}</span>
+                <span>{{ item.type }}<span v-if="item.subtype"> ({{ item.subtype }})</span>, {{ item.rarity | lowerCase }}</span>
 
                 <!-- Attunement options -->
                 <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
-                <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune }})</span>
+                <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune | lowerCase }})</span>
               </h6>
             </a>
           </div>
