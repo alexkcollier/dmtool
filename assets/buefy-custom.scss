@@ -10,6 +10,7 @@
 $primary: #3d4f5d;
 $body-background-color: #e5e5d9;
 $input-background-color: #f5f4ef;
+$card-background-color: $input-background-color;
 $red: rgb(128, 0, 0);
 $danger: $red;
 $gold: rgb(194, 174, 109);
@@ -55,17 +56,17 @@ h1, h2, h3, h4, h5, .title, .button {
 // Add special loading div
 div {
   &.is-loading {
-      position: relative;
-      pointer-events: none;
-      opacity: 0.5;
-      &:after {
-          @include loader;
-          top: calc(50% - 2.5em);
-          left: calc(50% - 2.5em);
-          width: 5em;
-          height: 5em;
-          border-width: 0.25em;
-      }
+    position: relative;
+    pointer-events: none;
+    opacity: 0.5;
+    &:after {
+      @include loader;
+      top: calc(50% - 2.5em);
+      left: calc(50% - 2.5em);
+      width: 5em;
+      height: 5em;
+      border-width: 0.25em;
+    }
   }
 }
 
@@ -95,10 +96,38 @@ $link-focus-border: $primary;
   background: $input-background-color;
 }
 
+.input, .control {
+  font-family: $family-sans-serif;
+}
+
 // Tables
 table {
   font-family: $family-sans-serif;
   font-feature-settings: "lnum";
+}
+
+// Global transitions
+$fade-time: 500ms;
+
+.fade {
+  &-enter-active, &-leave-active {
+    transition: all 2s ease-in-out;
+  }
+  &-enter, &-leave-to {
+    opacity: 0;
+  }
+}
+
+.fade-grow {
+  &-enter-active, &-leave-active {
+    transition: all $fade-time ease-in-out;
+    max-height: 300vh;
+    overflow: hidden;
+  }
+  &-enter, &-leave-to {
+    max-height: 0;
+    opacity: 0;
+  }
 }
 
 // Import Bulma and Buefy styles
