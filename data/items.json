@@ -2,7 +2,7 @@
 	"item": [
 		{
 			"name": "Alchemy Jug",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -64,7 +64,7 @@
 		},
 		{
 			"name": "Amulet of Health",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -76,7 +76,7 @@
 		},
 		{
 			"name": "Amulet of Proof Against Detection and Location",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -88,7 +88,7 @@
 		},
 		{
 			"name": "Amulet of the Planes",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -112,7 +112,7 @@
 		},
 		{
 			"name": "Apparatus of Kwalish",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -273,7 +273,8 @@
 		},
 		{
 			"name": "Axe of the Dwarvish Lords",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "battleaxe",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "221",
@@ -346,7 +347,7 @@
 		},
 		{
 			"name": "Bag of Beans",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -416,7 +417,7 @@
 		},
 		{
 			"name": "Bag of Devouring",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -430,7 +431,7 @@
 		},
 		{
 			"name": "Bag of Holding",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -443,7 +444,7 @@
 		},
 		{
 			"name": "Bag of Tricks, Gray",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -498,7 +499,7 @@
 		},
 		{
 			"name": "Bag of Tricks, Rust",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -553,7 +554,7 @@
 		},
 		{
 			"name": "Bag of Tricks, Tan",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -608,7 +609,7 @@
 		},
 		{
 			"name": "Balloon Pack",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "PotA",
 			"page": "222",
@@ -620,7 +621,7 @@
 		},
 		{
 			"name": "Banner of the Krig Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "SKT",
 			"page": "233",
@@ -636,7 +637,7 @@
 		},
 		{
 			"name": "Bead of Force",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -649,7 +650,7 @@
 		},
 		{
 			"name": "Belt of Cloud Giant Strength",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -661,7 +662,7 @@
 		},
 		{
 			"name": "Belt of Dwarvenkind",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -690,7 +691,7 @@
 		},
 		{
 			"name": "Belt of Frost Giant Strength",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -702,7 +703,7 @@
 		},
 		{
 			"name": "Belt of Hill Giant Strength",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -714,7 +715,7 @@
 		},
 		{
 			"name": "Belt of Stone Giant Strength",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -726,7 +727,7 @@
 		},
 		{
 			"name": "Belt of Storm Giant Strength",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -738,7 +739,7 @@
 		},
 		{
 			"name": "Black Dragon Mask",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "HotDQ",
 			"page": "94",
@@ -769,7 +770,8 @@
 		},
 		{
 			"name": "Blackrazor",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "greatsword",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "216",
@@ -792,7 +794,7 @@
 		},
 		{
 			"name": "Blod Stone",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"source": "SKT",
 			"page": "233",
 			"reqAttune": "YES",
@@ -804,7 +806,8 @@
 		},
 		{
 			"name": "Blood Spear",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "spear",
 			"rarity": "Uncommon",
 			"source": "CoS",
 			"page": "221",
@@ -816,7 +819,7 @@
 		},
 		{
 			"name": "Blue Dragon Mask",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "RoTOS",
 			"page": "4",
@@ -847,7 +850,7 @@
 		},
 		{
 			"name": "Book of Exalted Deeds",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "222",
@@ -873,7 +876,7 @@
 		},
 		{
 			"name": "Book of Vile Darkness",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "222",
@@ -909,7 +912,7 @@
 		},
 		{
 			"name": "Boots of Elvenkind",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -920,7 +923,7 @@
 		},
 		{
 			"name": "Boots of Levitation",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -932,7 +935,7 @@
 		},
 		{
 			"name": "Boots of Speed",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -945,7 +948,7 @@
 		},
 		{
 			"name": "Boots of Striding and Springing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -957,7 +960,7 @@
 		},
 		{
 			"name": "Boots of the Winterlands",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -988,7 +991,7 @@
 		},
 		{
 			"name": "Bowl of Commanding Water Elementals",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1000,7 +1003,7 @@
 		},
 		{
 			"name": "Bracers of Archery",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1012,7 +1015,7 @@
 		},
 		{
 			"name": "Bracers of Defense",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1037,7 +1040,7 @@
 		},
 		{
 			"name": "Brazier of Commanding Fire Elementals",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1062,7 +1065,7 @@
 		},
 		{
 			"name": "Brooch of Shielding",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1074,7 +1077,7 @@
 		},
 		{
 			"name": "Broom of Flying",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1086,7 +1089,7 @@
 		},
 		{
 			"name": "Candle of Invocation",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1146,7 +1149,7 @@
 		},
 		{
 			"name": "Cap of Water Breathing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1157,7 +1160,7 @@
 		},
 		{
 			"name": "Cape of the Mountebank",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1169,7 +1172,7 @@
 		},
 		{
 			"name": "Carpet of Flying, 3 ft. x 5 ft.",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1181,7 +1184,7 @@
 		},
 		{
 			"name": "Carpet of Flying, 4 ft. x 6 ft.",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1193,7 +1196,7 @@
 		},
 		{
 			"name": "Carpet of Flying, 5 ft. x 7 ft.",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1205,7 +1208,7 @@
 		},
 		{
 			"name": "Carpet of Flying, 6 ft. x 9 ft.",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1217,7 +1220,7 @@
 		},
 		{
 			"name": "Censer of Controlling Air Elementals",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1229,7 +1232,7 @@
 		},
 		{
 			"name": "Chime of Opening",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1241,7 +1244,7 @@
 		},
 		{
 			"name": "Circlet of Blasting",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1252,7 +1255,7 @@
 		},
 		{
 			"name": "Claw of the Wyrm Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "SKT",
 			"page": "233",
@@ -1267,7 +1270,7 @@
 		},
 		{
 			"name": "Claws of the Umber Hulk",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "PotA",
 			"page": "222",
@@ -1280,7 +1283,7 @@
 		},
 		{
 			"name": "Cloak of Arachnida",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1302,7 +1305,7 @@
 		},
 		{
 			"name": "Cloak of Displacement",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1314,7 +1317,7 @@
 		},
 		{
 			"name": "Cloak of Elvenkind",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1326,7 +1329,7 @@
 		},
 		{
 			"name": "Cloak of Invisibility",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -1338,7 +1341,7 @@
 		},
 		{
 			"name": "Cloak of Protection",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1350,7 +1353,7 @@
 		},
 		{
 			"name": "Cloak of the Bat",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1363,7 +1366,7 @@
 		},
 		{
 			"name": "Cloak of the Manta Ray",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1374,7 +1377,7 @@
 		},
 		{
 			"name": "Conch of Teleportation",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "SKT",
 			"page": "234",
@@ -1399,7 +1402,7 @@
 		},
 		{
 			"name": "Crystal Ball",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -1411,7 +1414,7 @@
 		},
 		{
 			"name": "Crystal Ball of Mind Reading",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -1424,7 +1427,7 @@
 		},
 		{
 			"name": "Crystal Ball of Telepathy",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -1437,7 +1440,7 @@
 		},
 		{
 			"name": "Crystal Ball of True Seeing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -1450,7 +1453,7 @@
 		},
 		{
 			"name": "Cube of Force",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1534,7 +1537,7 @@
 		},
 		{
 			"name": "Cubic Gate",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -1547,7 +1550,7 @@
 		},
 		{
 			"name": "Daern's Instant Fortress",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1561,7 +1564,8 @@
 		},
 		{
 			"name": "Dagger of Venom",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "dagger",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1573,7 +1577,8 @@
 		},
 		{
 			"name": "Dawnbringer",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"rarity": "Legendary",
 			"source": "OotA",
 			"page": "222",
@@ -1591,7 +1596,7 @@
 		},
 		{
 			"name": "Decanter of Endless Water",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1611,7 +1616,7 @@
 		},
 		{
 			"name": "Deck of Illusions",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -1766,7 +1771,7 @@
 		},
 		{
 			"name": "Deck of Many Things",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -1927,7 +1932,7 @@
 		},
 		{
 			"name": "Devastation Orb of Air",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "PotA",
 			"page": "222",
@@ -1941,7 +1946,7 @@
 		},
 		{
 			"name": "Devastation Orb of Earth",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "PotA",
 			"page": "222",
@@ -1955,7 +1960,7 @@
 		},
 		{
 			"name": "Devastation Orb of Fire",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "PotA",
 			"page": "222",
@@ -1969,7 +1974,7 @@
 		},
 		{
 			"name": "Devastation Orb of Water",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "PotA",
 			"page": "222",
@@ -1983,7 +1988,7 @@
 		},
 		{
 			"name": "Dimensional Shackles",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -1995,7 +2000,7 @@
 		},
 		{
 			"name": "Draakhorn",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "RoT",
 			"page": "93",
@@ -2010,7 +2015,8 @@
 		},
 		{
 			"name": "Dragontooth Dagger",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "dagger",
 			"rarity": "Rare",
 			"source": "RoT",
 			"page": "94",
@@ -2022,7 +2028,7 @@
 		},
 		{
 			"name": "Driftglobe",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2034,7 +2040,8 @@
 		},
 		{
 			"name": "Drown",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "trident",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -2057,7 +2064,7 @@
 		},
 		{
 			"name": "Dust of Disappearance",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2068,7 +2075,7 @@
 		},
 		{
 			"name": "Dust of Dryness",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2081,7 +2088,7 @@
 		},
 		{
 			"name": "Dust of Sneezing and Choking",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2104,7 +2111,8 @@
 		},
 		{
 			"name": "Dwarven Thrower",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "warhammer",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2116,7 +2124,7 @@
 		},
 		{
 			"name": "Efreeti Bottle",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2161,7 +2169,7 @@
 		},
 		{
 			"name": "Elemental Gem, Blue Sapphire",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2172,7 +2180,7 @@
 		},
 		{
 			"name": "Elemental Gem, Emerald",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2183,7 +2191,7 @@
 		},
 		{
 			"name": "Elemental Gem, Red Corundum",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2194,7 +2202,7 @@
 		},
 		{
 			"name": "Elemental Gem, Yellow Diamond",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2227,7 +2235,7 @@
 		},
 		{
 			"name": "Eversmoking Bottle",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2239,7 +2247,7 @@
 		},
 		{
 			"name": "Eye of Vecna",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "224",
@@ -2286,7 +2294,7 @@
 		},
 		{
 			"name": "Eyes of Charming",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2298,7 +2306,7 @@
 		},
 		{
 			"name": "Eyes of Minute Seeing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2309,7 +2317,7 @@
 		},
 		{
 			"name": "Eyes of the Eagle",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2321,7 +2329,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Bronze Griffon",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2336,7 +2344,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Ebony Fly",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2351,7 +2359,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Golden Lions",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2366,7 +2374,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Ivory Goats",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2389,7 +2397,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Marble Elephant",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2404,7 +2412,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Obsidian Steed",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2420,7 +2428,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Onyx Dog",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2435,7 +2443,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Serpentine Owl",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2450,7 +2458,7 @@
 		},
 		{
 			"name": "Figurine of Wondrous Power, Silver Raven",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2465,7 +2473,7 @@
 		},
 		{
 			"name": "Folding Boat",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2480,7 +2488,7 @@
 		},
 		{
 			"name": "Gauntlets of Ogre Power",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2492,7 +2500,7 @@
 		},
 		{
 			"name": "Gavel of the Venn Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "SKT",
 			"page": "234",
@@ -2507,7 +2515,7 @@
 		},
 		{
 			"name": "Gem of Brightness",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2527,7 +2535,7 @@
 		},
 		{
 			"name": "Gem of Seeing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2551,7 +2559,7 @@
 		},
 		{
 			"name": "Gloves of Missile Snaring",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2563,7 +2571,7 @@
 		},
 		{
 			"name": "Gloves of Swimming and Climbing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2575,7 +2583,7 @@
 		},
 		{
 			"name": "Gloves of Thievery",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2586,7 +2594,7 @@
 		},
 		{
 			"name": "Goggles of Night",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2610,7 +2618,7 @@
 		},
 		{
 			"name": "Green Dragon Mask",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "RoTOS",
 			"page": "4",
@@ -2641,8 +2649,7 @@
 		},
 		{
 			"name": "Gulthias Staff",
-			"type": "M",
-			"technology": "Staff",
+			"type": "Staff",
 			"rarity": "Rare",
 			"source": "CoS",
 			"page": "221",
@@ -2656,7 +2663,8 @@
 		},
 		{
 			"name": "Gurt's Greataxe",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "greataxe",
 			"rarity": "Legendary",
 			"source": "SKT",
 			"page": "234",
@@ -2670,7 +2678,8 @@
 		},
 		{
 			"name": "Hammer of Thunderbolts",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "maul",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -2689,7 +2698,7 @@
 		},
 		{
 			"name": "Hand of Vecna",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "224",
@@ -2736,7 +2745,7 @@
 		},
 		{
 			"name": "Hat of Disguise",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2748,7 +2757,8 @@
 		},
 		{
 			"name": "Hazirawn",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "greatsword",
 			"rarity": "Legendary",
 			"source": "HotDQ",
 			"page": "94",
@@ -2762,7 +2772,7 @@
 		},
 		{
 			"name": "Headband of Intellect",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2774,7 +2784,7 @@
 		},
 		{
 			"name": "Helm of Brilliance",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2797,7 +2807,7 @@
 		},
 		{
 			"name": "Helm of Comprehending Languages",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2808,7 +2818,7 @@
 		},
 		{
 			"name": "Helm of Telepathy",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2821,7 +2831,7 @@
 		},
 		{
 			"name": "Helm of Teleportation",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2833,7 +2843,7 @@
 		},
 		{
 			"name": "Heward's Handy Haversack",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2847,7 +2857,7 @@
 		},
 		{
 			"name": "Holy Symbol of Ravenkind",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "CoS",
 			"page": "222",
@@ -2863,7 +2873,7 @@
 		},
 		{
 			"name": "Horn of Blasting",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2875,7 +2885,7 @@
 		},
 		{
 			"name": "Horn of Valhalla, Brass",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2888,7 +2898,7 @@
 		},
 		{
 			"name": "Horn of Valhalla, Bronze",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2901,7 +2911,7 @@
 		},
 		{
 			"name": "Horn of Valhalla, Iron",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -2914,7 +2924,7 @@
 		},
 		{
 			"name": "Horn of Valhalla, Silver",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2927,7 +2937,7 @@
 		},
 		{
 			"name": "Horseshoes of Speed",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -2938,7 +2948,7 @@
 		},
 		{
 			"name": "Horseshoes of a Zephyr",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -2949,7 +2959,7 @@
 		},
 		{
 			"name": "Icon of Ravenloft",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "CoS",
 			"page": "222",
@@ -2965,7 +2975,7 @@
 		},
 		{
 			"name": "Immovable Rod",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -2976,7 +2986,7 @@
 		},
 		{
 			"name": "Ingot of the Skold Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"source": "SKT",
 			"page": "234",
 			"reqAttune": "YES",
@@ -2992,7 +3002,7 @@
 		},
 		{
 			"name": "Insignia of Claws",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "HotDQ",
 			"page": "94",
@@ -3003,7 +3013,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Anstruth Harp",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3019,7 +3029,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Canaith Mandolin",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3035,7 +3045,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Cli Lyre",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3051,7 +3061,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Doss Lute",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3067,7 +3077,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Fochlucan Bandore",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3083,7 +3093,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Mac-Fuirmidh Cittern",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3099,7 +3109,7 @@
 		},
 		{
 			"name": "Instrument of the Bards, Ollamh Harp",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -3115,7 +3125,7 @@
 		},
 		{
 			"name": "Ioun Stone, Absorption",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3131,7 +3141,7 @@
 		},
 		{
 			"name": "Ioun Stone, Agility",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3146,7 +3156,7 @@
 		},
 		{
 			"name": "Ioun Stone, Awareness",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3161,7 +3171,7 @@
 		},
 		{
 			"name": "Ioun Stone, Fortitude",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3176,7 +3186,7 @@
 		},
 		{
 			"name": "Ioun Stone, Greater Absorption",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -3191,7 +3201,7 @@
 		},
 		{
 			"name": "Ioun Stone, Insight",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3206,7 +3216,7 @@
 		},
 		{
 			"name": "Ioun Stone, Intellect",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3221,7 +3231,7 @@
 		},
 		{
 			"name": "Ioun Stone, Leadership",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3236,7 +3246,7 @@
 		},
 		{
 			"name": "Ioun Stone, Mastery",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -3251,7 +3261,7 @@
 		},
 		{
 			"name": "Ioun Stone, Protection",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3266,7 +3276,7 @@
 		},
 		{
 			"name": "Ioun Stone, Regeneration",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -3281,7 +3291,7 @@
 		},
 		{
 			"name": "Ioun Stone, Reserve",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3298,7 +3308,7 @@
 		},
 		{
 			"name": "Ioun Stone, Strength",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3313,7 +3323,7 @@
 		},
 		{
 			"name": "Ioun Stone, Sustenance",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3328,7 +3338,7 @@
 		},
 		{
 			"name": "Iron Bands of Bilarro",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3342,7 +3352,7 @@
 		},
 		{
 			"name": "Iron Flask",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -3484,7 +3494,8 @@
 		},
 		{
 			"name": "Ironfang",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "war pick",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -3510,7 +3521,8 @@
 		},
 		{
 			"name": "Javelin of Lightning",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "javelin",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3522,7 +3534,7 @@
 		},
 		{
 			"name": "Keoghtom's Ointment",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3534,7 +3546,7 @@
 		},
 		{
 			"name": "Korolnor Scepter",
-			"type": "M",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "SKT",
 			"page": "234",
@@ -3551,7 +3563,7 @@
 		},
 		{
 			"name": "Lantern of Revealing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3562,7 +3574,7 @@
 		},
 		{
 			"name": "Lost Crown of Besilmer",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "223",
@@ -3581,7 +3593,8 @@
 		},
 		{
 			"name": "Mace of Disruption",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "mace",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3594,7 +3607,8 @@
 		},
 		{
 			"name": "Mace of Smiting",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "mace",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3606,7 +3620,8 @@
 		},
 		{
 			"name": "Mace of Terror",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "mace",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3619,7 +3634,7 @@
 		},
 		{
 			"name": "Mantle of Spell Resistance",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3631,7 +3646,7 @@
 		},
 		{
 			"name": "Manual of Bodily Health",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3642,7 +3657,7 @@
 		},
 		{
 			"name": "Manual of Clay Golems",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3654,7 +3669,7 @@
 		},
 		{
 			"name": "Manual of Flesh Golems",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3666,7 +3681,7 @@
 		},
 		{
 			"name": "Manual of Gainful Exercise",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3677,7 +3692,7 @@
 		},
 		{
 			"name": "Manual of Iron Golems",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3689,7 +3704,7 @@
 		},
 		{
 			"name": "Manual of Quickness of Action",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3700,7 +3715,7 @@
 		},
 		{
 			"name": "Manual of Stone Golems",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3712,7 +3727,7 @@
 		},
 		{
 			"name": "Mask of the Dragon Queen",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "RoT",
 			"page": "94",
@@ -3724,7 +3739,7 @@
 		},
 		{
 			"name": "Medallion of Thoughts",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3736,7 +3751,8 @@
 		},
 		{
 			"name": "Mind Lash",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "whip",
 			"rarity": "Rare",
 			"source": "VGM",
 			"page": "81",
@@ -3747,7 +3763,7 @@
 		},
 		{
 			"name": "Mirror of Life Trapping",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3764,7 +3780,8 @@
 		},
 		{
 			"name": "Moonblade",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "217",
@@ -3842,7 +3859,7 @@
 		},
 		{
 			"name": "Navigation Orb",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "SKT",
 			"page": "235",
@@ -3858,7 +3875,7 @@
 		},
 		{
 			"name": "Necklace of Adaptation",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -3870,7 +3887,7 @@
 		},
 		{
 			"name": "Necklace of Fireballs",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3882,7 +3899,7 @@
 		},
 		{
 			"name": "Necklace of Prayer Beads",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -3935,7 +3952,7 @@
 		},
 		{
 			"name": "Nolzur's Marvelous Pigments",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -3998,7 +4015,7 @@
 		},
 		{
 			"name": "Opal of the Ild Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "SKT",
 			"page": "235",
@@ -4015,7 +4032,7 @@
 		},
 		{
 			"name": "Orb of Dragonkind",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "225",
@@ -4043,7 +4060,7 @@
 		},
 		{
 			"name": "Orb of the Stein Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"source": "SKT",
 			"page": "235",
 			"reqAttune": "YES",
@@ -4060,7 +4077,8 @@
 		},
 		{
 			"name": "Orcsplitter",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "greataxe",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -4083,7 +4101,7 @@
 		},
 		{
 			"name": "Pearl of Power",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4095,7 +4113,7 @@
 		},
 		{
 			"name": "Pennant of the Vind Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "SKT",
 			"page": "235",
@@ -4113,7 +4131,7 @@
 		},
 		{
 			"name": "Periapt of Health",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4124,7 +4142,7 @@
 		},
 		{
 			"name": "Periapt of Proof Against Poison",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4135,7 +4153,7 @@
 		},
 		{
 			"name": "Periapt of Wound Closure",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4158,7 +4176,7 @@
 		},
 		{
 			"name": "Pipes of Haunting",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4169,7 +4187,7 @@
 		},
 		{
 			"name": "Pipes of the Sewers",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4183,7 +4201,7 @@
 		},
 		{
 			"name": "Piwafwi (Cloak of Elvenkind)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "OotA",
 			"page": "222",
@@ -4195,7 +4213,7 @@
 		},
 		{
 			"name": "Piwafwi of Fire Resistance (Cloak of Elvenkind)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "OotA",
 			"page": "222",
@@ -4207,7 +4225,7 @@
 		},
 		{
 			"name": "Portable Hole",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4628,7 +4646,7 @@
 		},
 		{
 			"name": "Quaal's Feather Token, Anchor",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4640,7 +4658,7 @@
 		},
 		{
 			"name": "Quaal's Feather Token, Bird",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4652,7 +4670,7 @@
 		},
 		{
 			"name": "Quaal's Feather Token, Fan",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4664,7 +4682,7 @@
 		},
 		{
 			"name": "Quaal's Feather Token, Swan Boat",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4676,7 +4694,7 @@
 		},
 		{
 			"name": "Quaal's Feather Token, Tree",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4688,7 +4706,7 @@
 		},
 		{
 			"name": "Quaal's Feather Token, Whip",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -4701,7 +4719,7 @@
 		},
 		{
 			"name": "Quiver of Ehlonna",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -4713,7 +4731,7 @@
 		},
 		{
 			"name": "Red Dragon Mask",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "RoTOS",
 			"page": "4",
@@ -5193,7 +5211,7 @@
 		},
 		{
 			"name": "Robe of Eyes",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5215,7 +5233,7 @@
 		},
 		{
 			"name": "Robe of Scintillating Colors",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5227,7 +5245,7 @@
 		},
 		{
 			"name": "Robe of Serpents",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"source": "SKT",
 			"page": "236",
 			"rarity": "Uncommon",
@@ -5239,7 +5257,7 @@
 		},
 		{
 			"name": "Robe of Stars",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5253,7 +5271,7 @@
 		},
 		{
 			"name": "Robe of Useful Items",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5338,7 +5356,7 @@
 		},
 		{
 			"name": "Robe of the Archmagi",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5359,7 +5377,7 @@
 		},
 		{
 			"name": "Rod of Absorption",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5374,7 +5392,7 @@
 		},
 		{
 			"name": "Rod of Alertness",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5390,7 +5408,7 @@
 		},
 		{
 			"name": "Rod of Lordly Might",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5412,7 +5430,7 @@
 		},
 		{
 			"name": "Rod of Resurrection",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5425,7 +5443,7 @@
 		},
 		{
 			"name": "Rod of Rulership",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5437,7 +5455,7 @@
 		},
 		{
 			"name": "Rod of Security",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5450,7 +5468,7 @@
 		},
 		{
 			"name": "Rod of the Pact Keeper, +1",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5463,7 +5481,7 @@
 		},
 		{
 			"name": "Rod of the Pact Keeper, +2",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5476,7 +5494,7 @@
 		},
 		{
 			"name": "Rod of the Pact Keeper, +3",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -5489,7 +5507,7 @@
 		},
 		{
 			"name": "Rod of the Vonindod",
-			"type": "RD",
+			"type": "Rod",
 			"source": "SKT",
 			"page": "236",
 			"rarity": "Rare",
@@ -5501,7 +5519,7 @@
 		},
 		{
 			"name": "Rope of Climbing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5514,7 +5532,7 @@
 		},
 		{
 			"name": "Rope of Entanglement",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -5527,7 +5545,7 @@
 		},
 		{
 			"name": "Saddle of the Cavalier",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5538,7 +5556,8 @@
 		},
 		{
 			"name": "Saint Markovia's Thighbone",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "mace",
 			"rarity": "Rare",
 			"source": "CoS",
 			"page": "222",
@@ -5555,7 +5574,7 @@
 		},
 		{
 			"name": "Scarab of Protection",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5674,7 +5693,7 @@
 		},
 		{
 			"name": "Sending Stones",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5697,7 +5716,7 @@
 		},
 		{
 			"name": "Shard of the Ise Rune",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"source": "SKT",
 			"page": "236",
 			"reqAttune": "YES",
@@ -5758,7 +5777,7 @@
 		},
 		{
 			"name": "Slippers of Spider Climbing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -5770,7 +5789,7 @@
 		},
 		{
 			"name": "Sovereign Glue",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -5782,7 +5801,7 @@
 		},
 		{
 			"name": "Spell Gem (Amber)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "OotA",
 			"page": "223",
@@ -5797,7 +5816,7 @@
 		},
 		{
 			"name": "Spell Gem (Bloodstone)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "OotA",
 			"page": "223",
@@ -5812,7 +5831,7 @@
 		},
 		{
 			"name": "Spell Gem (Diamond)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "OotA",
 			"page": "223",
@@ -5827,7 +5846,7 @@
 		},
 		{
 			"name": "Spell Gem (Jade)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "OotA",
 			"page": "223",
@@ -5842,7 +5861,7 @@
 		},
 		{
 			"name": "Spell Gem (Lapis lazuli)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "OotA",
 			"page": "223",
@@ -5857,7 +5876,7 @@
 		},
 		{
 			"name": "Spell Gem (Obsidian)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "OotA",
 			"page": "223",
@@ -5872,7 +5891,7 @@
 		},
 		{
 			"name": "Spell Gem (Quartz)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "OotA",
 			"page": "223",
@@ -5887,7 +5906,7 @@
 		},
 		{
 			"name": "Spell Gem (Ruby)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "OotA",
 			"page": "223",
@@ -5902,7 +5921,7 @@
 		},
 		{
 			"name": "Spell Gem (Star ruby)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "OotA",
 			"page": "223",
@@ -5917,7 +5936,7 @@
 		},
 		{
 			"name": "Spell Gem (Topaz)",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "OotA",
 			"page": "223",
@@ -6094,7 +6113,7 @@
 		},
 		{
 			"name": "Sphere of Annihilation",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -6397,7 +6416,7 @@
 		},
 		{
 			"name": "Stone of Controlling Earth Elementals",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6408,7 +6427,7 @@
 		},
 		{
 			"name": "Stone of Good Luck",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6420,7 +6439,7 @@
 		},
 		{
 			"name": "Stonespeaker Crystal",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "OotA",
 			"page": "223",
@@ -6445,7 +6464,8 @@
 		},
 		{
 			"name": "Sun Blade",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6458,7 +6478,8 @@
 		},
 		{
 			"name": "Sunsword",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"rarity": "Legendary",
 			"source": "CoS",
 			"page": "223",
@@ -6476,7 +6497,8 @@
 		},
 		{
 			"name": "Sword of Kas",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"rarity": "Artifact",
 			"source": "DMG",
 			"page": "226",
@@ -6507,7 +6529,7 @@
 		},
 		{
 			"name": "Talisman of Pure Good",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -6521,7 +6543,7 @@
 		},
 		{
 			"name": "Talisman of Ultimate Evil",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -6535,7 +6557,7 @@
 		},
 		{
 			"name": "Talisman of the Sphere",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -6547,7 +6569,7 @@
 		},
 		{
 			"name": "Tentacle Rod",
-			"type": "RD",
+			"type": "Rod",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -6559,7 +6581,8 @@
 		},
 		{
 			"name": "Tinderstrike",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "dagger",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -6582,7 +6605,7 @@
 		},
 		{
 			"name": "Tome of Clear Thought",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6593,7 +6616,7 @@
 		},
 		{
 			"name": "Tome of Leadership and Influence",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6604,7 +6627,7 @@
 		},
 		{
 			"name": "Tome of Understanding",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -6615,7 +6638,7 @@
 		},
 		{
 			"name": "Tome of the Stilled Tongue",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -6630,7 +6653,8 @@
 		},
 		{
 			"name": "Trident of Fish Command",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "trident",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -6991,11 +7015,12 @@
 		},
 		{
 			"name": "Wave",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "trident",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "218",
-			"reqAttune": "by a Creature that worships a god of the sea",
+			"reqAttune": "by a creature that worships a god of the sea",
 			"entries": [
 				"Held in the dungeon of White Plume Mountain, this trident is an exquisite weapon engraved with images of waves, shells, and sea creatures. Although you must worship a god of the sea to attune to this weapon, Wave happily accepts new converts.",
 				"You gain a +3 bonus to attack and damage rolls made with this magic weapon. If you score a critical hit with it, the target takes extra necrotic damage equal to half its hit point maximum.",
@@ -7010,7 +7035,7 @@
 		},
 		{
 			"name": "Weird Tank",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "PotA",
 			"page": "223",
@@ -7024,7 +7049,7 @@
 		},
 		{
 			"name": "Well of Many Worlds",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -7036,7 +7061,8 @@
 		},
 		{
 			"name": "Whelm",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "warhammer",
 			"rarity": "Legendary",
 			"source": "DMG",
 			"page": "218",
@@ -7054,7 +7080,7 @@
 		},
 		{
 			"name": "White Dragon Mask",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Legendary",
 			"source": "RoTOS",
 			"page": "4",
@@ -7085,7 +7111,7 @@
 		},
 		{
 			"name": "Wind Fan",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -7096,7 +7122,8 @@
 		},
 		{
 			"name": "Windvane",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "spear",
 			"rarity": "Legendary",
 			"source": "PotA",
 			"page": "224",
@@ -7121,7 +7148,7 @@
 		},
 		{
 			"name": "Winged Boots",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Uncommon",
 			"source": "DMG",
@@ -7134,7 +7161,7 @@
 		},
 		{
 			"name": "Wings of Flying",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Major",
 			"rarity": "Rare",
 			"source": "DMG",
@@ -7146,7 +7173,7 @@
 		},
 		{
 			"name": "Wingwear",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "PotA",
 			"page": "223",
@@ -7158,7 +7185,7 @@
 		},
 		{
 			"name": "Wyrmskull Throne",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Artifact",
 			"source": "SKT",
 			"page": "237",
@@ -7178,7 +7205,7 @@
 		},
 		{
 			"name": "Amulet of Protection from Turning",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "228",
@@ -7190,7 +7217,7 @@
 		},
 		{
 			"name": "Balance of Harmony",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "TftYP",
 			"page": "228",
@@ -7200,7 +7227,7 @@
 		},
 		{
 			"name": "Bracelet of Rock Magic",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Very Rare",
 			"source": "TftYP",
 			"page": "228",
@@ -7218,7 +7245,7 @@
 		},
 		{
 			"name": "Eagle Whistle",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "228",
@@ -7228,7 +7255,7 @@
 		},
 		{
 			"name": "Hell Hound Cloak",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "228",
@@ -7247,7 +7274,7 @@
 		},
 		{
 			"name": "Load Stone",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "228",
@@ -7264,7 +7291,7 @@
 		},
 		{
 			"name": "Mirror of the Past",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "228",
@@ -7274,7 +7301,7 @@
 		},
 		{
 			"name": "Night Caller",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "TftYP",
 			"page": "228",
@@ -7319,7 +7346,7 @@
 		},
 		{
 			"name": "Robe of Summer",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7330,7 +7357,8 @@
 		},
 		{
 			"name": "Shatterspike",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"rarity": "Uncommon",
 			"source": "TftYP",
 			"page": "229",
@@ -7341,7 +7369,8 @@
 		},
 		{
 			"name": "Spear of Backbiting",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "spear",
 			"rarity": "Very Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7360,7 +7389,8 @@
 		},
 		{
 			"name": "Javelin of Backbiting",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "javelin",
 			"rarity": "Very Rare",
 			"source": "TftYP",
 			"page": "229",
@@ -7379,7 +7409,7 @@
 		},
 		{
 			"name": "Stone of Ill Luck",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"rarity": "Uncommon",
 			"source": "TftYP",
 			"page": "229",
@@ -7409,7 +7439,8 @@
 		},
 		{
 			"name": "Waythe",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "greatsword",
 			"rarity": "Legendary",
 			"source": "TftYP",
 			"page": "229",
@@ -7425,7 +7456,7 @@
 		},
 		{
 			"name": "Bead of Nourishment",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7436,7 +7467,7 @@
 		},
 		{
 			"name": "Bead of Refreshment",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7447,7 +7478,7 @@
 		},
 		{
 			"name": "Boots of False Tracks",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7458,7 +7489,7 @@
 		},
 		{
 			"name": "Candle of the Deep",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7469,7 +7500,7 @@
 		},
 		{
 			"name": "Charlatan's Die",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7481,7 +7512,7 @@
 		},
 		{
 			"name": "Cloak of Billowing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7492,7 +7523,7 @@
 		},
 		{
 			"name": "Cloak of Many Fashions",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7503,7 +7534,7 @@
 		},
 		{
 			"name": "Clockwork Amulet",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7515,7 +7546,7 @@
 		},
 		{
 			"name": "Clothes of Mending",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7526,7 +7557,7 @@
 		},
 		{
 			"name": "Dark Shard Amulet",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7545,7 +7576,7 @@
 		},
 		{
 			"name": "Dread Helm",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7556,7 +7587,7 @@
 		},
 		{
 			"name": "Ear Horn of Hearing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7567,7 +7598,7 @@
 		},
 		{
 			"name": "Enduring Spellbook",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7578,7 +7609,7 @@
 		},
 		{
 			"name": "Ersatz Eye",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7590,7 +7621,7 @@
 		},
 		{
 			"name": "Hat of Vermin",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7601,7 +7632,7 @@
 		},
 		{
 			"name": "Hat of Wizardry",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7620,7 +7651,7 @@
 		},
 		{
 			"name": "Heward's Handy Spice Pouch",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7631,7 +7662,7 @@
 		},
 		{
 			"name": "Horn of Silent Alarm",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7642,7 +7673,7 @@
 		},
 		{
 			"name": "Instrument of Illusions",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7654,7 +7685,7 @@
 		},
 		{
 			"name": "Instrument of Scribing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7667,7 +7698,7 @@
 		},
 		{
 			"name": "Lock of Trickery",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7678,7 +7709,7 @@
 		},
 		{
 			"name": "Mystery Key",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7689,7 +7720,7 @@
 		},
 		{
 			"name": "Orb of Direction",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7700,7 +7731,7 @@
 		},
 		{
 			"name": "Orb of Time",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7711,7 +7742,7 @@
 		},
 		{
 			"name": "Perfume of Bewitching",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7722,7 +7753,7 @@
 		},
 		{
 			"name": "Pipe of Smoke Monsters",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7733,7 +7764,7 @@
 		},
 		{
 			"name": "Pole of Angling",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7744,7 +7775,7 @@
 		},
 		{
 			"name": "Pole of Collapsing",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7755,7 +7786,7 @@
 		},
 		{
 			"name": "Pot of Awakening",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7767,7 +7798,7 @@
 		},
 		{
 			"name": "Rope of Mending",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7778,7 +7809,7 @@
 		},
 		{
 			"name": "Ruby of the War Mage",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7835,7 +7866,7 @@
 		},
 		{
 			"name": "Talking Doll",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7847,7 +7878,7 @@
 		},
 		{
 			"name": "Tankard of Sobriety",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7869,7 +7900,7 @@
 		},
 		{
 			"name": "Veteran's Cane",
-			"type": "Wondrous",
+			"type": "Wondrous item",
 			"tier": "Minor",
 			"rarity": "Common",
 			"source": "XGE",
@@ -7928,7 +7959,8 @@
 		},
 		{
 			"name": "Scimitar of Speed",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "scimitar",
 			"tier": "Major",
 			"rarity": "Very Rare",
 			"source": "DMG",
@@ -7940,7 +7972,8 @@
 		},
 		{
 			"name": "Sword of Answering (Answerer)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -7954,7 +7987,8 @@
 		},
 		{
 			"name": "Sword of Answering (Back Talker)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -7968,7 +8002,8 @@
 		},
 		{
 			"name": "Sword of Answering (Concluder)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -7982,7 +8017,8 @@
 		},
 		{
 			"name": "Sword of Answering (Last Quip)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -7996,7 +8032,8 @@
 		},
 		{
 			"name": "Sword of Answering (Rebutter)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8010,7 +8047,8 @@
 		},
 		{
 			"name": "Sword of Answering (Replier)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8024,7 +8062,8 @@
 		},
 		{
 			"name": "Sword of Answering (Retorter)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8038,7 +8077,8 @@
 		},
 		{
 			"name": "Sword of Answering (Scather)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
@@ -8052,7 +8092,8 @@
 		},
 		{
 			"name": "Sword of Answering (Squelcher)",
-			"type": "M",
+			"type": "Weapon",
+			"weaponType": "longsword",
 			"tier": "Major",
 			"rarity": "Legendary",
 			"source": "DMG",
