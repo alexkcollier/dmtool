@@ -214,18 +214,14 @@ export default {
     rarityFilter () {
       return lodash.map(
         lodash.filter(this.rarity, (rarity) => {
-          if (rarity.value === true) {
-            return rarity.name
-          }
+          if (rarity.value === true) return rarity.name
         }), 'name'
       )
     },
     sourceFilter () {
       return lodash.map(
         lodash.filter(this.source, (s) => {
-          if (s.value === true) {
-            return s.name
-          }
+          if (s.value === true) return s.name
         }), 'name'
       )
     }
@@ -242,20 +238,16 @@ export default {
   methods: {
     showItem (item) {
       // Only display one item at a time
-      if (this.activeItem === item) {
-        this.activeItem = ''
-      } else {
-        this.activeItem = item
-      }
+      this.activeItem = this.activeItem === item ? '' : item
       return this.activeItem
     },
     compareList (list) {
       // Create array from object keys
-      var current = [...new Set(this[list].map(item => item.name))]
-      var incoming = [...new Set(this.items.item.map(item => item[list]))]
+      let current = [...new Set(this[list].map(item => item.name))]
+      let incoming = [...new Set(this.items.item.map(item => item[list]))]
 
-      var missingFromCurrent = []
-      var missingFromIncoming = []
+      let missingFromCurrent = []
+      let missingFromIncoming = []
 
       // Check current list
       for (let i = 0; i < incoming.length; i++) {
@@ -264,7 +256,7 @@ export default {
           this[list].push({name: incoming[i], value: false})
         }
       }
-      if (missingFromCurrent.length > 0) { console.warn('Missing from magic-items.vue', list, 'list', missingFromCurrent) }
+      if (missingFromCurrent.length > 0) console.warn('Missing from magic-items.vue', list, 'list', missingFromCurrent)
 
       // Check incoming list
       for (let i = 0; i < current.length; i++) {
@@ -272,17 +264,14 @@ export default {
           missingFromIncoming.push(current[i])
         }
       }
-      if (missingFromIncoming.length > 0) { console.warn('Missing from items.json', list, 'list', missingFromIncoming) }
+      if (missingFromIncoming.length > 0) console.warn('Missing from items.json', list, 'list', missingFromIncoming)
     },
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
     makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
     makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
   },
   filters: {
-    lowerCase: str => {
-      if (!str) return ''
-      return str.toLowerCase()
-    }
+    lowerCase: str => str ? str.toLowerCase() : ''
   }
 }
 </script>
