@@ -198,7 +198,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      return lodash.filter(this.items.item, (item) => {
+      return lodash.filter(this.items, (item) => {
         return lodash.includes(item.name.toLowerCase(), this.searchQuery.toLowerCase()) &&
           this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
@@ -244,7 +244,7 @@ export default {
     compareList (list) {
       // Create array from object keys
       let current = [...new Set(this[list].map(item => item.name))]
-      let incoming = [...new Set(this.items.item.map(item => item[list]))]
+      let incoming = [...new Set(this.items.map(item => item[list]))]
 
       let missingFromCurrent = []
       let missingFromIncoming = []
