@@ -105,7 +105,7 @@
 
 <script>
 import lodash from 'lodash'
-import items from '~/data/items.json'
+import magicItems from '~/data/magic-items.json'
 import itemEntries from '~/components/ItemEntries'
 
 export default {
@@ -117,7 +117,7 @@ export default {
   },
   data () {
     return {
-      items,
+      magicItems,
       search: '',
       searchQuery: '',
       rarity: [
@@ -152,7 +152,7 @@ export default {
   },
   computed: {
     filteredItems () {
-      return lodash.filter(this.items, item => {
+      return lodash.filter(this.magicItems, item => {
         return lodash.includes(item.name.toLowerCase(), this.searchQuery.toLowerCase()) &&
           this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })

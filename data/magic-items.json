@@ -4242,12 +4242,14 @@
 	},
 	{
 		"name": "Potion of Acid Resistance",
-		"resist": "acid",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to acide damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Animal Friendship",
@@ -4296,12 +4298,14 @@
 	},
 	{
 		"name": "Potion of Cold Resistance",
-		"resist": "cold",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to cold damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Diminution",
@@ -4339,12 +4343,14 @@
 	},
 	{
 		"name": "Potion of Fire Resistance",
-		"resist": "fire",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to fire damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Flying",
@@ -4359,12 +4365,14 @@
 	},
 	{
 		"name": "Potion of Force Resistance",
-		"resist": "force",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to force damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Frost Giant Strength",
@@ -4481,12 +4489,14 @@
 	},
 	{
 		"name": "Potion of Lightning Resistance",
-		"resist": "lightning",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to lightning damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Longevity",
@@ -4512,12 +4522,14 @@
 	},
 	{
 		"name": "Potion of Necrotic Resistance",
-		"resist": "necrotic",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to necrotic damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Poison",
@@ -4533,30 +4545,36 @@
 	},
 	{
 		"name": "Potion of Poison Resistance",
-		"resist": "poison",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to poison damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Psychic Resistance",
-		"resist": "psychic",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to psychic damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Radiant Resistance",
-		"resist": "radiant",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to radiant damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Speed",
@@ -4617,12 +4635,14 @@
 	},
 	{
 		"name": "Potion of Thunder Resistance",
-		"resist": "thunder",
 		"type": "Potion",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
-		"page": "188"
+		"page": "188",
+		"entries":[
+			"When you drink this potion, you gain resistance to thunder damage for 1 hour."
+		]
 	},
 	{
 		"name": "Potion of Vitality",
@@ -4764,13 +4784,15 @@
 	},
 	{
 		"name": "Ring of Acid Resistance",
-		"resist": "acid",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to acid damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Air Elemental Command",
@@ -4816,13 +4838,15 @@
 	},
 	{
 		"name": "Ring of Cold Resistance",
-		"resist": "cold",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to cold damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Djinni Summoning",
@@ -4909,23 +4933,27 @@
 	},
 	{
 		"name": "Ring of Fire Resistance",
-		"resist": "fire",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to fire damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Force Resistance",
-		"resist": "force",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to force damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Free Action",
@@ -4965,13 +4993,15 @@
 	},
 	{
 		"name": "Ring of Lightning Resistance",
-		"resist": "lightning",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to lightning damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Mind Shielding",
@@ -4989,23 +5019,27 @@
 	},
 	{
 		"name": "Ring of Necrotic Resistance",
-		"resist": "necrotic",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to necrotic damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Poison Resistance",
-		"resist": "poison",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to poison damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Protection",
@@ -5021,23 +5055,27 @@
 	},
 	{
 		"name": "Ring of Psychic Resistance",
-		"resist": "psychic",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to psychic damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Radiant Resistance",
-		"resist": "radiant",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to radiant damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Regeneration",
@@ -5132,13 +5170,15 @@
 	},
 	{
 		"name": "Ring of Thunder Resistance",
-		"resist": "thunder",
 		"type": "Ring",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "192",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries":[
+			"You have resistance to resistance to thunder damage while wearing this ring."
+		]
 	},
 	{
 		"name": "Ring of Warmth",
@@ -6156,7 +6196,7 @@
 	},
 	{
 		"name": "Spider Staff",
-		"technology": "Staff",
+		"type":"Staff",
 		"rarity": "Rare",
 		"source": "LMoP",
 		"page": "53",
@@ -6169,7 +6209,7 @@
 	},
 	{
 		"name": "Staff of Charming",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6183,7 +6223,7 @@
 	},
 	{
 		"name": "Staff of Defense",
-		"technology": "Staff",
+		"type":"Staff",
 		"rarity": "Rare",
 		"source": "LMoP",
 		"page": "53",
@@ -6197,7 +6237,7 @@
 	},
 	{
 		"name": "Staff of Fire",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6211,7 +6251,7 @@
 	},
 	{
 		"name": "Staff of Frost",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6225,7 +6265,7 @@
 	},
 	{
 		"name": "Staff of Healing",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6238,7 +6278,7 @@
 	},
 	{
 		"name": "Staff of Power",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6282,7 +6322,7 @@
 	},
 	{
 		"name": "Staff of Striking",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6295,7 +6335,7 @@
 	},
 	{
 		"name": "Staff of Swarming Insects",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6309,7 +6349,7 @@
 	},
 	{
 		"name": "Staff of Thunder and Lightning",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6327,7 +6367,7 @@
 	},
 	{
 		"name": "Staff of Withering",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6340,7 +6380,7 @@
 	},
 	{
 		"name": "Staff of the Adder",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -6354,7 +6394,7 @@
 	},
 	{
 		"name": "Staff of the Magi",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -6393,7 +6433,7 @@
 	},
 	{
 		"name": "Staff of the Python",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -6407,7 +6447,7 @@
 	},
 	{
 		"name": "Staff of the Woodlands",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -7840,7 +7880,7 @@
 	},
 	{
 		"name": "Staff of Adornment",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -7851,7 +7891,7 @@
 	},
 	{
 		"name": "Staff of Birdcalls",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -7863,7 +7903,7 @@
 	},
 	{
 		"name": "Staff of Flowers",
-		"technology": "Staff",
+		"type":"Staff",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -8116,7 +8156,8 @@
 	},
 	{
 		"name": "Armor +1",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8127,7 +8168,8 @@
 	},
 	{
 		"name": "Armor +2",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8138,7 +8180,8 @@
 	},
 	{
 		"name": "Armor +3",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -8149,7 +8192,8 @@
 	},
 	{
 		"name": "Shield +1",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "shield",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8160,7 +8204,8 @@
 	},
 	{
 		"name": "Shield +2",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "shield",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8171,7 +8216,8 @@
 	},
 	{
 		"name": "Shield +3",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "shield",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8182,7 +8228,8 @@
 	},
 	{
 		"name": "Armor of Gleaming",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "any medium, or heavy",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -8193,7 +8240,8 @@
 	},
 	{
 		"name": "Armor of Acid Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8202,7 +8250,8 @@
 	},
 	{
 		"name": "Armor of Cold Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8211,7 +8260,8 @@
 	},
 	{
 		"name": "Armor of Fire Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8220,7 +8270,8 @@
 	},
 	{
 		"name": "Armor of Force Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8229,7 +8280,8 @@
 	},
 	{
 		"name": "Armor of Lightning Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8238,7 +8290,8 @@
 	},
 	{
 		"name": "Armor of Neccrotic Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8247,7 +8300,8 @@
 	},
 	{
 		"name": "Armor of Poison Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8256,7 +8310,8 @@
 	},
 	{
 		"name": "Armor of Psychic Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8265,7 +8320,8 @@
 	},
 	{
 		"name": "Armor of Radiant Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8274,7 +8330,8 @@
 	},
 	{
 		"name": "Armor of Thunder Resistance",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8283,7 +8340,8 @@
 	},
 	{
 		"name": "Adamantine Armor",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8294,7 +8352,8 @@
 	},
 	{
 		"name": "Cast-Off Armor",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -8305,7 +8364,8 @@
 	},
 	{
 		"name": "Mariner's Armor",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "light, medium, or heavy",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8316,7 +8376,8 @@
 	},
 	{
 		"name": "Mind Carapace Armor",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "any heavy armor",
 		"rarity": "Uncommon",
 		"source": "VGM",
 		"page": "81",
@@ -8327,7 +8388,8 @@
 	},
 	{
 		"name": "Mithral Armor",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "medium or heavy, but not hide",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8338,7 +8400,8 @@
 	},
 	{
 		"name": "Moon-Touched Sword",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -8349,7 +8412,8 @@
 	},
 	{
 		"name": "Smoldering Armor",
-		"type": "GV",
+		"type": "Armor",
+		"subtype": "any",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -8360,7 +8424,8 @@
 	},
 	{
 		"name": "Arrow of Slaying",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "arrow",
 		"tier": "Minor",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8373,7 +8438,8 @@
 	},
 	{
 		"name": "Ammunition +1",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any ammunition",
 		"tier": "Minor",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8384,7 +8450,8 @@
 	},
 	{
 		"name": "Ammunition +2",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any ammunition",
 		"tier": "Minor",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8395,7 +8462,8 @@
 	},
 	{
 		"name": "Ammunition +3",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any ammunition",
 		"tier": "Minor",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8406,7 +8474,8 @@
 	},
 	{
 		"name": "Walloping Ammunition",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any ammunition",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -8417,7 +8486,8 @@
 	},
 	{
 		"name": "Weapon +1",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8428,7 +8498,8 @@
 	},
 	{
 		"name": "Weapon +2",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8439,7 +8510,8 @@
 	},
 	{
 		"name": "Weapon +3",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8450,8 +8522,8 @@
 	},
 	{
 		"name": "Weapon of Warning",
-		"type": "GV",
-		"tier": "Major",
+		"type": "Weapon",
+		"subtype": "any",
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "213",
@@ -8461,7 +8533,8 @@
 	},
 	{
 		"name": "Berserker Axe",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any axe",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8481,7 +8554,8 @@
 	},
 	{
 		"name": "Dancing Sword",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8495,7 +8569,8 @@
 	},
 	{
 		"name": "Defender",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -8508,7 +8583,8 @@
 	},
 	{
 		"name": "Dragon Slayer",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8520,7 +8596,8 @@
 	},
 	{
 		"name": "Flame Tongue",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8532,7 +8609,8 @@
 	},
 	{
 		"name": "Frost Brand",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8546,7 +8624,8 @@
 	},
 	{
 		"name": "Giant Slayer",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any axe or sword",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8558,7 +8637,8 @@
 	},
 	{
 		"name": "Holy Avenger",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -8571,7 +8651,8 @@
 	},
 	{
 		"name": "Luck Blade",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"rarity": "Legendary",
 		"source": "DMG",
 		"page": "179",
@@ -8595,7 +8676,8 @@
 	},
 	{
 		"name": "Mind Blade",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"rarity": "Rare",
 		"source": "VGM",
 		"page": "81",
@@ -8606,7 +8688,8 @@
 	},
 	{
 		"name": "Nine Lives Stealer",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8619,7 +8702,8 @@
 	},
 	{
 		"name": "Sword of Life Stealing",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8631,7 +8715,8 @@
 	},
 	{
 		"name": "Sword of Sharpness",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword that deals slashing damage",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -8645,7 +8730,8 @@
 	},
 	{
 		"name": "Sword of Vengeance",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -8660,7 +8746,8 @@
 	},
 	{
 		"name": "Sword of Wounding",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8673,7 +8760,8 @@
 	},
 	{
 		"name": "Vicious Weapon",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -8684,7 +8772,8 @@
 	},
 	{
 		"name": "Vorpal Sword",
-		"type": "GV",
+		"type": "Weapon",
+		"subtype": "any sword that deals slashing damage",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
