@@ -12,6 +12,7 @@
         
         <template v-else>
           <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
+          <nuxt-link to="/bestiary" class="button is-medium">Bestiary</nuxt-link>
         </template>
       </div>
     </div>
