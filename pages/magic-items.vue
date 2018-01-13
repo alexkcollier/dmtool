@@ -152,32 +152,24 @@ export default {
   },
   computed: {
     filteredItems () {
-      return lodash.filter(this.items, (item) => {
+      return lodash.filter(this.items, item => {
         return lodash.includes(item.name.toLowerCase(), this.searchQuery.toLowerCase()) &&
           this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
     },
     resultCount () {
-      var o = this.orderedItems
-      var ol = Object.keys(o)
-      return ol.length
+      return Object.keys(this.orderedItems).length
     },
     orderedItems () {
       return lodash.orderBy(this.filteredItems, 'name')
     },
     rarityFilter () {
       return lodash.map(
-        lodash.filter(this.rarity, (rarity) => {
-          if (rarity.value === true) return rarity.name
-        }), 'name'
-      )
+        lodash.filter(this.rarity, rarity => { if (rarity.value) return rarity.name }), 'name')
     },
     sourceFilter () {
       return lodash.map(
-        lodash.filter(this.source, (s) => {
-          if (s.value === true) return s.name
-        }), 'name'
-      )
+        lodash.filter(this.source, (s) => { if (s.value) return s.name }), 'name')
     }
   },
   created () {
