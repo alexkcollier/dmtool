@@ -73,75 +73,25 @@
           
           <!-- Item name and rarity -->
           <!-- Only display one item at a time -->
-          <div @click="showItem(item.name)">
-            <a>
-              <h3 class="title">{{ item.name }}</h3>
+          <a @click="showItem(item.name)">
+            <h3 class="title">{{ item.name }}</h3>
 
-              <!-- Rarity and attunement -->
-              <h6 class="subtitle is-item-rarity is-size-6 is-italic">
-                <span>{{ item.type }}<span v-if="item.subtype"> ({{ item.subtype }})</span>, {{ item.rarity | lowerCase }}</span>
+            <!-- Rarity and attunement -->
+            <h6 class="subtitle is-item-rarity is-size-6 is-italic">
+              <span>{{ item.type }}<span v-if="item.subtype"> ({{ item.subtype }})</span>, {{ item.rarity | lowerCase }}</span>
 
-                <!-- Attunement options -->
-                <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
-                <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune | lowerCase }})</span>
-              </h6>
-            </a>
-          </div>
+              <!-- Attunement options -->
+              <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
+              <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune | lowerCase }})</span>
+            </h6>
+          </a>
 
           <!-- Item description -->
           <transition name="fade-grow" mode="out-in">
-            <div v-if="activeItem === item.name" :key="item.name">
+            <div v-if="activeItem === item.name">
 
               <!-- Iterate item entries -->
-              <!-- TODO: cleaner implementation -->
-              <template v-for="entry in item.entries" >
-
-                <!-- Paragraphs -->
-                <p v-if="!entry.type" :key="entry.index">
-                  {{ entry }}
-                </p>
-
-                <!-- Lists -->
-                <ul v-else-if="entry.type =='list'" :key="entry.index">
-                  <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
-                </ul>
-
-                <!-- Tables -->
-                <table v-else-if="entry.type == 'table'" :key="entry.index" class="table">
-                  <thead>
-                    <tr>
-                      <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="row in entry.rows" :key="row.index">
-                      <td v-for="cell in row" :key="cell.index">{{ cell }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <!-- Entries -->
-                <template v-else-if="entry.type =='entries'">
-                  <h5 :key="entry.name">{{ entry.name }}</h5>
-                  <template v-for="entry in entry.entries">
-
-                    <!-- Lists -->
-                    <ul v-if="entry.type =='list'" :key="entry.index">
-                      <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
-                    </ul>
-
-                    <!-- Paragraphs -->
-                    <p v-else :key="entry.index">
-                      {{ entry }}
-                    </p>
-
-                  </template>
-                </template>
-
-                <!-- Highlight entries of unexpected type. -->
-                <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
-
-              </template>
+              <item-entries :model="item.entries" />
               <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
             </div>
           </transition>
@@ -156,8 +106,12 @@
 <script>
 import lodash from 'lodash'
 import items from '~/data/items.json'
+import itemEntries from '~/components/ItemEntries'
 
 export default {
+  components: {
+    itemEntries
+  },
   head () {
     return { title: 'Magic Items' }
   },
