@@ -190,7 +190,7 @@ export default {
     compareList (list) {
       // Create array from object keys
       let current = [...new Set(this[list].map(item => item.name))]
-      let incoming = [...new Set(this.items.map(item => item[list]))]
+      let incoming = [...new Set(this.magicItems.map(item => item[list]))]
 
       let missingFromCurrent = []
       let missingFromIncoming = []
