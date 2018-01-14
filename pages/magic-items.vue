@@ -42,7 +42,7 @@
 
                 <!-- Rarity filter -->
                 <template v-if="showFilter === 'Rarity'">
-                  <b-field horizontal grouped group-multiline>
+                  <b-field grouped group-multiline>
                     <div v-for="level in rarity" :key="level.name" class="control">
                       <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
                     </div>
@@ -51,7 +51,7 @@
 
                 <!-- Source filter -->
                 <template v-else-if="showFilter === 'Source'">
-                  <b-field horizontal grouped group-multiline>
+                  <b-field grouped group-multiline>
                     <div v-for="s in source" :key="s.name" class="control">
                       <b-switch v-model="s.value" @input="makeSourceQuery">{{ s.name }}</b-switch>
                     </div>
@@ -91,7 +91,7 @@
             <div v-if="activeItem === item.name">
 
               <!-- Iterate item entries -->
-              <item-entries :model="item.entries" />
+              <item-entries :model="item.entries" style="margin-bottom: 1em;" />
               <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
             </div>
           </transition>

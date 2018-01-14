@@ -29,12 +29,11 @@
         </tbody>
       </table>
 
+      <!-- Iterate over child entries -->
+      <item-entries v-else-if="entry.type === 'entries'" :model="entry.entries" :key="entry.index" />
+
       <!-- Highlight entries of unexpected type. -->
       <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
-
-      <!-- Iterate over child entries -->
-      <display :model="entry.entries" :key="entry.index" />
-
     </template>
   </div>
 </template>
