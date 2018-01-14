@@ -40,7 +40,7 @@
         <div>
           <table>
             <thead>
-              <th v-for="(stat, k) in bestiary.monster[0].stats" :key="k" class="is-uppercase has-text-centered">{{ k }}</th>
+              <th v-for="(stat, k) in bestiary.monster[0].stats" :key="stat.index" class="is-uppercase has-text-centered">{{ k }}</th>
             </thead>
             <tbody>
               <tr>
