@@ -9,29 +9,29 @@
 
 
         <!-- Name, size, type and alignment -->
-        <h3 class="title">{{ bestiary.monster[0].name }}</h3>
+        <h3 class="title">{{ testArr.name }}</h3>
         <h6 class="subtitle">
-          {{ bestiary.monster[0].size }}
-          <template v-if="bestiary.monster[0].type.length">{{ bestiary.monster[0].type }}, </template>
+          {{ testArr.size }}
+          <template v-if="testArr.type.length">{{ testArr.type }}, </template>
           
           <!-- Sometimes type has is stored in an object with an array of tags -->
-          <template v-else>{{ bestiary.monster[0].type.type }} ({{ arrayJoin(bestiary.monster[0].type.tags, ', ') }}), </template>
-          {{ bestiary.monster[0].alignment }}
+          <template v-else>{{ testArr.type.type }} ({{ arrayJoin(testArr.type.tags, ', ') }}), </template>
+          {{ testArr.alignment }}
         </h6>
 
         <!-- AC/HP/Speed -->
         <div>
           <p>
             <strong>Armor Class</strong>
-            {{ bestiary.monster[0].ac }}
+            {{ testArr.ac }}
           </p>
           <p>
             <strong>Hit Points</strong>
-            {{ bestiary.monster[0].hp }}
+            {{ testArr.hp }}
           </p>
           <p>
             <strong>Speed</strong>
-            {{ bestiary.monster[0].speed }}
+            {{ testArr.speed }}
           </p>
         </div>
         <hr>
@@ -40,11 +40,11 @@
         <div>
           <table>
             <thead>
-              <th v-for="(stat, k) in bestiary.monster[0].stats" :key="stat.index" class="is-uppercase has-text-centered">{{ k }}</th>
+              <th v-for="(stat, k) in testArr.stats" :key="stat.index" class="is-uppercase has-text-centered">{{ k }}</th>
             </thead>
             <tbody>
               <tr>
-                <td v-for="stat in bestiary.monster[0].stats" :key="stat" class="has-text-centered">{{ stat }} ({{ getStatMod(stat) }})</td>
+                <td v-for="stat in testArr.stats" :key="stat" class="has-text-centered">{{ stat }} ({{ getStatMod(stat) }})</td>
               </tr>
             </tbody>
           </table>
@@ -53,50 +53,50 @@
 
         <!-- Other stats -->
         <div>
-          <p v-if="bestiary.monster[0].save">
+          <p v-if="testArr.save">
             <strong>Skills</strong>
-            {{ bestiary.monster[0].save }}
+            {{ testArr.save }}
           </p>
-          <p v-if="bestiary.monster[0].skill" class="is-capitalized">
+          <p v-if="testArr.skill" class="is-capitalized">
             <strong>Skills</strong>
-            {{ concatObjKeyVal(bestiary.monster[0].skill) }}
+            {{ concatObjKeyVal(testArr.skill) }}
           </p>
-          <p v-if="bestiary.monster[0].resist">
+          <p v-if="testArr.resist">
             <strong>Damage Resistances</strong>
-            {{ bestiary.monster[0].resist }}
+            {{ testArr.resist }}
           </p>
-          <p v-if="bestiary.monster[0].immune">
+          <p v-if="testArr.immune">
             <strong>Damage Immunities</strong>
-            {{ bestiary.monster[0].immune }}
+            {{ testArr.immune }}
           </p>
-          <p v-if="bestiary.monster[0].vulnerable">
+          <p v-if="testArr.vulnerable">
             <strong>Damage Vulnerabilities</strong>
-            {{ bestiary.monster[0].vulnerable }}
+            {{ testArr.vulnerable }}
           </p>
-          <p v-if="bestiary.monster[0].conditionImmune">
+          <p v-if="testArr.conditionImmune">
             <strong>Condition Immunities</strong>
-            {{ bestiary.monster[0].conditionImmune }}
+            {{ testArr.conditionImmune }}
           </p>
           <p>
             <strong>Senses</strong>
-            <template v-if="bestiary.monster[0].senses"> {{ bestiary.monster[0].senses }},</template>
-            passive Perception {{ bestiary.monster[0].passive }}
+            <template v-if="testArr.senses"> {{ testArr.senses }},</template>
+            passive Perception {{ testArr.passive }}
           </p>
           <p>
             <strong>Languages</strong>
-            <template v-if="bestiary.monster[0].languages"> {{ bestiary.monster[0].languages }}</template>
+            <template v-if="testArr.languages"> {{ testArr.languages }}</template>
             <template v-else> &mdash;</template>
           </p>
           <p>
             <strong>Challenge</strong>
-            {{ bestiary.monster[0].cr }}
+            {{ testArr.cr }}
           </p>
         </div>
         <hr>
         
         <!-- Traits -->
-        <template v-if="bestiary.monster[0].trait">
-          <template v-for="trait in bestiary.monster[0].trait">
+        <template v-if="testArr.trait">
+          <template v-for="trait in testArr.trait">
             <p :key="trait.name"><strong><i>{{ trait.name }}.</i></strong> {{ trait.text[0] }}</p>
             
             <!-- TODO: Currently does not respect spellcasting (innate or learned) or multi-paragraph traits properly. -->
@@ -105,9 +105,9 @@
         </template>
 
         <!-- Actions -->
-        <template v-if="bestiary.monster[0].action">
+        <template v-if="testArr.action">
           <h2>Actions</h2>
-          <template v-for="action in bestiary.monster[0].action">
+          <template v-for="action in testArr.action">
 
             <!-- TODO: Attack formatting. Will likely need some sort of js filter. -->
             <p :key="action.name"><strong><i>{{ action.name }}.</i></strong> {{ action.text[0] }}</p>
@@ -118,9 +118,9 @@
         </template>
 
         <!-- Reactions -->
-        <template v-if="bestiary.monster[0].reaction">
+        <template v-if="testArr.reaction">
           <h2>Reactions</h2>
-          <template v-for="reaction in bestiary.monster[0].reaction">
+          <template v-for="reaction in testArr.reaction">
 
             <!-- TODO: Attack formatting -->
             <p :key="reaction.name"><strong><i>{{ reaction.name }}.</i></strong> {{ reaction.text[0] }}</p>
@@ -148,7 +148,8 @@ export default {
   },
   data () {
     return {
-      bestiary
+      bestiary,
+      testArr: bestiary.monster[0]
     }
   },
   methods: {
