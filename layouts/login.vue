@@ -6,6 +6,9 @@
 
 <script>
 export default {
+  beforeCreate () {
+    if (this.$store.state.user !== 'hellothere') this.$router.replace({ path: '/' })
+  }
 }
 </script>
 

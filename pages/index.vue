@@ -8,12 +8,10 @@
         <h2 class="subtitle is-size-3">
           Personal DM tools
         </h2>
-        <input v-if="$store.state.user !== 'hellothere'" class="input" type="password" v-model="user" @change="login">
+        <!-- <input v-if="$store.state.user !== 'hellothere'" class="input" type="password" v-model="user" @change="login"> -->
         
-        <template v-else>
-          <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
-          <nuxt-link to="/bestiary" class="button is-medium">Bestiary</nuxt-link>
-        </template>
+        <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
+        <nuxt-link to="/bestiary" class="button is-medium">Bestiary</nuxt-link>
       </div>
     </div>
   </section>
@@ -23,16 +21,6 @@
 export default {
   head () {
     return { title: 'Home' }
-  },
-  data () {
-    return {
-      user: ''
-    }
-  },
-  methods: {
-    login () {
-      this.$store.state.user = this.user
-    }
   }
 }
 </script>
