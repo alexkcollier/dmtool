@@ -84,55 +84,30 @@
         </div>
         <hr>
         
-        <!-- Traits -->
+        <!-- Creature Traits -->
         <template v-if="model.trait">
-          <template v-for="trait in model.trait">
-            <p :key="trait.index"><strong><i>{{ trait.name }}.</i></strong> {{ trait.text[0] }}</p>
-            
-            <!-- TODO: Currently does not respect spellcasting (innate or learned) or multi-paragraph traits properly. -->
-            <p v-for="p in removeFirst(trait.text)" :key="p.index">{{ p }}</p>
-          </template>
+          <trait v-for="trait in model.trait" :model="trait" :key="trait.index" />
         </template>
 
         <!-- Actions -->
         <template v-if="model.action">
           <h2>Actions</h2>
-          <template v-for="action in model.action">
-
-            <!-- TODO: Attack formatting. Will likely need some sort of js filter. -->
-            <p :key="action.index"><strong><i>{{ action.name }}.</i></strong> {{ action.text[0] }}</p>
-
-            <!-- TODO: Currently does not respect multi-paragraph actions properly. -->
-            <p v-for="p in removeFirst(action.text)" :key="p.index">{{ p }}</p>
-          </template>
+          <trait v-for="action in model.action" :model="action" :key="action.index" />
         </template>
 
         <!-- Reactions -->
         <template v-if="model.reaction">
           <h2>Reactions</h2>
-          <template v-for="reaction in model.reaction">
-
-            <!-- TODO: Attack formatting -->
-            <p :key="reaction.name"><strong><i>{{ reaction.name }}.</i></strong> {{ reaction.text[0] }}</p>
-
-            <!-- TODO: Currently does not respect multi-paragraph reactions properly. -->
-            <p v-for="p in removeFirst(reaction.text)" :key="p.index">{{ p }}</p>
-          </template>
+          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
         </template>
 
+        <!-- Legendary and Lair actions -->
         <!-- TODO: Lair actions -->
         <template v-if="model.legendaryGroup">
           <h2>Legendary Actions</h2>
           <p>The creature can take {{ model.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
           
-          <template v-for="legAction in model.legendary">
-
-            <!-- TODO: Attack formatting -->
-            <p :key="legAction.name"><strong>{{ legAction.name }}.</strong> {{ legAction.text[0] }}</p>
-
-            <!-- TODO: Currently does not respect multi-paragraph legendary actions properly. -->
-            <p v-for="p in removeFirst(legAction.text)" :key="p.index">{{ p }}</p>
-          </template>
+          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
         </template>
       </div>
     </transition>
@@ -141,10 +116,15 @@
 </template>
 
 <script>
+import Trait from './trait.vue'
+
 export default {
   name: 'creature-entries',
   props: {
     model: Object
+  },
+  components: {
+    Trait
   },
   data () {
     return { collapse: true }
