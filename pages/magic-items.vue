@@ -10,7 +10,7 @@
         
         <!-- Search box -->
         <b-field>
-          <div class="control has-icons-left">
+          <div class="control has-icons-left is-expanded">
             <input 
               :class="{'is-danger': (!orderedItems.length && !pageLoad)}"
               @keyup="makeSearchQuery"
@@ -19,6 +19,9 @@
               type="text"
               placeholder="Search for items">
               <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
+          </div>
+          <div class="control">
+            <button class="button is-primary" style="margin:0;" :disabled="!search" @click="clearSearch">Clear</button>
           </div>
         </b-field>
 
@@ -212,6 +215,7 @@ export default {
       }
       if (missingFromIncoming.length > 0) console.warn('Missing from items.json', list, 'list', missingFromIncoming)
     },
+    clearSearch: function () { this.searchQuery = this.search = '' },
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
     makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
     makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
