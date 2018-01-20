@@ -44,7 +44,7 @@
             </thead>
             <tbody>
               <tr>
-                <td v-for="stat in testArr.stats" :key="stat" class="has-text-centered">{{ stat }} ({{ getStatMod(stat) }})</td>
+                <td v-for="stat in testArr.stats" :key="stat.index" class="has-text-centered">{{ stat }} ({{ getStatMod(stat) }})</td>
               </tr>
             </tbody>
           </table>
@@ -130,10 +130,20 @@
           </template>
         </template>
 
-        <!-- TODO: Legendary and lair actions -->
-        <!-- <div v-for="legendary in bestiary.legendaryGroup" :key="legendary.name">
-          {{ legendary.name }}
-        </div> -->
+        <!-- TODO: Lair actions -->
+        <template v-if="testArr.legendaryGroup">
+          <h2>Legendary Actions</h2>
+          <p>{{ testArr.name }} can take {{ testArr.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. {{ testArr.name }} regains spent legendary actions at the start of its turn.</p>
+          
+          <template v-for="legAction in testArr.legendary">
+
+            <!-- TODO: Attack formatting -->
+            <p :key="legAction.name"><strong>{{ legAction.name }}.</strong> {{ legAction.text[0] }}</p>
+
+            <!-- TODO: Currently does not respect multi-paragraph legendary actions properly. -->
+            <p v-for="p in removeFirst(legAction.text)" :key="p.index">{{ p }}</p>
+          </template>
+        </template>
       </div>
     </div>
   </section>
@@ -149,7 +159,7 @@ export default {
   data () {
     return {
       bestiary,
-      testArr: bestiary.monster[0]
+      testArr: bestiary.monster[14]
     }
   },
   methods: {
@@ -174,7 +184,7 @@ export default {
     },
     getStatMod (x) {
       let mod = Math.floor((x - 10) / 2)
-      return mod
+      return (mod < 0 ? '' : '+') + mod
     }
   }
 }
