@@ -7,8 +7,10 @@
       <div class="content">
         <h1>Bestiary</h1>
 
+        <search :model="bestiary.monster" searchField="name" @update-data="updateData" />
+        
         <!-- List creatures -->
-        <template v-for="creature in bestiary.monster">
+        <template v-for="creature in results">
           <creature-entries :model="creature" :key="creature.index" />
         </template>
 
@@ -19,6 +21,7 @@
 
 <script>
 import bestiary from '~/data/bestiary.json'
+import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
 
 export default {
@@ -26,11 +29,27 @@ export default {
     return { title: 'Bestiary' }
   },
   components: {
+    Search,
     CreatureEntries
   },
   data () {
     return {
-      bestiary
+      bestiary,
+      results: Array
+    }
+  },
+  // computed: {
+  //   searchable () {
+  //     let arr = []
+  //     for (let i in this.bestiary.monster) {
+  //       arr.push({ 'name': this.bestiary.monster[i].name, 'source': this.bestiary.monster[i].source })
+  //     }
+  //     return arr
+  //   }
+  // },
+  methods: {
+    updateData: function (value) {
+      this.results = value
     }
   }
 }

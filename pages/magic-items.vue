@@ -9,7 +9,7 @@
         <h1>Magic Item Search</h1>
         
         <!-- Search box -->
-        <b-field>
+        <!-- <b-field>
           <div class="control has-icons-left is-expanded">
             <input 
               :class="{'is-danger': (!orderedItems.length && !pageLoad)}"
@@ -23,7 +23,8 @@
           <div class="control">
             <button class="button is-primary" style="margin:0;" :disabled="!search" @click="clearSearch">Clear</button>
           </div>
-        </b-field>
+        </b-field> -->
+        <search :model="magicItems" searchField="name" @update-data="updateData" />
 
         <div class="card">
           <div class="card-header">
@@ -110,10 +111,12 @@
 import lodash from 'lodash'
 import magicItems from '~/data/magic-items.json'
 import itemEntries from '~/components/ItemEntries'
+import Search from '~/components/Search'
 
 export default {
   components: {
-    itemEntries
+    itemEntries,
+    Search
   },
   head () {
     return { title: 'Magic Items' }
@@ -150,14 +153,14 @@ export default {
       activeItem: '',
       pageLoad: true,
       collapseFilters: true,
-      showFilter: 'Rarity'
+      showFilter: 'Rarity',
+      results: Array
     }
   },
   computed: {
     filteredItems () {
-      return lodash.filter(this.magicItems, item => {
-        return lodash.includes(item.name.toLowerCase(), this.searchQuery.toLowerCase()) &&
-          this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
+      return lodash.filter(this.results, item => {
+        return this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
     },
     resultCount () {
@@ -215,6 +218,7 @@ export default {
       }
       if (missingFromIncoming.length > 0) console.warn('Missing from items.json', list, 'list', missingFromIncoming)
     },
+    updateData: function (value) { this.results = value },
     clearSearch: function () { this.searchQuery = this.search = '' },
     makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
     makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
