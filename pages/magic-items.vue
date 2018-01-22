@@ -24,7 +24,7 @@
             <button class="button is-primary" style="margin:0;" :disabled="!search" @click="clearSearch">Clear</button>
           </div>
         </b-field> -->
-        <search :model="magicItems" searchField="name" @update-data="updateData" />
+        <search :model="magicItems" search-field="name" search-type="items" @update-data="updateData" />
 
         <div class="card">
           <div class="card-header">

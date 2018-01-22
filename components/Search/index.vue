@@ -8,7 +8,7 @@
         :class="{'is-danger': !filtered.length }"
         class="input"
         type="text"
-        placeholder="Search for items">
+        :placeholder="placeholder">
         <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
     </div>
     <div class="control">
@@ -24,12 +24,18 @@ export default {
   name: 'search',
   props: {
     model: Array,
-    searchField: String
+    searchField: String,
+    searchType: String
   },
   data () {
     return {
       search: '',
       filtered: this.model
+    }
+  },
+  computed: {
+    placeholder () {
+      return this.searchType ? 'Search for ' + this.searchType : 'Search'
     }
   },
   methods: {
