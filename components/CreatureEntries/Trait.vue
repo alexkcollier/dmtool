@@ -21,3 +21,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+div:not(:last-child) {
+  margin-bottom: 1em!important;
+}
+</style>

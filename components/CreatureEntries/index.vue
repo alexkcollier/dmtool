@@ -3,31 +3,31 @@
     <!-- Name, size, type and alignment -->
     <a @click="toggleCreature">
       <h3 class="title">{{ model.name }}</h3>
-      <h6 class="subtitle">
+      <h6 class="subtitle is-size-6 is-creature-type is-italic">
         {{ model.size }} {{ concatType }}, {{ model.alignment }}
       </h6>
     </a>
     <transition name="fade-grow">
       <div v-if="!collapse">
-        <!-- AC/HP/Speed -->
-        <div>
-          <p>
-            <strong>Armor Class</strong>
-            {{ model.ac }}
-          </p>
-          <p>
-            <strong>Hit Points</strong>
-            {{ model.hp }}
-          </p>
-          <p>
-            <strong>Speed</strong>
-            {{ model.speed }}
-          </p>
-        </div>
-        <hr>
+        <div class="is-sans-serif">
+          <!-- AC/HP/Speed -->
+          <template>
+            <div>
+              <strong>Armor Class</strong>
+              {{ model.ac }}
+            </div>
+            <div>
+              <strong>Hit Points</strong>
+              {{ model.hp }}
+            </div>
+            <div>
+              <strong>Speed</strong>
+              {{ model.speed }}
+            </div>
+          </template>
+          <hr>
 
-        <!-- Stats -->
-        <div>
+          <!-- Stats -->
           <table>
             <thead>
               <th v-for="(stat, k) in model.stats" :key="stat.index" class="is-uppercase has-text-centered">{{ k }}</th>
@@ -38,51 +38,51 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <hr>
+          <hr>
 
-        <!-- Other stats -->
-        <div>
-          <p v-if="model.save">
-            <strong>Saves</strong>
-            {{ model.save }}
-          </p>
-          <p v-if="model.skill" class="is-capitalized">
-            <strong>Skills</strong>
-            {{ concatSkill }}
-          </p>
-          <p v-if="model.resist">
-            <strong>Damage Resistances</strong>
-            {{ model.resist }}
-          </p>
-          <p v-if="model.immune">
-            <strong>Damage Immunities</strong>
-            {{ model.immune }}
-          </p>
-          <p v-if="model.vulnerable">
-            <strong>Damage Vulnerabilities</strong>
-            {{ model.vulnerable }}
-          </p>
-          <p v-if="model.conditionImmune">
-            <strong>Condition Immunities</strong>
-            {{ model.conditionImmune }}
-          </p>
-          <p>
-            <strong>Senses</strong>
-            <template v-if="model.senses"> {{ model.senses }},</template>
-            passive Perception {{ model.passive }}
-          </p>
-          <p>
-            <strong>Languages</strong>
-            <template v-if="model.languages"> {{ model.languages }}</template>
-            <template v-else> &mdash;</template>
-          </p>
-          <p>
-            <strong>Challenge</strong>
-            {{ model.cr }}
-          </p>
+          <!-- Other stats -->
+          <template>
+            <div v-if="model.save">
+              <strong>Saving Throws</strong>
+              {{ model.save }}
+            </div>
+            <div v-if="model.skill" class="is-capitalized">
+              <strong>Skills</strong>
+              {{ concatSkill }}
+            </div>
+            <div v-if="model.resist">
+              <strong>Damage Resistances</strong>
+              {{ model.resist }}
+            </div>
+            <div v-if="model.immune">
+              <strong>Damage Immunities</strong>
+              {{ model.immune }}
+            </div>
+            <div v-if="model.vulnerable">
+              <strong>Damage Vulnerabilities</strong>
+              {{ model.vulnerable }}
+            </div>
+            <div v-if="model.conditionImmune">
+              <strong>Condition Immunities</strong>
+              {{ model.conditionImmune }}
+            </div>
+            <div>
+              <strong>Senses</strong>
+              <template v-if="model.senses"> {{ model.senses }},</template>
+              passive Perception {{ model.passive }}
+            </div>
+            <div>
+              <strong>Languages</strong>
+              <template v-if="model.languages"> {{ model.languages }}</template>
+              <template v-else> &mdash;</template>
+            </div>
+            <div>
+              <strong>Challenge</strong>
+              {{ model.cr }}
+            </div>
+          </template>
+          <hr>
         </div>
-        <hr>
         
         <!-- Creature Traits -->
         <template v-if="model.trait">
@@ -109,6 +109,8 @@
           
           <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
         </template>
+
+        <p class="control is-italic is-help">Source: {{ model.source }}</p>
       </div>
     </transition>
     <hr>
@@ -174,5 +176,7 @@ export default {
 </script>
 
 <style>
-
+.is-creature-type {
+  padding-top:0.3em;
+}
 </style>

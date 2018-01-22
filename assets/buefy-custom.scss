@@ -76,6 +76,11 @@ div {
   font-style: italic;
 }
 
+.is-sans-serif {
+  font-family: $family-sans-serif;
+  font-feature-settings: "lnum";
+}
+
 // Fix button margins
 .button {
   margin: auto 0.25em;
