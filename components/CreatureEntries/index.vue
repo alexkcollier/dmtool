@@ -44,7 +44,7 @@
         <!-- Other stats -->
         <div>
           <p v-if="model.save">
-            <strong>Skills</strong>
+            <strong>Saves</strong>
             {{ model.save }}
           </p>
           <p v-if="model.skill" class="is-capitalized">
@@ -145,7 +145,7 @@ export default {
       return result
     },
     concatSkill () {
-      this.concatKeyVal(this.model.skill)
+      return this.concatKeyVal(this.model.skill)
     }
   },
   methods: {
