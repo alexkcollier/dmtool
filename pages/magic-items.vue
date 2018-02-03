@@ -9,24 +9,10 @@
         <h1>Magic Item Search</h1>
         
         <!-- Search box -->
-        <!-- <b-field>
-          <div class="control has-icons-left is-expanded">
-            <input 
-              :class="{'is-danger': (!orderedItems.length && !pageLoad)}"
-              @keyup="makeSearchQuery"
-              v-model="search" 
-              class="input"
-              type="text"
-              placeholder="Search for items">
-              <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
-          </div>
-          <div class="control">
-            <button class="button is-primary" style="margin:0;" :disabled="!search" @click="clearSearch">Clear</button>
-          </div>
-        </b-field> -->
         <search :model="magicItems" search-field="name" search-type="items" @update-data="updateData" />
 
         <div class="card">
+          <!-- Filters -->
           <div class="card-header">
             <a @click="collapseFilters = !collapseFilters" class="card-header-title">
               Filters
@@ -223,8 +209,6 @@ export default {
       return missing.length ? missing.forEach(m => console.warn(m)) : console.log('Rarity and source lists are complete')
     },
     updateData: function (value) { this.results = value },
-    clearSearch: function () { this.searchQuery = this.search = '' },
-    makeSearchQuery: _.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
     makeRarityQuery: _.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
     makeSourceQuery: _.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
   },
