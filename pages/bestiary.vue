@@ -11,7 +11,7 @@
         
         <!-- List creatures -->
         <template v-for="creature in results">
-          <creature-entries :model="creature" :key="creature.index" />
+          <creature-entries :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
         </template>
 
       </div>
@@ -50,6 +50,11 @@ export default {
   methods: {
     updateData: function (value) {
       this.results = value
+    },
+    creatureIndex: function (name) {
+      let index = this.results.findIndex(result => result.name === name) + 1
+      const id = `creature-${index}`
+      return id
     }
   }
 }

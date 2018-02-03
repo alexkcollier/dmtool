@@ -132,7 +132,7 @@ export default {
     return { collapse: true }
   },
   computed: {
-    concatType () {
+    concatType: function () {
       let result = String
       if (this.model.type.length) {
         // Simple creature type
@@ -146,31 +146,37 @@ export default {
       }
       return result
     },
-    concatSkill () {
+    concatSkill: function () {
       return this.concatKeyVal(this.model.skill)
     }
   },
   methods: {
-    removeFirst (arr) {
+    removeFirst: function (arr) {
       let r = arr.slice(1)
       return r.length > 0 ? r : null
     },
-    concatKeyVal (o) {
+    concatKeyVal: function (o) {
       let r = Object.keys(o).reduce((a, k) => {
         return a.concat(k + ' ' + o[k]) // Add combined key-value pair to an array
       }, []).join(', ') // Combine array values to string
       return r
     },
-    toggleCreature () {
+    toggleCreature: function () {
       this.collapse = !this.collapse
+      this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
     }
   },
   filters: {
-    getStatMod: stat => {
+    getStatMod: function (stat) {
       let mod = Math.floor((stat - 10) / 2)
       let result = stat + ' (' + (mod < 0 ? '' : '+') + mod + ')'
       return result
     }
+  },
+  mounted () {
+    this.$root.$on('toggle', creatureIndex => {
+      if (!this.collapse) this.collapse = !(this.$el.id === creatureIndex) // Check if expanded creature is the target creature. If not, collapse it. Only check if creature not collapsed.
+    })
   }
 }
 </script>
