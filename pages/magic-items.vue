@@ -176,7 +176,6 @@ export default {
     showItem: function (item) {
       // Only display one item at a time
       this.activeItem = this.activeItem === item ? '' : item
-      return this.activeItem
     },
     compareLists: function (...lists) {
       let missing = []
