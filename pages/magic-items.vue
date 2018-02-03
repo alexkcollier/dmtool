@@ -208,7 +208,7 @@ export default {
           this[list].push({name: incoming[i], value: false})
         }
       }
-      if (missingFromCurrent.length > 0) console.warn('Missing from magic-items.vue', list, 'list', missingFromCurrent)
+      if (missingFromCurrent.length > 0) console.warn(`Missing from magic-items.vue ${list} list ${missingFromCurrent}`)
 
       // Check incoming list
       for (let i = 0; i < current.length; i++) {
@@ -216,7 +216,7 @@ export default {
           missingFromIncoming.push(current[i])
         }
       }
-      if (missingFromIncoming.length > 0) console.warn('Missing from items.json', list, 'list', missingFromIncoming)
+      if (missingFromIncoming.length > 0) console.warn(`Missing from items.json ${list} list ${missingFromIncoming}`)
     },
     updateData: function (value) { this.results = value },
     clearSearch: function () { this.searchQuery = this.search = '' },

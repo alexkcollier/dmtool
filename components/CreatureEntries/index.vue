@@ -133,18 +133,19 @@ export default {
   },
   computed: {
     concatType: function () {
-      let result = String
+      let r = String
       if (this.model.type.length) {
         // Simple creature type
-        result = this.model.type
+        r = this.model.type
       } else if (this.model.type.tags) {
         // Creature type has tags
-        result = this.model.type.type + ' (' + this.model.type.tags.join(', ') + ')'
+        let tags = this.model.type.tags.join(', ')
+        r = `${this.model.type.type} (${tags})`
       } else {
         // Swarms
-        result = 'swarm of' + ' ' + this.model.type.swarmSize + ' ' + this.model.type.type + 's'
+        r = `swarm of ${this.model.type.swarmSize} ${this.model.type.type}s`
       }
-      return result
+      return r
     },
     concatSkill: function () {
       return this.concatKeyVal(this.model.skill)
@@ -169,8 +170,8 @@ export default {
   filters: {
     getStatMod: function (stat) {
       let mod = Math.floor((stat - 10) / 2)
-      let result = stat + ' (' + (mod < 0 ? '' : '+') + mod + ')'
-      return result
+      let r = `${stat} (${(mod < 0 ? '' : '+')} ${mod})`
+      return r
     }
   },
   mounted () {

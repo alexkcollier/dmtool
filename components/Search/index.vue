@@ -35,7 +35,7 @@ export default {
   },
   computed: {
     placeholder () {
-      return this.searchType ? 'Search for ' + this.searchType : 'Search'
+      return this.searchType ? `Search for ${this.searchType}` : 'Search'
     }
   },
   methods: {
