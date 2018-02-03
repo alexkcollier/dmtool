@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import lodash from 'lodash'
+import _ from 'lodash'
 import magicItems from '~/data/magic-items.json'
 import itemEntries from '~/components/ItemEntries'
 import Search from '~/components/Search'
@@ -158,24 +158,24 @@ export default {
     }
   },
   computed: {
-    filteredItems () {
-      return lodash.filter(this.results, item => {
+    filteredItems: function () {
+      return _.filter(this.results, item => {
         return this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
     },
-    resultCount () {
+    resultCount: function () {
       return Object.keys(this.orderedItems).length
     },
-    orderedItems () {
-      return lodash.orderBy(this.filteredItems, 'name')
+    orderedItems: function () {
+      return _.orderBy(this.filteredItems, 'name')
     },
-    rarityFilter () {
-      return lodash.map(
-        lodash.filter(this.rarity, rarity => { if (rarity.value) return rarity.name }), 'name')
+    rarityFilter: function () {
+      return _.map(
+        _.filter(this.rarity, rarity => { if (rarity.value) return rarity.name }), 'name')
     },
-    sourceFilter () {
-      return lodash.map(
-        lodash.filter(this.source, (s) => { if (s.value) return s.name }), 'name')
+    sourceFilter: function () {
+      return _.map(
+        _.filter(this.source, s => { if (s.value) return s.name }), 'name')
     }
   },
   created () {
@@ -183,46 +183,50 @@ export default {
       this.rarityQuery = this.rarityFilter
       this.sourceQuery = this.sourceFilter
       this.pageLoad = false
-      this.compareList('rarity')
-      this.compareList('source')
+      if (process.env.NODE_ENV === 'development') this.compareLists('rarity', 'source')
     }, 200)
   },
   methods: {
-    showItem (item) {
+    showItem: function (item) {
       // Only display one item at a time
       this.activeItem = this.activeItem === item ? '' : item
       return this.activeItem
     },
-    compareList (list) {
-      // Create array from object keys
-      let current = [...new Set(this[list].map(item => item.name))]
-      let incoming = [...new Set(this.magicItems.map(item => item[list]))]
+    compareLists: function (...lists) {
+      let missing = []
+      lists.forEach(list => {
+        // Create array from object keys
+        let current = [...new Set(this[list].map(item => item.name))]
+        let incoming = [...new Set(this.magicItems.map(item => item[list]))]
 
-      let missingFromCurrent = []
-      let missingFromIncoming = []
+        let missingFromCurrent = []
+        let missingFromIncoming = []
 
-      // Check current list
-      for (let i = 0; i < incoming.length; i++) {
-        if (!lodash.includes(current, incoming[i])) {
-          missingFromCurrent.push(incoming[i])
-          this[list].push({name: incoming[i], value: false})
-        }
-      }
-      if (missingFromCurrent.length > 0) console.warn(`Missing from magic-items.vue ${list} list ${missingFromCurrent}`)
+        // Check current list
+        incoming.forEach(item => {
+          if (!_.includes(current, item)) {
+            missingFromCurrent.push(item)
+            this[list].push({name: item, value: false})
+          }
+          if (missingFromIncoming.length > 0) missing.push(`${list} missing from magic-items.vue list: ${missingFromCurrent}`)
+        })
 
-      // Check incoming list
-      for (let i = 0; i < current.length; i++) {
-        if (!lodash.includes(incoming, current[i])) {
-          missingFromIncoming.push(current[i])
-        }
-      }
-      if (missingFromIncoming.length > 0) console.warn(`Missing from items.json ${list} list ${missingFromIncoming}`)
+        // Check incoming list
+        current.forEach(item => {
+          if (!_.includes(incoming, item)) {
+            missingFromCurrent.push(item)
+            this[list].push({name: item, value: false})
+          }
+          if (missingFromIncoming.length > 0) missing.push(`${list} missing from items.json list: ${missingFromIncoming}`)
+        })
+      })
+      return missing.length ? missing.forEach(m => console.warn(m)) : console.log('Rarity and source lists are complete')
     },
     updateData: function (value) { this.results = value },
     clearSearch: function () { this.searchQuery = this.search = '' },
-    makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
-    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
-    makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
+    makeSearchQuery: _.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
+    makeRarityQuery: _.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
+    makeSourceQuery: _.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
   },
   filters: {
     lowerCase: str => str ? str.toLowerCase() : ''
