@@ -10,7 +10,7 @@
         <search :model="bestiary.monster" search-field="name" search-type="creatures" @update-data="updateData" />
         
         <!-- List creatures -->
-        <template v-for="creature in results">
+        <template v-for="creature in creatures">
           <creature-entries :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
         </template>
 
@@ -23,6 +23,7 @@
 import bestiary from '~/data/bestiary.json'
 import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
+import _ from 'lodash'
 
 export default {
   head () {
@@ -35,18 +36,17 @@ export default {
   data () {
     return {
       bestiary,
-      results: Array
+      count: 10,
+      results: [],
+      scrollPos: 0,
+      prevScroll: 0
     }
   },
-  // computed: {
-  //   searchable () {
-  //     let arr = []
-  //     for (let i in this.bestiary.monster) {
-  //       arr.push({ 'name': this.bestiary.monster[i].name, 'source': this.bestiary.monster[i].source })
-  //     }
-  //     return arr
-  //   }
-  // },
+  computed: {
+    creatures: function () {
+      return this.results.slice(0, this.count)
+    }
+  },
   methods: {
     updateData: function (value) {
       this.results = value
@@ -55,6 +55,43 @@ export default {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `creature-${index}`
       return id
+    },
+    loadMore: function (n = 10) {
+      this.count += n
+    },
+    loadFewer: function (n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10
+    },
+    handleScroll: _.throttle(function (event) {
+      let d = document.documentElement
+      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
+      let height = d.offsetHeight // Total CSS height
+      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
+      if (scrollDir < 0) {
+        if (offset === height) {
+          this.loadMore()
+          this.scrollPos = offset
+        }
+      } else {
+        // TODO: Better remove items performance
+        if (this.scrollPos >= offset) {
+          let m = this.creatures.length % 10 === 0 ? 0 : this.creatures.length - Math.floor(this.creatures.length / 10) * 10
+          let x = (Math.floor(this.scrollPos / offset)) * 5 + m
+          this.loadFewer(x)
+          this.scrollPos = offset - (window.innerHeight * 2)
+        }
+      }
+      this.prevScroll = document.documentElement.scrollTop
+    }, 200)
+  },
+  created: function () {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', this.handleScroll)
+    }
+  },
+  destroyed: function () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.handleScroll)
     }
   }
 }

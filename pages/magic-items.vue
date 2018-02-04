@@ -53,7 +53,7 @@
           </transition>
         </div>
         <div class="control">
-          <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
+          <div v-if="!pageLoad" class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
         </div>
         <hr style="margin-top:0.25em;">
         
@@ -112,29 +112,12 @@ export default {
       magicItems,
       search: '',
       searchQuery: '',
-      rarity: [
-        { name: 'Common', value: true },
-        { name: 'Uncommon', value: true },
-        { name: 'Rare', value: false },
-        { name: 'Very Rare', value: false },
-        { name: 'Legendary', value: false },
-        { name: 'Artifact', value: false }
-      ],
+      count: 10,
+      scrollPos: 0,
+      prevScroll: 0,
+      rarity: [],
       rarityQuery: [],
-      source: [
-        { name: 'DMG', value: true },
-        { name: 'PotA', value: false },
-        { name: 'SKT', value: false },
-        { name: 'HotDQ', value: false },
-        { name: 'CoS', value: false },
-        { name: 'RoTOS', value: false },
-        { name: 'OotA', value: false },
-        { name: 'RoT', value: false },
-        { name: 'VGM', value: false },
-        { name: 'LMoP', value: false },
-        { name: 'TftYP', value: true },
-        { name: 'XGE', value: true }
-      ],
+      source: [],
       sourceQuery: [],
       activeItem: '',
       pageLoad: true,
@@ -150,10 +133,11 @@ export default {
       })
     },
     resultCount: function () {
-      return Object.keys(this.orderedItems).length
+      return Object.keys(this.filteredItems).length
     },
     orderedItems: function () {
-      return _.orderBy(this.filteredItems, 'name')
+      let orderedItems = _.orderBy(this.filteredItems, 'name')
+      return orderedItems.slice(0, this.count)
     },
     rarityFilter: function () {
       return _.map(
@@ -164,52 +148,63 @@ export default {
         _.filter(this.source, s => { if (s.value) return s.name }), 'name')
     }
   },
-  created () {
-    setTimeout(() => {
-      this.rarityQuery = this.rarityFilter
-      this.sourceQuery = this.sourceFilter
-      this.pageLoad = false
-      if (process.env.NODE_ENV === 'development') this.compareLists('rarity', 'source')
-    }, 200)
-  },
   methods: {
     showItem: function (item) {
       // Only display one item at a time
       this.activeItem = this.activeItem === item ? '' : item
     },
-    compareLists: function (...lists) {
-      let missing = []
-      lists.forEach(list => {
-        // Create array from object keys
-        let current = [...new Set(this[list].map(item => item.name))]
-        let incoming = [...new Set(this.magicItems.map(item => item[list]))]
-
-        let missingFromCurrent = []
-        let missingFromIncoming = []
-
-        // Check current list
-        incoming.forEach(item => {
-          if (!_.includes(current, item)) {
-            missingFromCurrent.push(item)
-            this[list].push({name: item, value: false})
-          }
-          if (missingFromIncoming.length > 0) missing.push(`${list} missing from magic-items.vue list: ${missingFromCurrent}`)
-        })
-
-        // Check incoming list
-        current.forEach(item => {
-          if (!_.includes(incoming, item)) {
-            missingFromCurrent.push(item)
-            this[list].push({name: item, value: false})
-          }
-          if (missingFromIncoming.length > 0) missing.push(`${list} missing from items.json list: ${missingFromIncoming}`)
-        })
+    getLists: function (...filterList) { // Generate filter lists from data
+      filterList.forEach(filterList => {
+        let options = [...new Set(this.magicItems.map(item => item[filterList]))]
+        options.forEach(item => { if (!_.includes(filterList, item)) this[filterList].push({ name: item, value: true }) })
       })
-      return missing.length ? missing.forEach(m => console.warn(m)) : console.log('Rarity and source lists are complete')
     },
     updateData: function (value) { this.results = value },
+    loadMore: function (n = 10) {
+      this.count += n
+    },
+    loadFewer: function (n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10
+    },
     makeRarityQuery: _.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
-    makeSourceQuery: _.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
+    makeSourceQuery: _.debounce(function () { this.sourceQuery = this.sourceFilter }, 300),
+    handleScroll: _.throttle(function (event) {
+      let d = document.documentElement
+      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
+      let height = d.offsetHeight // Total CSS height
+      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
+      if (scrollDir < 0) {
+        if (offset === height) {
+          this.loadMore()
+          this.scrollPos = offset
+        }
+      } else {
+        // TODO: Better remove items performance
+        if (this.scrollPos >= offset) {
+          let m = this.orderedItems.length % 10 === 0 ? 0 : this.orderedItems.length - Math.floor(this.orderedItems.length / 10) * 10
+          let x = (Math.floor(this.scrollPos / offset)) * 5 + m
+          this.loadFewer(x)
+          this.scrollPos = offset - (window.innerHeight * 2)
+        }
+      }
+      this.prevScroll = document.documentElement.scrollTop
+    }, 200)
+  },
+  created: function () {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', this.handleScroll)
+    }
+    this.getLists('rarity', 'source')
+    setTimeout(() => {
+      this.rarityQuery = this.rarityFilter
+      this.sourceQuery = this.sourceFilter
+      this.pageLoad = false
+    }, 200)
+  },
+  destroyed: function () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.handleScroll)
+    }
   },
   filters: {
     lowerCase: str => str ? str.toLowerCase() : ''
