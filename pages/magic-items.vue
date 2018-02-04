@@ -9,24 +9,10 @@
         <h1>Magic Item Search</h1>
         
         <!-- Search box -->
-        <!-- <b-field>
-          <div class="control has-icons-left is-expanded">
-            <input 
-              :class="{'is-danger': (!orderedItems.length && !pageLoad)}"
-              @keyup="makeSearchQuery"
-              v-model="search" 
-              class="input"
-              type="text"
-              placeholder="Search for items">
-              <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
-          </div>
-          <div class="control">
-            <button class="button is-primary" style="margin:0;" :disabled="!search" @click="clearSearch">Clear</button>
-          </div>
-        </b-field> -->
         <search :model="magicItems" search-field="name" search-type="items" @update-data="updateData" />
 
         <div class="card">
+          <!-- Filters -->
           <div class="card-header">
             <a @click="collapseFilters = !collapseFilters" class="card-header-title">
               Filters
@@ -67,7 +53,7 @@
           </transition>
         </div>
         <div class="control">
-          <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
+          <div v-if="!pageLoad" class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
         </div>
         <hr style="margin-top:0.25em;">
         
@@ -108,7 +94,7 @@
 </template>
 
 <script>
-import lodash from 'lodash'
+import _ from 'lodash'
 import magicItems from '~/data/magic-items.json'
 import itemEntries from '~/components/ItemEntries'
 import Search from '~/components/Search'
@@ -126,29 +112,12 @@ export default {
       magicItems,
       search: '',
       searchQuery: '',
-      rarity: [
-        { name: 'Common', value: true },
-        { name: 'Uncommon', value: true },
-        { name: 'Rare', value: false },
-        { name: 'Very Rare', value: false },
-        { name: 'Legendary', value: false },
-        { name: 'Artifact', value: false }
-      ],
+      count: 10,
+      scrollPos: 0,
+      prevScroll: 0,
+      rarity: [],
       rarityQuery: [],
-      source: [
-        { name: 'DMG', value: true },
-        { name: 'PotA', value: false },
-        { name: 'SKT', value: false },
-        { name: 'HotDQ', value: false },
-        { name: 'CoS', value: false },
-        { name: 'RoTOS', value: false },
-        { name: 'OotA', value: false },
-        { name: 'RoT', value: false },
-        { name: 'VGM', value: false },
-        { name: 'LMoP', value: false },
-        { name: 'TftYP', value: true },
-        { name: 'XGE', value: true }
-      ],
+      source: [],
       sourceQuery: [],
       activeItem: '',
       pageLoad: true,
@@ -158,71 +127,84 @@ export default {
     }
   },
   computed: {
-    filteredItems () {
-      return lodash.filter(this.results, item => {
+    filteredItems: function () {
+      return _.filter(this.results, item => {
         return this.rarityQuery.includes(item.rarity) && this.sourceQuery.includes(item.source)
       })
     },
-    resultCount () {
-      return Object.keys(this.orderedItems).length
+    resultCount: function () {
+      return Object.keys(this.filteredItems).length
     },
-    orderedItems () {
-      return lodash.orderBy(this.filteredItems, 'name')
+    orderedItems: function () {
+      let orderedItems = _.orderBy(this.filteredItems, 'name')
+      return orderedItems.slice(0, this.count)
     },
-    rarityFilter () {
-      return lodash.map(
-        lodash.filter(this.rarity, rarity => { if (rarity.value) return rarity.name }), 'name')
+    rarityFilter: function () {
+      return _.map(
+        _.filter(this.rarity, rarity => { if (rarity.value) return rarity.name }), 'name')
     },
-    sourceFilter () {
-      return lodash.map(
-        lodash.filter(this.source, (s) => { if (s.value) return s.name }), 'name')
+    sourceFilter: function () {
+      return _.map(
+        _.filter(this.source, s => { if (s.value) return s.name }), 'name')
     }
   },
-  created () {
+  methods: {
+    showItem: function (item) {
+      // Only display one item at a time
+      this.activeItem = this.activeItem === item ? '' : item
+    },
+    getLists: function (...filterList) { // Generate filter lists from data
+      filterList.forEach(filterList => {
+        let options = [...new Set(this.magicItems.map(item => item[filterList]))]
+        options.forEach(item => { if (!_.includes(filterList, item)) this[filterList].push({ name: item, value: true }) })
+      })
+    },
+    updateData: function (value) { this.results = value },
+    loadMore: function (n = 10) {
+      this.count += n
+    },
+    loadFewer: function (n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10
+    },
+    makeRarityQuery: _.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
+    makeSourceQuery: _.debounce(function () { this.sourceQuery = this.sourceFilter }, 300),
+    handleScroll: _.throttle(function (event) {
+      let d = document.documentElement
+      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
+      let height = d.offsetHeight // Total CSS height
+      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
+      if (scrollDir < 0) {
+        if (offset === height) {
+          this.loadMore()
+          this.scrollPos = offset
+        }
+      } else {
+        // TODO: Better remove items performance
+        if (this.scrollPos >= offset) {
+          let m = this.orderedItems.length % 10 === 0 ? 0 : this.orderedItems.length - Math.floor(this.orderedItems.length / 10) * 10
+          let x = (Math.floor(this.scrollPos / offset)) * 5 + m
+          this.loadFewer(x)
+          this.scrollPos = offset - (window.innerHeight * 2)
+        }
+      }
+      this.prevScroll = document.documentElement.scrollTop
+    }, 200)
+  },
+  created: function () {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', this.handleScroll)
+    }
+    this.getLists('rarity', 'source')
     setTimeout(() => {
       this.rarityQuery = this.rarityFilter
       this.sourceQuery = this.sourceFilter
       this.pageLoad = false
-      this.compareList('rarity')
-      this.compareList('source')
     }, 200)
   },
-  methods: {
-    showItem (item) {
-      // Only display one item at a time
-      this.activeItem = this.activeItem === item ? '' : item
-      return this.activeItem
-    },
-    compareList (list) {
-      // Create array from object keys
-      let current = [...new Set(this[list].map(item => item.name))]
-      let incoming = [...new Set(this.magicItems.map(item => item[list]))]
-
-      let missingFromCurrent = []
-      let missingFromIncoming = []
-
-      // Check current list
-      for (let i = 0; i < incoming.length; i++) {
-        if (!lodash.includes(current, incoming[i])) {
-          missingFromCurrent.push(incoming[i])
-          this[list].push({name: incoming[i], value: false})
-        }
-      }
-      if (missingFromCurrent.length > 0) console.warn('Missing from magic-items.vue', list, 'list', missingFromCurrent)
-
-      // Check incoming list
-      for (let i = 0; i < current.length; i++) {
-        if (!lodash.includes(incoming, current[i])) {
-          missingFromIncoming.push(current[i])
-        }
-      }
-      if (missingFromIncoming.length > 0) console.warn('Missing from items.json', list, 'list', missingFromIncoming)
-    },
-    updateData: function (value) { this.results = value },
-    clearSearch: function () { this.searchQuery = this.search = '' },
-    makeSearchQuery: lodash.debounce(function () { this.searchQuery = this.search; this.activeItem = '' }, 500),
-    makeRarityQuery: lodash.debounce(function () { this.rarityQuery = this.rarityFilter }, 300),
-    makeSourceQuery: lodash.debounce(function () { this.sourceQuery = this.sourceFilter }, 300)
+  destroyed: function () {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('scroll', this.handleScroll)
+    }
   },
   filters: {
     lowerCase: str => str ? str.toLowerCase() : ''
