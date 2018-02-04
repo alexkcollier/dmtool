@@ -107,7 +107,7 @@
           <h2>Legendary Actions</h2>
           <p>The creature can take {{ model.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
           
-          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
+          <trait v-for="legendary in model.legendary" :model="legendary" :key="legendary.index" />
         </template>
 
         <p class="control is-italic is-help">Source: {{ model.source }}</p>
