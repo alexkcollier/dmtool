@@ -170,7 +170,7 @@ export default {
   filters: {
     getStatMod: function (stat) {
       let mod = Math.floor((stat - 10) / 2)
-      let r = `${stat} (${(mod < 0 ? '' : '+')} ${mod})`
+      let r = `${stat} (${(mod < 0 ? '' : '+')}\xa0${mod})`
       return r
     }
   },
@@ -182,8 +182,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .is-creature-type {
   padding-top:0.3em;
+}
+
+.content table td, .content table tr {
+  @media screen and (max-width: 768px) {
+    padding: 0.5em !important;
+  }
 }
 </style>
