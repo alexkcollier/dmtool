@@ -82,7 +82,7 @@
 
               <!-- Iterate item entries -->
               <item-entries :model="item.entries" style="margin-bottom: 1em;" />
-              <p class="is-italic">{{ item.source }}, page {{ item.page }}</p>
+              <p class="is-italic">{{ item.source }}<span v-if="item.page">, page {{ item.page }}</span></p>
             </div>
           </transition>
           <hr>

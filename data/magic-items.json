@@ -8783,5 +8783,18 @@
 			"You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.",
 			"When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra 6d8 slashing damage from the hit."
 		]
+	},
+	{
+		"name": "Shadow Knife",
+		"type": "Weapon",
+		"subtype": "dagger",
+		"tier": "Minor",
+		"rarity": "Rare",
+		"source": "Custom",
+		"entries": [
+			"A requires bone, iron, and the blood of the creature that will use it. It will not work for a creature whose blood was not used to make the blade.",
+			"While you are holding the dagger, you can touch it to a creature's shadow as an action. That creature must make a DC 15 Charisma saving throw or its shadow is trapped in the blade. Unless it sees that it has lost its shadow, it is unaware that this has happened.",
+			"A creature with no shadow has disadvantage on Dexterity (Stealth) checks to hide in the Shadowfell and other creatures in the Shadowfell have advantage on Wisdom (Perception) checks to see them."
+		]
 	}
 ]
