@@ -107,7 +107,7 @@
           <h2>Legendary Actions</h2>
           <p>The creature can take {{ model.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
           
-          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
+          <trait v-for="legendary in model.legendary" :model="legendary" :key="legendary.index" />
         </template>
 
         <p class="control is-italic is-help">Source: {{ model.source }}</p>
@@ -132,51 +132,64 @@ export default {
     return { collapse: true }
   },
   computed: {
-    concatType () {
-      let result = String
+    concatType: function () {
+      let r = String
       if (this.model.type.length) {
         // Simple creature type
-        result = this.model.type
+        r = this.model.type
       } else if (this.model.type.tags) {
         // Creature type has tags
-        result = this.model.type.type + ' (' + this.model.type.tags.join(', ') + ')'
+        let tags = this.model.type.tags.join(', ')
+        r = `${this.model.type.type} (${tags})`
       } else {
         // Swarms
-        result = 'swarm of' + ' ' + this.model.type.swarmSize + ' ' + this.model.type.type + 's'
+        r = `swarm of ${this.model.type.swarmSize} ${this.model.type.type}s`
       }
-      return result
+      return r
     },
-    concatSkill () {
+    concatSkill: function () {
       return this.concatKeyVal(this.model.skill)
     }
   },
   methods: {
-    removeFirst (arr) {
+    removeFirst: function (arr) {
       let r = arr.slice(1)
       return r.length > 0 ? r : null
     },
-    concatKeyVal (o) {
+    concatKeyVal: function (o) {
       let r = Object.keys(o).reduce((a, k) => {
         return a.concat(k + ' ' + o[k]) // Add combined key-value pair to an array
       }, []).join(', ') // Combine array values to string
       return r
     },
-    toggleCreature () {
+    toggleCreature: function () {
       this.collapse = !this.collapse
+      this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
     }
   },
   filters: {
-    getStatMod: stat => {
+    getStatMod: function (stat) {
       let mod = Math.floor((stat - 10) / 2)
-      let result = stat + ' (' + (mod < 0 ? '' : '+') + mod + ')'
-      return result
+      let r = `${stat} (${(mod < 0 ? '' : '+')}\xa0${mod})`
+      return r
     }
+  },
+  mounted () {
+    this.$root.$on('toggle', creatureIndex => {
+      if (!this.collapse) this.collapse = !(this.$el.id === creatureIndex) // Check if expanded creature is the target creature. If not, collapse it. Only check if creature not collapsed.
+    })
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .is-creature-type {
   padding-top:0.3em;
+}
+
+.content table td, .content table tr {
+  @media screen and (max-width: 768px) {
+    padding: 0.5em !important;
+  }
 }
 </style>
