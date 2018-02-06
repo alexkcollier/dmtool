@@ -8792,7 +8792,7 @@
 		"rarity": "Rare",
 		"source": "Custom",
 		"entries": [
-			"A requires bone, iron, and the blood of the creature that will use it. It will not work for a creature whose blood was not used to make the blade.",
+			"A shadow knife requires bone, iron, and the blood of the creature that will use it. It will not work for a creature whose blood was not used to make the blade.",
 			"While you are holding the dagger, you can touch it to a creature's shadow as an action. That creature must make a DC 15 Charisma saving throw or its shadow is trapped in the blade. Unless it sees that it has lost its shadow, it is unaware that this has happened.",
 			"A creature with no shadow has disadvantage on Dexterity (Stealth) checks to hide in the Shadowfell and other creatures in the Shadowfell have advantage on Wisdom (Perception) checks to see them."
 		]
