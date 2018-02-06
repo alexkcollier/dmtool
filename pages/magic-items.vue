@@ -9,7 +9,7 @@
         <h1>Magic Item Search</h1>
         
         <!-- Search box -->
-        <search :model="magicItems" search-field="name" search-type="items" @update-data="updateData" />
+        <search :model="magicItems" search-field="name" search-type="items" :filter-fields="['rarity', 'source']" @update-data="updateData" />
 
         <div class="card">
           <!-- Filters -->
