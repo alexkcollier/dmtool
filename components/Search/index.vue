@@ -17,7 +17,7 @@
       </div>
     </b-field>
 
-    <div class="card">
+    <div v-if="filterFields.length" class="card">
       <!-- Filters -->
       <div class="card-header">
         <a @click="collapseFilters = !collapseFilters" class="card-header-title">
@@ -30,31 +30,20 @@
         <div v-show="!collapseFilters">
 
           <div class="card-header">
-            <!-- <a :class="{'is-active': showFilter == 'Rarity'}" @click="showFilter = 'Rarity'" class="card-footer-item">Rarity</a>
-            <a :class="{'is-active': showFilter == 'Source'}" @click="showFilter = 'Source'" class="card-footer-item">Source</a> -->
+            <template v-for="(data, filter) in filters">
+              <a class="card-footer-item" :key="filter" :class="{'is-active': visibleFilterOptions === filter}" @click="showFilter = filter">{{ filter }}</a>
+            </template>
           </div>
 
           <div class="card-content">
-
-            <!-- Rarity filter -->
-            <!-- <template v-if="showFilter === 'Rarity'">
+            <template>
               <b-field grouped group-multiline>
-                <div v-for="level in rarity" :key="level.name" class="control">
-                  <b-switch v-model="level.value" @input="makeRarityQuery">{{ level.name }}</b-switch>
+                <div v-for="option in filters[visibleFilterOptions]" class="control" :key="option.name">
+                  <b-switch v-model="option.value">{{ option.name }}</b-switch>
                 </div>
               </b-field>
-            </template> -->
-
-            <!-- Source filter -->
-            <!-- <template v-else-if="showFilter === 'Source'">
-              <b-field grouped group-multiline>
-                <div v-for="s in source" :key="s.name" class="control">
-                  <b-switch v-model="s.value" @input="makeSourceQuery">{{ s.name }}</b-switch>
-                </div>
-              </b-field>
-            </template> -->
+            </template>
           </div>
-
         </div>
       </transition>
     </div>
@@ -70,19 +59,26 @@ export default {
     model: Array,
     searchField: String,
     searchType: String,
-    filterFields: Array
+    filterFields: {
+      type: Array,
+      default: () => []
+    }
   },
   data () {
     return {
       search: '',
       filtered: this.model,
       collapseFilters: true,
-      filters: []
+      filters: {},
+      showFilter: ''
     }
   },
   computed: {
     placeholder () {
       return this.searchType ? `Search for ${this.searchType}` : 'Search'
+    },
+    visibleFilterOptions () {
+      return this.showFilter ? this.showFilter : (Object.keys(this.filters).length ? Object.keys(this.filters)[0] : '')
     }
   },
   methods: {
@@ -92,15 +88,15 @@ export default {
     },
     getFilters: function (...filterList) { // Generate filter lists from data
       filterList.forEach(filterList => {
-        this.filters.push({[filterList]: []})
-
         let options = [...new Set(this.model.map(item => item[filterList]))]
-        console.log(options, this.filters)
-        // options.forEach(item => { if (!_.includes(filterList, item)) this.filters[filterList].push({ name: item, value: true }) })
+        options = options.map(item => { return { name: item, value: true } })
+        this.$set(this.filters, filterList, options) // Must use vm.set to make these properties reactive
       })
     },
     query: _.debounce(function () {
-      this.filtered = this.model.filter(i => i[this.searchField].toLowerCase().includes(this.search.toLowerCase()))
+      this.filtered = this.model.filter(i => {
+        i[this.searchField].toLowerCase().includes(this.search.toLowerCase())
+      })
       this.$emit('update-data', this.filtered)
     }, 500)
   },
