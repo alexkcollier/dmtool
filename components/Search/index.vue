@@ -22,7 +22,7 @@
       <div class="card-header">
 
         <!-- Filter collapse control-->
-        <a @click="collapseFilters = !collapseFilters" class="card-header-title">
+        <a @click="filterViewToggle()" class="card-header-title">
           Filters
           <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/>
         </a>
@@ -45,7 +45,16 @@
           </div>
 
           <!-- Filter options -->
+          <!-- TODO: improve display -->
           <div class="card-content">
+            <b-field grouped group-multiline>
+              <a class="control button button-grouped" style="margin-left:0;" @click="setAllFilters(visibleFilter, true)">
+                Enable all
+              </a>
+              <a class="control button button-grouped" style="margin-left:0;" @click="setAllFilters(visibleFilter, false)">
+                Disable all
+              </a>
+            </b-field>
             <b-field grouped group-multiline>
               <div v-for="option in filters[visibleFilterOptions]" class="control" :key="option.name">
                 <b-switch v-model="option.value" @input="query">{{ option.name | parseNumToFrac }}</b-switch>
@@ -103,6 +112,11 @@ export default {
       this.searchTerm = ''
       this.query()
     },
+    filterViewToggle: function () {
+      if (!this.visibleFilter) this.visibleFilter = Object.keys(this.filters)[0]
+      this.collapseFilters = !this.collapseFilters
+    },
+    setAllFilters: function (filter, val) { this.filters[filter].forEach(option => { option.value = val }) },
     getFilters: function (...filters) { // Generate filter lists from data
       filters.forEach(filter => {
         let options = [...new Set(this.model.map(item => item[filter]))] // Get all possible options from model
