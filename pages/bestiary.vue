@@ -40,7 +40,8 @@ export default {
       results: [],
       scrollPos: 0,
       prevScroll: 0,
-      filterFields: ['source', 'cr']
+      // TODO: filter by type
+      filterFields: ['source', 'cr', 'size']
     }
   },
   computed: {
