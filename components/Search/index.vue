@@ -95,7 +95,7 @@ export default {
     },
     query: _.debounce(function () {
       this.filtered = this.model.filter(i => {
-        i[this.searchField].toLowerCase().includes(this.search.toLowerCase())
+        return i[this.searchField].toLowerCase().includes(this.search.toLowerCase())
       })
       this.$emit('update-data', this.filtered)
     }, 500)
