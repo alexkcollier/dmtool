@@ -78,7 +78,7 @@ export default {
       return this.searchType ? `Search for ${this.searchType}` : 'Search'
     },
     visibleFilterOptions () {
-      return this.showFilter ? this.showFilter : (Object.keys(this.filters).length ? Object.keys(this.filters)[0] : '')
+      return this.showFilter ? this.showFilter : (Object.keys(this.filters) ? Object.keys(this.filters)[0] : '')
     }
   },
   methods: {
