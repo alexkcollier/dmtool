@@ -39,7 +39,7 @@
                  :key="filter"
                  :class="{'is-active': visibleFilterOptions === filter}"
                  @click="visibleFilter = filter">
-                 {{ filter }}
+                 {{ filter | formatFilterOptionName }}
               </a>
             </template>
           </div>
@@ -153,7 +153,8 @@ export default {
     }, 500)
   },
   filters: {
-    parseNumToFrac: num => typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num
+    parseNumToFrac: num => typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num,
+    formatFilterOptionName: str => str.length <= 2 ? str.toUpperCase() : str
   },
   created () {
     this.getFilters(...this.filterFields)
