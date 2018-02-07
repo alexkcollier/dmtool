@@ -40,7 +40,7 @@ export default {
       results: [],
       scrollPos: 0,
       prevScroll: 0,
-      filterFields: ['source']
+      filterFields: ['source', 'cr']
     }
   },
   computed: {

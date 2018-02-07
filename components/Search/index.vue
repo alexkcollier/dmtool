@@ -48,7 +48,7 @@
           <div class="card-content">
             <b-field grouped group-multiline>
               <div v-for="option in filters[visibleFilterOptions]" class="control" :key="option.name">
-                <b-switch v-model="option.value" @input="query">{{ option.name }}</b-switch>
+                <b-switch v-model="option.value" @input="query">{{ option.name | parseNumToFrac }}</b-switch>
               </div>
             </b-field>
           </div>
@@ -104,10 +104,13 @@ export default {
       this.query()
     },
     getFilters: function (...filters) { // Generate filter lists from data
-      filters.forEach(filters => {
-        let options = [...new Set(this.model.map(item => item[filters]))] // Get all possible options from model
+      filters.forEach(filter => {
+        let options = [...new Set(this.model.map(item => item[filter]))] // Get all possible options from model
+        options = options.filter(option => { return typeof option !== 'undefined' }) // Filter must exist in each data element
         options = options.map(item => { return { name: item, value: true } }) // Create array of options
-        this.$set(this.filters, filters, options) // Add filters. Must use vm.set to make these properties reactive
+        options = _.sortBy(options, o => typeof o.name === 'number' ? _.toNumber(o.name) : _.toString(o.name))
+        // options.forEach(o => console.log(o.name, typeof o.name))
+        this.$set(this.filters, filter, options) // Add filters. Must use vm.set to make these properties reactive
       })
     },
     query: _.debounce(function () {
@@ -129,6 +132,9 @@ export default {
 
       this.$emit('update-data', this.queryResult)
     }, 500)
+  },
+  filters: {
+    parseNumToFrac: num => typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num
   },
   created () {
     this.getFilters(...this.filterFields)

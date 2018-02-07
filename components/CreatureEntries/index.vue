@@ -78,7 +78,7 @@
             </div>
             <div>
               <strong>Challenge</strong>
-              {{ model.cr }}
+              {{ model.cr | parseNumToFrac }}
             </div>
           </template>
           <hr>
@@ -172,7 +172,8 @@ export default {
       let mod = Math.floor((stat - 10) / 2)
       let r = `${stat} (${(mod < 0 ? '' : '+')}\xa0${mod})`
       return r
-    }
+    },
+    parseNumToFrac: num => typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num
   },
   mounted () {
     this.$root.$on('toggle', creatureIndex => {
