@@ -762,7 +762,8 @@
 	},
 	{
 		"name": "Black Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -842,7 +843,8 @@
 	},
 	{
 		"name": "Blue Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -1032,7 +1034,8 @@
 	},
 	{
 		"name": "Brass Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -1057,7 +1060,8 @@
 	},
 	{
 		"name": "Bronze Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -1394,7 +1398,8 @@
 	},
 	{
 		"name": "Copper Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -2232,7 +2237,8 @@
 	},
 	{
 		"name": "Elven Chain",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "chain shirt",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -2556,7 +2562,8 @@
 	},
 	{
 		"name": "Glamoured Studded Leather",
-		"type": "LA",
+		"type": "Armor",
+		"subtype": "studded leather",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -2613,7 +2620,8 @@
 	},
 	{
 		"name": "Gold Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -2644,7 +2652,8 @@
 	},
 	{
 		"name": "Green Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -4778,7 +4787,8 @@
 	},
 	{
 		"name": "Red Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -5817,7 +5827,8 @@
 	},
 	{
 		"name": "Silver Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -7152,7 +7163,8 @@
 	},
 	{
 		"name": "White Dragon Scale Mail",
-		"type": "MA",
+		"type": "Armor",
+		"subtype": "scale mail",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
