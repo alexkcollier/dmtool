@@ -68,8 +68,8 @@ export default {
       prevScroll: 0,
       activeItem: '',
       results: [],
-      filterFields: ['rarity', 'source'],
-      filtersToSort: ['source']
+      filterFields: ['rarity', 'source', 'type'],
+      filtersToSort: ['source', 'type']
     }
   },
   computed: {
