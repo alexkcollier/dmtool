@@ -192,7 +192,8 @@
 	},
 	{
 		"name": "Armor of Invulnerability",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -204,7 +205,8 @@
 	},
 	{
 		"name": "Armor of Vulnerability (Bludgeoning)",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -223,7 +225,8 @@
 	},
 	{
 		"name": "Armor of Vulnerability (Piercing)",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -242,7 +245,8 @@
 	},
 	{
 		"name": "Armor of Vulnerability (Slashing)",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -1914,7 +1918,8 @@
 	},
 	{
 		"name": "Demon Armor",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -2101,7 +2106,8 @@
 	},
 	{
 		"name": "Dwarven Plate",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -2158,7 +2164,8 @@
 	},
 	{
 		"name": "Efreeti Chain",
-		"type": "HA",
+		"type": "Armor",
+		"subtype": "plate",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -4247,7 +4254,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to acide damage for 1 hour."
 		]
 	},
@@ -4303,7 +4310,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to cold damage for 1 hour."
 		]
 	},
@@ -4348,7 +4355,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to fire damage for 1 hour."
 		]
 	},
@@ -4370,7 +4377,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to force damage for 1 hour."
 		]
 	},
@@ -4494,7 +4501,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to lightning damage for 1 hour."
 		]
 	},
@@ -4527,7 +4534,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to necrotic damage for 1 hour."
 		]
 	},
@@ -4550,7 +4557,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to poison damage for 1 hour."
 		]
 	},
@@ -4561,7 +4568,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to psychic damage for 1 hour."
 		]
 	},
@@ -4572,7 +4579,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to radiant damage for 1 hour."
 		]
 	},
@@ -4640,7 +4647,7 @@
 		"rarity": "Uncommon",
 		"source": "DMG",
 		"page": "188",
-		"entries":[
+		"entries": [
 			"When you drink this potion, you gain resistance to thunder damage for 1 hour."
 		]
 	},
@@ -4790,7 +4797,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to acid damage while wearing this ring."
 		]
 	},
@@ -4844,7 +4851,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to cold damage while wearing this ring."
 		]
 	},
@@ -4939,7 +4946,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to fire damage while wearing this ring."
 		]
 	},
@@ -4951,7 +4958,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to force damage while wearing this ring."
 		]
 	},
@@ -4999,7 +5006,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to lightning damage while wearing this ring."
 		]
 	},
@@ -5025,7 +5032,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to necrotic damage while wearing this ring."
 		]
 	},
@@ -5037,7 +5044,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to poison damage while wearing this ring."
 		]
 	},
@@ -5061,7 +5068,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to psychic damage while wearing this ring."
 		]
 	},
@@ -5073,7 +5080,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to radiant damage while wearing this ring."
 		]
 	},
@@ -5176,7 +5183,7 @@
 		"source": "DMG",
 		"page": "192",
 		"reqAttune": "YES",
-		"entries":[
+		"entries": [
 			"You have resistance to resistance to thunder damage while wearing this ring."
 		]
 	},
@@ -6196,7 +6203,7 @@
 	},
 	{
 		"name": "Spider Staff",
-		"type":"Staff",
+		"type": "Staff",
 		"rarity": "Rare",
 		"source": "LMoP",
 		"page": "53",
@@ -6209,7 +6216,7 @@
 	},
 	{
 		"name": "Staff of Charming",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6223,7 +6230,7 @@
 	},
 	{
 		"name": "Staff of Defense",
-		"type":"Staff",
+		"type": "Staff",
 		"rarity": "Rare",
 		"source": "LMoP",
 		"page": "53",
@@ -6237,7 +6244,7 @@
 	},
 	{
 		"name": "Staff of Fire",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6251,7 +6258,7 @@
 	},
 	{
 		"name": "Staff of Frost",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6265,7 +6272,7 @@
 	},
 	{
 		"name": "Staff of Healing",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6278,7 +6285,7 @@
 	},
 	{
 		"name": "Staff of Power",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6322,7 +6329,7 @@
 	},
 	{
 		"name": "Staff of Striking",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6335,7 +6342,7 @@
 	},
 	{
 		"name": "Staff of Swarming Insects",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6349,7 +6356,7 @@
 	},
 	{
 		"name": "Staff of Thunder and Lightning",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Very Rare",
 		"source": "DMG",
@@ -6367,7 +6374,7 @@
 	},
 	{
 		"name": "Staff of Withering",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -6380,7 +6387,7 @@
 	},
 	{
 		"name": "Staff of the Adder",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -6394,7 +6401,7 @@
 	},
 	{
 		"name": "Staff of the Magi",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Legendary",
 		"source": "DMG",
@@ -6433,7 +6440,7 @@
 	},
 	{
 		"name": "Staff of the Python",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Uncommon",
 		"source": "DMG",
@@ -6447,7 +6454,7 @@
 	},
 	{
 		"name": "Staff of the Woodlands",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
@@ -7880,7 +7887,7 @@
 	},
 	{
 		"name": "Staff of Adornment",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -7891,7 +7898,7 @@
 	},
 	{
 		"name": "Staff of Birdcalls",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
@@ -7903,7 +7910,7 @@
 	},
 	{
 		"name": "Staff of Flowers",
-		"type":"Staff",
+		"type": "Staff",
 		"tier": "Minor",
 		"rarity": "Common",
 		"source": "XGE",
