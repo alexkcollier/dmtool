@@ -147,7 +147,7 @@ export default {
         return test
       })
 
-      this.queryResult = result
+      this.queryResult = _.sortBy(result, 'name')
 
       this.$emit('update-data', this.queryResult)
     }, 500)
