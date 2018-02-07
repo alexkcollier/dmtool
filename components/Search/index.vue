@@ -84,6 +84,10 @@ export default {
     model: Array,
     searchField: String,
     searchType: String,
+    filtersToSort: {
+      type: Array,
+      default: () => []
+    },
     filterFields: {
       type: Array,
       default: () => []
@@ -122,8 +126,9 @@ export default {
         let options = [...new Set(this.model.map(item => item[filter]))] // Get all possible options from model
         options = options.filter(option => { return typeof option !== 'undefined' }) // Filter must exist in each data element
         options = options.map(item => { return { name: item, value: true } }) // Create array of options
-        options = _.sortBy(options, o => typeof o.name === 'number' ? _.toNumber(o.name) : _.toString(o.name))
-        // options.forEach(o => console.log(o.name, typeof o.name))
+        if (this.filtersToSort.includes(filter)) {
+          options = _.sortBy(options, o => typeof o.name === 'number' ? _.toNumber(o.name) : _.toString(o.name)) // sort
+        }
         this.$set(this.filters, filter, options) // Add filters. Must use vm.set to make these properties reactive
       })
     },
