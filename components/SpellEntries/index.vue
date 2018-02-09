@@ -12,7 +12,7 @@
         <p><strong>Casting Time: </strong>{{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>
         <p><strong>Range: </strong>{{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
         <p><strong>Components: </strong> {{ spellComponents }}</p>
-        <p><strong>Components: </strong> {{ spellDuration }}</p>
+        <p><strong>Duration: </strong> {{ spellDuration }}</p>
         <spell-entry :model="model.entries" />
         <spell-entry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
       </div>
@@ -50,14 +50,31 @@ export default {
       return spellComponents.join(', ')
     },
     spellDuration: function () {
-      if (this.model.duration[0]['type'] === 'timed') return `${this.model.duration[0]['duration']['amount']} ${this.model.duration[0]['duration']['type']}`
+      // Timed spells
+      if (this.model.duration[0]['type'] === 'timed') {
+        if (this.model.duration[0]['type']['concentration']) {
+          return `Concentration, up to ${this.model.duration[0]['duration']['amount']} ${this.model.duration[0]['duration']['type']}`
+        } else {
+          return `${this.model.duration[0]['duration']['amount']} ${this.model.duration[0]['duration']['type']}`
+        }
+      }
+
+      // Instantaneous
       if (this.model.duration[0]['type'] === 'instant') return 'Instantaneous'
+
+      // Special
       if (this.model.duration[0]['type'] === 'special') return 'Special'
-      /* TODO: Permanent spells
-      ** permanent
-      ** permanent-dispell
-      ** permanent-trigger
-      */
+
+      // Permanent
+      if (this.model.duration[0]['type'] === 'permanent') {
+        if (this.model.duration[0]['ends']) {
+          if (this.model.duration[0]['ends'].length === 2) {
+            return `Until ${this.model.duration[0]['ends'][0]}ed or ${this.model.duration[0]['ends'][1]}ed`
+          } else {
+            return `Until ${this.model.duration[0]['ends'][0]}ed`
+          }
+        }
+      }
     }
   },
   mounted () {
