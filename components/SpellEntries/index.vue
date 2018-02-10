@@ -6,12 +6,21 @@
     </a>
     <transition name="fade-grow">
       <div v-if="!collapse">
+        
+        <!-- Spell parameters -->
         <p><strong>Casting Time:</strong> {{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>
         <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
         <p><strong>Components:</strong> {{ spellComponents }}</p>
         <p><strong>Duration:</strong> {{ spellDuration }}</p>
+
+        <!-- Spell text -->
         <spell-entry :model="model.entries" />
+
+        <!-- Casting at higher level -->
         <spell-entry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
+
+        <!-- Source -->
+        <p class="control is-italic is-help">Source: {{ model.source }}</p>
       </div>
     </transition>
     <hr>
