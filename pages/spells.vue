@@ -7,6 +7,7 @@
       <div class="content">
         <h1>Spells</h1>
 
+        <!-- Search and filter -->
         <search :model="spells" search-field="name" search-type="spells" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
         <!-- List spells -->
@@ -38,29 +39,21 @@ export default {
       results: [],
       scrollPos: 0,
       prevScroll: 0,
-      filterFields: ['source', 'level', 'school']
+      filterFields: ['level', 'school', 'source']
     }
   },
   computed: {
-    sliceSpells: function () {
-      return this.results.slice(0, this.count)
-    }
+    sliceSpells: function () { return this.results.slice(0, this.count) }
   },
   methods: {
-    updateData: function (value) {
-      this.results = value
-    },
+    updateData: function (value) { this.results = value },
     spellIndex: function (name) {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `spell-${index}`
       return id
     },
-    loadMore: function (n = 10) {
-      this.count += n
-    },
-    loadFewer: function (n = 10) {
-      this.count = this.count - n >= 10 ? this.count - n : 10
-    },
+    loadMore: function (n = 10) { this.count += n },
+    loadFewer: function (n = 10) { this.count = this.count - n >= 10 ? this.count - n : 10 },
     handleScroll: _.throttle(function (event) {
       let d = document.documentElement
       let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
@@ -84,15 +77,11 @@ export default {
     }, 200)
   },
   created: function () {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', this.handleScroll)
-    }
+    if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
     this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
   },
   destroyed: function () {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
+    if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
