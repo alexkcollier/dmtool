@@ -11,35 +11,8 @@
         <!-- Search box -->
         <search :model="magicItems" search-field="name" search-type="magic item" :filter-fields="filterFields" :filters-to-sort="filtersToSort" @update-data="updateData" />
 
-        <!-- Loop through items -->
-        <div v-for="item in sliceMagicItems" :key="item.index">
-          
-          <!-- Item name and rarity -->
-          <!-- Only display one item at a time -->
-          <a @click="showItem(item.name)">
-            <h3 class="title">{{ item.name }}</h3>
-
-            <!-- Rarity and attunement -->
-            <h6 class="subtitle is-item-rarity is-size-6 is-italic">
-              <span>{{ item.type }}<span v-if="item.subtype"> ({{ item.subtype }})</span>, {{ item.rarity | lowerCase }}</span>
-
-              <!-- Attunement options -->
-              <span v-if="item.reqAttune === 'YES'"> (requires attunement)</span>
-              <span v-else-if="item.reqAttune"> (requires attunement {{ item.reqAttune | lowerCase }})</span>
-            </h6>
-          </a>
-
-          <!-- Item description -->
-          <transition name="fade-grow" mode="out-in">
-            <div v-if="activeItem === item.name">
-
-              <!-- Iterate item entries -->
-              <item-entries :model="item.entries" style="margin-bottom: 1em;" />
-              <p class="is-italic">{{ item.source }}<span v-if="item.page">, page {{ item.page }}</span></p>
-            </div>
-          </transition>
-          <hr>
-        </div>
+        <!-- Item entries -->
+        <item-entries v-for="item in sliceMagicItems" :model="item" :key="item.index" :id="itemIndex(item.name)"/>
 
       </div>
     </div>
@@ -76,7 +49,11 @@ export default {
     sliceMagicItems: function () { return this.results.slice(0, this.count) }
   },
   methods: {
-    showItem: function (item) { this.activeItem = this.activeItem === item ? '' : item }, // Only display one item at a time
+    itemIndex: function (name) {
+      let index = this.results.findIndex(result => result.name === name) + 1
+      const id = `item-${index}`
+      return id
+    },
     updateData: function (value) { this.results = value },
     loadMore: function (n = 10) { this.count += n },
     loadFewer: function (n = 10) { this.count = this.count - n >= 10 ? this.count - n : 10 },
@@ -107,15 +84,9 @@ export default {
   },
   destroyed: function () {
     if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
-  },
-  filters: {
-    lowerCase: str => str ? str.toLowerCase() : ''
   }
 }
 </script>
 
 <style lang="scss">
-.is-item-rarity {
-  padding-top:0.3em;
-}
 </style>

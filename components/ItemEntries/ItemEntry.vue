@@ -3,13 +3,15 @@
 
     <!-- Iterate item entries and set up entry types -->
     <template v-for="entry in model">
-
+      
       <!-- Subtitles -->
-      <h5 v-if="entry.name" :key="entry.name">{{ entry.name }}</h5>
+      <!-- <h5 v-if="entry.name" :key="entry.name">{{ entry.name }}</h5> -->
 
       <!-- Paragraphs -->
-      <p v-if="!entry.type" :key="entry.index">{{ entry }}</p>
-
+      <p v-if="!entry.type" :key="entry.index">
+        {{ entry }}
+      </p>
+      
       <!-- Lists -->
       <ul v-else-if="entry.type === 'list'" :key="entry.index">
         <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
@@ -30,7 +32,11 @@
       </table>
 
       <!-- Iterate over child entries -->
-      <item-entries v-else-if="entry.type === 'entries'" :model="entry.entries" :key="entry.index" />
+      <template v-else-if="entry.type === 'entries'" >
+        <p v-if="entry.name" :key="entry.index"><strong><i>{{ entry.name }}.</i></strong> {{ entry.entries[0] }}</p>
+        <p v-else :key="entry.index">{{ entry.entries[0] }}</p>
+        <item-entry :model="entry.entries.slice(1)" :key="entry.index" />
+      </template>
 
       <!-- Highlight entries of unexpected type. -->
       <p v-else :key="entry.index" style="color: red;">{{ entry }}</p>
@@ -40,9 +46,15 @@
 
 <script>
 export default {
-  name: 'item-entries',
+  name: 'item-entry',
   props: {
     model: Array
   }
 }
 </script>
+
+<style lang="scss" scoped>
+div:not(:last-child) {
+  margin-bottom: 1em!important;
+}
+</style>
