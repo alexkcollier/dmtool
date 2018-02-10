@@ -142,6 +142,7 @@ export default {
       let result = this.model.filter(el => {
         let filterTestRes = true // All filter options default to true
         Object.keys(this.filters).forEach(filter => { filterTestRes *= filterTest(filter, el[filter]) }) // check each element against all filters
+        // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
         let test = el[this.searchField].toLowerCase().includes(this.searchTerm.toLowerCase()) &&
         filterTestRes // ensure element contains search term and passes filter test
         return test
