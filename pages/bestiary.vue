@@ -10,9 +10,7 @@
         <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
         <!-- List creatures -->
-        <template v-for="creature in creatures">
-          <creature-entries :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
-        </template>
+        <creature-entries v-for="creature in creatures" :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
 
       </div>
     </div>
