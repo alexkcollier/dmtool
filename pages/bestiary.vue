@@ -45,25 +45,17 @@ export default {
     }
   },
   computed: {
-    creatures: function () {
-      return this.results.slice(0, this.count)
-    }
+    creatures: function () { return this.results.slice(0, this.count) }
   },
   methods: {
-    updateData: function (value) {
-      this.results = value
-    },
+    updateData: function (value) { this.results = value },
     creatureIndex: function (name) {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `creature-${index}`
       return id
     },
-    loadMore: function (n = 10) {
-      this.count += n
-    },
-    loadFewer: function (n = 10) {
-      this.count = this.count - n >= 10 ? this.count - n : 10
-    },
+    loadMore: function (n = 10) { this.count += n },
+    loadFewer: function (n = 10) { this.count = this.count - n >= 10 ? this.count - n : 10 },
     handleScroll: _.throttle(function (event) {
       let d = document.documentElement
       let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
@@ -87,14 +79,10 @@ export default {
     }, 200)
   },
   created: function () {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', this.handleScroll)
-    }
+    if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
   },
   destroyed: function () {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
+    if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
