@@ -150,6 +150,7 @@ export default {
       this.queryResult = _.sortBy(result, 'name')
 
       this.$emit('update-data', this.queryResult)
+      this.$root.$emit('toggle')
     }, 500)
   },
   filters: {
