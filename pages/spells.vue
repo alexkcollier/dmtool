@@ -5,12 +5,13 @@
         <nuxt-link to="/">dmtool</nuxt-link>
       </h1>
       <div class="content">
-        <h1>Bestiary</h1>
+        <h1>Spells</h1>
 
-        <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
+        <!-- Search and filter -->
+        <search :model="spells" search-field="name" search-type="spell" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
-        <!-- List creatures -->
-        <creature-entries v-for="creature in creatures" :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
+        <!-- List spells -->
+        <spell-entries v-for="spell in sliceSpells" :model="spell" :key="spell.index" :id="spellIndex(spell.name)" />
 
       </div>
     </div>
@@ -18,38 +19,37 @@
 </template>
 
 <script>
-import bestiary from '~/data/bestiary.json'
+import spells from '~/data/spells.json'
 import Search from '~/components/Search'
-import CreatureEntries from '~/components/CreatureEntries'
+import SpellEntries from '~/components/SpellEntries'
 import _ from 'lodash'
 
 export default {
   head () {
-    return { title: 'Bestiary' }
+    return { title: 'Spells' }
   },
   components: {
     Search,
-    CreatureEntries
+    SpellEntries
   },
   data () {
     return {
-      bestiary,
+      spells,
       count: 10,
       results: [],
       scrollPos: 0,
       prevScroll: 0,
-      // TODO: filter by type
-      filterFields: ['cr', 'size', 'source']
+      filterFields: ['level', 'school', 'source']
     }
   },
   computed: {
-    creatures: function () { return this.results.slice(0, this.count) }
+    sliceSpells: function () { return this.results.slice(0, this.count) }
   },
   methods: {
     updateData: function (value) { this.results = value },
-    creatureIndex: function (name) {
+    spellIndex: function (name) {
       let index = this.results.findIndex(result => result.name === name) + 1
-      const id = `creature-${index}`
+      const id = `spell-${index}`
       return id
     },
     loadMore: function (n = 10) { this.count += n },
@@ -67,7 +67,7 @@ export default {
       } else {
         // TODO: Better remove items performance
         if (this.scrollPos >= offset) {
-          let m = this.creatures.length % 10 === 0 ? 0 : this.creatures.length - Math.floor(this.creatures.length / 10) * 10
+          let m = this.spells.length % 10 === 0 ? 0 : this.spells.length - Math.floor(this.spells.length / 10) * 10
           let x = (Math.floor(this.scrollPos / offset)) * 5 + m
           this.loadFewer(x)
           this.scrollPos = offset - (window.innerHeight * 2)
@@ -78,6 +78,7 @@ export default {
   },
   created: function () {
     if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
+    this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
   },
   destroyed: function () {
     if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)

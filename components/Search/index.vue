@@ -68,7 +68,7 @@
 
     <!-- Result count -->
     <div class="control">
-      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
+      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} {{ searchType }}<span v-if="resultCount != 1">s</span> found.</div>
     </div>
 
     <hr>
@@ -104,7 +104,7 @@ export default {
   },
   computed: {
     placeholder () {
-      return this.searchType ? `Search for ${this.searchType}` : 'Search'
+      return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
     visibleFilterOptions () {
       return this.visibleFilter ? this.visibleFilter : (Object.keys(this.filters) ? Object.keys(this.filters)[0] : '')
@@ -142,6 +142,7 @@ export default {
       let result = this.model.filter(el => {
         let filterTestRes = true // All filter options default to true
         Object.keys(this.filters).forEach(filter => { filterTestRes *= filterTest(filter, el[filter]) }) // check each element against all filters
+        // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
         let test = el[this.searchField].toLowerCase().includes(this.searchTerm.toLowerCase()) &&
         filterTestRes // ensure element contains search term and passes filter test
         return test
@@ -150,6 +151,7 @@ export default {
       this.queryResult = _.sortBy(result, 'name')
 
       this.$emit('update-data', this.queryResult)
+      this.$root.$emit('toggle')
     }, 500)
   },
   filters: {

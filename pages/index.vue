@@ -12,6 +12,7 @@
         
         <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
         <nuxt-link to="/bestiary" class="button is-medium">Bestiary</nuxt-link>
+        <nuxt-link to="/Spells" class="button is-medium">Spells</nuxt-link>
       </div>
     </div>
   </section>
