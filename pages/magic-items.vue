@@ -9,7 +9,7 @@
         <h1>Magic Item Search</h1>
         
         <!-- Search box -->
-        <search :model="magicItems" search-field="name" search-type="items" :filter-fields="filterFields" :filters-to-sort="filtersToSort" @update-data="updateData" />
+        <search :model="magicItems" search-field="name" search-type="magic item" :filter-fields="filterFields" :filters-to-sort="filtersToSort" @update-data="updateData" />
 
         <!-- Loop through items -->
         <div v-for="item in sliceMagicItems" :key="item.index">

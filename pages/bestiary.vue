@@ -7,7 +7,7 @@
       <div class="content">
         <h1>Bestiary</h1>
 
-        <search :model="bestiary.monster" search-field="name" search-type="creatures" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
+        <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
         <!-- List creatures -->
         <template v-for="creature in creatures">

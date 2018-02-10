@@ -8,7 +8,7 @@
         <h1>Spells</h1>
 
         <!-- Search and filter -->
-        <search :model="spells" search-field="name" search-type="spells" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
+        <search :model="spells" search-field="name" search-type="spell" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
         <!-- List spells -->
         <spell-entries v-for="spell in sliceSpells" :model="spell" :key="spell.index" :id="spellIndex(spell.name)" />

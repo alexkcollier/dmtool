@@ -68,7 +68,7 @@
 
     <!-- Result count -->
     <div class="control">
-      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} item<span v-if="resultCount != 1">s</span> found.</div>
+      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} {{ searchType }}<span v-if="resultCount != 1">s</span> found.</div>
     </div>
 
     <hr>
@@ -104,7 +104,7 @@ export default {
   },
   computed: {
     placeholder () {
-      return this.searchType ? `Search for ${this.searchType}` : 'Search'
+      return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
     visibleFilterOptions () {
       return this.visibleFilter ? this.visibleFilter : (Object.keys(this.filters) ? Object.keys(this.filters)[0] : '')
