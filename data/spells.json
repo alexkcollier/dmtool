@@ -1,8 +1,8 @@
 [
 	{
 		"name": "Acid Splash",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -46,7 +46,7 @@
 	{
 		"name": "Aid",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -129,7 +129,7 @@
 	{
 		"name": "Alarm",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -186,7 +186,7 @@
 	{
 		"name": "Alter Self",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -280,7 +280,7 @@
 	{
 		"name": "Animal Friendship",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -353,7 +353,7 @@
 	{
 		"name": "Animal Messenger",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -418,7 +418,7 @@
 	{
 		"name": "Animal Shapes",
 		"level": 8,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -464,7 +464,7 @@
 	{
 		"name": "Animate Dead",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -541,7 +541,7 @@
 	{
 		"name": "Animate Objects",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -690,7 +690,7 @@
 	{
 		"name": "Antilife Shell",
 		"level": 5,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -778,7 +778,7 @@
 	{
 		"name": "Antimagic Field",
 		"level": 8,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -877,7 +877,7 @@
 	{
 		"name": "Antipathy/Sympathy",
 		"level": 8,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -947,7 +947,7 @@
 	{
 		"name": "Arcane Eye",
 		"level": 4,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -1040,7 +1040,7 @@
 	{
 		"name": "Arcane Gate",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1094,7 +1094,7 @@
 	{
 		"name": "Arcane Lock",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1141,7 +1141,7 @@
 	{
 		"name": "Armor of Agathys",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1225,7 +1225,7 @@
 	{
 		"name": "Arms of Hadar",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1273,7 +1273,7 @@
 	{
 		"name": "Astral Projection",
 		"level": 9,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -1326,7 +1326,7 @@
 	{
 		"name": "Augury",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -1401,7 +1401,7 @@
 	{
 		"name": "Aura of Life",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1466,7 +1466,7 @@
 	{
 		"name": "Aura of Purity",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1509,7 +1509,7 @@
 	{
 		"name": "Aura of Vitality",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -1564,7 +1564,7 @@
 	{
 		"name": "Awaken",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 8,
@@ -1608,7 +1608,7 @@
 	{
 		"name": "Bane",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -1718,7 +1718,7 @@
 	{
 		"name": "Banishing Smite",
 		"level": 5,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1772,7 +1772,7 @@
 	{
 		"name": "Banishment",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -1946,7 +1946,7 @@
 	{
 		"name": "Barkskin",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -2017,7 +2017,7 @@
 	{
 		"name": "Beacon of Hope",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -2093,7 +2093,7 @@
 	{
 		"name": "Beast Sense",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -2142,7 +2142,7 @@
 	{
 		"name": "Bestow Curse",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -2264,7 +2264,7 @@
 	{
 		"name": "Bigby's Hand",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -2324,7 +2324,7 @@
 	{
 		"name": "Blade Barrier",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -2368,8 +2368,8 @@
 	},
 	{
 		"name": "Blade Ward",
-		"level": 0,
-		"school": "A",
+		"level": "Cantrip",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -2423,7 +2423,7 @@
 	{
 		"name": "Bless",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -2513,7 +2513,7 @@
 	{
 		"name": "Blight",
 		"level": 4,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -2638,7 +2638,7 @@
 	{
 		"name": "Blinding Smite",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -2693,7 +2693,7 @@
 	{
 		"name": "Blindness/Deafness",
 		"level": 2,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -2788,7 +2788,7 @@
 	{
 		"name": "Blink",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -2881,7 +2881,7 @@
 	{
 		"name": "Blur",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -2954,7 +2954,7 @@
 	{
 		"name": "Branding Smite",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -3037,7 +3037,7 @@
 	{
 		"name": "Burning Hands",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -3132,7 +3132,7 @@
 	{
 		"name": "Call Lightning",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -3210,7 +3210,7 @@
 	{
 		"name": "Calm Emotions",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -3282,7 +3282,7 @@
 	{
 		"name": "Chain Lightning",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -3336,7 +3336,7 @@
 	{
 		"name": "Charm Person",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -3425,8 +3425,8 @@
 	},
 	{
 		"name": "Chill Touch",
-		"level": 0,
-		"school": "N",
+		"level": "Cantrip",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -3479,7 +3479,7 @@
 	{
 		"name": "Chromatic Orb",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -3533,7 +3533,7 @@
 	{
 		"name": "Circle of Death",
 		"level": 6,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -3590,7 +3590,7 @@
 	{
 		"name": "Circle of Power",
 		"level": 5,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -3655,7 +3655,7 @@
 	{
 		"name": "Clairvoyance",
 		"level": 3,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 10,
@@ -3736,7 +3736,7 @@
 	{
 		"name": "Clone",
 		"level": 8,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -3776,7 +3776,7 @@
 	{
 		"name": "Cloud of Daggers",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -3842,7 +3842,7 @@
 	{
 		"name": "Cloudkill",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -3944,7 +3944,7 @@
 	{
 		"name": "Color Spray",
 		"level": 1,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -4002,7 +4002,7 @@
 	{
 		"name": "Command",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -4165,7 +4165,7 @@
 	{
 		"name": "Commune",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -4235,7 +4235,7 @@
 	{
 		"name": "Commune with Nature",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -4326,7 +4326,7 @@
 	{
 		"name": "Compelled Duel",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -4402,7 +4402,7 @@
 	{
 		"name": "Comprehend Languages",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -4473,7 +4473,7 @@
 	{
 		"name": "Compulsion",
 		"level": 4,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -4518,7 +4518,7 @@
 	{
 		"name": "Cone of Cold",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -4605,7 +4605,7 @@
 	{
 		"name": "Confusion",
 		"level": 4,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -4745,7 +4745,7 @@
 	{
 		"name": "Conjure Animals",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -4835,7 +4835,7 @@
 	{
 		"name": "Conjure Barrage",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -4875,7 +4875,7 @@
 	{
 		"name": "Conjure Celestial",
 		"level": 7,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -4929,7 +4929,7 @@
 	{
 		"name": "Conjure Elemental",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5002,7 +5002,7 @@
 	{
 		"name": "Conjure Fey",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5061,7 +5061,7 @@
 	{
 		"name": "Conjure Minor Elementals",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5129,7 +5129,7 @@
 	{
 		"name": "Conjure Volley",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5169,7 +5169,7 @@
 	{
 		"name": "Conjure Woodland Beings",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5237,7 +5237,7 @@
 	{
 		"name": "Contact Other Plane",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -5286,7 +5286,7 @@
 	{
 		"name": "Contagion",
 		"level": 5,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -5398,7 +5398,7 @@
 	{
 		"name": "Contingency",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 10,
@@ -5443,7 +5443,7 @@
 	{
 		"name": "Continual Flame",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -5493,7 +5493,7 @@
 	{
 		"name": "Control Water",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -5597,7 +5597,7 @@
 	{
 		"name": "Control Weather",
 		"level": 8,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 10,
@@ -5758,7 +5758,7 @@
 	{
 		"name": "Cordon of Arrows",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -5812,7 +5812,7 @@
 	{
 		"name": "Counterspell",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5889,7 +5889,7 @@
 	{
 		"name": "Create Food and Water",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -5945,7 +5945,7 @@
 	{
 		"name": "Create Undead",
 		"level": 6,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -6004,7 +6004,7 @@
 	{
 		"name": "Create or Destroy Water",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -6071,7 +6071,7 @@
 	{
 		"name": "Creation",
 		"level": 5,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -6178,7 +6178,7 @@
 	{
 		"name": "Crown of Madness",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -6248,7 +6248,7 @@
 	{
 		"name": "Crusader's Mantle",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -6312,7 +6312,7 @@
 	{
 		"name": "Cure Wounds",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -6420,8 +6420,8 @@
 	},
 	{
 		"name": "Dancing Lights",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -6475,7 +6475,7 @@
 	{
 		"name": "Darkness",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -6552,7 +6552,7 @@
 	{
 		"name": "Darkvision",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -6611,7 +6611,7 @@
 	{
 		"name": "Daylight",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -6725,7 +6725,7 @@
 	{
 		"name": "Death Ward",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -6837,7 +6837,7 @@
 	{
 		"name": "Delayed Blast Fireball",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -6898,7 +6898,7 @@
 	{
 		"name": "Demiplane",
 		"level": 8,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -6945,7 +6945,7 @@
 	{
 		"name": "Destructive Wave",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -7025,7 +7025,7 @@
 	{
 		"name": "Detect Evil and Good",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -7072,7 +7072,7 @@
 	{
 		"name": "Detect Magic",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -7155,7 +7155,7 @@
 	{
 		"name": "Detect Poison and Disease",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -7212,7 +7212,7 @@
 	{
 		"name": "Detect Thoughts",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -7280,7 +7280,7 @@
 	{
 		"name": "Dimension Door",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -7364,7 +7364,7 @@
 	{
 		"name": "Disguise Self",
 		"level": 1,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -7482,7 +7482,7 @@
 	{
 		"name": "Disintegrate",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -7538,7 +7538,7 @@
 	{
 		"name": "Dispel Evil and Good",
 		"level": 5,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -7600,7 +7600,7 @@
 	{
 		"name": "Dispel Magic",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -7704,7 +7704,7 @@
 	{
 		"name": "Dissonant Whispers",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -7763,7 +7763,7 @@
 	{
 		"name": "Divination",
 		"level": 4,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -7831,7 +7831,7 @@
 	{
 		"name": "Divine Favor",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -7896,7 +7896,7 @@
 	{
 		"name": "Divine Word",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -7944,7 +7944,7 @@
 	{
 		"name": "Dominate Beast",
 		"level": 4,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -8076,7 +8076,7 @@
 	{
 		"name": "Dominate Monster",
 		"level": 8,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -8144,7 +8144,7 @@
 	{
 		"name": "Dominate Person",
 		"level": 5,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -8300,7 +8300,7 @@
 	{
 		"name": "Drawmij's Instant Summons",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -8348,7 +8348,7 @@
 	{
 		"name": "Dream",
 		"level": 5,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -8411,8 +8411,8 @@
 	},
 	{
 		"name": "Druidcraft",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -8460,7 +8460,7 @@
 	{
 		"name": "Earthquake",
 		"level": 8,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -8517,8 +8517,8 @@
 	},
 	{
 		"name": "Eldritch Blast",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -8558,7 +8558,7 @@
 	{
 		"name": "Elemental Weapon",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -8672,7 +8672,7 @@
 	{
 		"name": "Enhance Ability",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -8815,7 +8815,7 @@
 	{
 		"name": "Enlarge/Reduce",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -8871,7 +8871,7 @@
 	{
 		"name": "Ensnaring Strike",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -8935,7 +8935,7 @@
 	{
 		"name": "Entangle",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -9003,7 +9003,7 @@
 	{
 		"name": "Enthrall",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -9050,7 +9050,7 @@
 	{
 		"name": "Etherealness",
 		"level": 7,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -9122,7 +9122,7 @@
 	{
 		"name": "Evard's Black Tentacles",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -9181,7 +9181,7 @@
 	{
 		"name": "Expeditious Retreat",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -9248,7 +9248,7 @@
 	{
 		"name": "Eyebite",
 		"level": 6,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -9324,7 +9324,7 @@
 	{
 		"name": "Fabricate",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 10,
@@ -9391,7 +9391,7 @@
 	{
 		"name": "Faerie Fire",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -9461,7 +9461,7 @@
 	{
 		"name": "False Life",
 		"level": 1,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -9573,7 +9573,7 @@
 	{
 		"name": "Fear",
 		"level": 3,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -9683,7 +9683,7 @@
 	{
 		"name": "Feather Fall",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -9746,7 +9746,7 @@
 	{
 		"name": "Feeblemind",
 		"level": 8,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -9801,7 +9801,7 @@
 	{
 		"name": "Feign Death",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -9882,7 +9882,7 @@
 	{
 		"name": "Find Familiar",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -9930,7 +9930,7 @@
 	{
 		"name": "Find Steed",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 10,
@@ -9973,7 +9973,7 @@
 	{
 		"name": "Find Traps",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -10021,7 +10021,7 @@
 	{
 		"name": "Find the Path",
 		"level": 6,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -10075,7 +10075,7 @@
 	{
 		"name": "Finger of Death",
 		"level": 7,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -10122,8 +10122,8 @@
 	},
 	{
 		"name": "Fire Bolt",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10167,7 +10167,7 @@
 	{
 		"name": "Fire Shield",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10244,7 +10244,7 @@
 	{
 		"name": "Fire Storm",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10292,7 +10292,7 @@
 	{
 		"name": "Fireball",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10378,7 +10378,7 @@
 	{
 		"name": "Flame Blade",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10433,7 +10433,7 @@
 	{
 		"name": "Flame Strike",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10564,7 +10564,7 @@
 	{
 		"name": "Flaming Sphere",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -10666,7 +10666,7 @@
 	{
 		"name": "Flesh to Stone",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -10718,7 +10718,7 @@
 	{
 		"name": "Fly",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -10783,7 +10783,7 @@
 	{
 		"name": "Fog Cloud",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -10860,7 +10860,7 @@
 	{
 		"name": "Forbiddance",
 		"level": 6,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 10,
@@ -10909,7 +10909,7 @@
 	{
 		"name": "Forcecage",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -10966,7 +10966,7 @@
 	{
 		"name": "Foresight",
 		"level": 9,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -11022,7 +11022,7 @@
 	{
 		"name": "Freedom of Movement",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -11168,8 +11168,8 @@
 	},
 	{
 		"name": "Friends",
-		"level": 0,
-		"school": "E",
+		"level": "Cantrip",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -11224,7 +11224,7 @@
 	{
 		"name": "Gaseous Form",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -11305,7 +11305,7 @@
 	{
 		"name": "Gate",
 		"level": 9,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -11361,7 +11361,7 @@
 	{
 		"name": "Geas",
 		"level": 5,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -11442,7 +11442,7 @@
 	{
 		"name": "Gentle Repose",
 		"level": 2,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -11515,7 +11515,7 @@
 	{
 		"name": "Giant Insect",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -11584,7 +11584,7 @@
 	{
 		"name": "Glibness",
 		"level": 8,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -11629,7 +11629,7 @@
 	{
 		"name": "Globe of Invulnerability",
 		"level": 6,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -11688,7 +11688,7 @@
 	{
 		"name": "Glyph of Warding",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -11792,7 +11792,7 @@
 	{
 		"name": "Goodberry",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -11836,7 +11836,7 @@
 	{
 		"name": "Grasping Vine",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -11897,7 +11897,7 @@
 	{
 		"name": "Grease",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -11942,7 +11942,7 @@
 	{
 		"name": "Greater Invisibility",
 		"level": 4,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -12066,7 +12066,7 @@
 	{
 		"name": "Greater Restoration",
 		"level": 5,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -12144,7 +12144,7 @@
 	{
 		"name": "Guardian of Faith",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -12269,7 +12269,7 @@
 	{
 		"name": "Guards and Wards",
 		"level": 6,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 10,
@@ -12356,8 +12356,8 @@
 	},
 	{
 		"name": "Guidance",
-		"level": 0,
-		"school": "D",
+		"level": "Cantrip",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -12404,7 +12404,7 @@
 	{
 		"name": "Guiding Bolt",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -12478,7 +12478,7 @@
 	{
 		"name": "Gust of Wind",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -12546,7 +12546,7 @@
 	{
 		"name": "Hail of Thorns",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -12597,7 +12597,7 @@
 	{
 		"name": "Hallow",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 24,
@@ -12723,7 +12723,7 @@
 	{
 		"name": "Hallucinatory Terrain",
 		"level": 4,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 10,
@@ -12793,7 +12793,7 @@
 	{
 		"name": "Harm",
 		"level": 6,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -12832,7 +12832,7 @@
 	{
 		"name": "Haste",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -12959,7 +12959,7 @@
 	{
 		"name": "Heal",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -13011,7 +13011,7 @@
 	{
 		"name": "Healing Word",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -13066,7 +13066,7 @@
 	{
 		"name": "Heat Metal",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -13157,7 +13157,7 @@
 	{
 		"name": "Hellish Rebuke",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -13217,7 +13217,7 @@
 	{
 		"name": "Heroes' Feast",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 10,
@@ -13262,7 +13262,7 @@
 	{
 		"name": "Heroism",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -13318,7 +13318,7 @@
 	{
 		"name": "Hex",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -13374,7 +13374,7 @@
 	{
 		"name": "Hold Monster",
 		"level": 5,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -13482,7 +13482,7 @@
 	{
 		"name": "Hold Person",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -13629,7 +13629,7 @@
 	{
 		"name": "Holy Aura",
 		"level": 8,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -13673,7 +13673,7 @@
 	{
 		"name": "Hunger of Hadar",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -13719,7 +13719,7 @@
 	{
 		"name": "Hunter's Mark",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -13783,7 +13783,7 @@
 	{
 		"name": "Hypnotic Pattern",
 		"level": 3,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -13862,7 +13862,7 @@
 	{
 		"name": "Ice Storm",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -13963,7 +13963,7 @@
 	{
 		"name": "Identify",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -14042,7 +14042,7 @@
 	{
 		"name": "Illusory Script",
 		"level": 1,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -14098,7 +14098,7 @@
 	{
 		"name": "Imprisonment",
 		"level": 9,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -14195,7 +14195,7 @@
 	{
 		"name": "Incendiary Cloud",
 		"level": 8,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -14245,7 +14245,7 @@
 	{
 		"name": "Inflict Wounds",
 		"level": 1,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -14314,7 +14314,7 @@
 	{
 		"name": "Insect Plague",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -14483,7 +14483,7 @@
 	{
 		"name": "Invisibility",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -14575,7 +14575,7 @@
 	{
 		"name": "Jump",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -14646,7 +14646,7 @@
 	{
 		"name": "Knock",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -14695,7 +14695,7 @@
 	{
 		"name": "Legend Lore",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 10,
@@ -14785,7 +14785,7 @@
 	{
 		"name": "Leomund's Secret Chest",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -14842,7 +14842,7 @@
 	{
 		"name": "Leomund's Tiny Hut",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -14895,7 +14895,7 @@
 	{
 		"name": "Lesser Restoration",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -14995,7 +14995,7 @@
 	{
 		"name": "Levitate",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -15057,8 +15057,8 @@
 	},
 	{
 		"name": "Light",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -15113,7 +15113,7 @@
 	{
 		"name": "Lightning Arrow",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -15167,7 +15167,7 @@
 	{
 		"name": "Lightning Bolt",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -15244,7 +15244,7 @@
 	{
 		"name": "Locate Animals or Plants",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -15294,7 +15294,7 @@
 	{
 		"name": "Locate Creature",
 		"level": 4,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -15403,7 +15403,7 @@
 	{
 		"name": "Locate Object",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -15481,7 +15481,7 @@
 	{
 		"name": "Longstrider",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -15549,7 +15549,7 @@
 	{
 		"name": "Mage Armor",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -15595,8 +15595,8 @@
 	},
 	{
 		"name": "Mage Hand",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -15653,7 +15653,7 @@
 	{
 		"name": "Magic Circle",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -15780,7 +15780,7 @@
 	{
 		"name": "Magic Jar",
 		"level": 6,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -15828,7 +15828,7 @@
 	{
 		"name": "Magic Missile",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -15892,7 +15892,7 @@
 	{
 		"name": "Magic Mouth",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -15944,7 +15944,7 @@
 	{
 		"name": "Magic Weapon",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -16076,7 +16076,7 @@
 	{
 		"name": "Major Image",
 		"level": 3,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -16144,7 +16144,7 @@
 	{
 		"name": "Mass Cure Wounds",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -16222,7 +16222,7 @@
 	{
 		"name": "Mass Heal",
 		"level": 9,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -16261,7 +16261,7 @@
 	{
 		"name": "Mass Healing Word",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -16308,7 +16308,7 @@
 	{
 		"name": "Mass Suggestion",
 		"level": 6,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -16375,7 +16375,7 @@
 	{
 		"name": "Maze",
 		"level": 8,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -16421,7 +16421,7 @@
 	{
 		"name": "Meld into Stone",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -16485,7 +16485,7 @@
 	{
 		"name": "Melf's Acid Arrow",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -16546,8 +16546,8 @@
 	},
 	{
 		"name": "Mending",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -16602,8 +16602,8 @@
 	},
 	{
 		"name": "Message",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -16656,7 +16656,7 @@
 	{
 		"name": "Meteor Swarm",
 		"level": 9,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -16700,7 +16700,7 @@
 	{
 		"name": "Mind Blank",
 		"level": 8,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -16745,8 +16745,8 @@
 	},
 	{
 		"name": "Minor Illusion",
-		"level": 0,
-		"school": "I",
+		"level": "Cantrip",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -16804,7 +16804,7 @@
 	{
 		"name": "Mirage Arcane",
 		"level": 7,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 10,
@@ -16857,7 +16857,7 @@
 	{
 		"name": "Mirror Image",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -16954,7 +16954,7 @@
 	{
 		"name": "Mislead",
 		"level": 5,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -17001,7 +17001,7 @@
 	{
 		"name": "Misty Step",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -17099,7 +17099,7 @@
 	{
 		"name": "Modify Memory",
 		"level": 5,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -17182,7 +17182,7 @@
 	{
 		"name": "Moonbeam",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -17251,7 +17251,7 @@
 	{
 		"name": "Mordenkainen's Faithful Hound",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -17301,7 +17301,7 @@
 	{
 		"name": "Mordenkainen's Magnificent Mansion",
 		"level": 7,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -17351,7 +17351,7 @@
 	{
 		"name": "Mordenkainen's Private Sanctum",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 10,
@@ -17421,7 +17421,7 @@
 	{
 		"name": "Mordenkainen's Sword",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -17471,7 +17471,7 @@
 	{
 		"name": "Move Earth",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -17528,7 +17528,7 @@
 	{
 		"name": "Nondetection",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -17601,7 +17601,7 @@
 	{
 		"name": "Nystul's Magic Aura",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -17671,7 +17671,7 @@
 	{
 		"name": "Otiluke's Freezing Sphere",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -17744,7 +17744,7 @@
 	{
 		"name": "Otiluke's Resilient Sphere",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -17808,7 +17808,7 @@
 	{
 		"name": "Otto's Irresistible Dance",
 		"level": 6,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -17856,7 +17856,7 @@
 	{
 		"name": "Pass Without Trace",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -17927,7 +17927,7 @@
 	{
 		"name": "Passwall",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -18005,7 +18005,7 @@
 	{
 		"name": "Phantasmal Force",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -18084,7 +18084,7 @@
 	{
 		"name": "Phantasmal Killer",
 		"level": 4,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -18159,7 +18159,7 @@
 	{
 		"name": "Phantom Steed",
 		"level": 3,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -18206,7 +18206,7 @@
 	{
 		"name": "Planar Ally",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 10,
@@ -18250,7 +18250,7 @@
 	{
 		"name": "Planar Binding",
 		"level": 5,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -18368,7 +18368,7 @@
 	{
 		"name": "Plane Shift",
 		"level": 7,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -18425,7 +18425,7 @@
 	{
 		"name": "Plant Growth",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -18521,8 +18521,8 @@
 	},
 	{
 		"name": "Poison Spray",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -18574,7 +18574,7 @@
 	{
 		"name": "Polymorph",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -18648,7 +18648,7 @@
 	{
 		"name": "Power Word Heal",
 		"level": 9,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -18686,7 +18686,7 @@
 	{
 		"name": "Power Word Kill",
 		"level": 9,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -18736,7 +18736,7 @@
 	{
 		"name": "Power Word Stun",
 		"level": 8,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -18787,7 +18787,7 @@
 	{
 		"name": "Prayer of Healing",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 10,
@@ -18833,8 +18833,8 @@
 	},
 	{
 		"name": "Prestidigitation",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -18902,7 +18902,7 @@
 	{
 		"name": "Prismatic Spray",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -19001,7 +19001,7 @@
 	{
 		"name": "Prismatic Wall",
 		"level": 9,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -19095,8 +19095,8 @@
 	},
 	{
 		"name": "Produce Flame",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -19140,7 +19140,7 @@
 	{
 		"name": "Programmed Illusion",
 		"level": 6,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -19190,7 +19190,7 @@
 	{
 		"name": "Project Image",
 		"level": 7,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -19243,7 +19243,7 @@
 	{
 		"name": "Protection from Energy",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -19399,7 +19399,7 @@
 	{
 		"name": "Protection from Evil and Good",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -19568,7 +19568,7 @@
 	{
 		"name": "Protection from Poison",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -19649,7 +19649,7 @@
 	{
 		"name": "Purify Food and Drink",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -19699,7 +19699,7 @@
 	{
 		"name": "Raise Dead",
 		"level": 5,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -19781,7 +19781,7 @@
 	{
 		"name": "Rary's Telepathic Bond",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -19829,7 +19829,7 @@
 	{
 		"name": "Ray of Enfeeblement",
 		"level": 2,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -19929,8 +19929,8 @@
 	},
 	{
 		"name": "Ray of Frost",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -19974,7 +19974,7 @@
 	{
 		"name": "Ray of Sickness",
 		"level": 1,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -20048,7 +20048,7 @@
 	{
 		"name": "Regenerate",
 		"level": 7,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -20100,7 +20100,7 @@
 	{
 		"name": "Reincarnate",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -20211,7 +20211,7 @@
 	{
 		"name": "Remove Curse",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -20260,8 +20260,8 @@
 	},
 	{
 		"name": "Resistance",
-		"level": 0,
-		"school": "A",
+		"level": "Cantrip",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -20309,7 +20309,7 @@
 	{
 		"name": "Resurrection",
 		"level": 7,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -20356,7 +20356,7 @@
 	{
 		"name": "Reverse Gravity",
 		"level": 7,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -20411,7 +20411,7 @@
 	{
 		"name": "Revivify",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -20510,7 +20510,7 @@
 	{
 		"name": "Rope Trick",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -20601,8 +20601,8 @@
 	},
 	{
 		"name": "Sacred Flame",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -20642,7 +20642,7 @@
 	{
 		"name": "Sanctuary",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -20723,7 +20723,7 @@
 	{
 		"name": "Scorching Ray",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -20798,7 +20798,7 @@
 	{
 		"name": "Scrying",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 10,
@@ -20977,7 +20977,7 @@
 	{
 		"name": "Searing Smite",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -21070,7 +21070,7 @@
 	{
 		"name": "See Invisibility",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -21121,7 +21121,7 @@
 	{
 		"name": "Seeming",
 		"level": 5,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -21227,7 +21227,7 @@
 	{
 		"name": "Sending",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -21297,7 +21297,7 @@
 	{
 		"name": "Sequester",
 		"level": 7,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -21341,7 +21341,7 @@
 	{
 		"name": "Shapechange",
 		"level": 9,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -21394,7 +21394,7 @@
 	{
 		"name": "Shatter",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -21478,7 +21478,7 @@
 	{
 		"name": "Shield",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -21566,7 +21566,7 @@
 	{
 		"name": "Shield of Faith",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -21640,8 +21640,8 @@
 	},
 	{
 		"name": "Shillelagh",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -21683,8 +21683,8 @@
 	},
 	{
 		"name": "Shocking Grasp",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -21727,7 +21727,7 @@
 	{
 		"name": "Silence",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -21815,7 +21815,7 @@
 	{
 		"name": "Silent Image",
 		"level": 1,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -21870,7 +21870,7 @@
 	{
 		"name": "Simulacrum",
 		"level": 7,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 12,
@@ -21915,7 +21915,7 @@
 	{
 		"name": "Sleep",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -22010,7 +22010,7 @@
 	{
 		"name": "Sleet Storm",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -22088,7 +22088,7 @@
 	{
 		"name": "Slow",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -22162,8 +22162,8 @@
 	},
 	{
 		"name": "Spare the Dying",
-		"level": 0,
-		"school": "N",
+		"level": "Cantrip",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -22201,7 +22201,7 @@
 	{
 		"name": "Speak with Animals",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -22276,7 +22276,7 @@
 	{
 		"name": "Speak with Dead",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -22367,7 +22367,7 @@
 	{
 		"name": "Speak with Plants",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -22422,7 +22422,7 @@
 	{
 		"name": "Spider Climb",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -22513,7 +22513,7 @@
 	{
 		"name": "Spike Growth",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -22597,7 +22597,7 @@
 	{
 		"name": "Spirit Guardians",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -22674,7 +22674,7 @@
 	{
 		"name": "Spiritual Weapon",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -22790,7 +22790,7 @@
 	{
 		"name": "Staggering Smite",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -22864,7 +22864,7 @@
 	{
 		"name": "Stinking Cloud",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -22953,7 +22953,7 @@
 	{
 		"name": "Stone Shape",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -23028,7 +23028,7 @@
 	{
 		"name": "Stoneskin",
 		"level": 4,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -23170,7 +23170,7 @@
 	{
 		"name": "Storm of Vengeance",
 		"level": 9,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -23242,7 +23242,7 @@
 	{
 		"name": "Suggestion",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -23323,7 +23323,7 @@
 	{
 		"name": "Sunbeam",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -23378,7 +23378,7 @@
 	{
 		"name": "Sunburst",
 		"level": 8,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -23428,7 +23428,7 @@
 	{
 		"name": "Swift Quiver",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -23473,7 +23473,7 @@
 	{
 		"name": "Symbol",
 		"level": 7,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -23584,7 +23584,7 @@
 	{
 		"name": "Tasha's Hideous Laughter",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -23646,7 +23646,7 @@
 	{
 		"name": "Telekinesis",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -23723,7 +23723,7 @@
 	{
 		"name": "Telepathy",
 		"level": 8,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -23767,7 +23767,7 @@
 	{
 		"name": "Teleport",
 		"level": 7,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -23919,7 +23919,7 @@
 	{
 		"name": "Teleportation Circle",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -24024,7 +24024,7 @@
 	{
 		"name": "Tenser's Floating Disk",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -24072,8 +24072,8 @@
 	},
 	{
 		"name": "Thaumaturgy",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -24127,8 +24127,8 @@
 	},
 	{
 		"name": "Thorn Whip",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -24169,7 +24169,7 @@
 	{
 		"name": "Thunderous Smite",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -24233,7 +24233,7 @@
 	{
 		"name": "Thunderwave",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -24306,7 +24306,7 @@
 	{
 		"name": "Time Stop",
 		"level": 9,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -24348,7 +24348,7 @@
 	{
 		"name": "Tongues",
 		"level": 3,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -24406,7 +24406,7 @@
 	{
 		"name": "Transport via Plants",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -24449,7 +24449,7 @@
 	{
 		"name": "Tree Stride",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -24529,7 +24529,7 @@
 	{
 		"name": "True Polymorph",
 		"level": 9,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -24609,7 +24609,7 @@
 	{
 		"name": "True Resurrection",
 		"level": 9,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -24655,7 +24655,7 @@
 	{
 		"name": "True Seeing",
 		"level": 6,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -24713,8 +24713,8 @@
 	},
 	{
 		"name": "True Strike",
-		"level": 0,
-		"school": "D",
+		"level": "Cantrip",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -24770,7 +24770,7 @@
 	{
 		"name": "Tsunami",
 		"level": 8,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -24817,7 +24817,7 @@
 	{
 		"name": "Unseen Servant",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -24874,7 +24874,7 @@
 	{
 		"name": "Vampiric Touch",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -24971,8 +24971,8 @@
 	},
 	{
 		"name": "Vicious Mockery",
-		"level": 0,
-		"school": "E",
+		"level": "Cantrip",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -25011,7 +25011,7 @@
 	{
 		"name": "Wall of Fire",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -25137,7 +25137,7 @@
 	{
 		"name": "Wall of Force",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -25215,7 +25215,7 @@
 	{
 		"name": "Wall of Ice",
 		"level": 6,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -25271,7 +25271,7 @@
 	{
 		"name": "Wall of Stone",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -25353,7 +25353,7 @@
 	{
 		"name": "Wall of Thorns",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -25409,7 +25409,7 @@
 	{
 		"name": "Warding Bond",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -25475,7 +25475,7 @@
 	{
 		"name": "Water Breathing",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -25551,7 +25551,7 @@
 	{
 		"name": "Water Walk",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -25639,7 +25639,7 @@
 	{
 		"name": "Web",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -25705,7 +25705,7 @@
 	{
 		"name": "Weird",
 		"level": 9,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -25749,7 +25749,7 @@
 	{
 		"name": "Wind Walk",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -25794,7 +25794,7 @@
 	{
 		"name": "Wind Wall",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -25857,7 +25857,7 @@
 	{
 		"name": "Wish",
 		"level": 9,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -25911,7 +25911,7 @@
 	{
 		"name": "Witch Bolt",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -25973,7 +25973,7 @@
 	{
 		"name": "Word of Recall",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -26012,7 +26012,7 @@
 	{
 		"name": "Wrathful Smite",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -26086,7 +26086,7 @@
 	{
 		"name": "Zone of Truth",
 		"level": 2,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -26200,8 +26200,8 @@
 	{
 		"name": "Booming Blade",
 		"source": "SCAG",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -26252,8 +26252,8 @@
 	{
 		"name": "Green-Flame Blade",
 		"source": "SCAG",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -26304,8 +26304,8 @@
 	{
 		"name": "Lightning Lure",
 		"source": "SCAG",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -26351,8 +26351,8 @@
 	{
 		"name": "Sword Burst",
 		"source": "SCAG",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -26399,7 +26399,7 @@
 		"name": "Arcane Hacking (UA)",
 		"source": "UAModernMagic",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -26475,7 +26475,7 @@
 		"name": "Commune with City (UA)",
 		"source": "UAModernMagic",
 		"level": 5,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -26548,7 +26548,7 @@
 		"name": "Conjure Knowbot (UA)",
 		"source": "UAModernMagic",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -26624,7 +26624,7 @@
 		"name": "Digital Phantom (UA)",
 		"source": "UAModernMagic",
 		"level": 2,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -26691,7 +26691,7 @@
 		"name": "Find Vehicle (UA)",
 		"source": "UAModernMagic",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 10,
@@ -26766,7 +26766,7 @@
 		"name": "Haywire (UA)",
 		"source": "UAModernMagic",
 		"level": 3,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -26872,7 +26872,7 @@
 		"name": "Infallible Relay (UA)",
 		"source": "UAModernMagic",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -26940,7 +26940,7 @@
 		"name": "Invisibility to Cameras (UA)",
 		"source": "UAModernMagic",
 		"level": 3,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -27007,8 +27007,8 @@
 	{
 		"name": "On/Off (UA)",
 		"source": "UAModernMagic",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -27058,7 +27058,7 @@
 		"name": "Protection from Ballistics (UA)",
 		"source": "UAModernMagic",
 		"level": 3,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -27122,7 +27122,7 @@
 		"name": "Remote Access (UA)",
 		"source": "UAModernMagic",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -27198,7 +27198,7 @@
 		"name": "Shutdown (UA)",
 		"source": "UAModernMagic",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -27275,7 +27275,7 @@
 		"name": "Synchronicity (UA)",
 		"source": "UAModernMagic",
 		"level": 4,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -27350,7 +27350,7 @@
 		"name": "System Backdoor (UA)",
 		"source": "UAModernMagic",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -27427,7 +27427,7 @@
 		"name": "Cause Fear (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -27475,7 +27475,7 @@
 		"name": "Ceremony (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -27571,7 +27571,7 @@
 		"name": "Chaos Bolt (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -27666,7 +27666,7 @@
 		"name": "Guiding Hand (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -27726,8 +27726,8 @@
 	{
 		"name": "Hand of Radiance (UA)",
 		"source": "UAStarterSpells",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -27767,7 +27767,7 @@
 		"name": "Healing Elixir (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -27814,8 +27814,8 @@
 	{
 		"name": "Infestation (UA)",
 		"source": "UAStarterSpells",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -27867,8 +27867,8 @@
 	{
 		"name": "Primal Savagery (UA)",
 		"source": "UAStarterSpells",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -27906,7 +27906,7 @@
 		"name": "Puppet (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -27952,7 +27952,7 @@
 		"name": "Sense Emotion (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -27999,7 +27999,7 @@
 		"name": "Snare (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28053,7 +28053,7 @@
 		"name": "Sudden Awakening (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -28102,8 +28102,8 @@
 	{
 		"name": "Toll the Dead (UA)",
 		"source": "UAStarterSpells",
-		"level": 0,
-		"school": "N",
+		"level": "Cantrip",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -28147,7 +28147,7 @@
 		"name": "Unearthly Chorus (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -28190,8 +28190,8 @@
 	{
 		"name": "Virtue (UA)",
 		"source": "UAStarterSpells",
-		"level": 0,
-		"school": "A",
+		"level": "Cantrip",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28233,7 +28233,7 @@
 		"name": "Wild Cunning (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -28290,7 +28290,7 @@
 		"name": "Zephyr Strike (UA)",
 		"source": "UAStarterSpells",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -28333,7 +28333,7 @@
 		"name": "Conjure Barlgura (UA)",
 		"source": "UAThatOldBlackMagic",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28383,7 +28383,7 @@
 		"name": "Conjure Hezrou (UA)",
 		"source": "UAThatOldBlackMagic",
 		"level": 7,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28435,7 +28435,7 @@
 		"name": "Conjure Lesser Demon (UA)",
 		"source": "UAThatOldBlackMagic",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28495,7 +28495,7 @@
 		"name": "Conjure Shadow Demon (UA)",
 		"source": "UAThatOldBlackMagic",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28546,7 +28546,7 @@
 		"name": "Conjure Vrock (UA)",
 		"source": "UAThatOldBlackMagic",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28598,7 +28598,7 @@
 		"name": "Abi-Dalzim's Horrid Wilting",
 		"source": "XGE",
 		"level": 8,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -28643,7 +28643,7 @@
 		"name": "Absorb Elements",
 		"source": "XGE",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -28706,7 +28706,7 @@
 		"name": "Aganazzar's Scorcher",
 		"source": "XGE",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -28759,7 +28759,7 @@
 		"name": "Beast Bond",
 		"source": "XGE",
 		"level": 1,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -28807,7 +28807,7 @@
 		"name": "Bones of the Earth",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -28857,7 +28857,7 @@
 		"name": "Catapult",
 		"source": "XGE",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -28908,7 +28908,7 @@
 		"name": "Catnap",
 		"source": "XGE",
 		"level": 3,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -28968,7 +28968,7 @@
 		"name": "Cause Fear",
 		"source": "XGE",
 		"level": 1,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -29024,7 +29024,7 @@
 		"name": "Ceremony",
 		"source": "XGE",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -29112,7 +29112,7 @@
 		"name": "Chaos Bolt",
 		"source": "XGE",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -29208,7 +29208,7 @@
 		"name": "Charm Monster",
 		"source": "XGE",
 		"level": 4,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -29275,8 +29275,8 @@
 	{
 		"name": "Control Flames",
 		"source": "XGE",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -29339,7 +29339,7 @@
 		"name": "Control Winds",
 		"source": "XGE",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -29411,8 +29411,8 @@
 	{
 		"name": "Create Bonfire",
 		"source": "XGE",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -29469,7 +29469,7 @@
 		"name": "Create Homunculus",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -29510,7 +29510,7 @@
 		"name": "Crown of Stars",
 		"source": "XGE",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -29570,7 +29570,7 @@
 		"name": "Danse Macabre",
 		"source": "XGE",
 		"level": 5,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -29629,7 +29629,7 @@
 		"name": "Dawn",
 		"source": "XGE",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -29680,7 +29680,7 @@
 		"name": "Dragon's Breath",
 		"source": "XGE",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -29737,7 +29737,7 @@
 		"name": "Druid Grove",
 		"source": "XGE",
 		"level": 6,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 10,
@@ -29819,7 +29819,7 @@
 		"name": "Dust Devil",
 		"source": "XGE",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -29883,7 +29883,7 @@
 		"name": "Earth Tremor",
 		"source": "XGE",
 		"level": 1,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -29943,7 +29943,7 @@
 		"name": "Earthbind",
 		"source": "XGE",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -29998,7 +29998,7 @@
 		"name": "Elemental Bane",
 		"source": "XGE",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -30059,7 +30059,7 @@
 		"name": "Enemies Abound",
 		"source": "XGE",
 		"level": 3,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -30116,7 +30116,7 @@
 		"name": "Enervation",
 		"source": "XGE",
 		"level": 5,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -30178,7 +30178,7 @@
 		"name": "Erupting Earth",
 		"source": "XGE",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -30235,7 +30235,7 @@
 		"name": "Far Step",
 		"source": "XGE",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -30285,7 +30285,7 @@
 		"name": "Find Greater Steed",
 		"source": "XGE",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 10,
@@ -30328,7 +30328,7 @@
 		"name": "Flame Arrows",
 		"source": "XGE",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -30391,8 +30391,8 @@
 	{
 		"name": "Frostbite",
 		"source": "XGE",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -30444,7 +30444,7 @@
 		"name": "Guardian of Nature",
 		"source": "XGE",
 		"level": 4,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -30521,8 +30521,8 @@
 	{
 		"name": "Gust",
 		"source": "XGE",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -30577,7 +30577,7 @@
 		"name": "Healing Spirit",
 		"source": "XGE",
 		"level": 2,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -30636,7 +30636,7 @@
 		"name": "Holy Weapon",
 		"source": "XGE",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -30684,7 +30684,7 @@
 		"name": "Ice Knife",
 		"source": "XGE",
 		"level": 1,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -30740,7 +30740,7 @@
 		"name": "Illusory Dragon",
 		"source": "XGE",
 		"level": 8,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -30786,7 +30786,7 @@
 		"name": "Immolation",
 		"source": "XGE",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -30834,7 +30834,7 @@
 		"name": "Infernal Calling",
 		"source": "XGE",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -30895,8 +30895,8 @@
 	{
 		"name": "Infestation",
 		"source": "XGE",
-		"level": 0,
-		"school": "C",
+		"level": "Cantrip",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -30949,7 +30949,7 @@
 		"name": "Investiture of Flame",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31012,7 +31012,7 @@
 		"name": "Investiture of Ice",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31076,7 +31076,7 @@
 		"name": "Investiture of Stone",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31139,7 +31139,7 @@
 		"name": "Investiture of Wind",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31202,7 +31202,7 @@
 		"name": "Invulnerability",
 		"source": "XGE",
 		"level": 9,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -31246,7 +31246,7 @@
 		"name": "Life Transference",
 		"source": "XGE",
 		"level": 3,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -31298,7 +31298,7 @@
 		"name": "Maddening Darkness",
 		"source": "XGE",
 		"level": 8,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -31347,7 +31347,7 @@
 		"name": "Maelstrom",
 		"source": "XGE",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -31391,8 +31391,8 @@
 	{
 		"name": "Magic Stone",
 		"source": "XGE",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31439,7 +31439,7 @@
 		"name": "Mass Polymorph",
 		"source": "XGE",
 		"level": 9,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31496,7 +31496,7 @@
 		"name": "Maximilian's Earthen Grasp",
 		"source": "XGE",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31548,7 +31548,7 @@
 		"name": "Melf's Minute Meteors",
 		"source": "XGE",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -31605,7 +31605,7 @@
 		"name": "Mental Prison",
 		"source": "XGE",
 		"level": 6,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -31656,7 +31656,7 @@
 		"name": "Mighty Fortress",
 		"source": "XGE",
 		"level": 8,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -31702,7 +31702,7 @@
 		"name": "Mind Spike",
 		"source": "XGE",
 		"level": 2,
-		"school": "D",
+		"school": "Divination",
 		"time": [
 			{
 				"number": 1,
@@ -31761,8 +31761,8 @@
 	{
 		"name": "Mold Earth",
 		"source": "XGE",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31824,7 +31824,7 @@
 		"name": "Negative Energy Flood",
 		"source": "XGE",
 		"level": 5,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -31868,7 +31868,7 @@
 		"name": "Power Word Pain",
 		"source": "XGE",
 		"level": 7,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -31915,8 +31915,8 @@
 	{
 		"name": "Primal Savagery",
 		"source": "XGE",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -31954,7 +31954,7 @@
 		"name": "Primordial Ward",
 		"source": "XGE",
 		"level": 6,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -31998,7 +31998,7 @@
 		"name": "Psychic Scream",
 		"source": "XGE",
 		"level": 9,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -32050,7 +32050,7 @@
 		"name": "Pyrotechnics",
 		"source": "XGE",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -32111,7 +32111,7 @@
 		"name": "Scatter",
 		"source": "XGE",
 		"level": 6,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -32157,7 +32157,7 @@
 		"name": "Shadow Blade",
 		"source": "XGE",
 		"level": 2,
-		"school": "I",
+		"school": "Illusion",
 		"time": [
 			{
 				"number": 1,
@@ -32218,7 +32218,7 @@
 		"name": "Shadow of Moil",
 		"source": "XGE",
 		"level": 4,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -32262,8 +32262,8 @@
 	{
 		"name": "Shape Water",
 		"source": "XGE",
-		"level": 0,
-		"school": "T",
+		"level": "Cantrip",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -32326,7 +32326,7 @@
 		"name": "Sickening Radiance",
 		"source": "XGE",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -32379,7 +32379,7 @@
 		"name": "Skill Empowerment",
 		"source": "XGE",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -32431,7 +32431,7 @@
 		"name": "Skywrite",
 		"source": "XGE",
 		"level": 2,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -32485,7 +32485,7 @@
 		"name": "Snare",
 		"source": "XGE",
 		"level": 1,
-		"school": "A",
+		"school": "Abjuration",
 		"time": [
 			{
 				"number": 1,
@@ -32540,7 +32540,7 @@
 		"name": "Snilloc's Snowball Swarm",
 		"source": "XGE",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -32593,7 +32593,7 @@
 		"name": "Soul Cage",
 		"source": "XGE",
 		"level": 6,
-		"school": "N",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -32671,7 +32671,7 @@
 		"name": "Steel Wind Strike",
 		"source": "XGE",
 		"level": 5,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -32715,7 +32715,7 @@
 		"name": "Storm Sphere",
 		"source": "XGE",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -32774,7 +32774,7 @@
 		"name": "Summon Greater Demon",
 		"source": "XGE",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -32835,7 +32835,7 @@
 		"name": "Summon Lesser Demons",
 		"source": "XGE",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -32921,7 +32921,7 @@
 		"name": "Synaptic Static",
 		"source": "XGE",
 		"level": 5,
-		"school": "E",
+		"school": "Enchantment",
 		"time": [
 			{
 				"number": 1,
@@ -32973,7 +32973,7 @@
 		"name": "Temple of the Gods",
 		"source": "XGE",
 		"level": 7,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -33024,7 +33024,7 @@
 		"name": "Tenser's Transformation",
 		"source": "XGE",
 		"level": 6,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -33080,7 +33080,7 @@
 		"name": "Thunder Step",
 		"source": "XGE",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -33135,8 +33135,8 @@
 	{
 		"name": "Thunderclap",
 		"source": "XGE",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33191,7 +33191,7 @@
 		"name": "Tidal Wave",
 		"source": "XGE",
 		"level": 3,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -33239,7 +33239,7 @@
 		"name": "Tiny Servant",
 		"source": "XGE",
 		"level": 3,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -33291,8 +33291,8 @@
 	{
 		"name": "Toll the Dead",
 		"source": "XGE",
-		"level": 0,
-		"school": "N",
+		"level": "Cantrip",
+		"school": "Necromancy",
 		"time": [
 			{
 				"number": 1,
@@ -33340,7 +33340,7 @@
 		"name": "Transmute Rock",
 		"source": "XGE",
 		"level": 5,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,
@@ -33403,7 +33403,7 @@
 		"name": "Vitriolic Sphere",
 		"source": "XGE",
 		"level": 4,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33456,7 +33456,7 @@
 		"name": "Wall of Light",
 		"source": "XGE",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33521,7 +33521,7 @@
 		"name": "Wall of Sand",
 		"source": "XGE",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33566,7 +33566,7 @@
 		"name": "Wall of Water",
 		"source": "XGE",
 		"level": 3,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33620,7 +33620,7 @@
 		"name": "Warding Wind",
 		"source": "XGE",
 		"level": 2,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33685,7 +33685,7 @@
 		"name": "Watery Sphere",
 		"source": "XGE",
 		"level": 4,
-		"school": "C",
+		"school": "Conjuration",
 		"time": [
 			{
 				"number": 1,
@@ -33742,7 +33742,7 @@
 		"name": "Whirlwind",
 		"source": "XGE",
 		"level": 7,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33795,8 +33795,8 @@
 	{
 		"name": "Word of Radiance",
 		"source": "XGE",
-		"level": 0,
-		"school": "V",
+		"level": "Cantrip",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33836,7 +33836,7 @@
 		"name": "Wrath of Nature",
 		"source": "XGE",
 		"level": 5,
-		"school": "V",
+		"school": "Evocation",
 		"time": [
 			{
 				"number": 1,
@@ -33912,7 +33912,7 @@
 		"name": "Zephyr Strike",
 		"source": "XGE",
 		"level": 1,
-		"school": "T",
+		"school": "Transmutation",
 		"time": [
 			{
 				"number": 1,

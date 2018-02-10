@@ -2,17 +2,14 @@
   <div>
     <a @click="toggleSpell">
       <h3 class="title">{{ model.name }}</h3>
-      <h6 class="subtitle is-size-6 is-italic is-spell-level">
-        <!-- TODO: present cantrips properly and format numbers -->
-        {{ model.level }}-level {{ model.school }}
-      </h6>
+      <h6 class="subtitle is-size-6 is-italic is-spell-level">{{ spellLevelSchool }}</h6>
     </a>
     <transition name="fade-grow">
       <div v-if="!collapse">
-        <p><strong>Casting Time: </strong>{{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>
-        <p><strong>Range: </strong>{{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
-        <p><strong>Components: </strong> {{ spellComponents }}</p>
-        <p><strong>Duration: </strong> {{ spellDuration }}</p>
+        <p><strong>Casting Time:</strong> {{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>
+        <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
+        <p><strong>Components:</strong> {{ spellComponents }}</p>
+        <p><strong>Duration:</strong> {{ spellDuration }}</p>
         <spell-entry :model="model.entries" />
         <spell-entry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
       </div>
@@ -42,6 +39,22 @@ export default {
     }
   },
   computed: {
+    spellLevelSchool: function () {
+      let spellLevel = ''
+      if (typeof this.model.level === 'string' && this.model.level.toLowerCase() === 'cantrip') {
+        spellLevel = this.model.level
+      } else if (this.model.level === 1) {
+        spellLevel = `${this.model.level}st-level`
+      } else if (this.model.level === 2) {
+        spellLevel = `${this.model.level}nd-level`
+      } else if (this.model.level === 3) {
+        spellLevel = `${this.model.level}rd-level`
+      } else {
+        spellLevel = `${this.model.level}th-level`
+      }
+      let spellLevelSchool = spellLevel.toLowerCase() === 'cantrip' ? `${this.model.school} ${spellLevel}` : `${spellLevel} ${this.model.school}`
+      return spellLevelSchool.toLowerCase()
+    },
     spellComponents: function () {
       let spellComponents = []
       if (this.model.components.v) spellComponents.push('V')
@@ -50,7 +63,7 @@ export default {
       return spellComponents.join(', ')
     },
     spellDuration: function () {
-      // Timed spells
+      // Timed spells & concentration
       if (this.model.duration[0]['type'] === 'timed') {
         if (this.model.duration[0]['type']['concentration']) {
           return `Concentration, up to ${this.model.duration[0]['duration']['amount']} ${this.model.duration[0]['duration']['type']}`
@@ -65,7 +78,7 @@ export default {
       // Special
       if (this.model.duration[0]['type'] === 'special') return 'Special'
 
-      // Permanent
+      // Permanent, triggered & dispelled
       if (this.model.duration[0]['type'] === 'permanent') {
         if (this.model.duration[0]['ends']) {
           if (this.model.duration[0]['ends'].length === 2) {
@@ -85,8 +98,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .is-spell-level {
   padding-top:0.3em;
+  &::first-letter {
+    text-transform:capitalize;
+  }
 }
 </style>
