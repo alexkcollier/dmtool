@@ -5,8 +5,20 @@
         <nuxt-link to="/">dmtool</nuxt-link>
       </h1>
       <div class="content">
-        <h1>Bestiary</h1>
-
+        
+        <div class="level is-mobile" style="margin:0;">
+          <div class="level-left">
+            <div class="level-item">
+              <h1>Bestiary</h1>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <nuxt-link to="/encounter" class="button is-text" style="margin:0;">Encounter</nuxt-link>
+            </div>
+          </div>
+        </div>
+        
         <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
         <!-- List creatures -->

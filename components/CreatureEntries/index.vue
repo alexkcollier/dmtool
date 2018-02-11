@@ -1,14 +1,32 @@
 <template>
   <div>
     <!-- Name, size, type and alignment -->
-    <a @click="toggleCreature">
-      <h3 class="title">{{ model.name }}</h3>
-      <h6 class="subtitle is-size-6 is-creature-type is-italic">
-        {{ model.size }} {{ concatType }}, {{ model.alignment }}
-      </h6>
-    </a>
+    <div class="columns" style="margin-bottom:0">
+      <div class="column">
+        <a @click="toggleCreature">
+          <h3 class="title">{{ model.name }}</h3>
+          <h6 class="subtitle is-size-6 is-creature-type is-italic">
+            {{ model.size }} {{ concatType }}, {{ model.alignment }}
+          </h6>
+        </a>
+      </div>
+
+      <!-- Encounter management button -->
+      <div class="column is-narrow is-hidden-mobile">
+        <button class="button is-primary" @click="$store.commit('addToEncounter', model)">Add</button>
+        <button class="button is-text" @click="$store.commit('removeFromEncounter', model)">Remove</button>
+      </div>
+
+    </div>
     <transition name="fade-grow">
       <div v-if="!collapse">
+
+        <!-- Encounter management button -->
+        <div class="is-narrow is-hidden-desktop">
+          <button class="button is-primary" @click="$store.commit('addToEncounter', model)">Add</button>
+          <button class="button is-text" @click="$store.commit('removeFromEncounter', model)">Remove</button>
+        </div>
+
         <div class="is-sans-serif">
           <!-- AC/HP/Speed -->
           <template>
@@ -191,6 +209,20 @@ export default {
 .content table td, .content table tr {
   @media screen and (max-width: 768px) {
     padding: 0.5em !important;
+  }
+}
+
+h6 {
+  margin-bottom: 0 !important;
+}
+
+hr {
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+.button {
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
   }
 }
 </style>
