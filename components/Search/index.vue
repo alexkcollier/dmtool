@@ -159,6 +159,10 @@ export default {
     formatFilterOptionName: str => str.length <= 2 ? str.toUpperCase() : str
   },
   created () {
+    if (this.$route.query.name) {
+      this.searchTerm = this.$route.query.name
+      this.query()
+    }
     this.getFilters(...this.filterFields)
     this.$emit('update-data', this.queryResult)
   }
