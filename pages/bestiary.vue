@@ -13,16 +13,19 @@
             </div>
           </div>
           <div class="level-right">
-            <div class="level-item">
-              <nuxt-link to="/encounter" class="button is-text" style="margin:0;">Encounter</nuxt-link>
+            <div class="level-item" style="margin-right:0;">
+              <nuxt-link to="/encounter" class="button is-text" style="margin:0 0 1rem 0;">Manage Encounter</nuxt-link>
             </div>
           </div>
         </div>
         
         <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
-        <!-- List creatures -->
-        <creature-entries v-for="creature in creatures" :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
+        <div v-if="results.length">
+          <!-- List creatures -->
+          <creature-entries v-for="creature in creatures" :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
+        </div>
+        <div v-else class="ampersand"></div>
 
       </div>
     </div>

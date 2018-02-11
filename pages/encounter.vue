@@ -5,19 +5,40 @@
         <nuxt-link to="/">dmtool</nuxt-link>
       </h1>
       <div class="content">
-        <h1>Encounter</h1>
 
-
-        <div>
-          <!-- <p>No creatures.</p> -->
-          <nuxt-link class="button is-primary" style="margin-left:0;" to="/bestiary">Add creatures</nuxt-link>
-          <button v-if="$store.state.encounter.length !== 0" class="button is-text" @click="$store.commit('clearEncounter')">Reset</button>
+        <div class="level is-mobile" style="margin:0;">
+          <div class="level-left">
+            <div class="level-item">
+              <h1>Encounter</h1>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item" style="margin-right:0;">
+              <button
+                @click="$store.commit('clearEncounter')"
+                :disabled="$store.state.encounter.length === 0"
+                class="button is-text"
+                style="margin:0 0.25rem 1rem 0;">
+                  <b-icon icon="delete" />
+              </button>
+              <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">
+                Add<span class="is-hidden-mobile"> Creature</span>
+              </nuxt-link>
+            </div>
+          </div>
         </div>
+
         <hr>
         <div v-if="$store.state.encounter.length !== 0">
           <!-- List creatures -->
-          <creature-entries v-for="creature in $store.state.encounter" :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
+          <creature-entries
+            v-for="creature in $store.state.encounter"
+            :model="creature"
+            :key="creature.index"
+            :id="creatureIndex(creature.name)" />
         </div>
+
+        <div v-else class="ampersand" style="height:60vh;"></div>
 
       </div>
     </div>
@@ -44,6 +65,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+hr { margin-top: 0; }
 </style>

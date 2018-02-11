@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Name, size, type and alignment -->
-    <div class="columns" style="margin-bottom:0">
+    <div class="columns is-mobile" style="margin-bottom:0">
       <div class="column">
         <a @click="toggleCreature">
           <h3 class="title">{{ model.name }}</h3>
@@ -12,20 +12,18 @@
       </div>
 
       <!-- Encounter management button -->
-      <div class="column is-narrow is-hidden-mobile">
-        <button class="button is-primary" @click="$store.commit('addToEncounter', model)">Add</button>
-        <button class="button is-text" @click="$store.commit('removeFromEncounter', model)">Remove</button>
+      <div class="column is-narrow">
+        <button class="button is-text" @click="$store.commit('removeFromEncounter', model)">
+          <b-icon icon="minus" />
+        </button>
+        <button class="button is-primary" @click="$store.commit('addToEncounter', model)">
+          <b-icon icon="plus" />
+        </button>
       </div>
 
     </div>
     <transition name="fade-grow">
       <div v-if="!collapse">
-
-        <!-- Encounter management button -->
-        <div class="is-narrow is-hidden-desktop">
-          <button class="button is-primary" @click="$store.commit('addToEncounter', model)">Add</button>
-          <button class="button is-text" @click="$store.commit('removeFromEncounter', model)">Remove</button>
-        </div>
 
         <div class="is-sans-serif">
           <!-- AC/HP/Speed -->

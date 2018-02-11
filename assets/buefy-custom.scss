@@ -133,6 +133,16 @@ $fade-time: 500ms;
   }
 }
 
+
+// Custom
+.ampersand {
+  height: 40vh;
+  background: hsl(60, 19%, 87%) url('~assets/ampersand.svg') center center no-repeat;
+  background-blend-mode: multiply;
+  mix-blend-mode: multiply;
+  opacity: 0.1;
+}
+
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";

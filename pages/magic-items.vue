@@ -11,8 +11,11 @@
         <!-- Search box -->
         <search :model="magicItems" search-field="name" search-type="magic item" :filter-fields="filterFields" :filters-to-sort="filtersToSort" @update-data="updateData" />
 
-        <!-- Item entries -->
-        <item-entries v-for="item in sliceMagicItems" :model="item" :key="item.index" :id="itemIndex(item.name)"/>
+        <div v-if="results.length">
+          <!-- Item entries -->
+          <item-entries v-for="item in sliceMagicItems" :model="item" :key="item.index" :id="itemIndex(item.name)"/>
+        </div>
+        <div v-else class="ampersand"></div>
 
       </div>
     </div>

@@ -10,9 +10,12 @@
         <!-- Search and filter -->
         <search :model="spells" search-field="name" search-type="spell" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
-        <!-- List spells -->
-        <spell-entries v-for="spell in sliceSpells" :model="spell" :key="spell.index" :id="spellIndex(spell.name)" />
-
+        <div v-if="results.length">
+          <!-- List spells -->
+          <spell-entries v-for="spell in sliceSpells" :model="spell" :key="spell.index" :id="spellIndex(spell.name)" />
+        </div>
+        
+        <div v-else class="ampersand"></div>
       </div>
     </div>
   </section>
