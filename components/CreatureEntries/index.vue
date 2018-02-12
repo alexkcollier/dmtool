@@ -13,12 +13,19 @@
 
       <!-- Encounter management button -->
       <div class="column is-narrow">
-        <button class="button is-text" @click="$store.commit('removeFromEncounter', model)">
-          <b-icon icon="minus" />
-        </button>
-        <button class="button is-primary" @click="$store.commit('addToEncounter', model)">
-          <b-icon icon="plus" />
-        </button>
+        <div class="is-encounter-buttons">
+          <transition name="fade">
+            <button v-if="encounterIncludesCreature" class="button" @click="removeFromEncounter">
+              <b-icon icon="minus" />
+            </button>
+          </transition>
+          <button v-if="$route.path === '/bestiary'"
+                  class="button is-primary"
+                  @click="addToEncounter"
+                  :disabled="encounterIncludesCreature">
+            <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
+          </button>
+        </div>
       </div>
 
     </div>
@@ -165,6 +172,11 @@ export default {
     },
     concatSkill: function () {
       return this.concatKeyVal(this.model.skill)
+    },
+    encounterIncludesCreature: function () {
+      let encounterCreatures = []
+      if (this.$store.state.encounter) encounterCreatures = [...new Set(this.$store.state.encounter.map(creature => creature.name))]
+      return encounterCreatures.includes(this.model.name)
     }
   },
   methods: {
@@ -181,6 +193,13 @@ export default {
     toggleCreature: function () {
       this.collapse = !this.collapse
       this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
+    },
+    addToEncounter: function () {
+      this.$store.commit('addToEncounter', this.model)
+      console.log(this.$store.state.encounter)
+    },
+    removeFromEncounter: function () {
+      this.$store.commit('removeFromEncounter', this.model)
     }
   },
   filters: {
@@ -218,9 +237,20 @@ hr {
   margin: 0.75rem 0 1.5rem 0;
 }
 
-.button {
-  @media screen and (max-width: 768px) {
-    margin-left: 0;
+.is-encounter-buttons {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+$fade-time: 200ms;
+
+.fade {
+  &-enter-active, &-leave-active {
+    transition: all $fade-time ease-in-out;
+  }
+  &-enter, &-leave-to {
+    opacity: 0;
   }
 }
 </style>
