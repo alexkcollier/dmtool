@@ -5,13 +5,11 @@
     <template v-for="entry in model">
       
       <!-- Paragraphs -->
-      <p v-if="!entry.type" :key="entry.index">
-        {{ entry }}
-      </p>
+      <p v-if="!entry.type" :key="entry.index" v-html="formatEntry(entry)"></p>
       
       <!-- Lists -->
       <ul v-else-if="entry.type === 'list'" :key="entry.index">
-        <li v-for="item in entry.items" :key="item.index">{{ item }}</li>
+        <li v-for="item in entry.items" :key="item.index" v-html="formatEntry(item)"></li>
       </ul>
 
       <!-- Tables -->
@@ -23,14 +21,17 @@
         </thead>
         <tbody>
           <tr v-for="row in entry.rows" :key="row.index">
-            <td v-for="cell in row" :key="cell.index">{{ cell }}</td>
+            <td v-for="cell in row" :key="cell.index" v-html="formatEntry(cell)"></td>
           </tr>
         </tbody>
       </table>
 
       <!-- Iterate over child entries -->
       <template v-else-if="entry.type === 'entries'" >
-        <p v-if="entry.name" :key="entry.index"><strong><i>{{ entry.name }}.</i></strong> {{ entry.entries[0] }}</p>
+        <p v-if="entry.name" :key="entry.index">
+          <strong><i>{{ entry.name }}. </i></strong>
+          <span v-html="formatEntry(entry.entries[0])"></span>
+        </p>
         <item-entry v-else :model="entry.entries.slice(0, 1)" :key="entry.index" />
         <item-entry v-if="entry.entries.slice(1).length" :model="entry.entries.slice(1)" :key="entry.index" />
       </template>
@@ -46,6 +47,16 @@ export default {
   name: 'item-entry',
   props: {
     model: Array
+  },
+  methods: {
+    formatEntry: function (str) {
+      let startRegExp = /\{@[a-z]*\s/g
+      let endRegExp = /\|*[a-z]*}/g
+      let result = str.match(startRegExp) ? str.replace(startRegExp, '<i>').replace(endRegExp, '</i>') : str
+      let boldRegExp = /^([a-zA-Z]*\s*){1,4}\./g
+      result = result.replace(boldRegExp, `<strong><i>${result.match(boldRegExp)} </i></strong>`)
+      return result
+    }
   }
 }
 </script>
