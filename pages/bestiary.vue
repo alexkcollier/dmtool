@@ -22,8 +22,21 @@
         <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
         
         <div v-if="results.length">
-          <!-- List creatures -->
-          <creature-entries v-for="creature in creatures" :model="creature" :key="creature.index" :id="creatureIndex(creature.name)" />
+          
+          <scroll-view>
+            <template slot-scope="visibility">
+                <creature-entries
+                  v-for="creature in creatures"
+                  :model="creature"
+                  :key="creature.name"
+                  :visible="visibility[`ex${creature.name}`]"
+                  :id="creatureIndex(creature.name)"
+                  @isVisible="markerVisible"
+                  @isNotVisible="markerNotVisible"
+                  />
+            </template>
+          </scroll-view>
+          <div style="height:1000px;"></div>
         </div>
         <div v-else class="ampersand"></div>
 
@@ -36,7 +49,11 @@
 import bestiary from '~/data/bestiary.json'
 import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
-import _ from 'lodash'
+// import _ from 'lodash'
+
+import Vue from 'vue'
+
+import { $scrollview } from 'vue-scrollview'
 
 export default {
   head () {
@@ -49,7 +66,10 @@ export default {
   data () {
     return {
       bestiary,
-      count: 10,
+      count: {
+        start: 0,
+        end: 10
+      },
       results: [],
       scrollPos: 0,
       prevScroll: 0,
@@ -58,44 +78,37 @@ export default {
     }
   },
   computed: {
-    creatures: function () { return this.results.slice(0, this.count) }
+    creatures: function () { return this.results.slice(this.count.start, this.count.end) }
   },
   methods: {
+    markerVisible: function () { console.log('yup', this.count) },
+    markerNotVisible: function () {
+      if ($scrollview.getScrollDirection() === 'UP') this.count.end--
+      console.log('nope', this.count)
+    },
     updateData: function (value) { this.results = value },
     creatureIndex: function (name) {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `creature-${index}`
       return id
     },
-    loadMore: function (n = 10) { this.count += n },
-    loadFewer: function (n = 10) { this.count = this.count - n >= 10 ? this.count - n : 10 },
-    handleScroll: _.throttle(function (event) {
-      let d = document.documentElement
-      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
-      let height = d.offsetHeight // Total CSS height
-      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0) {
-        if (offset === height) {
-          this.loadMore()
-          this.scrollPos = offset
-        }
-      } else {
-        // TODO: Better remove items performance
-        if (this.scrollPos >= offset) {
-          let m = this.creatures.length % 10 === 0 ? 0 : this.creatures.length - Math.floor(this.creatures.length / 10) * 10
-          let x = (Math.floor(this.scrollPos / offset)) * 5 + m
-          this.loadFewer(x)
-          this.scrollPos = offset - (window.innerHeight * 2)
-        }
-      }
-      this.prevScroll = document.documentElement.scrollTop
-    }, 200)
+    loadMore: function () {
+      this.count.end++
+      console.log($scrollview)
+      Vue.nextTick(() => $scrollview.refresh)
+    }
   },
   created: function () {
-    if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
+    // if (typeof window !== 'undefined') window.addEventListener('scroll', $scrollview.refresh)
+  },
+  mounted: function () {
+    $scrollview.onLastEntered = this.loadMore
+    this.$root.$on('toggle', () => { $scrollview.state.firedOnLastEntered = false; console.log($scrollview.state.documentHeight, document.body.scrollHeight, document.body.clientHeight, document.body.offsetHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight) })
+  },
+  updated: function () {
   },
   destroyed: function () {
-    if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
+    // if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
