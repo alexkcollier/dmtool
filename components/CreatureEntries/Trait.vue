@@ -2,11 +2,10 @@
   <div>
     <p>
       <strong><i>{{ model.name }}. </i></strong>
-      <span v-html="attack(model.text[0])"></span>
+      <span v-html="formatTrait(model.text[0])"></span>
     </p>
     
-    <!-- TODO: Currently does not respect spellcasting (innate or learned) or multi-paragraph models properly. -->
-    <p v-for="p in shiftModel" :key="p.index">{{ p }}</p>
+    <p v-for="p in shiftModel" :key="p.index" v-html="formatTrait(p)"></p>
   </div>
 </template>
 
@@ -23,11 +22,28 @@ export default {
     }
   },
   methods: {
-    attack: function (str) {
+    formatTrait: function (str) {
+      let spellListRegExp = /^(Cantrip.*\s*|[0-9].*\s*|At will|\d+\/.*):/g
+      let labelRegExp = /^(\w+\s*){0,5}:/g
       let attackRegExp = /(Melee|Ranged).*Attack:/g
-      let attackType = str.match(attackRegExp)
-      let result = str.replace(/(Melee|Ranged).*Attack:/g, `<i>${attackType}</i>`).replace(/Hit:/, '<i>Hit:</i>')
-      return result
+      if (str.match(spellListRegExp)) {
+        let list = str.split(': ')[0]
+        let spells = str.split(': ')[1].split(', ')
+        let spellDetailRegExp = /\s\(.*\)/g
+        spells = spells.map(spell => `<i>${spell.replace(spellDetailRegExp, '')}</i>${spell.match(spellDetailRegExp) ? spell.match(spellDetailRegExp) : ''}`)
+        let result = `${list}: ${spells.join(', ')}`
+        return result
+      } else if (str.match(attackRegExp)) {
+        let attackType = str.match(attackRegExp)
+        let result = str.replace(attackRegExp, `<i>${attackType}</i>`).replace(/Hit:/, '<i>Hit:</i>')
+        return result
+      } else if (str.match(labelRegExp)) {
+        let label = str.match(labelRegExp)
+        let result = str.replace(labelRegExp, `<i>${label}</i>`)
+        return result
+      } else {
+        return str
+      }
     }
   }
 }
