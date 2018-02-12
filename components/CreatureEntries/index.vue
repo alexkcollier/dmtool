@@ -126,7 +126,7 @@
 
         <!-- Legendary and Lair actions -->
         <!-- TODO: Lair actions -->
-        <template v-if="model.legendaryGroup">
+        <template v-if="model.legendaryGroup && model.legendary">
           <h2>Legendary Actions</h2>
           <p>The creature can take {{ model.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
           
@@ -157,7 +157,7 @@ export default {
   computed: {
     concatType: function () {
       let r = String
-      if (this.model.type.length) {
+      if (this.model.type && this.model.type.length) {
         // Simple creature type
         r = this.model.type
       } else if (this.model.type.tags) {
