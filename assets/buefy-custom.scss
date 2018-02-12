@@ -137,10 +137,17 @@ $fade-time: 500ms;
 // Custom
 .ampersand {
   height: 40vh;
-  background: hsl(60, 19%, 87%) url('~assets/ampersand.svg') center center no-repeat;
+}
+
+.ampersand::before {
+  height: inherit;
+  width: 100%;
+  position: absolute;
+  background: url('~assets/ampersand.svg') center center / contain no-repeat;
   background-blend-mode: multiply;
   mix-blend-mode: multiply;
   opacity: 0.1;
+  content: "";
 }
 
 // Import Bulma and Buefy styles

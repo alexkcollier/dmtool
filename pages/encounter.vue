@@ -12,7 +12,7 @@
               <h1>Encounter</h1>
             </div>
           </div>
-          <div class="level-right">
+          <div v-if="$store.state.encounter.length" class="level-right">
             <div class="level-item" style="margin-right:0;">
               <button
                 @click="$store.commit('clearEncounter')"
@@ -22,7 +22,7 @@
                   <b-icon icon="delete" />
               </button>
               <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">
-                Add<span class="is-hidden-mobile"> Creature</span>
+                Add
               </nuxt-link>
             </div>
           </div>
@@ -38,7 +38,15 @@
             :id="creatureIndex(creature.name)" />
         </div>
 
-        <div v-else class="ampersand" style="height:60vh;"></div>
+        <div v-else class="ampersand" style="height:60vh;">
+          
+          <div class="is-sans-serif has-text-centered is-size-2" style="position:relative; top:40%;">
+            <div><strong>There's nothing here.</strong></div>
+            <nuxt-link to="/bestiary" class="button is-primary is-large">
+              Add a Creature
+            </nuxt-link>
+          </div>
+        </div>
 
       </div>
     </div>

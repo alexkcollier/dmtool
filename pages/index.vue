@@ -11,7 +11,7 @@
         <!-- <input v-if="$store.state.user !== 'hellothere'" class="input" type="password" v-model="user" @change="login"> -->
         
         <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
-        <nuxt-link to="/Spells" class="button is-medium">Spells</nuxt-link>
+        <nuxt-link to="/spells" class="button is-medium">Spells</nuxt-link>
         <nuxt-link to="/bestiary" class="button is-medium">Bestiary</nuxt-link>
         <nuxt-link to="/encounter" class="button is-medium">Encounter</nuxt-link>
       </div>
@@ -27,5 +27,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.hero::before {
+  height: 90%;
+  width: 100%;
+  position: absolute;
+  top: 5vh;
+  background: url('~assets/ampersand.svg') center center / contain no-repeat;
+  background-blend-mode: multiply;
+  mix-blend-mode: multiply;
+  opacity: 0.1;
+  content: "";
+}
 </style>
