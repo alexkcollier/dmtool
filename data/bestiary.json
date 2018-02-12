@@ -5711,7 +5711,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
 					]
 				}
 			],
@@ -11883,7 +11883,7 @@
 					"name": "Death Burst",
 					"text": [
 						"The gas spore explodes when it drops to 0 hit points. Each creature within 20 feet of it must succeed on a DC 15 Constitution saving throw or take 10 (3d6) poison damage and become infected with a disease on a failed save. Creatures immune to the poisoned condition are immune to this disease.",
-						"Spores invade an infected creature's system, killing the creature in a number of hours equal to 1d12+the creature's Constitution score, unless the disease is removed. In half that time, the creature becomes poisoned for the rest of the duration. After the creature dies, it sprouts 2d4 Tiny gas spores that grow to full size in 7 days."
+						"Spores invade an infected creature's system, killing the creature in a number of hours equal to 1d12 + the creature's Constitution score, unless the disease is removed. In half that time, the creature becomes poisoned for the rest of the duration. After the creature dies, it sprouts 2d4 Tiny gas spores that grow to full size in 7 days."
 					]
 				},
 				{
@@ -14683,7 +14683,7 @@
 						"4th level (3 slots): phantasmal killer, polymorph",
 						"5th level (2 slots): contact other plane, scrying",
 						"6th level (1 slot): eye bite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					]
 				},
 				{
@@ -19923,7 +19923,7 @@
 						"4th level (3 slots): phantasmal killer, polymorph",
 						"5th level (2 slots): contact other plane, scrying",
 						"6th level (1 slot): eye bite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					]
 				},
 				{
@@ -20387,7 +20387,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
 					]
 				}
 			],
@@ -23463,7 +23463,7 @@
 						"4th level (3 slots): phantasmal killer, polymorph",
 						"5th level (2 slots): contact other plane, scrying",
 						"6th level (1 slot): eye bite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					]
 				},
 				{
@@ -29653,7 +29653,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
 					]
 				}
 			],
@@ -31431,7 +31431,7 @@
 				{
 					"name": "Corrupting Touch (Costs 2 Actions)",
 					"text": [
-						"Melee Weapon Attack: +14 to hit, reach 10 ft., one creature. Hit: 21 (4d6+ 7) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is poisoned, and any creature, other than an ooze, is poisoned while Within 10 of the target."
+						"Melee Weapon Attack: +14 to hit, reach 10 ft., one creature. Hit: 21 (4d6 +  7) poison damage, and the target is slimed. Until the slime is scraped off with an action, the target is poisoned, and any creature, other than an ooze, is poisoned while Within 10 of the target."
 					]
 				}
 			]
@@ -37745,7 +37745,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the topi to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the topi drops to 1 hit point instead."
+						"If damage reduces the topi to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the topi drops to 1 hit point instead."
 					]
 				}
 			],
@@ -38205,7 +38205,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the dread warrior to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the dread warrior drops to 1 hit point instead."
+						"If damage reduces the dread warrior to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the dread warrior drops to 1 hit point instead."
 					]
 				}
 			],
@@ -38727,7 +38727,7 @@
 				{
 					"name": "Turn Resistance",
 					"text": [
-						"The zombie has advantage on saving throws against any effect that turns undead. Undead Fortitude. If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the lich drops to 1 hit point instead."
+						"The zombie has advantage on saving throws against any effect that turns undead. Undead Fortitude. If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the lich drops to 1 hit point instead."
 					]
 				}
 			],
@@ -40731,7 +40731,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
 					]
 				}
 			],
@@ -41303,7 +41303,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+						"If damage reduces the zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
 					]
 				}
 			],
@@ -42096,7 +42096,7 @@
 				{
 					"name": "Undead Fortitude",
 					"text": [
-						"If damage reduces the tyrannosaurus zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
+						"If damage reduces the tyrannosaurus zombie to 0 hit points, it must make a Constitution saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to 1 hit point instead."
 					]
 				}
 			],
@@ -42554,7 +42554,7 @@
 				{
 					"name": "Sculpt Spells",
 					"text": [
-						"When Azbara casts an evocation spell that affects other creatures that he can see, he can choose a number of them equal to 1+the spell's level to succeed on their saving throws against the spell. Those creatures take no damage if they would normally take half damage from the spell."
+						"When Azbara casts an evocation spell that affects other creatures that he can see, he can choose a number of them equal to 1 + the spell's level to succeed on their saving throws against the spell. Those creatures take no damage if they would normally take half damage from the spell."
 					]
 				},
 				{
@@ -44395,7 +44395,7 @@
 						"4th level (3 slots): phantasmal killer, polymorph",
 						"5th level (2 slots): contact other plane, scrying",
 						"6th level (1 slot): eyebite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					]
 				},
 				{
@@ -45036,7 +45036,7 @@
 						"4th level (3 slots): phantasmal killer, polymorph",
 						"5th level (2 slots): contact other plane, scrying",
 						"6th level (1 slot): eyebite",
-						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12+the hag's Intelligence modifier, and the spell attack bonus is 4+the hag's Intelligence modifier."
+						"For casting these spells, each hag is a 12th-level spellcaster that uses Intelligence as her spellcasting ability. The spell save DC is 12 + the hag's Intelligence modifier, and the spell attack bonus is 4 + the hag's Intelligence modifier."
 					]
 				},
 				{
@@ -46818,7 +46818,7 @@
 				{
 					"name": "Sculpt Spells",
 					"text": [
-						"When the evoker casts an evocation spell that forces other creatures it can see to make a saving throw, it can choose a number of them equal to 1+the spell's level. These creatures automatically succeed on their saving throws against the spell. If a successful save means a chosen creature would take half damage from the spell, it instead takes no damage from it."
+						"When the evoker casts an evocation spell that forces other creatures it can see to make a saving throw, it can choose a number of them equal to 1 + the spell's level. These creatures automatically succeed on their saving throws against the spell. If a successful save means a chosen creature would take half damage from the spell, it instead takes no damage from it."
 					]
 				}
 			],
