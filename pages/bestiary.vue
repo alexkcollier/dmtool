@@ -30,21 +30,12 @@
           @update-data="updateData"/>
         
         <div v-if="results.length">
-          
-          <scroll-view>
-            <template slot-scope="visibility">
-              <creature-entries
-                v-for="creature in creatures"
-                :model="creature"
-                :key="creature.name"
-                :visible="visibility[`ex${creature.name}`]"
-                :id="creatureIndex(creature.name)"
-                @isVisible="markerVisible"
-                @isNotVisible="markerNotVisible"
-              />
-            </template>
-          </scroll-view>
-          <div style="height:1000px;"/>
+          <!-- List creatures -->
+          <creature-entries
+            v-for="creature in creatures"
+            :model="creature"
+            :key="creature.index"
+            :id="creatureIndex(creature.name)" />
         </div>
         <div v-else class="ampersand"/>
 
@@ -57,11 +48,7 @@
 import bestiary from '~/data/bestiary.json'
 import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
-// import _ from 'lodash'
-
-import Vue from 'vue'
-
-import { $scrollview } from 'vue-scrollview'
+import _ from 'lodash'
 
 export default {
   head() {
@@ -74,10 +61,7 @@ export default {
   data() {
     return {
       bestiary,
-      count: {
-        start: 0,
-        end: 10
-      },
+      count: 10,
       results: [],
       scrollPos: 0,
       prevScroll: 0,
@@ -87,34 +71,18 @@ export default {
   },
   computed: {
     creatures: function() {
-      return this.results.slice(this.count.start, this.count.end)
+      return this.results.slice(0, this.count)
     }
   },
   created: function() {
-    // if (typeof window !== 'undefined') window.addEventListener('scroll', $scrollview.refresh)
+    if (typeof window !== 'undefined')
+      window.addEventListener('scroll', this.handleScroll)
   },
-  mounted: function() {
-    $scrollview.onLastEntered = this.loadMore
-    this.$root.$on('toggle', () => {
-      $scrollview.state.firedOnLastEntered = false
-      console.log(
-        $scrollview.state.documentHeight,
-        document.body.scrollHeight,
-        document.body.clientHeight,
-        document.body.offsetHeight,
-        document.documentElement.scrollHeight,
-        document.documentElement.offsetHeight
-      )
-    })
+  destroyed: function() {
+    if (typeof window !== 'undefined')
+      window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
-    markerVisible: function() {
-      console.log('yup', this.count)
-    },
-    markerNotVisible: function() {
-      if ($scrollview.getScrollDirection() === 'UP') this.count.end--
-      console.log('nope', this.count)
-    },
     updateData: function(value) {
       this.results = value
     },
@@ -123,11 +91,37 @@ export default {
       const id = `creature-${index}`
       return id
     },
-    loadMore: function() {
-      this.count.end++
-      console.log($scrollview)
-      Vue.nextTick(() => $scrollview.refresh)
-    }
+    loadMore: function(n = 10) {
+      this.count += n
+    },
+    loadFewer: function(n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10
+    },
+    handleScroll: _.throttle(function(event) {
+      let d = document.documentElement
+      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
+      let height = d.offsetHeight // Total CSS height
+      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
+      if (scrollDir < 0) {
+        if (offset === height) {
+          this.loadMore()
+          this.scrollPos = offset
+        }
+      } else {
+        // TODO: Better remove items performance
+        if (this.scrollPos >= offset) {
+          let m =
+            this.creatures.length % 10 === 0
+              ? 0
+              : this.creatures.length -
+                Math.floor(this.creatures.length / 10) * 10
+          let x = Math.floor(this.scrollPos / offset) * 5 + m
+          this.loadFewer(x)
+          this.scrollPos = offset - window.innerHeight * 2
+        }
+      }
+      this.prevScroll = document.documentElement.scrollTop
+    }, 200)
   }
 }
 </script>

@@ -28,7 +28,7 @@ module.exports = {
   /*
   ** Plugins
   */
-  plugins: ['@plugins/buefy', '@plugins/vue-scrollview'],
+  plugins: ['@plugins/buefy'],
   /*
   ** Customize the progress bar color
   */
