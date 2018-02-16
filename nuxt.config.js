@@ -42,6 +42,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: ['_'],
     /*
     ** Silence PostCSS Bulma error
     */
