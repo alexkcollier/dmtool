@@ -15,8 +15,8 @@
     "deploy": "nuxt generate && surge ./dist"
   },
   "dependencies": {
-    "buefy": "^0.6.2",
-    "nuxt": "^1.1.1",
+    "buefy": "^0.6.3",
+    "nuxt": "^1.3.0",
     "vue": "^2.5.13",
     "vue-scrollview": "^3.0.1"
   },
