@@ -42,6 +42,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: ['lodash'],
     /*
     ** Silence PostCSS Bulma error
     */
