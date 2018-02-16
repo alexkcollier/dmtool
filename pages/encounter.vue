@@ -19,7 +19,7 @@
                 :disabled="$store.state.encounter.length === 0"
                 class="button is-text"
                 style="margin:0 0.25rem 1rem 0;">
-                  <b-icon icon="delete" />
+                <b-icon icon="delete" />
               </button>
               <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">
                 Add
@@ -57,15 +57,18 @@
 import CreatureEntries from '~/components/CreatureEntries'
 
 export default {
-  head () {
+  head() {
     return { title: 'Encounter' }
   },
   components: {
     CreatureEntries
   },
   methods: {
-    creatureIndex: function (name) {
-      let index = this.$store.state.encounter.findIndex(creature => creature.name === name) + 1
+    creatureIndex: function(name) {
+      let index =
+        this.$store.state.encounter.findIndex(
+          creature => creature.name === name
+        ) + 1
       const id = `creature-${index}`
       return id
     }
@@ -74,5 +77,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-hr { margin-top: 0; }
+hr {
+  margin-top: 0;
+}
 </style>

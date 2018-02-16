@@ -9,19 +9,22 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Personal DM tools' },
-      { name: 'theme-color', content: '#3d4f5d'}
+      { name: 'theme-color', content: '#3d4f5d' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: '//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css' }
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href:
+          '//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css'
+      }
     ]
   },
   /*
   ** CSS
   */
-  css: [
-    { src: '@assets/buefy-custom.scss', lang: 'sass' }
-  ],
+  css: [{ src: '@assets/buefy-custom.scss', lang: 'sass' }],
   /*
   ** Plugins
   */
@@ -52,7 +55,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

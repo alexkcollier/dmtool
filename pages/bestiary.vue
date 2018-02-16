@@ -19,26 +19,32 @@
           </div>
         </div>
         
-        <search :model="bestiary.monster" search-field="name" search-type="creature" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
+        <search
+          :model="bestiary.monster"
+          search-field="name"
+          search-type="creature"
+          :filter-fields="filterFields"
+          :filters-to-sort="filterFields"
+          @update-data="updateData"/>
         
         <div v-if="results.length">
           
           <scroll-view>
             <template slot-scope="visibility">
-                <creature-entries
-                  v-for="creature in creatures"
-                  :model="creature"
-                  :key="creature.name"
-                  :visible="visibility[`ex${creature.name}`]"
-                  :id="creatureIndex(creature.name)"
-                  @isVisible="markerVisible"
-                  @isNotVisible="markerNotVisible"
-                  />
+              <creature-entries
+                v-for="creature in creatures"
+                :model="creature"
+                :key="creature.name"
+                :visible="visibility[`ex${creature.name}`]"
+                :id="creatureIndex(creature.name)"
+                @isVisible="markerVisible"
+                @isNotVisible="markerNotVisible"
+              />
             </template>
           </scroll-view>
-          <div style="height:1000px;"></div>
+          <div style="height:1000px;"/>
         </div>
-        <div v-else class="ampersand"></div>
+        <div v-else class="ampersand"/>
 
       </div>
     </div>
@@ -56,14 +62,14 @@ import Vue from 'vue'
 import { $scrollview } from 'vue-scrollview'
 
 export default {
-  head () {
+  head() {
     return { title: 'Bestiary' }
   },
   components: {
     Search,
     CreatureEntries
   },
-  data () {
+  data() {
     return {
       bestiary,
       count: {
@@ -78,37 +84,52 @@ export default {
     }
   },
   computed: {
-    creatures: function () { return this.results.slice(this.count.start, this.count.end) }
+    creatures: function() {
+      return this.results.slice(this.count.start, this.count.end)
+    }
+  },
+  created: function() {
+    // if (typeof window !== 'undefined') window.addEventListener('scroll', $scrollview.refresh)
+  },
+  mounted: function() {
+    $scrollview.onLastEntered = this.loadMore
+    this.$root.$on('toggle', () => {
+      $scrollview.state.firedOnLastEntered = false
+      console.log(
+        $scrollview.state.documentHeight,
+        document.body.scrollHeight,
+        document.body.clientHeight,
+        document.body.offsetHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      )
+    })
+  },
+  updated: function() {},
+  destroyed: function() {
+    // if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
-    markerVisible: function () { console.log('yup', this.count) },
-    markerNotVisible: function () {
+    markerVisible: function() {
+      console.log('yup', this.count)
+    },
+    markerNotVisible: function() {
       if ($scrollview.getScrollDirection() === 'UP') this.count.end--
       console.log('nope', this.count)
     },
-    updateData: function (value) { this.results = value },
-    creatureIndex: function (name) {
+    updateData: function(value) {
+      this.results = value
+    },
+    creatureIndex: function(name) {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `creature-${index}`
       return id
     },
-    loadMore: function () {
+    loadMore: function() {
       this.count.end++
       console.log($scrollview)
       Vue.nextTick(() => $scrollview.refresh)
     }
-  },
-  created: function () {
-    // if (typeof window !== 'undefined') window.addEventListener('scroll', $scrollview.refresh)
-  },
-  mounted: function () {
-    $scrollview.onLastEntered = this.loadMore
-    this.$root.$on('toggle', () => { $scrollview.state.firedOnLastEntered = false; console.log($scrollview.state.documentHeight, document.body.scrollHeight, document.body.clientHeight, document.body.offsetHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight) })
-  },
-  updated: function () {
-  },
-  destroyed: function () {
-    // if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>

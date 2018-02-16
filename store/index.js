@@ -7,13 +7,13 @@ const createStore = () => {
       encounter: []
     },
     mutations: {
-      addToEncounter: function (state, payload) {
+      addToEncounter: function(state, payload) {
         if (!state.encounter.includes(payload)) state.encounter.push(payload)
       },
-      removeFromEncounter: function (state, payload) {
+      removeFromEncounter: function(state, payload) {
         state.encounter = state.encounter.filter(e => e !== payload)
       },
-      clearEncounter: function (state) {
+      clearEncounter: function(state) {
         state.encounter = []
       }
     }

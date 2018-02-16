@@ -10,10 +10,16 @@
           class="input"
           type="text"
           :placeholder="placeholder">
-          <b-icon icon="magnify" size="is-small" class="is-left"></b-icon>
+        <b-icon icon="magnify" size="is-small" class="is-left"/>
       </div>
       <div class="control">
-        <button class="button is-primary" style="margin:0;" :disabled="!searchTerm" @click="clearSearch">Clear</button>
+        <button
+          class="button is-primary"
+          style="margin:0;"
+          :disabled="!searchTerm" 
+          @click="clearSearch">
+          Clear
+        </button>
       </div>
     </b-field>
 
@@ -35,11 +41,12 @@
           <!-- Filter options select -->
           <div class="card-header">
             <template v-for="(data, filter) in filters">
-              <a class="card-footer-item is-capitalized"
-                 :key="filter"
-                 :class="{'is-active': visibleFilterOptions === filter}"
-                 @click="visibleFilter = filter">
-                 {{ filter | formatFilterOptionName }}
+              <a 
+                class="card-footer-item is-capitalized"
+                :key="filter"
+                :class="{'is-active': visibleFilterOptions === filter}"
+                @click="visibleFilter = filter">
+                {{ filter | formatFilterOptionName }}
               </a>
             </template>
           </div>
@@ -79,11 +86,25 @@
 import _ from 'lodash'
 
 export default {
-  name: 'search',
+  name: 'Search',
+  filters: {
+    parseNumToFrac: num =>
+      typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num,
+    formatFilterOptionName: str => (str.length <= 2 ? str.toUpperCase() : str)
+  },
   props: {
-    model: Array,
-    searchField: String,
-    searchType: String,
+    model: {
+      type: Array,
+      default: () => []
+    },
+    searchField: {
+      type: String,
+      default: ''
+    },
+    searchType: {
+      type: String,
+      default: ''
+    },
     filtersToSort: {
       type: Array,
       default: () => []
@@ -93,7 +114,7 @@ export default {
       default: () => []
     }
   },
-  data () {
+  data() {
     return {
       searchTerm: '',
       queryResult: _.sortBy(this.model, 'name'),
@@ -103,48 +124,82 @@ export default {
     }
   },
   computed: {
-    placeholder () {
+    placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
-    visibleFilterOptions () {
-      return this.visibleFilter ? this.visibleFilter : (Object.keys(this.filters) ? Object.keys(this.filters)[0] : '')
+    visibleFilterOptions() {
+      return this.visibleFilter
+        ? this.visibleFilter
+        : Object.keys(this.filters) ? Object.keys(this.filters)[0] : ''
     },
-    resultCount: function () { return this.queryResult.length }
+    resultCount: function() {
+      return this.queryResult.length
+    }
+  },
+  created() {
+    if (this.$route.query.name) {
+      this.searchTerm = this.$route.query.name
+      this.query()
+    }
+    this.getFilters(...this.filterFields)
+    this.$emit('update-data', this.queryResult)
   },
   methods: {
-    clearSearch: function () {
+    clearSearch: function() {
       this.searchTerm = ''
       this.query()
     },
-    filterViewToggle: function () {
+    filterViewToggle: function() {
       if (!this.visibleFilter) this.visibleFilter = Object.keys(this.filters)[0]
       this.collapseFilters = !this.collapseFilters
     },
-    setAllFilters: function (filter, val) { this.filters[filter].forEach(option => { option.value = val }) },
-    getFilters: function (...filters) { // Generate filter lists from data
+    setAllFilters: function(filter, val) {
+      this.filters[filter].forEach(option => {
+        option.value = val
+      })
+    },
+    getFilters: function(...filters) {
+      // Generate filter lists from data
       filters.forEach(filter => {
         let options = [...new Set(this.model.map(item => item[filter]))] // Get all possible options from model
-        options = options.filter(option => { return typeof option !== 'undefined' }) // Filter must exist in each data element
-        options = options.map(item => { return { name: item, value: true } }) // Create array of options
+        options = options.filter(option => {
+          return typeof option !== 'undefined'
+        }) // Filter must exist in each data element
+        options = options.map(item => {
+          return { name: item, value: true }
+        }) // Create array of options
         if (this.filtersToSort.includes(filter)) {
-          options = _.sortBy(options, o => typeof o.name === 'number' ? _.toNumber(o.name) : _.toString(o.name)) // sort
+          options = _.sortBy(
+            options,
+            o =>
+              typeof o.name === 'number'
+                ? _.toNumber(o.name)
+                : _.toString(o.name)
+          ) // sort
         }
         this.$set(this.filters, filter, options) // Add filters. Must use vm.set to make these properties reactive
       })
     },
-    query: _.debounce(function () {
-      const filterTest = (filter, testValue) => { // check if filter includes testValue from model
+    query: _.debounce(function() {
+      const filterTest = (filter, testValue) => {
+        // check if filter includes testValue from model
         let trueOptions = []
-        this.filters[filter].forEach(option => { if (option.value) trueOptions.push(option.name) }) // Create list of options that are true
+        this.filters[filter].forEach(option => {
+          if (option.value) trueOptions.push(option.name)
+        }) // Create list of options that are true
         return trueOptions.includes(testValue) // return if testValue is a true option
       }
 
       let result = this.model.filter(el => {
         let filterTestRes = true // All filter options default to true
-        Object.keys(this.filters).forEach(filter => { filterTestRes *= filterTest(filter, el[filter]) }) // check each element against all filters
+        Object.keys(this.filters).forEach(filter => {
+          filterTestRes *= filterTest(filter, el[filter])
+        }) // check each element against all filters
         // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
-        let test = el[this.searchField].toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-        filterTestRes // ensure element contains search term and passes filter test
+        let test =
+          el[this.searchField]
+            .toLowerCase()
+            .includes(this.searchTerm.toLowerCase()) && filterTestRes // ensure element contains search term and passes filter test
         return test
       })
 
@@ -153,18 +208,6 @@ export default {
       this.$emit('update-data', this.queryResult)
       this.$root.$emit('toggle')
     }, 500)
-  },
-  filters: {
-    parseNumToFrac: num => typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num,
-    formatFilterOptionName: str => str.length <= 2 ? str.toUpperCase() : str
-  },
-  created () {
-    if (this.$route.query.name) {
-      this.searchTerm = this.$route.query.name
-      this.query()
-    }
-    this.getFilters(...this.filterFields)
-    this.$emit('update-data', this.queryResult)
   }
 }
 </script>
@@ -177,7 +220,7 @@ export default {
     .is-active {
       font-weight: 600;
     }
-    &-title, {
+    &-title {
       padding: 0.36em 0.75em;
     }
   }
@@ -191,5 +234,7 @@ export default {
   }
 }
 
-hr { margin-top: 0.25em; }
+hr {
+  margin-top: 0.25em;
+}
 </style>

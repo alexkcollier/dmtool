@@ -31,26 +31,26 @@
 import SpellEntry from './SpellEntry.vue'
 
 export default {
-  name: 'spell-entries',
-  props: {
-    model: Object
-  },
+  name: 'SpellEntries',
   components: {
     SpellEntry
   },
-  data () {
-    return { collapse: true }
-  },
-  methods: {
-    toggleSpell: function () {
-      this.collapse = !this.collapse
-      this.$root.$emit('toggle', this.$el.id) // Pass target spell ID to global event bus
+  props: {
+    model: {
+      type: Object,
+      default: () => {}
     }
   },
+  data() {
+    return { collapse: true }
+  },
   computed: {
-    spellLevelSchool: function () {
+    spellLevelSchool: function() {
       let spellLevel = ''
-      if (typeof this.model.level === 'string' && this.model.level.toLowerCase() === 'cantrip') {
+      if (
+        typeof this.model.level === 'string' &&
+        this.model.level.toLowerCase() === 'cantrip'
+      ) {
         spellLevel = this.model.level
       } else if (this.model.level === 1) {
         spellLevel = `${this.model.level}st-level`
@@ -61,23 +61,31 @@ export default {
       } else {
         spellLevel = `${this.model.level}th-level`
       }
-      let spellLevelSchool = spellLevel.toLowerCase() === 'cantrip' ? `${this.model.school} ${spellLevel}` : `${spellLevel} ${this.model.school}`
+      let spellLevelSchool =
+        spellLevel.toLowerCase() === 'cantrip'
+          ? `${this.model.school} ${spellLevel}`
+          : `${spellLevel} ${this.model.school}`
       return spellLevelSchool.toLowerCase()
     },
-    spellComponents: function () {
+    spellComponents: function() {
       let spellComponents = []
       if (this.model.components.v) spellComponents.push('V')
       if (this.model.components.s) spellComponents.push('S')
-      if (this.model.components.m) spellComponents.push(`M (${this.model.components.m})`)
+      if (this.model.components.m)
+        spellComponents.push(`M (${this.model.components.m})`)
       return spellComponents.join(', ')
     },
-    spellDuration: function () {
+    spellDuration: function() {
       // Timed spells & concentration
       if (this.model.duration[0]['type'] === 'timed') {
         if (this.model.duration[0]['type']['concentration']) {
-          return `Concentration, up to ${this.model.duration[0]['duration']['amount']} ${this.model.duration[0]['duration']['type']}`
+          return `Concentration, up to ${
+            this.model.duration[0]['duration']['amount']
+          } ${this.model.duration[0]['duration']['type']}`
         } else {
-          return `${this.model.duration[0]['duration']['amount']} ${this.model.duration[0]['duration']['type']}`
+          return `${this.model.duration[0]['duration']['amount']} ${
+            this.model.duration[0]['duration']['type']
+          }`
         }
       }
 
@@ -91,7 +99,9 @@ export default {
       if (this.model.duration[0]['type'] === 'permanent') {
         if (this.model.duration[0]['ends']) {
           if (this.model.duration[0]['ends'].length === 2) {
-            return `Until ${this.model.duration[0]['ends'][0]}ed or ${this.model.duration[0]['ends'][1]}ed`
+            return `Until ${this.model.duration[0]['ends'][0]}ed or ${
+              this.model.duration[0]['ends'][1]
+            }ed`
           } else {
             return `Until ${this.model.duration[0]['ends'][0]}ed`
           }
@@ -99,19 +109,25 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.$root.$on('toggle', spellIndex => {
       if (!this.collapse) this.collapse = !(this.$el.id === spellIndex) // Check if expanded spell is the target spell. If not, collapse it. Only check if spell not collapsed.
     })
+  },
+  methods: {
+    toggleSpell: function() {
+      this.collapse = !this.collapse
+      this.$root.$emit('toggle', this.$el.id) // Pass target spell ID to global event bus
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .is-spell-level {
-  padding-top:0.3em;
+  padding-top: 0.3em;
   &::first-letter {
-    text-transform:capitalize;
+    text-transform: capitalize;
   }
 }
 </style>

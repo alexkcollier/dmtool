@@ -9,13 +9,23 @@
         <h1>Magic Item Search</h1>
         
         <!-- Search box -->
-        <search :model="magicItems" search-field="name" search-type="magic item" :filter-fields="filterFields" :filters-to-sort="filtersToSort" @update-data="updateData" />
+        <search
+          :model="magicItems"
+          search-field="name"
+          search-type="magic item"
+          :filter-fields="filterFields"
+          :filters-to-sort="filtersToSort"
+          @update-data="updateData"/>
 
         <div v-if="results.length">
           <!-- Item entries -->
-          <item-entries v-for="item in sliceMagicItems" :model="item" :key="item.index" :id="itemIndex(item.name)"/>
+          <item-entries
+            v-for="item in sliceMagicItems"
+            :model="item"
+            :key="item.index"
+            :id="itemIndex(item.name)"/>
         </div>
-        <div v-else class="ampersand"></div>
+        <div v-else class="ampersand"/>
 
       </div>
     </div>
@@ -33,10 +43,10 @@ export default {
     ItemEntries,
     Search
   },
-  head () {
+  head() {
     return { title: 'Magic Items' }
   },
-  data () {
+  data() {
     return {
       magicItems,
       count: 10,
@@ -49,18 +59,34 @@ export default {
     }
   },
   computed: {
-    sliceMagicItems: function () { return this.results.slice(0, this.count) }
+    sliceMagicItems: function() {
+      return this.results.slice(0, this.count)
+    }
+  },
+  created: function() {
+    if (typeof window !== 'undefined')
+      window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed: function() {
+    if (typeof window !== 'undefined')
+      window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
-    itemIndex: function (name) {
+    itemIndex: function(name) {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `item-${index}`
       return id
     },
-    updateData: function (value) { this.results = value },
-    loadMore: function (n = 10) { this.count += n },
-    loadFewer: function (n = 10) { this.count = this.count - n >= 10 ? this.count - n : 10 },
-    handleScroll: _.throttle(function (event) {
+    updateData: function(value) {
+      this.results = value
+    },
+    loadMore: function(n = 10) {
+      this.count += n
+    },
+    loadFewer: function(n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10
+    },
+    handleScroll: _.throttle(function(event) {
       let d = document.documentElement
       let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
       let height = d.offsetHeight // Total CSS height
@@ -73,23 +99,22 @@ export default {
       } else {
         // TODO: Better remove items performance
         if (this.scrollPos >= offset) {
-          let m = this.sliceMagicItems.length % 10 === 0 ? 0 : this.sliceMagicItems.length - Math.floor(this.sliceMagicItems.length / 10) * 10
-          let x = (Math.floor(this.scrollPos / offset)) * 10 + m
+          let m =
+            this.sliceMagicItems.length % 10 === 0
+              ? 0
+              : this.sliceMagicItems.length -
+                Math.floor(this.sliceMagicItems.length / 10) * 10
+          let x = Math.floor(this.scrollPos / offset) * 10 + m
           this.loadFewer(x)
-          this.scrollPos = offset - (window.innerHeight * 2)
+          this.scrollPos = offset - window.innerHeight * 2
         }
       }
       this.prevScroll = document.documentElement.scrollTop
     }, 200)
-  },
-  created: function () {
-    if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed: function () {
-    if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
 
 <style lang="scss">
+
 </style>

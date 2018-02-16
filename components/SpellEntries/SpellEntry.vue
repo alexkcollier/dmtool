@@ -17,15 +17,18 @@
 
 <script>
 export default {
-  name: 'spell-entry',
+  name: 'SpellEntry',
   props: {
-    model: Array
+    model: {
+      type: Array,
+      default: () => {}
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 div:not(:last-child) {
-  margin-bottom: 1em!important;
+  margin-bottom: 1em !important;
 }
 </style>

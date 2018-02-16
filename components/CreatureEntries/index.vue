@@ -19,10 +19,11 @@
               <b-icon icon="minus" />
             </button>
           </transition>
-          <button v-if="$route.path === '/bestiary'"
-                  class="button is-primary"
-                  @click="addToEncounter"
-                  :disabled="encounterIncludesCreature">
+          <button 
+            v-if="$route.path === '/bestiary'"
+            class="button is-primary"
+            @click="addToEncounter"
+            :disabled="encounterIncludesCreature">
             <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
           </button>
         </div>
@@ -144,18 +145,30 @@
 import Trait from './trait.vue'
 
 export default {
-  name: 'creature-entries',
-  props: {
-    model: Object
-  },
+  name: 'CreatureEntries',
   components: {
     Trait
   },
-  data () {
+  filters: {
+    getStatMod: function(stat) {
+      let mod = Math.floor((stat - 10) / 2)
+      let r = `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})`
+      return r
+    },
+    parseNumToFrac: num =>
+      typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num
+  },
+  props: {
+    model: {
+      type: Object,
+      default: () => {}
+    }
+  },
+  data() {
     return { collapse: true }
   },
   computed: {
-    concatType: function () {
+    concatType: function() {
       let r = String
       if (this.model.type && this.model.type.length) {
         // Simple creature type
@@ -170,60 +183,58 @@ export default {
       }
       return r
     },
-    concatSkill: function () {
+    concatSkill: function() {
       return this.concatKeyVal(this.model.skill)
     },
-    encounterIncludesCreature: function () {
+    encounterIncludesCreature: function() {
       let encounterCreatures = []
-      if (this.$store.state.encounter) encounterCreatures = [...new Set(this.$store.state.encounter.map(creature => creature.name))]
+      if (this.$store.state.encounter)
+        encounterCreatures = [
+          ...new Set(this.$store.state.encounter.map(creature => creature.name))
+        ]
       return encounterCreatures.includes(this.model.name)
     }
   },
-  methods: {
-    removeFirst: function (arr) {
-      let r = arr.slice(1)
-      return r.length > 0 ? r : null
-    },
-    concatKeyVal: function (o) {
-      let r = Object.keys(o).reduce((a, k) => {
-        return a.concat(k + ' ' + o[k]) // Add combined key-value pair to an array
-      }, []).join(', ') // Combine array values to string
-      return r
-    },
-    toggleCreature: function () {
-      this.collapse = !this.collapse
-      this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
-    },
-    addToEncounter: function () {
-      this.$store.commit('addToEncounter', this.model)
-      console.log(this.$store.state.encounter)
-    },
-    removeFromEncounter: function () {
-      this.$store.commit('removeFromEncounter', this.model)
-    }
-  },
-  filters: {
-    getStatMod: function (stat) {
-      let mod = Math.floor((stat - 10) / 2)
-      let r = `${stat} (${(mod < 0 ? '' : '+')}\xa0${mod})`
-      return r
-    },
-    parseNumToFrac: num => typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num
-  },
-  mounted () {
+  mounted() {
     this.$root.$on('toggle', creatureIndex => {
       if (!this.collapse) this.collapse = !(this.$el.id === creatureIndex) // Check if expanded creature is the target creature. If not, collapse it. Only check if creature not collapsed.
     })
+  },
+  methods: {
+    removeFirst: function(arr) {
+      let r = arr.slice(1)
+      return r.length > 0 ? r : null
+    },
+    concatKeyVal: function(o) {
+      let r = Object.keys(o)
+        .reduce((a, k) => {
+          return a.concat(k + ' ' + o[k]) // Add combined key-value pair to an array
+        }, [])
+        .join(', ') // Combine array values to string
+      return r
+    },
+    toggleCreature: function() {
+      this.collapse = !this.collapse
+      this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
+    },
+    addToEncounter: function() {
+      this.$store.commit('addToEncounter', this.model)
+      console.log(this.$store.state.encounter)
+    },
+    removeFromEncounter: function() {
+      this.$store.commit('removeFromEncounter', this.model)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .is-creature-type {
-  padding-top:0.3em;
+  padding-top: 0.3em;
 }
 
-.content table td, .content table tr {
+.content table td,
+.content table tr {
   @media screen and (max-width: 768px) {
     padding: 0.5em !important;
   }
@@ -246,10 +257,12 @@ hr {
 $fade-time: 200ms;
 
 .fade {
-  &-enter-active, &-leave-active {
+  &-enter-active,
+  &-leave-active {
     transition: all $fade-time ease-in-out;
   }
-  &-enter, &-leave-to {
+  &-enter,
+  &-leave-to {
     opacity: 0;
   }
 }

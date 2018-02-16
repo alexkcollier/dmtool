@@ -5,11 +5,11 @@
     <template v-for="entry in model">
       
       <!-- Paragraphs -->
-      <p v-if="!entry.type" :key="entry.index" v-html="formatEntry(entry)"></p>
+      <p v-if="!entry.type" :key="entry.index" v-html="formatEntry(entry)"/>
       
       <!-- Lists -->
       <ul v-else-if="entry.type === 'list'" :key="entry.index">
-        <li v-for="item in entry.items" :key="item.index" v-html="formatEntry(item)"></li>
+        <li v-for="item in entry.items" :key="item.index" v-html="formatEntry(item)"/>
       </ul>
 
       <!-- Tables -->
@@ -21,7 +21,7 @@
         </thead>
         <tbody>
           <tr v-for="row in entry.rows" :key="row.index">
-            <td v-for="cell in row" :key="cell.index" v-html="formatEntry(cell)"></td>
+            <td v-for="cell in row" :key="cell.index" v-html="formatEntry(cell)"/>
           </tr>
         </tbody>
       </table>
@@ -30,7 +30,7 @@
       <template v-else-if="entry.type === 'entries'" >
         <p v-if="entry.name" :key="entry.index">
           <strong><i>{{ entry.name }}. </i></strong>
-          <span v-html="formatEntry(entry.entries[0])"></span>
+          <span v-html="formatEntry(entry.entries[0])"/>
         </p>
         <item-entry v-else :model="entry.entries.slice(0, 1)" :key="entry.index" />
         <item-entry v-if="entry.entries.slice(1).length" :model="entry.entries.slice(1)" :key="entry.index" />
@@ -44,17 +44,25 @@
 
 <script>
 export default {
-  name: 'item-entry',
+  name: 'ItemEntry',
   props: {
-    model: Array
+    model: {
+      type: Array,
+      default: () => []
+    }
   },
   methods: {
-    formatEntry: function (str) {
+    formatEntry: function(str) {
       let startRegExp = /\{@[a-z]*\s/g
       let endRegExp = /\|*[a-z]*}/g
-      let result = str.match(startRegExp) ? str.replace(startRegExp, '<i>').replace(endRegExp, '</i>') : str
+      let result = str.match(startRegExp)
+        ? str.replace(startRegExp, '<i>').replace(endRegExp, '</i>')
+        : str
       let boldRegExp = /^([a-zA-Z]*\s*){1,4}\./g
-      result = result.replace(boldRegExp, `<strong><i>${result.match(boldRegExp)} </i></strong>`)
+      result = result.replace(
+        boldRegExp,
+        `<strong><i>${result.match(boldRegExp)} </i></strong>`
+      )
       return result
     }
   }
@@ -63,6 +71,6 @@ export default {
 
 <style lang="scss" scoped>
 div:not(:last-child) {
-  margin-bottom: 1em!important;
+  margin-bottom: 1em !important;
 }
 </style>

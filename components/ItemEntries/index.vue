@@ -28,35 +28,38 @@
 import ItemEntry from './ItemEntry.vue'
 
 export default {
-  name: 'item-entries',
-  props: {
-    model: Object
-  },
+  name: 'ItemEntries',
   components: {
     ItemEntry
   },
-  data () {
-    return { collapse: true }
+  filters: {
+    lowerCase: str => (str ? str.toLowerCase() : '')
   },
-  methods: {
-    toggleItem: function () {
-      this.collapse = !this.collapse
-      this.$root.$emit('toggle', this.$el.id) // Pass target item ID to global event bus
+  props: {
+    model: {
+      type: Object,
+      default: () => {}
     }
   },
-  filters: {
-    lowerCase: str => str ? str.toLowerCase() : ''
+  data() {
+    return { collapse: true }
   },
-  mounted () {
+  mounted() {
     this.$root.$on('toggle', itemIndex => {
       if (!this.collapse) this.collapse = !(this.$el.id === itemIndex) // Check if expanded item is the target item. If not, collapse it. Only check if item not collapsed.
     })
+  },
+  methods: {
+    toggleItem: function() {
+      this.collapse = !this.collapse
+      this.$root.$emit('toggle', this.$el.id) // Pass target item ID to global event bus
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .is-item-rarity {
-  padding-top:0.3em;
+  padding-top: 0.3em;
 }
 </style>

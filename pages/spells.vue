@@ -8,14 +8,24 @@
         <h1>Spells</h1>
 
         <!-- Search and filter -->
-        <search :model="spells" search-field="name" search-type="spell" :filter-fields="filterFields" :filters-to-sort="filterFields" @update-data="updateData" />
+        <search
+          :model="spells"
+          search-field="name"
+          search-type="spell"
+          :filter-fields="filterFields"
+          :filters-to-sort="filterFields"
+          @update-data="updateData"/>
         
         <div v-if="results.length">
           <!-- List spells -->
-          <spell-entries v-for="spell in sliceSpells" :model="spell" :key="spell.index" :id="spellIndex(spell.name)" />
+          <spell-entries
+            v-for="spell in sliceSpells"
+            :model="spell"
+            :key="spell.index"
+            :id="spellIndex(spell.name)"/>
         </div>
         
-        <div v-else class="ampersand"></div>
+        <div v-else class="ampersand"/>
       </div>
     </div>
   </section>
@@ -28,14 +38,14 @@ import SpellEntries from '~/components/SpellEntries'
 import _ from 'lodash'
 
 export default {
-  head () {
+  head() {
     return { title: 'Spells' }
   },
   components: {
     Search,
     SpellEntries
   },
-  data () {
+  data() {
     return {
       spells,
       count: 10,
@@ -46,18 +56,35 @@ export default {
     }
   },
   computed: {
-    sliceSpells: function () { return this.results.slice(0, this.count) }
+    sliceSpells: function() {
+      return this.results.slice(0, this.count)
+    }
+  },
+  created: function() {
+    if (typeof window !== 'undefined')
+      window.addEventListener('scroll', this.handleScroll)
+    this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
+  },
+  destroyed: function() {
+    if (typeof window !== 'undefined')
+      window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
-    updateData: function (value) { this.results = value },
-    spellIndex: function (name) {
+    updateData: function(value) {
+      this.results = value
+    },
+    spellIndex: function(name) {
       let index = this.results.findIndex(result => result.name === name) + 1
       const id = `spell-${index}`
       return id
     },
-    loadMore: function (n = 10) { this.count += n },
-    loadFewer: function (n = 10) { this.count = this.count - n >= 10 ? this.count - n : 10 },
-    handleScroll: _.throttle(function (event) {
+    loadMore: function(n = 10) {
+      this.count += n
+    },
+    loadFewer: function(n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10
+    },
+    handleScroll: _.throttle(function(event) {
       let d = document.documentElement
       let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
       let height = d.offsetHeight // Total CSS height
@@ -70,21 +97,17 @@ export default {
       } else {
         // TODO: Better remove items performance
         if (this.scrollPos >= offset) {
-          let m = this.spells.length % 10 === 0 ? 0 : this.spells.length - Math.floor(this.spells.length / 10) * 10
-          let x = (Math.floor(this.scrollPos / offset)) * 5 + m
+          let m =
+            this.spells.length % 10 === 0
+              ? 0
+              : this.spells.length - Math.floor(this.spells.length / 10) * 10
+          let x = Math.floor(this.scrollPos / offset) * 5 + m
           this.loadFewer(x)
-          this.scrollPos = offset - (window.innerHeight * 2)
+          this.scrollPos = offset - window.innerHeight * 2
         }
       }
       this.prevScroll = document.documentElement.scrollTop
     }, 200)
-  },
-  created: function () {
-    if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
-    this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
-  },
-  destroyed: function () {
-    if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>

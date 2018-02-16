@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  head () {
+  head() {
     return { title: 'Home' }
   }
 }
@@ -37,6 +37,6 @@ export default {
   background-blend-mode: multiply;
   mix-blend-mode: multiply;
   opacity: 0.1;
-  content: "";
+  content: '';
 }
 </style>
