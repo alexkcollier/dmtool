@@ -33,7 +33,10 @@
           <span v-html="formatEntry(entry.entries[0])"/>
         </p>
         <item-entry v-else :model="entry.entries.slice(0, 1)" :key="entry.index" />
-        <item-entry v-if="entry.entries.slice(1).length" :model="entry.entries.slice(1)" :key="entry.index" />
+        <item-entry
+          v-if="entry.entries.slice(1).length"
+          :model="entry.entries.slice(1)"
+          :key="entry.index" />
       </template>
 
       <!-- Highlight entries of unexpected type. -->

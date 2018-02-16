@@ -55,16 +55,27 @@
           <!-- TODO: improve display -->
           <div class="card-content">
             <b-field grouped group-multiline>
-              <a class="control button button-grouped" style="margin-left:0;" @click="setAllFilters(visibleFilter, true)">
+              <a
+                class="control button button-grouped"
+                style="margin-left:0;"
+                @click="setAllFilters(visibleFilter, true)">
                 Enable all
               </a>
-              <a class="control button button-grouped" style="margin-left:0;" @click="setAllFilters(visibleFilter, false)">
+              <a
+                class="control button button-grouped"
+                style="margin-left:0;"
+                @click="setAllFilters(visibleFilter, false)">
                 Disable all
               </a>
             </b-field>
             <b-field grouped group-multiline>
-              <div v-for="option in filters[visibleFilterOptions]" class="control" :key="option.name">
-                <b-switch v-model="option.value" @input="query">{{ option.name | parseNumToFrac }}</b-switch>
+              <div
+                v-for="option in filters[visibleFilterOptions]"
+                class="control"
+                :key="option.name">
+                <b-switch v-model="option.value" @input="query">
+                  {{ option.name | parseNumToFrac }}
+                </b-switch>
               </div>
             </b-field>
           </div>
@@ -75,7 +86,9 @@
 
     <!-- Result count -->
     <div class="control">
-      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">{{ resultCount }} {{ searchType }}<span v-if="resultCount != 1">s</span> found.</div>
+      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">
+        {{ resultCount }} {{ searchType }}<span v-if="resultCount != 1">s</span> found.
+      </div>
     </div>
 
     <hr>
@@ -87,11 +100,18 @@ import _ from 'lodash'
 
 export default {
   name: 'Search',
+
   filters: {
-    parseNumToFrac: num =>
-      typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num,
-    formatFilterOptionName: str => (str.length <= 2 ? str.toUpperCase() : str)
+    parseNumToFrac: function(num) {
+      return typeof num === 'number' && num > 0 && num < 1
+        ? `1/${1 / num}`
+        : num
+    },
+    formatFilterOptionName: function(str) {
+      return str.length <= 2 ? str.toUpperCase() : str
+    }
   },
+
   props: {
     model: {
       type: Array,
@@ -114,6 +134,7 @@ export default {
       default: () => []
     }
   },
+
   data() {
     return {
       searchTerm: '',
@@ -123,6 +144,7 @@ export default {
       visibleFilter: ''
     }
   },
+
   computed: {
     placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
@@ -136,6 +158,7 @@ export default {
       return this.queryResult.length
     }
   },
+
   created() {
     if (this.$route.query.name) {
       this.searchTerm = this.$route.query.name
@@ -144,6 +167,7 @@ export default {
     this.getFilters(...this.filterFields)
     this.$emit('update-data', this.queryResult)
   },
+
   methods: {
     clearSearch: function() {
       this.searchTerm = ''

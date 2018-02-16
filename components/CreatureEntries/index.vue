@@ -15,7 +15,10 @@
       <div class="column is-narrow">
         <div class="is-encounter-buttons">
           <transition name="fade">
-            <button v-if="encounterIncludesCreature" class="button" @click="removeFromEncounter">
+            <button
+              v-if="encounterIncludesCreature"
+              class="button"
+              @click="removeFromEncounter">
               <b-icon icon="minus" />
             </button>
           </transition>
@@ -54,11 +57,21 @@
           <!-- Stats -->
           <table>
             <thead>
-              <th v-for="(stat, k) in model.stats" :key="stat.index" class="is-uppercase has-text-centered">{{ k }}</th>
+              <th
+                v-for="(stat, k) in model.stats"
+                :key="stat.index"
+                class="is-uppercase has-text-centered">
+                {{ k }}
+              </th>
             </thead>
             <tbody>
               <tr>
-                <td v-for="stat in model.stats" :key="stat.index" class="has-text-centered">{{ stat | getStatMod }}</td>
+                <td 
+                  v-for="stat in model.stats" 
+                  :key="stat.index" 
+                  class="has-text-centered">
+                  {{ stat | getStatMod }}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -155,8 +168,11 @@ export default {
       let r = `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})`
       return r
     },
-    parseNumToFrac: num =>
-      typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num
+    parseNumToFrac: function(num) {
+      return typeof num === 'number' && num > 0 && num < 1
+        ? `1/${1 / num}`
+        : num
+    }
   },
   props: {
     model: {

@@ -14,7 +14,9 @@
           </div>
           <div class="level-right">
             <div class="level-item" style="margin-right:0;">
-              <nuxt-link to="/encounter" class="button is-text" style="margin:0 0 1rem 0;">Manage Encounter</nuxt-link>
+              <nuxt-link to="/encounter" class="button is-text" style="margin:0 0 1rem 0;">
+                Manage Encounter
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -104,10 +106,6 @@ export default {
         document.documentElement.offsetHeight
       )
     })
-  },
-  updated: function() {},
-  destroyed: function() {
-    // if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
     markerVisible: function() {

@@ -33,7 +33,9 @@ export default {
     ItemEntry
   },
   filters: {
-    lowerCase: str => (str ? str.toLowerCase() : '')
+    lowerCase: function(str) {
+      return str ? str.toLowerCase() : ''
+    }
   },
   props: {
     model: {
