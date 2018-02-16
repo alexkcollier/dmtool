@@ -42,11 +42,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
-<<<<<<< HEAD
     vendor: ['lodash'],
-=======
-    vendor: ['_'],
->>>>>>> 3c808898e61e77ce3b3922dc39500cb267c0c23b
     /*
     ** Silence PostCSS Bulma error
     */
