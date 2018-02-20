@@ -61,7 +61,7 @@ export default {
       let result = str.match(startRegExp)
         ? str.replace(startRegExp, '<i>').replace(endRegExp, '</i>')
         : str
-      let boldRegExp = /^([a-zA-Z]*\s*){1,4}\./g
+      let boldRegExp = /^([a-zA-Z]*\s*){1,3}\./g
       result = result.replace(
         boldRegExp,
         `<strong><i>${result.match(boldRegExp)} </i></strong>`

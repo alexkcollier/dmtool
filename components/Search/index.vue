@@ -58,13 +58,13 @@
               <a
                 class="control button button-grouped"
                 style="margin-left:0;"
-                @click="setAllFilters(visibleFilter, true)">
+                @click="setAllFilterOptions(visibleFilter, true)">
                 Enable all
               </a>
               <a
                 class="control button button-grouped"
                 style="margin-left:0;"
-                @click="setAllFilters(visibleFilter, false)">
+                @click="setAllFilterOptions(visibleFilter, false)">
                 Disable all
               </a>
             </b-field>
@@ -140,14 +140,19 @@ export default {
       searchTerm: '',
       queryResult: _.sortBy(this.model, 'name'),
       collapseFilters: true,
-      filters: {},
-      visibleFilter: ''
+      visibleFilter: '',
+      scrollPos: 0,
+      prevScroll: 0,
+      count: 10
     }
   },
 
   computed: {
     placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
+    },
+    filters: function() {
+      return this.getFilters(...this.filterFields)
     },
     visibleFilterOptions() {
       return this.visibleFilter
@@ -160,12 +165,15 @@ export default {
   },
 
   created() {
-    if (this.$route.query.name) {
-      this.searchTerm = this.$route.query.name
-      this.query()
-    }
-    this.getFilters(...this.filterFields)
-    this.$emit('update-data', this.queryResult)
+    if (typeof window !== 'undefined')
+      window.addEventListener('scroll', this.handleScroll)
+    if (this.$route.query.name) this.searchTerm = this.$route.query.name
+    this.query()
+  },
+
+  destroyed() {
+    if (typeof window !== 'undefined')
+      window.removeEventListener('scroll', this.handleScroll)
   },
 
   methods: {
@@ -177,61 +185,95 @@ export default {
       if (!this.visibleFilter) this.visibleFilter = Object.keys(this.filters)[0]
       this.collapseFilters = !this.collapseFilters
     },
-    setAllFilters: function(filter, val) {
+    setAllFilterOptions: function(filter, val) {
       this.filters[filter].forEach(option => {
         option.value = val
       })
     },
+    filterTest: function(filter, testValue) {
+      return this.filters[filter]
+        .reduce((valid, option) => {
+          if (option.value) valid.push(option.name)
+          return valid
+        }, [])
+        .includes(testValue) // return if true if filter contains testValue
+    },
     getFilters: function(...filters) {
       // Generate filter lists from data
-      filters.forEach(filter => {
-        let options = [...new Set(this.model.map(item => item[filter]))] // Get all possible options from model
-        options = options.filter(option => {
-          return typeof option !== 'undefined'
-        }) // Filter must exist in each data element
-        options = options.map(item => {
-          return { name: item, value: true }
-        }) // Create array of options
+      return filters.reduce((obj, filter) => {
+        let options = [...new Set(this.model.map(item => item[filter]))].reduce(
+          (arr, option) => {
+            if (typeof option !== 'undefined')
+              arr.push({ name: option, value: true })
+            return arr
+          },
+          []
+        ) // Create array of filter options from model
         if (this.filtersToSort.includes(filter)) {
           options = _.sortBy(
             options,
-            o =>
-              typeof o.name === 'number'
-                ? _.toNumber(o.name)
-                : _.toString(o.name)
+            o => (typeof o.name === 'number' ? Number(o.name) : String(o.name))
           ) // sort
         }
-        this.$set(this.filters, filter, options) // Add filters. Must use vm.set to make these properties reactive
-      })
+        obj[filter] = options
+        return obj
+      }, {})
     },
     query: _.debounce(function() {
-      const filterTest = (filter, testValue) => {
-        // check if filter includes testValue from model
-        let trueOptions = []
-        this.filters[filter].forEach(option => {
-          if (option.value) trueOptions.push(option.name)
-        }) // Create list of options that are true
-        return trueOptions.includes(testValue) // return if testValue is a true option
-      }
-
-      let result = this.model.filter(el => {
-        let filterTestRes = true // All filter options default to true
-        Object.keys(this.filters).forEach(filter => {
-          filterTestRes *= filterTest(filter, el[filter])
-        }) // check each element against all filters
-        // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
-        let test =
+      const result = this.model.filter(
+        el =>
+          // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
           el[this.searchField]
             .toLowerCase()
-            .includes(this.searchTerm.toLowerCase()) && filterTestRes // ensure element contains search term and passes filter test
-        return test
-      })
+            .includes(this.searchTerm.toLowerCase()) &&
+          Object.keys(this.filters).reduce(
+            (testRes, filter) => testRes * this.filterTest(filter, el[filter]), // check each element against all filters
+            1
+          ) // ensure element contains search term and passes filter test
+      )
 
-      this.queryResult = _.sortBy(result, 'name')
-
-      this.$emit('update-data', this.queryResult)
       this.$root.$emit('toggle')
-    }, 500)
+      this.queryResult = _.sortBy(result, 'name')
+      this.emitUpdateData()
+    }, 300),
+    loadMore: function(n = 10) {
+      this.count += n
+    },
+    loadFewer: function(n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10 // Count never < 10
+    },
+    emitUpdateData: function() {
+      this.$emit('update-data', {
+        truncated: this.queryResult.slice(0, this.count),
+        show: this.queryResult.length > 0
+      })
+    },
+    handleScroll: _.throttle(function(event) {
+      const d = document.documentElement
+      const offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
+      const height = d.offsetHeight // Total CSS height
+      const scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
+      if (scrollDir < 0) {
+        if (offset === height) {
+          this.loadMore()
+          this.scrollPos = offset
+        }
+      } else {
+        // TODO: Better remove items performance
+        if (this.scrollPos >= offset) {
+          const m =
+            this.queryResult.length % 10 === 0
+              ? 0
+              : this.queryResult.length -
+                Math.floor(this.queryResult.length / 10) * 10
+          const x = Math.floor(this.scrollPos / offset) * 5 + m
+          this.loadFewer(x)
+          this.scrollPos = offset - window.innerHeight * 2
+        }
+      }
+      this.prevScroll = d.scrollTop
+      this.emitUpdateData()
+    }, 200)
   }
 }
 </script>

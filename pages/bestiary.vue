@@ -29,10 +29,10 @@
           :filters-to-sort="filterFields"
           @update-data="updateData"/>
         
-        <div v-if="results.length">
+        <div v-if="results.show">
           <!-- List creatures -->
           <creature-entries
-            v-for="creature in creatures"
+            v-for="creature in results.truncated"
             :model="creature"
             :key="creature.index"
             :id="creatureIndex(creature.name)" />
@@ -48,80 +48,35 @@
 import bestiary from '~/data/bestiary.json'
 import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
-import _ from 'lodash'
 
 export default {
   head() {
     return { title: 'Bestiary' }
   },
+
   components: {
     Search,
     CreatureEntries
   },
+
   data() {
     return {
       bestiary,
-      count: 10,
-      results: [],
-      scrollPos: 0,
-      prevScroll: 0,
+      results: {},
       // TODO: filter by type
       filterFields: ['cr', 'size', 'source']
     }
   },
-  computed: {
-    creatures: function() {
-      return this.results.slice(0, this.count)
-    }
-  },
-  created: function() {
-    if (typeof window !== 'undefined')
-      window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed: function() {
-    if (typeof window !== 'undefined')
-      window.removeEventListener('scroll', this.handleScroll)
-  },
+
   methods: {
     updateData: function(value) {
-      this.results = value
+      this.results = value // Use results from Search.vue
     },
     creatureIndex: function(name) {
-      let index = this.results.findIndex(result => result.name === name) + 1
-      const id = `creature-${index}`
-      return id
-    },
-    loadMore: function(n = 10) {
-      this.count += n
-    },
-    loadFewer: function(n = 10) {
-      this.count = this.count - n >= 10 ? this.count - n : 10
-    },
-    handleScroll: _.throttle(function(event) {
-      let d = document.documentElement
-      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
-      let height = d.offsetHeight // Total CSS height
-      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0) {
-        if (offset === height) {
-          this.loadMore()
-          this.scrollPos = offset
-        }
-      } else {
-        // TODO: Better remove items performance
-        if (this.scrollPos >= offset) {
-          let m =
-            this.creatures.length % 10 === 0
-              ? 0
-              : this.creatures.length -
-                Math.floor(this.creatures.length / 10) * 10
-          let x = Math.floor(this.scrollPos / offset) * 5 + m
-          this.loadFewer(x)
-          this.scrollPos = offset - window.innerHeight * 2
-        }
-      }
-      this.prevScroll = document.documentElement.scrollTop
-    }, 200)
+      let index =
+        this.results.truncated.findIndex(result => result.name === name) + 1
+      return `creature-${index}`
+    }
   }
 }
 </script>
