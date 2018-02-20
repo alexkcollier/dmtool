@@ -141,7 +141,10 @@ export default {
       queryResult: _.sortBy(this.model, 'name'),
       collapseFilters: true,
       filters: {},
-      visibleFilter: ''
+      visibleFilter: '',
+      scrollPos: 0,
+      prevScroll: 0,
+      count: 10
     }
   },
 
@@ -165,7 +168,14 @@ export default {
       this.query()
     }
     this.getFilters(...this.filterFields)
-    this.$emit('update-data', this.queryResult)
+    this.emitQueryResult()
+    if (typeof window !== 'undefined')
+      window.addEventListener('scroll', this.handleScroll)
+  },
+
+  destroyed() {
+    if (typeof window !== 'undefined')
+      window.removeEventListener('scroll', this.handleScroll)
   },
 
   methods: {
@@ -229,9 +239,47 @@ export default {
 
       this.queryResult = _.sortBy(result, 'name')
 
-      this.$emit('update-data', this.queryResult)
+      this.emitQueryResult()
       this.$root.$emit('toggle')
-    }, 500)
+    }, 500),
+    loadMore: function(n = 10) {
+      this.count += n
+    },
+    loadFewer: function(n = 10) {
+      this.count = this.count - n >= 10 ? this.count - n : 10 // Count never < 10
+    },
+    emitQueryResult: function() {
+      this.$emit('update-data', {
+        truncated: this.queryResult.slice(0, this.count),
+        show: this.queryResult.length > 0
+      })
+    },
+    handleScroll: _.throttle(function(event) {
+      let d = document.documentElement
+      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
+      let height = d.offsetHeight // Total CSS height
+      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
+      if (scrollDir < 0) {
+        if (offset === height) {
+          this.loadMore()
+          this.scrollPos = offset
+        }
+      } else {
+        // TODO: Better remove items performance
+        if (this.scrollPos >= offset) {
+          let m =
+            this.queryResult.length % 10 === 0
+              ? 0
+              : this.queryResult.length -
+                Math.floor(this.queryResult.length / 10) * 10
+          let x = Math.floor(this.scrollPos / offset) * 5 + m
+          this.loadFewer(x)
+          this.scrollPos = offset - window.innerHeight * 2
+        }
+      }
+      this.prevScroll = d.scrollTop
+      this.emitQueryResult()
+    }, 200)
   }
 }
 </script>

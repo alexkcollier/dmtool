@@ -17,10 +17,10 @@
           :filters-to-sort="filtersToSort"
           @update-data="updateData"/>
 
-        <div v-if="results.length">
+        <div v-if="results.show">
           <!-- Item entries -->
           <item-entries
-            v-for="item in sliceMagicItems"
+            v-for="item in results.truncated"
             :model="item"
             :key="item.index"
             :id="itemIndex(item.name)"/>
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 import magicItems from '~/data/magic-items.json'
 import ItemEntries from '~/components/ItemEntries'
 import Search from '~/components/Search'
@@ -43,74 +42,29 @@ export default {
     ItemEntries,
     Search
   },
+
   head() {
     return { title: 'Magic Items' }
   },
+
   data() {
     return {
       magicItems,
-      count: 10,
-      scrollPos: 0,
-      prevScroll: 0,
-      activeItem: '',
-      results: [],
+      results: {},
       filterFields: ['rarity', 'type', 'source'],
       filtersToSort: ['source', 'type']
     }
   },
-  computed: {
-    sliceMagicItems: function() {
-      return this.results.slice(0, this.count)
-    }
-  },
-  created: function() {
-    if (typeof window !== 'undefined')
-      window.addEventListener('scroll', this.handleScroll)
-  },
-  destroyed: function() {
-    if (typeof window !== 'undefined')
-      window.removeEventListener('scroll', this.handleScroll)
-  },
+
   methods: {
     itemIndex: function(name) {
-      let index = this.results.findIndex(result => result.name === name) + 1
-      const id = `item-${index}`
-      return id
+      let index =
+        this.results.truncated.findIndex(result => result.name === name) + 1
+      return `item-${index}`
     },
     updateData: function(value) {
-      this.results = value
-    },
-    loadMore: function(n = 10) {
-      this.count += n
-    },
-    loadFewer: function(n = 10) {
-      this.count = this.count - n >= 10 ? this.count - n : 10
-    },
-    handleScroll: _.throttle(function(event) {
-      let d = document.documentElement
-      let offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
-      let height = d.offsetHeight // Total CSS height
-      let scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0) {
-        if (offset === height) {
-          this.loadMore()
-          this.scrollPos = offset
-        }
-      } else {
-        // TODO: Better remove items performance
-        if (this.scrollPos >= offset) {
-          let m =
-            this.sliceMagicItems.length % 10 === 0
-              ? 0
-              : this.sliceMagicItems.length -
-                Math.floor(this.sliceMagicItems.length / 10) * 10
-          let x = Math.floor(this.scrollPos / offset) * 10 + m
-          this.loadFewer(x)
-          this.scrollPos = offset - window.innerHeight * 2
-        }
-      }
-      this.prevScroll = document.documentElement.scrollTop
-    }, 200)
+      this.results = value // Use results from Search.vue
+    }
   }
 }
 </script>
