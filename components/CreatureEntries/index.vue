@@ -155,7 +155,7 @@
 </template>
 
 <script>
-import Trait from './trait.vue'
+import Trait from './Trait.vue'
 
 export default {
   name: 'CreatureEntries',
