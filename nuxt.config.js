@@ -33,22 +33,11 @@ module.exports = {
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },
-  generate: {
-    minify: {
-      collapseWhitespace: false
-    }
-  },
   /*
   ** Build configuration
   */
   build: {
     vendor: ['lodash'],
-    /*
-    ** Disable performance hints
-    */
-    performance: {
-      hints: false
-    },
     /*
     ** Silence PostCSS Bulma error
     */
@@ -71,6 +60,10 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      /*
+      ** Increase max asset size
+      */
+      config.performance.maxAssetSize = 2000000
     }
   }
 }
