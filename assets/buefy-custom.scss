@@ -30,14 +30,22 @@ $colors: map-merge($colors, $addColors);
 
 // Typography
 $body-size: 18px;
-$family-serif: "bookmania", Georgia, 'Times New Roman', Times, serif;
+$family-serif: "bookmania", Georgia, "Times New Roman", Times, serif;
 $family-primary: $family-serif;
 
-$family-sans-serif: "freight-sans-pro", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+$family-sans-serif: "freight-sans-pro", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+  Arial, sans-serif;
 
 $content-heading-color: $red;
 
-h1, h2, h3, h4, h5, .title, .button {
+h1,
+h2,
+h3,
+h4,
+h5,
+.title,
+.button {
   font-family: "mrs-eaves-roman-small-caps", $family-primary;
   font-weight: normal;
   font-variant: small-caps;
@@ -52,7 +60,6 @@ h1, h2, h3, h4, h5, .title, .button {
     font-variant: unset;
   }
 }
-
 
 // Add special loading div
 div {
@@ -93,18 +100,19 @@ $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
 
-
 // Card
 .card {
   font-family: $family-sans-serif;
 }
 
 // Controls
-.switch input[type=checkbox]+.check:before {
+.switch input[type="checkbox"] + .check:before {
   background: $input-background-color;
 }
 
-table, .input, .control {
+table,
+.input,
+.control {
   font-family: $family-sans-serif;
   font-feature-settings: "lnum";
 }
@@ -113,26 +121,29 @@ table, .input, .control {
 $fade-time: 500ms;
 
 .fade {
-  &-enter-active, &-leave-active {
+  &-enter-active,
+  &-leave-active {
     transition: all 2s ease-in-out;
   }
-  &-enter, &-leave-to {
+  &-enter,
+  &-leave-to {
     opacity: 0;
   }
 }
 
 .fade-grow {
-  &-enter-active, &-leave-active {
+  &-enter-active,
+  &-leave-active {
     transition: all $fade-time ease-in-out;
     max-height: 300vh;
     overflow: hidden;
   }
-  &-enter, &-leave-to {
+  &-enter,
+  &-leave-to {
     max-height: 0;
     opacity: 0;
   }
 }
-
 
 // Custom
 .ampersand {
@@ -143,7 +154,7 @@ $fade-time: 500ms;
   height: inherit;
   width: 100%;
   position: absolute;
-  background: url('~assets/ampersand.svg') center center / contain no-repeat;
+  background: url("~assets/ampersand.svg") center center / contain no-repeat;
   background-blend-mode: multiply;
   mix-blend-mode: multiply;
   opacity: 0.1;
