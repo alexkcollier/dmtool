@@ -68,7 +68,7 @@ export default {
       setTimeout(() => {
         if (this.results.truncated.length === 1)
           this.$refs['item-1'][0]['collapse'] = false // Expand first entry if only one result
-      }, 300)
+      }, 300) // Must match search debounce time
     }
   }
 }
