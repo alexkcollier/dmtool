@@ -256,10 +256,17 @@ export default {
   padding-top: 0.3em;
 }
 
-.content table td,
-.content table tr {
+.content table {
   @media screen and (max-width: 768px) {
-    padding: 0.5em !important;
+    display: block;
+    overflow-x: scroll;
+  }
+
+  & td,
+  & tr {
+    @media screen and (max-width: 768px) {
+      padding: 0.5em !important;
+    }
   }
 }
 
