@@ -152,9 +152,6 @@ export default {
     placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
-    // filters: function() {
-    //   return this.getFilters(...this.filterFields)
-    // },
     visibleFilterOptions() {
       return this.visibleFilter
         ? this.visibleFilter
@@ -223,13 +220,16 @@ export default {
         this.$set(this.filters, filter, options) // Set filter options. Must use vm.set to make this.filters reactive.
       })
     },
+    toLowerCaseTrim: function(str) {
+      return _.trim(str.toLowerCase())
+    },
     query: _.debounce(function() {
       const result = this.model.filter(
         el =>
           // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
-          el[this.searchField]
-            .toLowerCase()
-            .includes(this.searchTerm.toLowerCase()) &&
+          this.toLowerCaseTrim(el[this.searchField]).includes(
+            this.toLowerCaseTrim(this.searchTerm)
+          ) &&
           Object.keys(this.filters).reduce(
             (testRes, filter) => testRes * this.filterTest(filter, el[filter]), // check each element against all filters
             1
