@@ -1,9 +1,6 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="title">
-        <nuxt-link to="/">dmtool</nuxt-link>
-      </h1>
 
       <div class="content">
         <h1>Magic Item Search</h1>

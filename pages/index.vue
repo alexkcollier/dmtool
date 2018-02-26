@@ -8,7 +8,6 @@
         <h2 class="subtitle is-size-3">
           Personal DM tools
         </h2>
-        <!-- <input v-if="$store.state.user !== 'hellothere'" class="input" type="password" v-model="user" @change="login"> -->
         
         <nuxt-link to="/magic-items" class="button is-medium">Magic Items</nuxt-link>
         <nuxt-link to="/spells" class="button is-medium">Spells</nuxt-link>
@@ -21,6 +20,7 @@
 
 <script>
 export default {
+  layout: 'HomePage',
   head() {
     return { title: 'Home' }
   }

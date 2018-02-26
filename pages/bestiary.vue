@@ -1,9 +1,6 @@
 <template>
   <section class="section">
     <div class="container">
-      <h1 class="title">
-        <nuxt-link to="/">dmtool</nuxt-link>
-      </h1>
       <div class="content">
         
         <div class="level is-mobile" style="margin:0;">
