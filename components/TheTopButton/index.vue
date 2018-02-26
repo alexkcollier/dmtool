@@ -1,19 +1,15 @@
 <template>
   <transition name="fade">
-    <div class="container">
-      <div
-        v-show="showTopButton"
-        class="button is-gold"
-        @click="scrollToTop">
-        <b-icon icon="format-vertical-align-top"/>
-      </div>
+    <div
+      v-show="showTopButton"
+      class="button is-gold"
+      @click="scrollToTop">
+      <b-icon icon="format-vertical-align-top"/>
     </div>
   </transition>
 </template>
 
 <script>
-import _ from 'lodash'
-
 export default {
   data() {
     return {
@@ -24,6 +20,7 @@ export default {
   mounted() {
     if (typeof window !== 'undefined')
       window.addEventListener('scroll', this.handleScroll)
+    this.handleScroll()
   },
 
   destroyed() {
@@ -32,9 +29,9 @@ export default {
   },
 
   methods: {
-    handleScroll: _.debounce(function() {
+    handleScroll: function() {
       this.showTopButton = window.scrollY > window.innerHeight
-    }, 150),
+    },
     scrollToTop: function() {
       window.scrollTo(0, 0)
     }
@@ -54,6 +51,19 @@ export default {
 
   &:hover {
     opacity: 1;
+  }
+}
+
+$fade-time: 150ms;
+
+.fade {
+  &-enter-active,
+  &-leave-active {
+    transition: all $fade-time ease-in-out;
+  }
+  &-enter,
+  &-leave-to {
+    opacity: 0;
   }
 }
 </style>
