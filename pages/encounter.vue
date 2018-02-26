@@ -15,7 +15,7 @@
           <div v-if="$store.state.encounter.length" class="level-right">
             <div class="level-item" style="margin-right:0;">
               <button
-                @click="$store.commit('clearEncounter')"
+                @click="clearEncounter"
                 :disabled="$store.state.encounter.length === 0"
                 class="button is-text"
                 style="margin:0 0.25rem 1rem 0;">
@@ -55,6 +55,7 @@
 
 <script>
 import CreatureEntries from '~/components/CreatureEntries'
+import { mapMutations } from 'vuex'
 
 export default {
   head() {
@@ -73,7 +74,8 @@ export default {
         ) + 1
       const id = `creature-${index}`
       return id
-    }
+    },
+    ...mapMutations(['clearEncounter'])
   }
 }
 </script>

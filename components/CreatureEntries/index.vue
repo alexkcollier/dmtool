@@ -18,14 +18,14 @@
             <button
               v-if="encounterIncludesCreature"
               class="button"
-              @click="removeFromEncounter">
+              @click="removeFromEncounter(model)">
               <b-icon icon="minus" />
             </button>
           </transition>
           <button 
             v-if="$route.path === '/bestiary'"
             class="button is-primary"
-            @click="addToEncounter"
+            @click="addToEncounter(model)"
             :disabled="encounterIncludesCreature">
             <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
           </button>
@@ -156,6 +156,7 @@
 
 <script>
 import Trait from './Trait.vue'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'CreatureEntries',
@@ -240,13 +241,7 @@ export default {
       this.collapse = !this.collapse
       this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
     },
-    addToEncounter: function() {
-      this.$store.commit('addToEncounter', this.model)
-      console.log(this.$store.state.encounter)
-    },
-    removeFromEncounter: function() {
-      this.$store.commit('removeFromEncounter', this.model)
-    }
+    ...mapMutations(['addToEncounter', 'removeFromEncounter'])
   }
 }
 </script>
