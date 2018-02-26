@@ -2,15 +2,15 @@
   <div>
     <!-- Search box -->
     <b-field>
-      <div class="control has-icons-left is-expanded">
-        <input
-          @keyup="query"
-          v-model="searchTerm" 
-          :class="{'is-danger': !queryResult.length }"
-          class="input"
-          type="text"
-          :placeholder="placeholder">
-        <b-icon icon="magnify" size="is-small" class="is-left"/>
+      <div class="control is-expanded">
+        <b-autocomplete
+          icon="magnify"
+          v-model="searchTerm"
+          @select="query"
+          :field="searchField"
+          :data="queryResult"
+          :placeholder="placeholder"
+          keep-first/>
       </div>
       <div class="control">
         <button
