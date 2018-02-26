@@ -23,7 +23,8 @@
             v-for="item in results.truncated"
             :model="item"
             :key="item.index"
-            :id="itemIndex(item.name)"/>
+            :id="itemIndex(item.name)"
+            :ref="itemIndex(item.name)"/>
         </div>
         <div v-else class="ampersand"/>
 
@@ -64,6 +65,8 @@ export default {
     },
     updateData: function(value) {
       this.results = value // Use results from Search.vue
+      if (this.results.truncated.length === 1)
+        this.$refs['item-1'][0]['collapse'] = false // Expand first entry if only one result
     }
   }
 }

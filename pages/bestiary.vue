@@ -35,7 +35,8 @@
             v-for="creature in results.truncated"
             :model="creature"
             :key="creature.index"
-            :id="creatureIndex(creature.name)" />
+            :id="creatureIndex(creature.name)"
+            :ref="creatureIndex(creature.name)"/>
         </div>
         <div v-else class="ampersand"/>
 
@@ -71,6 +72,8 @@ export default {
   methods: {
     updateData: function(value) {
       this.results = value // Use results from Search.vue
+      if (this.results.truncated.length === 1)
+        this.$refs['creature-1'][0]['collapse'] = false // Expand first entry if only one result
     },
     creatureIndex: function(name) {
       let index =

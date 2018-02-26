@@ -22,7 +22,8 @@
             v-for="spell in results.truncated"
             :model="spell"
             :key="spell.index"
-            :id="spellIndex(spell.name)"/>
+            :id="spellIndex(spell.name)"
+            :ref="spellIndex(spell.name)"/>
         </div>
         
         <div v-else class="ampersand"/>
@@ -61,6 +62,8 @@ export default {
   methods: {
     updateData: function(value) {
       this.results = value // Use results from Search.vue
+      if (this.results.truncated.length === 1)
+        this.$refs['spell-1'][0]['collapse'] = false // Expand first entry if only one result
     },
     spellIndex: function(name) {
       let index =
