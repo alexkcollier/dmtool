@@ -59,7 +59,7 @@ export default {
   methods: {
     formatEntry: function(str) {
       let startRegExp = /\{@[a-z]*\s/g
-      let endRegExp = /\|*[a-z]*}/g
+      let endRegExp = /(\|[a-z]*)*}/g
       let result = str.match(startRegExp)
         ? str.replace(startRegExp, '<i>').replace(endRegExp, '</i>')
         : str
