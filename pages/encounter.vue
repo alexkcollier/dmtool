@@ -60,9 +60,11 @@ export default {
   head() {
     return { title: 'Encounter' }
   },
+
   components: {
     CreatureEntries
   },
+
   methods: {
     creatureIndex: function(name) {
       let index =

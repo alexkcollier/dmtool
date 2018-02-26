@@ -29,28 +29,34 @@ import ItemEntry from './ItemEntry.vue'
 
 export default {
   name: 'ItemEntries',
+
   components: {
     ItemEntry
   },
+
   filters: {
     lowerCase: function(str) {
       return str ? str.toLowerCase() : ''
     }
   },
+
   props: {
     model: {
       type: Object,
       default: () => {}
     }
   },
+
   data() {
     return { collapse: true }
   },
+
   mounted() {
     this.$root.$on('toggle', itemIndex => {
       if (!this.collapse) this.collapse = !(this.$el.id === itemIndex) // Check if expanded item is the target item. If not, collapse it. Only check if item not collapsed.
     })
   },
+
   methods: {
     toggleItem: function() {
       this.collapse = !this.collapse

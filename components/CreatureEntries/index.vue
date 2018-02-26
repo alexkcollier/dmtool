@@ -159,9 +159,11 @@ import Trait from './Trait.vue'
 
 export default {
   name: 'CreatureEntries',
+
   components: {
     Trait
   },
+
   filters: {
     getStatMod: function(stat) {
       let mod = Math.floor((stat - 10) / 2)
@@ -174,15 +176,18 @@ export default {
         : num
     }
   },
+
   props: {
     model: {
       type: Object,
       default: () => {}
     }
   },
+
   data() {
     return { collapse: true }
   },
+
   computed: {
     concatType: function() {
       let r = String
@@ -211,11 +216,13 @@ export default {
       return encounterCreatures.includes(this.model.name)
     }
   },
+
   mounted() {
     this.$root.$on('toggle', creatureIndex => {
       if (!this.collapse) this.collapse = !(this.$el.id === creatureIndex) // Check if expanded creature is the target creature. If not, collapse it. Only check if creature not collapsed.
     })
   },
+
   methods: {
     removeFirst: function(arr) {
       let r = arr.slice(1)

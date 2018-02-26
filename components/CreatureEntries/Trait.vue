@@ -11,19 +11,22 @@
 
 <script>
 export default {
-  name: 'Model',
+  name: 'Trait',
+
   props: {
     model: {
       type: Object,
       default: () => {}
     }
   },
+
   computed: {
     shiftModel() {
       let r = this.model.text.slice(1)
       return r.length > 0 ? r : null
     }
   },
+
   methods: {
     formatTrait: function(str) {
       let spellListRegExp = /^(Cantrip.*\s*|[0-9].*\s*|At will|\d+\/.*):/g

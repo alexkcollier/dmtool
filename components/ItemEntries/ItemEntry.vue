@@ -48,12 +48,14 @@
 <script>
 export default {
   name: 'ItemEntry',
+
   props: {
     model: {
       type: Array,
       default: () => []
     }
   },
+
   methods: {
     formatEntry: function(str) {
       let startRegExp = /\{@[a-z]*\s/g

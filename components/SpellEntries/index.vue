@@ -32,15 +32,18 @@ import SpellEntry from './SpellEntry.vue'
 
 export default {
   name: 'SpellEntries',
+
   components: {
     SpellEntry
   },
+
   props: {
     model: {
       type: Object,
       default: () => {}
     }
   },
+
   data() {
     return { collapse: true }
   },
@@ -109,11 +112,13 @@ export default {
       }
     }
   },
+
   mounted() {
     this.$root.$on('toggle', spellIndex => {
       if (!this.collapse) this.collapse = !(this.$el.id === spellIndex) // Check if expanded spell is the target spell. If not, collapse it. Only check if spell not collapsed.
     })
   },
+
   methods: {
     toggleSpell: function() {
       this.collapse = !this.collapse
