@@ -1,13 +1,19 @@
 <template>
-  <!-- <div> -->
-  <nuxt/>
-  <!-- </div> -->
+  <div>
+    <nuxt/>
+    <TheTopButton/>
+  </div>
 </template>
 
 <script>
-export default {}
-</script>
+import TheTopButton from '~/components/TheTopButton'
 
+export default {
+  components: {
+    TheTopButton
+  }
+}
+</script>
 
 <style lang="scss">
 
