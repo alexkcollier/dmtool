@@ -141,6 +141,7 @@ export default {
       queryResult: _.sortBy(this.model, 'name'),
       collapseFilters: true,
       visibleFilter: '',
+      filters: {},
       scrollPos: 0,
       prevScroll: 0,
       count: 10
@@ -151,9 +152,9 @@ export default {
     placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
-    filters: function() {
-      return this.getFilters(...this.filterFields)
-    },
+    // filters: function() {
+    //   return this.getFilters(...this.filterFields)
+    // },
     visibleFilterOptions() {
       return this.visibleFilter
         ? this.visibleFilter
@@ -169,7 +170,10 @@ export default {
       window.addEventListener('scroll', this.handleScroll)
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
     this.query()
+    this.getFilters(...this.filterFields)
   },
+
+  mounted() {},
 
   destroyed() {
     if (typeof window !== 'undefined')
@@ -199,8 +203,9 @@ export default {
         .includes(testValue) // return if true if filter contains testValue
     },
     getFilters: function(...filters) {
-      // Generate filter lists from data
-      return filters.reduce((obj, filter) => {
+      // Iterate over provided filters
+      filters.map(filter => {
+        // Generate filter options from model
         let options = [...new Set(this.model.map(item => item[filter]))].reduce(
           (arr, option) => {
             if (typeof option !== 'undefined')
@@ -208,16 +213,15 @@ export default {
             return arr
           },
           []
-        ) // Create array of filter options from model
+        )
         if (this.filtersToSort.includes(filter)) {
           options = _.sortBy(
             options,
             o => (typeof o.name === 'number' ? Number(o.name) : String(o.name))
           ) // sort
         }
-        obj[filter] = options
-        return obj
-      }, {})
+        this.$set(this.filters, filter, options) // Set filter options. Must use vm.set to make this.filters reactive.
+      })
     },
     query: _.debounce(function() {
       const result = this.model.filter(
