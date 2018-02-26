@@ -47,6 +47,7 @@ export default {
   data() {
     return { collapse: true }
   },
+
   computed: {
     spellLevelSchool: function() {
       let spellLevel = ''
