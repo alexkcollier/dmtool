@@ -62,8 +62,10 @@ export default {
   methods: {
     updateData: function(value) {
       this.results = value // Use results from Search.vue
-      if (this.results.truncated.length === 1)
-        this.$refs['spell-1'][0]['collapse'] = false // Expand first entry if only one result
+      setTimeout(() => {
+        if (this.results.truncated.length === 1)
+          this.$refs['spell-1'][0]['collapse'] = false // Expand first entry if only one result
+      }, 300)
     },
     spellIndex: function(name) {
       let index =
