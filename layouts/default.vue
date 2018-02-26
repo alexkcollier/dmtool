@@ -52,7 +52,7 @@ export default {
 
   data() {
     return {
-      showNavigation: true
+      showNavigation: false
     }
   },
 
