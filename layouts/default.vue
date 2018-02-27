@@ -26,28 +26,20 @@
                 
               <nuxt-link
                 to="/magic-items"
-                class="button is-text is-medium is-capitalized is-block-mobile has-text-white"
-                @click.native="toggleNavigation">
-                Magic Items
-              </nuxt-link>
+                class="is-sans-serif is-capitalized is-block-mobile is-size-4 is-menu-link has-text-white"
+                @click.native="toggleNavigation">Magic Items</nuxt-link>
               <nuxt-link
                 to="/spells"
-                class="button is-text is-medium is-capitalized is-block-mobile has-text-white"
-                @click.native="toggleNavigation">
-                Spells
-              </nuxt-link>
+                class="is-sans-serif is-capitalized is-block-mobile is-size-4 is-menu-link has-text-white"
+                @click.native="toggleNavigation">Spells</nuxt-link>
               <nuxt-link
                 to="/bestiary"
-                class="button is-text is-medium is-capitalized is-block-mobile has-text-white"
-                @click.native="toggleNavigation">
-                Bestiary
-              </nuxt-link>
+                class="is-sans-serif is-capitalized is-block-mobile is-size-4 is-menu-link has-text-white"
+                @click.native="toggleNavigation">Bestiary</nuxt-link>
               <nuxt-link
                 to="/encounter"
-                class="button is-text is-medium is-capitalized is-block-mobile has-text-white"
-                @click.native="toggleNavigation">
-                Encounter
-              </nuxt-link>
+                class="is-sans-serif is-capitalized is-block-mobile is-size-4 is-menu-link has-text-white"
+                @click.native="toggleNavigation">Encounter</nuxt-link>
             
             </div>
           </div>
@@ -98,43 +90,28 @@ export default {
 <style lang="scss" scoped>
 .page-header {
   #is-navigation {
-    z-index: 1000000;
+    z-index: 10;
     position: fixed;
     top: 0;
     width: 100%;
-    box-shadow: 0 0 75px rgba($color: #000000, $alpha: 0.3);
   }
 
-  $desktop-transition-time: 300ms;
-  $mobile-transition-time: 200ms;
+  $transition-time: 300ms;
 
   .slide {
     &-enter-active,
     &-leave-active {
-      transition: transform $desktop-transition-time ease-in-out;
-      @media screen and (max-width: 768px) {
-        transition-duration: $mobile-transition-time;
-      }
+      transition: all $transition-time ease-in-out;
     }
     &-enter,
     &-leave-to {
-      transform: translateY(-100%);
-      box-shadow: none;
-      @media screen and (max-width: 768px) {
-        transform: translateX(-100%);
-      }
+      transform: translateY(-100vh);
     }
   }
 
   .section {
     padding: 1.5rem;
     margin-bottom: -3rem;
-  }
-
-  .is-block-mobile {
-    @media screen and (max-width: 768px) {
-      margin: 1.75rem auto;
-    }
   }
 
   .button.is-text.has-text-white:hover {
@@ -156,13 +133,11 @@ export default {
   .is-menu-button {
     display: inline-block;
     position: relative;
-    z-index: 10000000;
+    z-index: 15;
     cursor: pointer;
-    transition: color $desktop-transition-time ease-in-out;
-    @media screen and (max-width: 768px) {
-      transition-duration: $mobile-transition-time;
-    }
+    transition: color $transition-time ease-in-out;
     .title {
+      transition: color $transition-time ease-in-out;
       display: inline-block;
       margin-left: 1rem;
     }
@@ -179,10 +154,7 @@ export default {
         left: calc(50% - 8px);
         position: absolute;
         transform-origin: center;
-        transition-duration: $desktop-transition-time;
-        @media screen and (max-width: 768px) {
-          transition-duration: $mobile-transition-time;
-        }
+        transition-duration: 150ms;
         transition-property: background-color, opacity, transform;
         transition-timing-function: ease-in-out;
         width: 1rem;
@@ -211,6 +183,11 @@ export default {
         }
       }
     }
+  }
+
+  .is-menu-link {
+    margin: 1.75rem;
+    text-decoration: underline;
   }
 }
 </style>
