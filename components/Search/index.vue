@@ -32,6 +32,10 @@
           Filters
           <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/>
         </a>
+        <div
+          class="delete"
+          @click="resetFilters"
+          style="margin: auto; margin-right: 0.75rem;"/>
       </div>
 
       <!-- Filter options display -->
@@ -190,6 +194,14 @@ export default {
       this.filters[filter].forEach(option => {
         option.value = val
       })
+    },
+    resetFilters: function() {
+      let searchFilters = Object.keys(this.filters)
+      searchFilters.forEach(searchFilter =>
+        this.filters[searchFilter].forEach(option => {
+          option.value = true
+        })
+      )
     },
     filterTest: function(filter, testValue) {
       return this.filters[filter]
