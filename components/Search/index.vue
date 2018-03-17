@@ -27,14 +27,19 @@
       <div class="card-header">
 
         <!-- Filter collapse control-->
-        <a class="card-header-title" @click="filterViewToggle()">
+        <a class="card-header-title" @click="filterViewToggle">
+          <b-icon
+            icon="filter"
+            size="is-small"
+            style="margin-right:0.25rem;"
+            type="is-dark"/>
           Filters
-          <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/>
+          <!-- <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/> -->
+          <b-icon icon="chevron-down" :class="{'point-up': !collapseFilters}" class="icon-point"/>
         </a>
-        <div
-          class="delete"
-          @click="resetFilters"
-          style="margin: auto; margin-right: 0.75rem;"/>
+
+        <!-- Reset filters -->
+        <a class="button is-text" @click="resetFilters">Reset filters</a>
       </div>
 
       <!-- Filter options display -->
@@ -152,10 +157,10 @@ export default {
   },
 
   computed: {
-    placeholder() {
+    placeholder: function() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
-    visibleFilterOptions() {
+    visibleFilterOptions: function() {
       return this.visibleFilter
         ? this.visibleFilter
         : Object.keys(this.filters) ? Object.keys(this.filters)[0] : ''
@@ -172,8 +177,6 @@ export default {
     this.query()
     this.getFilters(...this.filterFields)
   },
-
-  mounted() {},
 
   destroyed() {
     if (typeof window !== 'undefined')
@@ -195,11 +198,8 @@ export default {
       })
     },
     resetFilters: function() {
-      let searchFilters = Object.keys(this.filters)
-      searchFilters.forEach(searchFilter =>
-        this.filters[searchFilter].forEach(option => {
-          option.value = true
-        })
+      Object.keys(this.filters).map(filter =>
+        this.setAllFilterOptions(filter, true)
       )
     },
     filterTest: function(filter, testValue) {
@@ -317,5 +317,14 @@ export default {
 
 hr {
   margin-top: 0.25em;
+}
+
+$icon-transition: transform 200ms ease-in-out;
+.icon-point {
+  transition: $icon-transition;
+}
+.point-up {
+  transform: rotateZ(-180deg);
+  transition: $icon-transition;
 }
 </style>
