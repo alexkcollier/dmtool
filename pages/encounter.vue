@@ -12,10 +12,10 @@
           <div v-if="$store.state.encounter.length" class="level-right">
             <div class="level-item" style="margin-right:0;">
               <button
-                @click="clearEncounter"
                 :disabled="$store.state.encounter.length === 0"
                 class="button is-text"
-                style="margin:0 0.25rem 1rem 0;">
+                style="margin:0 0.25rem 1rem 0;"
+                @click="clearEncounter">
                 <b-icon icon="delete" />
               </button>
               <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">

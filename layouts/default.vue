@@ -3,13 +3,13 @@
     <div class="page-header">
       <div class="section">
         <div class="container">
-          <div @click="toggleNavigation" class="is-menu-button" >
-            <div class="hamburger" :class="{'is-active': showNavigation}">
+          <div class="is-menu-button" @click="toggleNavigation">
+            <div :class="{'is-active': showNavigation}" class="hamburger">
               <span/>
               <span/>
               <span/>
             </div>
-            <h1 class="title is-size-2" :class="{'has-text-white': showNavigation}">dmtool</h1>
+            <h1 :class="{'has-text-white': showNavigation}" class="title is-size-2">dmtool</h1>
           </div>
         </div>
       </div>

@@ -3,20 +3,19 @@
     <!-- Search box -->
     <b-field>
       <div class="control is-expanded">
-        <b-autocomplete
-          icon="magnify"
-          v-model="searchTerm"
-          @select="query"
-          :field="searchField"
-          :data="queryResult"
+        <b-input
+          v-model="searchTerm" 
+          :class="{'is-danger': !queryResult.length }"
           :placeholder="placeholder"
-          keep-first/>
+          icon="magnify"
+          type="text"
+          @input="query"/>
       </div>
       <div class="control">
         <button
+          :disabled="!searchTerm" 
           class="button is-primary"
           style="margin:0;"
-          :disabled="!searchTerm" 
           @click="clearSearch">
           Clear
         </button>
@@ -28,7 +27,7 @@
       <div class="card-header">
 
         <!-- Filter collapse control-->
-        <a @click="filterViewToggle()" class="card-header-title">
+        <a class="card-header-title" @click="filterViewToggle()">
           Filters
           <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/>
         </a>
@@ -46,9 +45,9 @@
           <div class="card-header">
             <template v-for="(data, filter) in filters">
               <a 
-                class="card-footer-item is-capitalized"
                 :key="filter"
                 :class="{'is-active': visibleFilterOptions === filter}"
+                class="card-footer-item is-capitalized"
                 @click="visibleFilter = filter">
                 {{ filter | formatFilterOptionName }}
               </a>
@@ -75,8 +74,8 @@
             <b-field grouped group-multiline>
               <div
                 v-for="option in filters[visibleFilterOptions]"
-                class="control"
-                :key="option.name">
+                :key="option.name"
+                class="control">
                 <b-switch v-model="option.value" @input="query">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
@@ -90,7 +89,7 @@
 
     <!-- Result count -->
     <div class="control">
-      <div class="help has-text-right" :class="{'is-danger': resultCount == 0}">
+      <div :class="{'is-danger': resultCount == 0}" class="help has-text-right">
         {{ resultCount }} {{ searchType }}<span v-if="resultCount != 1">s</span> found.
       </div>
     </div>

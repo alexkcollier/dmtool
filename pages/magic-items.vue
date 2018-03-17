@@ -8,10 +8,10 @@
         <!-- Search box -->
         <search
           :model="magicItems"
-          search-field="name"
-          search-type="magic item"
           :filter-fields="filterFields"
           :filters-to-sort="filtersToSort"
+          search-field="name"
+          search-type="magic item"
           @update-data="updateData"/>
 
         <div v-if="results.show">
