@@ -7,10 +7,10 @@
         <!-- Search and filter -->
         <search
           :model="spells"
-          search-field="name"
-          search-type="spell"
           :filter-fields="filterFields"
           :filters-to-sort="filterFields"
+          search-field="name"
+          search-type="spell"
           @update-data="updateData"/>
         
         <div v-if="results.show">

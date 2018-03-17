@@ -24,9 +24,9 @@
           </transition>
           <button 
             v-if="$route.path === '/bestiary'"
+            :disabled="encounterIncludesCreature"
             class="button is-primary"
-            @click="addToEncounter(model)"
-            :disabled="encounterIncludesCreature">
+            @click="addToEncounter(model)">
             <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
           </button>
         </div>

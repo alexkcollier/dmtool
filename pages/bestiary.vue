@@ -20,10 +20,10 @@
         
         <search
           :model="bestiary.monster"
-          search-field="name"
-          search-type="creature"
           :filter-fields="filterFields"
           :filters-to-sort="filterFields"
+          search-field="name"
+          search-type="creature"
           @update-data="updateData"/>
         
         <div v-if="results.show">
