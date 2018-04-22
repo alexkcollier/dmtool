@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a @click="toggleSpell">
+    <a @click="toggleActive">
       <h3 class="title">{{ model.name }}</h3>
       <h6 class="subtitle is-size-6 is-italic is-spell-level">{{ spellLevelSchool }}</h6>
     </a>
@@ -29,6 +29,7 @@
 
 <script>
 import SpellEntry from './SpellEntry.vue'
+import ToggleActive from '~/mixins/toggle-active'
 
 export default {
   name: 'SpellEntries',
@@ -37,15 +38,13 @@ export default {
     SpellEntry
   },
 
+  mixins: [ToggleActive],
+
   props: {
     model: {
       type: Object,
       default: () => {}
     }
-  },
-
-  data() {
-    return { collapse: true }
   },
 
   computed: {
@@ -111,19 +110,6 @@ export default {
           }
         }
       }
-    }
-  },
-
-  mounted() {
-    this.$root.$on('toggle', spellIndex => {
-      if (!this.collapse) this.collapse = !(this.$el.id === spellIndex) // Check if expanded spell is the target spell. If not, collapse it. Only check if spell not collapsed.
-    })
-  },
-
-  methods: {
-    toggleSpell: function() {
-      this.collapse = !this.collapse
-      this.$root.$emit('toggle', this.$el.id) // Pass target spell ID to global event bus
     }
   }
 }
