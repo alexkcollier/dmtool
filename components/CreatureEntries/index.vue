@@ -34,7 +34,7 @@
 
     </div>
     <transition name="fade-grow">
-      <div v-if="active">
+      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
         <div class="is-sans-serif">
           <!-- AC/HP/Speed -->

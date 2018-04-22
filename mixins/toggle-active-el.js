@@ -3,7 +3,8 @@ import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return {
-      id: ''
+      id: '',
+      transitionDuration: 500
     }
   },
 
@@ -33,7 +34,15 @@ export default {
     toggleActive: function() {
       this.active
         ? this.clearActiveEl()
-        : this.setActiveEl({ activeEl: this.$el.id })
+        : this.setActiveEl({
+            el: this.$el.id,
+            delay: this.transitionDuration + 100
+          }).then(() =>
+            this.$scrollTo(`#${this.activeEl}`, 500, {
+              offset: -27,
+              easing: 'ease-in-out'
+            })
+          )
     }
   }
 }

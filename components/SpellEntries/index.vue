@@ -5,7 +5,7 @@
       <h6 class="subtitle is-size-6 is-italic is-spell-level">{{ spellLevelSchool }}</h6>
     </a>
     <transition name="fade-grow">
-      <div v-if="active">
+      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
         
         <!-- Spell parameters -->
         <p><strong>Casting Time:</strong> {{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>

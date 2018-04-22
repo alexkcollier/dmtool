@@ -11,7 +11,7 @@
       </h6>
     </a>
     <transition name="fade-grow">
-      <div v-if="active">
+      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
         <!-- Item text -->
         <item-entry :model="model.entries" />
