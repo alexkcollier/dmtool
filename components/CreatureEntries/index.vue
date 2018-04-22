@@ -18,7 +18,7 @@
             <button
               v-if="encounterIncludesCreature"
               class="button"
-              @click="removeFromEncounter(model)">
+              @click="REMOVE_FROM_ENCOUNTER(model)">
               <b-icon icon="minus" />
             </button>
           </transition>
@@ -26,7 +26,7 @@
             v-if="$route.path === '/bestiary'"
             :disabled="encounterIncludesCreature"
             class="button is-primary"
-            @click="addToEncounter(model)">
+            @click="ADD_TO_ENCOUNTER(model)">
             <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
           </button>
         </div>
@@ -230,7 +230,7 @@ export default {
         .join(', ') // Combine array values to string
       return r
     },
-    ...mapMutations(['addToEncounter', 'removeFromEncounter'])
+    ...mapMutations(['ADD_TO_ENCOUNTER', 'REMOVE_FROM_ENCOUNTER'])
   }
 }
 </script>

@@ -15,7 +15,7 @@
                 :disabled="$store.state.encounter.length === 0"
                 class="button is-text"
                 style="margin:0 0.25rem 1rem 0;"
-                @click="clearEncounter">
+                @click="CLEAR_ENCOUNTER">
                 <b-icon icon="delete" />
               </button>
               <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">
@@ -72,7 +72,7 @@ export default {
       const id = `creature-${index}`
       return id
     },
-    ...mapMutations(['clearEncounter'])
+    ...mapMutations(['CLEAR_ENCOUNTER'])
   }
 }
 </script>
