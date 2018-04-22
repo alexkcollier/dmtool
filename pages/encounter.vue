@@ -9,13 +9,13 @@
               <h1>Encounter</h1>
             </div>
           </div>
-          <div v-if="$store.state.encounter.length" class="level-right">
+          <div v-if="encounter.length" class="level-right">
             <div class="level-item" style="margin-right:0;">
               <button
-                :disabled="$store.state.encounter.length === 0"
+                :disabled="encounter.length === 0"
                 class="button is-text"
                 style="margin:0 0.25rem 1rem 0;"
-                @click="CLEAR_ENCOUNTER">
+                @click="clearEncounter">
                 <b-icon icon="delete" />
               </button>
               <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">
@@ -26,10 +26,10 @@
         </div>
 
         <hr>
-        <div v-if="$store.state.encounter.length !== 0">
+        <div v-if="encounter.length">
           <!-- List creatures -->
           <creature-entries
-            v-for="creature in $store.state.encounter"
+            v-for="creature in encounter"
             :model="creature"
             :key="creature.index"
             :id="creatureIndex(creature.name)" />
@@ -52,7 +52,7 @@
 
 <script>
 import CreatureEntries from '~/components/CreatureEntries'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   head() {
@@ -63,16 +63,24 @@ export default {
     CreatureEntries
   },
 
+  computed: {
+    ...mapState('encounter', {
+      encounter: 'encounter'
+    }),
+    something: function() {
+      return 3
+    }
+  },
+
   methods: {
     creatureIndex: function(name) {
       let index =
-        this.$store.state.encounter.findIndex(
-          creature => creature.name === name
-        ) + 1
-      const id = `creature-${index}`
-      return id
+        this.encounter.findIndex(creature => creature.name === name) + 1
+      return `creature-${index}`
     },
-    ...mapMutations(['CLEAR_ENCOUNTER'])
+    ...mapMutations('encounter', {
+      clearEncounter: 'CLEAR_ENCOUNTER'
+    })
   }
 }
 </script>

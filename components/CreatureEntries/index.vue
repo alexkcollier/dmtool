@@ -18,7 +18,7 @@
             <button
               v-if="encounterIncludesCreature"
               class="button"
-              @click="REMOVE_FROM_ENCOUNTER(model)">
+              @click="removeFromEncounter(model)">
               <b-icon icon="minus" />
             </button>
           </transition>
@@ -26,7 +26,7 @@
             v-if="$route.path === '/bestiary'"
             :disabled="encounterIncludesCreature"
             class="button is-primary"
-            @click="ADD_TO_ENCOUNTER(model)">
+            @click="addToEncounter(model)">
             <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
           </button>
         </div>
@@ -157,7 +157,7 @@
 <script>
 import Trait from './Trait.vue'
 import ToggleActive from '~/mixins/toggle-active'
-import { mapMutations } from 'vuex'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'CreatureEntries',
@@ -189,6 +189,12 @@ export default {
   },
 
   computed: {
+    ...mapState('encounter', {
+      encounter: 'encounter'
+    }),
+    ...mapGetters('encounter', {
+      encounterCreatures: 'encounterCreatures'
+    }),
     concatType: function() {
       let r = String
       if (this.model.type && this.model.type.length) {
@@ -208,12 +214,7 @@ export default {
       return this.concatKeyVal(this.model.skill)
     },
     encounterIncludesCreature: function() {
-      let encounterCreatures = []
-      if (this.$store.state.encounter)
-        encounterCreatures = [
-          ...new Set(this.$store.state.encounter.map(creature => creature.name))
-        ]
-      return encounterCreatures.includes(this.model.name)
+      return this.encounterCreatures.includes(this.model.name)
     }
   },
 
@@ -230,7 +231,10 @@ export default {
         .join(', ') // Combine array values to string
       return r
     },
-    ...mapMutations(['ADD_TO_ENCOUNTER', 'REMOVE_FROM_ENCOUNTER'])
+    ...mapMutations('encounter', {
+      addToEncounter: 'ADD_TO_ENCOUNTER',
+      removeFromEncounter: 'REMOVE_FROM_ENCOUNTER'
+    })
   }
 }
 </script>
