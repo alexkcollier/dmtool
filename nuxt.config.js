@@ -34,6 +34,12 @@ module.exports = {
   */
   loading: { color: '#3B8070' },
   /*
+  ** Router config
+  */
+  router: {
+    middleware: 'clear-active-el'
+  },
+  /*
   ** Build configuration
   */
   build: {

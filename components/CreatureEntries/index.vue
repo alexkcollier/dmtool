@@ -34,7 +34,7 @@
 
     </div>
     <transition name="fade-grow">
-      <div v-if="!collapse">
+      <div v-if="active">
 
         <div class="is-sans-serif">
           <!-- AC/HP/Speed -->
@@ -156,7 +156,7 @@
 
 <script>
 import Trait from './Trait.vue'
-import ToggleActive from '~/mixins/toggle-active'
+import ToggleActive from '~/mixins/toggle-active-el'
 import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {

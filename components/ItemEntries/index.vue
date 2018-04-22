@@ -11,7 +11,7 @@
       </h6>
     </a>
     <transition name="fade-grow">
-      <div v-if="!collapse">
+      <div v-if="active">
 
         <!-- Item text -->
         <item-entry :model="model.entries" />
@@ -26,7 +26,7 @@
 
 <script>
 import ItemEntry from './ItemEntry.vue'
-import ToggleActive from '~/mixins/toggle-active'
+import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
   name: 'ItemEntries',

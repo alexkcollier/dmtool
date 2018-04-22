@@ -5,7 +5,7 @@
       <h6 class="subtitle is-size-6 is-italic is-spell-level">{{ spellLevelSchool }}</h6>
     </a>
     <transition name="fade-grow">
-      <div v-if="!collapse">
+      <div v-if="active">
         
         <!-- Spell parameters -->
         <p><strong>Casting Time:</strong> {{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>
@@ -29,7 +29,7 @@
 
 <script>
 import SpellEntry from './SpellEntry.vue'
-import ToggleActive from '~/mixins/toggle-active'
+import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
   name: 'SpellEntries',
