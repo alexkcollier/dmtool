@@ -30,6 +30,13 @@ module.exports = {
   */
   plugins: ['@plugins/buefy', '@plugins/vue-scrollto'],
   /*
+  ** Modules
+  */
+  modules: ['@nuxtjs/pwa'],
+  meta: {
+    theme_color: '#3d4f5d'
+  },
+  /*
   ** Customize the progress bar color
   */
   loading: { color: '#3B8070' },

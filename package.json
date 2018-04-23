@@ -15,6 +15,7 @@
     "deploy": "nuxt generate && surge ./dist"
   },
   "dependencies": {
+    "@nuxtjs/pwa": "^2.0.8",
     "buefy": "^0.6.3",
     "nuxt": "^1.4.0",
     "vue": "^2.5.16",
