@@ -267,13 +267,13 @@ export default {
       const offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
       const height = d.offsetHeight // Total CSS height
       const scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0 && offset >= height - 80) {
+      if (scrollDir < 0 && offset >= height - 300) {
         this.loadMore(1)
         this.scrollPos = offset
         this.emitUpdateData()
       }
       this.prevScroll = d.scrollTop
-    }, 200)
+    }, 50)
   }
 }
 </script>
