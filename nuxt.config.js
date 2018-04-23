@@ -33,7 +33,10 @@ module.exports = {
   ** Modules
   */
   modules: ['@nuxtjs/pwa'],
-  meta: {
+  manifest: {
+    name: 'DM Tool',
+    short_name: 'dmtool',
+    background_color: '#3d4f5d',
     theme_color: '#3d4f5d'
   },
   /*
