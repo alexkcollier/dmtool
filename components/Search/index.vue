@@ -105,6 +105,7 @@
 
 <script>
 import _ from 'lodash'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Search',
@@ -184,6 +185,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('toggle-active-el', { clearActiveEl: 'CLEAR_ACTIVE_EL' }),
     clearSearch: function() {
       this.searchTerm = ''
       this.query()
@@ -235,6 +237,7 @@ export default {
       return _.trim(str.toLowerCase())
     },
     query: _.debounce(function() {
+      this.clearActiveEl()
       const result = this.model.filter(
         el =>
           // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
@@ -247,7 +250,6 @@ export default {
           ) // ensure element contains search term and passes filter test
       )
 
-      this.$root.$emit('toggle')
       this.queryResult = _.sortBy(result, 'name')
       this.emitUpdateData()
     }, 300),

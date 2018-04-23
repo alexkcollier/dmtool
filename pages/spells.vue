@@ -33,12 +33,9 @@
 import spells from '~/data/spells.json'
 import Search from '~/components/Search'
 import SpellEntries from '~/components/SpellEntries'
+import { mapActions } from 'vuex'
 
 export default {
-  head() {
-    return { title: 'Spells' }
-  },
-
   components: {
     Search,
     SpellEntries
@@ -52,17 +49,23 @@ export default {
     }
   },
 
+  head() {
+    return { title: 'Spells' }
+  },
+
   created: function() {
     this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
   },
 
   methods: {
+    ...mapActions('toggle-active-el', {
+      setActiveEl: 'SET_ACTIVE_EL'
+    }),
     updateData: function(value) {
       this.results = value // Use results from Search.vue
-      setTimeout(() => {
-        if (this.results.truncated.length === 1)
-          this.$refs['spell-1'][0]['collapse'] = false // Expand first entry if only one result
-      }, 300) // Must match search debounce time
+      // Expand first entry if only one result. Must match search debounce time
+      if (this.results.truncated.length === 1)
+        this.setActiveEl({ el: `spell-1`, delay: 300 })
     },
     spellIndex: function(name) {
       let index =

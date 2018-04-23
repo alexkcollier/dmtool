@@ -46,6 +46,7 @@
 import bestiary from '~/data/bestiary.json'
 import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
+import { mapActions } from 'vuex'
 
 export default {
   head() {
@@ -67,12 +68,14 @@ export default {
   },
 
   methods: {
+    ...mapActions('toggle-active-el', {
+      setActiveEl: 'SET_ACTIVE_EL'
+    }),
     updateData: function(value) {
       this.results = value // Use results from Search.vue
-      setTimeout(() => {
-        if (this.results.truncated.length === 1)
-          this.$refs['creature-1'][0]['collapse'] = false // Expand first entry if only one result
-      }, 300) // Must match search debounce time
+      // Expand first entry if only one result. Must match search debounce time
+      if (this.results.truncated.length === 1)
+        this.setActiveEl({ el: `creature-1`, delay: 300 })
     },
     creatureIndex: function(name) {
       let index =
