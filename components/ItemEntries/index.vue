@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a @click="toggleItem">
+    <a @click="toggleActive">
       <h3 class="title">{{ model.name }}</h3>
       <h6 class="subtitle is-item-rarity is-size-6 is-italic">
         <span>{{ model.type }}<span v-if="model.subtype"> ({{ model.subtype }})</span>, {{ model.rarity | lowerCase }}</span>
@@ -11,7 +11,7 @@
       </h6>
     </a>
     <transition name="fade-grow">
-      <div v-if="!collapse">
+      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
         <!-- Item text -->
         <item-entry :model="model.entries" />
@@ -26,6 +26,7 @@
 
 <script>
 import ItemEntry from './ItemEntry.vue'
+import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
   name: 'ItemEntries',
@@ -40,27 +41,12 @@ export default {
     }
   },
 
+  mixins: [ToggleActive],
+
   props: {
     model: {
       type: Object,
       default: () => {}
-    }
-  },
-
-  data() {
-    return { collapse: true }
-  },
-
-  mounted() {
-    this.$root.$on('toggle', itemIndex => {
-      if (!this.collapse) this.collapse = !(this.$el.id === itemIndex) // Check if expanded item is the target item. If not, collapse it. Only check if item not collapsed.
-    })
-  },
-
-  methods: {
-    toggleItem: function() {
-      this.collapse = !this.collapse
-      this.$root.$emit('toggle', this.$el.id) // Pass target item ID to global event bus
     }
   }
 }

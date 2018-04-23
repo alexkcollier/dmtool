@@ -34,6 +34,7 @@
 import magicItems from '~/data/magic-items.json'
 import ItemEntries from '~/components/ItemEntries'
 import Search from '~/components/Search'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -60,17 +61,18 @@ export default {
         this.results.truncated.findIndex(result => result.name === name) + 1
       return `item-${index}`
     },
+    ...mapActions('toggle-active-el', {
+      setActiveEl: 'SET_ACTIVE_EL'
+    }),
     updateData: function(value) {
       this.results = value // Use results from Search.vue
-      setTimeout(() => {
-        if (this.results.truncated.length === 1)
-          this.$refs['item-1'][0]['collapse'] = false // Expand first entry if only one result
-      }, 300) // Must match search debounce time
+      // Expand first entry if only one result. Must match search debounce time
+      if (this.results.truncated.length === 1)
+        this.setActiveEl({ el: `item-1`, delay: 300 })
     }
   }
 }
 </script>
 
 <style lang="scss">
-
 </style>

@@ -3,7 +3,7 @@
     <!-- Name, size, type and alignment -->
     <div class="columns is-mobile" style="margin-bottom:0">
       <div class="column">
-        <a @click="toggleCreature">
+        <a @click="toggleActive">
           <h3 class="title">{{ model.name }}</h3>
           <h6 class="subtitle is-size-6 is-creature-type is-italic">
             {{ model.size }} {{ concatType }}, {{ model.alignment }}
@@ -34,7 +34,7 @@
 
     </div>
     <transition name="fade-grow">
-      <div v-if="!collapse">
+      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
         <div class="is-sans-serif">
           <!-- AC/HP/Speed -->
@@ -156,7 +156,8 @@
 
 <script>
 import Trait from './Trait.vue'
-import { mapMutations } from 'vuex'
+import ToggleActive from '~/mixins/toggle-active-el'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'CreatureEntries',
@@ -178,6 +179,8 @@ export default {
     }
   },
 
+  mixins: [ToggleActive],
+
   props: {
     model: {
       type: Object,
@@ -185,11 +188,13 @@ export default {
     }
   },
 
-  data() {
-    return { collapse: true }
-  },
-
   computed: {
+    ...mapState('encounter', {
+      encounter: 'encounter'
+    }),
+    ...mapGetters('encounter', {
+      encounterCreatures: 'encounterCreatures'
+    }),
     concatType: function() {
       let r = String
       if (this.model.type && this.model.type.length) {
@@ -209,19 +214,8 @@ export default {
       return this.concatKeyVal(this.model.skill)
     },
     encounterIncludesCreature: function() {
-      let encounterCreatures = []
-      if (this.$store.state.encounter)
-        encounterCreatures = [
-          ...new Set(this.$store.state.encounter.map(creature => creature.name))
-        ]
-      return encounterCreatures.includes(this.model.name)
+      return this.encounterCreatures.includes(this.model.name)
     }
-  },
-
-  mounted() {
-    this.$root.$on('toggle', creatureIndex => {
-      if (!this.collapse) this.collapse = !(this.$el.id === creatureIndex) // Check if expanded creature is the target creature. If not, collapse it. Only check if creature not collapsed.
-    })
   },
 
   methods: {
@@ -237,11 +231,10 @@ export default {
         .join(', ') // Combine array values to string
       return r
     },
-    toggleCreature: function() {
-      this.collapse = !this.collapse
-      this.$root.$emit('toggle', this.$el.id) // Pass target creature ID to global event bus
-    },
-    ...mapMutations(['addToEncounter', 'removeFromEncounter'])
+    ...mapMutations('encounter', {
+      addToEncounter: 'ADD_TO_ENCOUNTER',
+      removeFromEncounter: 'REMOVE_FROM_ENCOUNTER'
+    })
   }
 }
 </script>

@@ -105,6 +105,7 @@
 
 <script>
 import _ from 'lodash'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Search',
@@ -184,6 +185,7 @@ export default {
   },
 
   methods: {
+    ...mapActions('toggle-active-el', { clearActiveEl: 'CLEAR_ACTIVE_EL' }),
     clearSearch: function() {
       this.searchTerm = ''
       this.query()
@@ -235,6 +237,7 @@ export default {
       return _.trim(str.toLowerCase())
     },
     query: _.debounce(function() {
+      this.clearActiveEl()
       const result = this.model.filter(
         el =>
           // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
@@ -247,15 +250,11 @@ export default {
           ) // ensure element contains search term and passes filter test
       )
 
-      this.$root.$emit('toggle')
       this.queryResult = _.sortBy(result, 'name')
       this.emitUpdateData()
     }, 300),
     loadMore: function(n = 10) {
       this.count += n
-    },
-    loadFewer: function(n = 10) {
-      this.count = this.count - n >= 10 ? this.count - n : 10 // Count never < 10
     },
     emitUpdateData: function() {
       this.$emit('update-data', {
@@ -268,27 +267,13 @@ export default {
       const offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
       const height = d.offsetHeight // Total CSS height
       const scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0) {
-        if (offset === height) {
-          this.loadMore()
-          this.scrollPos = offset
-        }
-      } else {
-        // TODO: Better remove items performance
-        if (this.scrollPos >= offset) {
-          const m =
-            this.queryResult.length % 10 === 0
-              ? 0
-              : this.queryResult.length -
-                Math.floor(this.queryResult.length / 10) * 10
-          const x = Math.floor(this.scrollPos / offset) * 5 + m
-          this.loadFewer(x)
-          this.scrollPos = offset - window.innerHeight * 2
-        }
+      if (scrollDir < 0 && offset >= height - 300) {
+        this.loadMore(1)
+        this.scrollPos = offset
+        this.emitUpdateData()
       }
       this.prevScroll = d.scrollTop
-      this.emitUpdateData()
-    }, 200)
+    }, 50)
   }
 }
 </script>
