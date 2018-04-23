@@ -8256,7 +8256,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to acid damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Cold Resistance",
@@ -8266,7 +8269,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to cold damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Fire Resistance",
@@ -8276,7 +8282,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to fire damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Force Resistance",
@@ -8286,7 +8295,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to force damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Lightning Resistance",
@@ -8296,17 +8308,23 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to lightning damage while you wear this armor."
+		]
 	},
 	{
-		"name": "Armor of Neccrotic Resistance",
+		"name": "Armor of Necrotic Resistance",
 		"type": "Armor",
 		"subtype": "light, medium, or heavy",
 		"tier": "Major",
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to necrotic damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Poison Resistance",
@@ -8316,7 +8334,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to poison damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Psychic Resistance",
@@ -8326,7 +8347,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to psychic damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Radiant Resistance",
@@ -8336,7 +8360,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to radiant damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Armor of Thunder Resistance",
@@ -8346,7 +8373,10 @@
 		"rarity": "Rare",
 		"source": "DMG",
 		"page": "162",
-		"reqAttune": "YES"
+		"reqAttune": "YES",
+		"entries": [
+			"You have resistance to thunder damage while you wear this armor."
+		]
 	},
 	{
 		"name": "Adamantine Armor",
