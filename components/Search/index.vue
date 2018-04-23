@@ -254,9 +254,6 @@ export default {
     loadMore: function(n = 10) {
       this.count += n
     },
-    loadFewer: function(n = 10) {
-      this.count = this.count - n >= 10 ? this.count - n : 10 // Count never < 10
-    },
     emitUpdateData: function() {
       this.$emit('update-data', {
         truncated: this.queryResult.slice(0, this.count),
@@ -268,26 +265,12 @@ export default {
       const offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
       const height = d.offsetHeight // Total CSS height
       const scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0) {
-        if (offset === height) {
-          this.loadMore()
-          this.scrollPos = offset
-        }
-      } else {
-        // TODO: Better remove items performance
-        if (this.scrollPos >= offset) {
-          const m =
-            this.queryResult.length % 10 === 0
-              ? 0
-              : this.queryResult.length -
-                Math.floor(this.queryResult.length / 10) * 10
-          const x = Math.floor(this.scrollPos / offset) * 5 + m
-          this.loadFewer(x)
-          this.scrollPos = offset - window.innerHeight * 2
-        }
+      if (scrollDir < 0 && offset >= height - 80) {
+        this.loadMore(1)
+        this.scrollPos = offset
+        this.emitUpdateData()
       }
       this.prevScroll = d.scrollTop
-      this.emitUpdateData()
     }, 200)
   }
 }
