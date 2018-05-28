@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SpellEntry from './SpellEntry.vue'
+import SpellEntry from '~/components/DataEntry'
 import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
