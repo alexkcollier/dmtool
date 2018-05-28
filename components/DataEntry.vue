@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: 'ItemEntry',
+  name: 'DataEntry',
 
   props: {
     model: {

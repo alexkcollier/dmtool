@@ -57,7 +57,7 @@ export default {
 
   methods: {
     itemIndex: function(name) {
-      let index =
+      const index =
         this.results.truncated.findIndex(result => result.name === name) + 1
       return `item-${index}`
     },

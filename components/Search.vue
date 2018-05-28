@@ -35,7 +35,7 @@
             type="is-dark"/>
           Filters
           <!-- <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/> -->
-          <b-icon icon="chevron-down" :class="{'point-up': !collapseFilters}" class="icon-point"/>
+          <b-icon :class="{'point-up': !collapseFilters}" icon="chevron-down" class="icon-point"/>
         </a>
 
         <!-- Reset filters -->
@@ -113,7 +113,7 @@ export default {
   filters: {
     parseNumToFrac: function(num) {
       return typeof num === 'number' && num > 0 && num < 1
-        ? `1/${1 / num}`
+        ? `1/${1 / num}` // converts decimal to denominator
         : num
     },
     formatFilterOptionName: function(str) {
@@ -164,7 +164,9 @@ export default {
     visibleFilterOptions: function() {
       return this.visibleFilter
         ? this.visibleFilter
-        : Object.keys(this.filters) ? Object.keys(this.filters)[0] : ''
+        : Object.keys(this.filters)
+          ? Object.keys(this.filters)[0]
+          : ''
     },
     resultCount: function() {
       return this.queryResult.length
