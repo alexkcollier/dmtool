@@ -22,21 +22,21 @@ export default {
 
   computed: {
     shiftModel() {
-      let r = this.model.text.slice(1)
+      const r = this.model.text.slice(1)
       return r.length > 0 ? r : null
     }
   },
 
   methods: {
     formatTrait: function(str) {
-      let spellListRegExp = /^(Cantrip.*\s*|[0-9].*\s*|At will|\d+\/.*):/g
-      let labelRegExp = /^(\w+\s*){0,5}:/g
-      let attackRegExp = /(Melee|Ranged).*Attack:/g
+      const spellListRegExp = /^(Cantrip.*\s*|[0-9].*\s*|At will|\d+\/.*):/g
+      const labelRegExp = /^(\w+\s*){0,5}:/g
+      const attackRegExp = /(Melee|Ranged).*Attack:/g
       if (str.match(spellListRegExp)) {
-        let list = str.split(': ')[0]
+        const list = str.split(': ')[0]
+        const spellDetailRegExp = /\s\(.*\)/g
         let spells = str.split(': ')[1].split(', ')
-        let spellDetailRegExp = /\s\(.*\)/g
-        spells = spells.map(
+        spells.forEach(
           spell =>
             `<i>${spell.replace(spellDetailRegExp, '')}</i>${
               spell.match(spellDetailRegExp)
@@ -44,17 +44,17 @@ export default {
                 : ''
             }`
         )
-        let result = `${list}: ${spells.join(', ')}`
+        const result = `${list}: ${spells.join(', ')}`
         return result
       } else if (str.match(attackRegExp)) {
-        let attackType = str.match(attackRegExp)
-        let result = str
+        const attackType = str.match(attackRegExp)
+        const result = str
           .replace(attackRegExp, `<i>${attackType}</i>`)
           .replace(/Hit:/, '<i>Hit:</i>')
         return result
       } else if (str.match(labelRegExp)) {
-        let label = str.match(labelRegExp)
-        let result = str.replace(labelRegExp, `<i>${label}</i>`)
+        const label = str.match(labelRegExp)
+        const result = str.replace(labelRegExp, `<i>${label}</i>`)
         return result
       } else {
         return str
