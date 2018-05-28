@@ -78,7 +78,7 @@ export default {
         this.setActiveEl({ el: `creature-1`, delay: 300 })
     },
     creatureIndex: function(name) {
-      let index =
+      const index =
         this.results.truncated.findIndex(result => result.name === name) + 1
       return `creature-${index}`
     }
