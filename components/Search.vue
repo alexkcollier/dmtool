@@ -113,7 +113,7 @@ export default {
   filters: {
     parseNumToFrac: function(num) {
       return typeof num === 'number' && num > 0 && num < 1
-        ? `1/${1 / num}`
+        ? `1/${1 / num}` // converts decimal to denominator
         : num
     },
     formatFilterOptionName: function(str) {
