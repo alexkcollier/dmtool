@@ -32,8 +32,8 @@
           <strong><i>{{ entry.name }}. </i></strong>
           <span v-html="formatEntry(entry.entries[0])"/>
         </p>
-        <item-entry v-else :model="entry.entries.slice(0, 1)" :key="entry.index" />
-        <item-entry
+        <data-entry v-else :model="entry.entries.slice(0, 1)" :key="entry.index" />
+        <data-entry
           v-if="entry.entries.slice(1).length"
           :model="entry.entries.slice(1)"
           :key="entry.index" />
