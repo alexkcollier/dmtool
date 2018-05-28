@@ -8,7 +8,7 @@
       <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
         
         <!-- Spell parameters -->
-        <p><strong>Casting Time:</strong> {{ model.time[0]['number'] }} {{ model.time[0]['unit'] }}</p>
+        <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
         <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
         <p><strong>Components:</strong> {{ spellComponents }}</p>
         <p><strong>Duration:</strong> {{ spellDuration }}</p>
@@ -49,66 +49,56 @@ export default {
 
   computed: {
     spellLevelSchool: function() {
-      let spellLevel = ''
-      if (
-        typeof this.model.level === 'string' &&
-        this.model.level.toLowerCase() === 'cantrip'
-      ) {
-        spellLevel = this.model.level
-      } else if (this.model.level === 1) {
-        spellLevel = `${this.model.level}st-level`
-      } else if (this.model.level === 2) {
-        spellLevel = `${this.model.level}nd-level`
-      } else if (this.model.level === 3) {
-        spellLevel = `${this.model.level}rd-level`
-      } else {
-        spellLevel = `${this.model.level}th-level`
+      let sf = ''
+      switch (this.model.level) {
+        case 'cantrip':
+          return `${this.model.school} ${this.model.level}`
+
+        case 1:
+          sf = 'st'
+          break
+
+        case 2:
+          sf = 'nd'
+          break
+
+        case 3:
+          sf = 'rd'
+          break
+
+        default:
+          sf = 'th'
+          break
       }
-      let spellLevelSchool =
-        spellLevel.toLowerCase() === 'cantrip'
-          ? `${this.model.school} ${spellLevel}`
-          : `${spellLevel} ${this.model.school}`
-      return spellLevelSchool.toLowerCase()
+      return `${this.model.level}${sf}-level ${this.model.school}`.toLowerCase()
     },
     spellComponents: function() {
-      let spellComponents = []
-      if (this.model.components.v) spellComponents.push('V')
-      if (this.model.components.s) spellComponents.push('S')
-      if (this.model.components.m)
-        spellComponents.push(`M (${this.model.components.m})`)
-      return spellComponents.join(', ')
+      const componentList = Object.keys(this.model.components)
+        .join(', ')
+        .toUpperCase()
+      return this.model.components.m
+        ? componentList.concat(` (${this.model.components.m})`)
+        : componentList
     },
     spellDuration: function() {
-      // Timed spells & concentration
-      if (this.model.duration[0]['type'] === 'timed') {
-        if (this.model.duration[0]['type']['concentration']) {
-          return `Concentration, up to ${
-            this.model.duration[0]['duration']['amount']
-          } ${this.model.duration[0]['duration']['type']}`
-        } else {
-          return `${this.model.duration[0]['duration']['amount']} ${
-            this.model.duration[0]['duration']['type']
-          }`
-        }
-      }
+      const { type, concentration, duration, ends } = this.model.duration[0]
+      switch (type) {
+        case 'timed':
+          return concentration
+            ? `Concentration, up to ${duration.amount} ${duration.type}`
+            : `${duration.amount} ${duration.type}`
 
-      // Instantaneous
-      if (this.model.duration[0]['type'] === 'instant') return 'Instantaneous'
+        case 'instant':
+          return 'Instantaneous'
 
-      // Special
-      if (this.model.duration[0]['type'] === 'special') return 'Special'
+        case 'special':
+          return 'Special'
 
-      // Permanent, triggered & dispelled
-      if (this.model.duration[0]['type'] === 'permanent') {
-        if (this.model.duration[0]['ends']) {
-          if (this.model.duration[0]['ends'].length === 2) {
-            return `Until ${this.model.duration[0]['ends'][0]}ed or ${
-              this.model.duration[0]['ends'][1]
-            }ed`
-          } else {
-            return `Until ${this.model.duration[0]['ends'][0]}ed`
-          }
-        }
+        case 'permanent':
+          // `ends` can be triggered and/or dispelled
+          return ends.length === 2
+            ? `Until ${ends[0]}ed or ${ends[1]}ed`
+            : `Until ${ends[0]}ed`
       }
     }
   }
