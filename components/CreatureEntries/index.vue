@@ -168,13 +168,12 @@ export default {
 
   filters: {
     getStatMod: function(stat) {
-      let mod = Math.floor((stat - 10) / 2)
-      let r = `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})`
-      return r
+      const mod = Math.floor((stat - 10) / 2)
+      return `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})`
     },
     parseNumToFrac: function(num) {
       return typeof num === 'number' && num > 0 && num < 1
-        ? `1/${1 / num}`
+        ? `1/${1 / num}` // converts decimal to denominator
         : num
     }
   },
@@ -196,19 +195,17 @@ export default {
       encounterCreatures: 'encounterCreatures'
     }),
     concatType: function() {
-      let r = String
-      if (this.model.type && this.model.type.length) {
+      const { type, tags, swarmSize } = this.model.type
+      if (typeof this.model.type === 'string') {
         // Simple creature type
-        r = this.model.type
-      } else if (this.model.type.tags) {
+        return this.model.type
+      } else if (tags) {
         // Creature type has tags
-        let tags = this.model.type.tags.join(', ')
-        r = `${this.model.type.type} (${tags})`
+        return `${type} (${tags.join(', ')})`
       } else {
         // Swarms
-        r = `swarm of ${this.model.type.swarmSize} ${this.model.type.type}s`
+        return `swarm of ${swarmSize} ${type}s`
       }
-      return r
     },
     concatSkill: function() {
       return this.concatKeyVal(this.model.skill)
@@ -220,16 +217,13 @@ export default {
 
   methods: {
     removeFirst: function(arr) {
-      let r = arr.slice(1)
+      const r = arr.slice(1)
       return r.length > 0 ? r : null
     },
     concatKeyVal: function(o) {
-      let r = Object.keys(o)
-        .reduce((a, k) => {
-          return a.concat(k + ' ' + o[k]) // Add combined key-value pair to an array
-        }, [])
+      return Object.keys(o)
+        .reduce((a, k) => a.concat(k + ' ' + o[k]), []) // Add combined key-value pair to an array
         .join(', ') // Combine array values to string
-      return r
     },
     ...mapMutations('encounter', {
       addToEncounter: 'ADD_TO_ENCOUNTER',
