@@ -53,8 +53,10 @@ export default {
 
 <style lang="scss" scoped>
 .ampersand-animation {
-  position: absolute;
+  margin: 0 auto;
+  max-width: 90vw;
   mix-blend-mode: darken;
   opacity: 0.2;
+  position: absolute;
 }
 </style>
