@@ -6,7 +6,7 @@
         <a @click="toggleActive">
           <h3 class="title">{{ model.name }}</h3>
           <h6 class="subtitle is-size-6 is-creature-type is-italic">
-            {{ model.size }} {{ concatType }}, {{ model.alignment }}
+            {{ model.size }} {{ concatType }}, {{ model.prettyAlignment }}
           </h6>
         </a>
       </div>
@@ -128,7 +128,7 @@
         <!-- Reactions -->
         <template v-if="model.reaction">
           <h2>Reactions</h2>
-          <!-- <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" /> -->
+          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
         </template>
 
         <!-- Legendary and Lair actions -->
@@ -163,9 +163,6 @@ export default {
     getStatMod: function(stat) {
       const mod = Math.floor((stat - 10) / 2)
       return `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})` // \xa0 is nbsp
-    },
-    getSize: function(str) {
-      return this.sizes[str]
     }
   },
 
