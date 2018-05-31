@@ -2,7 +2,7 @@
   <div>
     <p>
       <strong><i>{{ model.name }}. </i></strong>
-      <span v-html="formatTrait(model.text[0])"/>
+      <span v-html="formatTrait(model.entries[0])"/>
     </p>
     
     <p v-for="p in shiftModel" :key="p.index" v-html="formatTrait(p)"/>
@@ -22,7 +22,7 @@ export default {
 
   computed: {
     shiftModel() {
-      const r = this.model.text.slice(1)
+      const r = this.model.entries.slice(1)
       return r.length > 0 ? r : null
     }
   },

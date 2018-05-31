@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import bestiary from '~/data/bestiary.json'
+import bestiary from '~/data/bestiary-mm.json'
 import Search from '~/components/Search'
 import CreatureEntries from '~/components/CreatureEntries'
 import { mapActions } from 'vuex'
