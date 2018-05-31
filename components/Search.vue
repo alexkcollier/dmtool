@@ -78,8 +78,8 @@
             </b-field>
             <b-field grouped group-multiline>
               <div
-                v-for="option in filters[visibleFilterOptions]"
-                :key="option.name"
+                v-for="(option, index) in filters[visibleFilterOptions]"
+                :key="index"
                 class="control">
                 <b-switch v-model="option.value" @input="query">
                   {{ option.name | parseNumToFrac }}
