@@ -117,20 +117,21 @@ export default {
     },
     parseAlignment: function(arr) {
       arr.forEach(creature => {
-        if (typeof creature.alignment !== 'string') {
-          if (creature.alignment.every(axis => typeof axis === 'string')) {
-            creature.prettyAlignment = this.setCleanAlignment(
-              creature.alignment
-            )
-          } else {
-            const a0 = this.setCleanAlignment(creature.alignment[0].alignment)
-            const a1 = this.setCleanAlignment(creature.alignment[1].alignment)
-            creature.prettyAlignment = `${a0} (${
-              creature.alignment[0].chance
-            }%) or ${a1} (${creature.alignment[1].chance}%)`
-          }
-          return creature
+        if (creature.alignment.every(axis => typeof axis === 'string')) {
+          // Standard alignments
+          creature.prettyAlignment = this.setCleanAlignment(creature.alignment)
+        } else if (creature.alignment[0].special) {
+          // Creatures with special alignments. e.g.: Sacred Statue (Mordenkainen's Tome of Foes)
+          creature.prettyAlignment = creature.alignment[0].special
+        } else if (creature.alignment[0].chance) {
+          // Creatures with chance alignments. e.g.: Cloud Giant, Empyrean
+          const a0 = this.setCleanAlignment(creature.alignment[0].alignment)
+          const a1 = this.setCleanAlignment(creature.alignment[1].alignment)
+          creature.prettyAlignment = `${a0} (${
+            creature.alignment[0].chance
+          }%) or ${a1} (${creature.alignment[1].chance}%)`
         }
+        return creature
       })
     },
     setCleanAlignment: function(target) {
