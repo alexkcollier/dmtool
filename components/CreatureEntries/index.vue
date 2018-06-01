@@ -129,25 +129,36 @@
         <!-- Actions -->
         <template v-if="model.action">
           <h2>Actions</h2>
-          <trait v-for="action in model.action" :model="action" :key="action.index" />
+          <Action
+            v-for="action in model.action"
+            :model="action"
+            :key="action.index" />
         </template>
 
         <!-- Reactions -->
         <template v-if="model.reaction">
           <h2>Reactions</h2>
-          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
+          <Action
+            v-for="reaction in model.reaction"
+            :model="reaction"
+            :key="reaction.index" />
         </template>
 
         <!-- Legendary and Lair actions -->
         <!-- TODO: Lair actions -->
         <template v-if="model.legendaryGroup && model.legendary">
           <h2>Legendary Actions</h2>
-          <p>The creature can take {{ model.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
+          <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
           
-          <trait v-for="legendary in model.legendary" :model="legendary" :key="legendary.index" />
+          <Action
+            v-for="legendary in model.legendary"
+            :model="legendary"
+            :key="legendary.index" />
         </template>
 
-        <p class="control is-italic is-help">Source: {{ model.source }}</p>
+        <p class="control is-italic is-help">
+          Source: {{ source }}
+        </p>
       </div>
     </transition>
     <hr>
@@ -155,6 +166,7 @@
 </template>
 
 <script>
+import Action from './Action'
 import { mapMutations, mapState, mapGetters } from 'vuex'
 import Spellcasting from './Spellcasting'
 import ToggleActive from '~/mixins/toggle-active-el'
@@ -164,6 +176,7 @@ export default {
   name: 'CreatureEntries',
 
   components: {
+    Action,
     Spellcasting,
     Trait
   },
@@ -240,6 +253,9 @@ export default {
     conditionImmune: function() {
       return this.dmgCon(this.model.conditionImmune, 'immune')
     },
+    creatureName: function() {
+      return this.model.isNamedCreature ? this.model.name : 'The creature'
+    },
     dmgImmune: function() {
       return this.dmgCon(this.model.immune, 'immune')
     },
@@ -255,6 +271,14 @@ export default {
     hp: function() {
       const { average, formula, special } = this.model.hp
       return special || `${average} (${formula})`
+    },
+    legendaryActionCount: function() {
+      return this.model.legendaryActions || 3
+    },
+    source: function() {
+      const { page, source, sourceSub } = this.model
+      // eslint-disable-next-line
+      return `${source}${sourceSub ? ` - ${sourceSub}` : ''}${page ? `, p. ${page}` : ''}`
     },
     speed: function() {
       let { walk, ...speeds } = this.model.speed
@@ -281,6 +305,15 @@ export default {
       const { str, dex, con, wis, int, cha } = this.model
       return { str, dex, con, wis, int, cha }
     }
+  },
+
+  mounted: function() {
+    if (
+      process.env !== 'production' &&
+      this.model.trait &&
+      this.model.trait.entries.entries
+    )
+      console.warn(`${this.model.name} has entries that not being displayed`)
   },
 
   methods: {
