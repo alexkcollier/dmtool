@@ -127,7 +127,7 @@ export default {
             const a1 = this.setCleanAlignment(creature.alignment[1].alignment)
             creature.prettyAlignment = `${a0} (${
               creature.alignment[0].chance
-            }%), ${a1} (${creature.alignment[1].chance}%)`
+            }%) or ${a1} (${creature.alignment[1].chance}%)`
           }
           return creature
         }
