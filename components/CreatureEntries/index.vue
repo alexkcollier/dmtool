@@ -119,6 +119,13 @@
           <trait v-for="trait in model.trait" :model="trait" :key="trait.index" />
         </template>
 
+        <template v-if="model.spellcasting">
+          <spellcasting
+            v-for="(entry, index) in model.spellcasting"
+            :model="entry"
+            :key="index"/>
+        </template>
+
         <!-- Actions -->
         <template v-if="model.action">
           <h2>Actions</h2>
@@ -148,14 +155,16 @@
 </template>
 
 <script>
-import Trait from './Trait.vue'
-import ToggleActive from '~/mixins/toggle-active-el'
 import { mapMutations, mapState, mapGetters } from 'vuex'
+import Spellcasting from './Spellcasting'
+import ToggleActive from '~/mixins/toggle-active-el'
+import Trait from './Trait'
 
 export default {
   name: 'CreatureEntries',
 
   components: {
+    Spellcasting,
     Trait
   },
 
