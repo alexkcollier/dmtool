@@ -184,6 +184,19 @@ export default {
     }
   },
 
+  data: function() {
+    return {
+      sizes: {
+        T: 'tiny',
+        S: 'small',
+        M: 'medium',
+        L: 'large',
+        H: 'huge',
+        G: 'gargantuan'
+      }
+    }
+  },
+
   computed: {
     ...mapState('encounter', {
       encounter: 'encounter'
@@ -209,7 +222,7 @@ export default {
         return `${type} (${tags.join(', ')})`
       } else {
         // Swarms
-        return `swarm of ${swarmSize} ${type}s`
+        return `swarm of ${this.parseSize(swarmSize)} ${type}s`
       }
     },
     concatSave: function() {
@@ -293,6 +306,9 @@ export default {
         return a
       }, [])
       return [...pre, items.join(', ')].join('; ')
+    },
+    parseSize: function(str) {
+      return this.sizes[str]
     },
     ...mapMutations('encounter', {
       addToEncounter: 'ADD_TO_ENCOUNTER',
