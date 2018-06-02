@@ -9,7 +9,7 @@
 
     <!-- Slot based spells -->
     <template v-if="model.spells">
-      <dl v-for="(level, num) in model.spells" :key="num">
+      <dl v-for="(level, num) in model.spells" :key="'slot-' + num">
         <dd>{{ formatSpellSlots(num) }} <span v-html="formatSpells(level.spells)"/></dd>
       </dl>
     </template>
@@ -21,13 +21,13 @@
 
     <!-- Spells with time-based recharge -->
     <template v-if="hasRechargeSpells">
-      <div v-for="time in rechargeTimes" :key="time">
+      <template v-for="time in rechargeTimes">
         <template v-if="model[time]">
           <dl v-for="(list, key) in model[time]" :key="key">
             <dd>{{ formatTime(key, time) }} <span v-html="formatSpells(list)"/></dd>
           </dl>
         </template>
-      </div>
+      </template>
     </template>
 
     <p v-for="(entry, i) in model.footerEntries" :key="i" v-html="entry"/>
