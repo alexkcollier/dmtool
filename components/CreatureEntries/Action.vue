@@ -4,7 +4,7 @@
     <!-- Paragraphs -->
     <p :key="model.index">
       <strong><i>{{ model.name }}. </i></strong>
-      <span v-html="formatEntry(model.entries[0])"/>
+      <span v-html="formatActionEntry(model.entries[0])"/>
     </p>
     
     <template v-for="entry in model.entries.slice(1)">
@@ -16,7 +16,7 @@
       <dl v-else-if="entry.type === 'list'" :key="entry.index">
         <dd v-for="item in entry.items" :key="item.index">
           <strong>{{ item.name }} </strong>
-          <span v-html="formatEntry(item.entry)"/>
+          <span v-html="formatActionEntry(item.entry)"/>
         </dd>
       </dl>
     
@@ -29,7 +29,7 @@
         </thead>
         <tbody>
           <tr v-for="row in entry.rows" :key="row.index">
-            <td v-for="cell in row" :key="cell.index" v-html="formatEntry(cell)"/>
+            <td v-for="cell in row" :key="cell.index" v-html="formatActionEntry(cell)"/>
           </tr>
         </tbody>
       </table>
@@ -58,20 +58,21 @@ export default {
   },
 
   methods: {
-    // TODO: redo this function so it works.
-    formatEntry: function(str) {
-      // let startRegExp = /\{@[a-z]*\s/g
-      // let endRegExp = /(\|[a-z]*)*}/g
-      // let result = str.match(startRegExp)
-      //   ? str.replace(startRegExp, '<i>').replace(endRegExp, '</i>')
-      //   : str
-      // let boldRegExp = /^([a-zA-Z]*\s*){1,3}\./g
-      // result = result.replace(
-      //   boldRegExp,
-      //   `<strong><i>${result.match(boldRegExp)} </i></strong>`
-      // )
-      // return result
+    formatActionEntry: function(str) {
+      const attackRegExp = /((Melee|Ranged).*Attack:)/g
+      const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const labelRegExp = /^(\w+\s*){0,5}:/g
+      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g
       return str
+        .replace(/(Hit:)/, '<i>$1</i>')
+        .replace(attackRegExp, '<i>$1</i>')
+        .replace(creatureRegExp, '<b>$1</b>')
+        .replace(diceRegExp, '$1')
+        .replace(hitRegExp, '$1')
+        .replace(labelRegExp, '<i>$1</i>')
+        .replace(spellRegExp, '<i>$1</i>')
     }
   }
 }

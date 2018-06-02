@@ -29,36 +29,17 @@ export default {
 
   methods: {
     formatTrait: function(str) {
-      const spellListRegExp = /^(Cantrip.*\s*|[0-9].*\s*|At will|\d+\/.*):/g
-      const labelRegExp = /^(\w+\s*){0,5}:/g
-      const attackRegExp = /(Melee|Ranged).*Attack:/g
-      if (str.match(spellListRegExp)) {
-        const list = str.split(': ')[0]
-        const spellDetailRegExp = /\s\(.*\)/g
-        let spells = str.split(': ')[1].split(', ')
-        spells.forEach(
-          spell =>
-            `<i>${spell.replace(spellDetailRegExp, '')}</i>${
-              spell.match(spellDetailRegExp)
-                ? spell.match(spellDetailRegExp)
-                : ''
-            }`
-        )
-        const result = `${list}: ${spells.join(', ')}`
-        return result
-      } else if (str.match(attackRegExp)) {
-        const attackType = str.match(attackRegExp)
-        const result = str
-          .replace(attackRegExp, `<i>${attackType}</i>`)
-          .replace(/Hit:/, '<i>Hit:</i>')
-        return result
-      } else if (str.match(labelRegExp)) {
-        const label = str.match(labelRegExp)
-        const result = str.replace(labelRegExp, `<i>${label}</i>`)
-        return result
-      } else {
-        return str
-      }
+      const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const labelRegExp = /^((\w+\s*){0,5}:)/g
+      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      return str
+        .replace(creatureRegExp, '<b>$1</b>')
+        .replace(diceRegExp, '$1')
+        .replace(hitRegExp, '$1')
+        .replace(labelRegExp, '<i>$1</i>')
+        .replace(spellRegExp, '<i>$1</i>')
     }
   }
 }
