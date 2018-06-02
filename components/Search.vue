@@ -162,11 +162,13 @@ export default {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
     visibleFilterOptions: function() {
+      /* eslint-disable*/
       return this.visibleFilter
         ? this.visibleFilter
         : Object.keys(this.filters)
           ? Object.keys(this.filters)[0]
           : ''
+      /* eslint-enable */
     },
     resultCount: function() {
       return this.queryResult.length
@@ -178,7 +180,7 @@ export default {
       window.addEventListener('scroll', this.handleScroll)
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
     this.query()
-    this.getFilters(...this.filterFields)
+    this.getFilters(this.filterFields)
   },
 
   destroyed() {
@@ -197,14 +199,10 @@ export default {
       this.collapseFilters = !this.collapseFilters
     },
     setAllFilterOptions: function(filter, val) {
-      this.filters[filter].forEach(option => {
-        option.value = val
-      })
+      this.filters[filter].forEach(option => (option.value = val))
     },
     resetFilters: function() {
-      Object.keys(this.filters).map(filter =>
-        this.setAllFilterOptions(filter, true)
-      )
+      Object.keys(this.filters).map(f => this.setAllFilterOptions(f, true))
     },
     filterTest: function(filter, testValue) {
       return this.filters[filter]
@@ -214,23 +212,22 @@ export default {
         }, [])
         .includes(testValue) // return if true if filter contains testValue
     },
-    getFilters: function(...filters) {
+    getFilters: function(filters) {
       // Iterate over provided filters
       filters.map(filter => {
         // Generate filter options from model
         let options = [...new Set(this.model.map(item => item[filter]))].reduce(
-          (arr, option) => {
-            if (typeof option !== 'undefined')
-              arr.push({ name: option, value: true })
-            return arr
-          },
+          (options, option) => options.concat({ name: option, value: true }),
           []
         )
         if (this.filtersToSort.includes(filter)) {
-          options = _.sortBy(
-            options,
-            o => (typeof o.name === 'number' ? Number(o.name) : String(o.name))
-          ) // sort
+          options = _.sortBy(options, o => {
+            if (!isNaN(o.name)) {
+              return Number(o.name)
+            } else if (typeof o.name === 'string' && o.name.match(/\d\/\d/)) {
+              return o.name[0] / o.name[2]
+            }
+          }) // sort
         }
         this.$set(this.filters, filter, options) // Set filter options. Must use vm.set to make this.filters reactive.
       })
@@ -246,8 +243,9 @@ export default {
           this.toLowerCaseTrim(el[this.searchField]).includes(
             this.toLowerCaseTrim(this.searchTerm)
           ) &&
+          // check each element against all filters
           Object.keys(this.filters).reduce(
-            (testRes, filter) => testRes * this.filterTest(filter, el[filter]), // check each element against all filters
+            (r, f) => r * this.filterTest(f, el[f]),
             1
           ) // ensure element contains search term and passes filter test
       )
