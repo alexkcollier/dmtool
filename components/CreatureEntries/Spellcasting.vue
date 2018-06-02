@@ -10,13 +10,13 @@
     <!-- Slot based spells -->
     <template v-if="model.spells">
       <dl v-for="(level, num) in model.spells" :key="'slot-' + num">
-        <dd>{{ formatSpellSlots(num) }} <span v-html="formatSpells(level.spells)"/></dd>
+        <dd>{{ formatSpellSlots(num) }} <span v-html="formatSpellList(level.spells)"/></dd>
       </dl>
     </template>
 
     <!-- At will spells -->
     <dl v-if="model.will">
-      <dd>At will: <span v-html="formatSpells(model.will)"/></dd>
+      <dd>At will: <span v-html="formatSpellList(model.will)"/></dd>
     </dl>
 
     <!-- Spells with time-based recharge -->
@@ -24,7 +24,7 @@
       <template v-for="time in rechargeTimes">
         <template v-if="model[time]">
           <dl v-for="(list, key) in model[time]" :key="key">
-            <dd>{{ formatTime(key, time) }} <span v-html="formatSpells(list)"/></dd>
+            <dd>{{ formatTime(key, time) }} <span v-html="formatSpellList(list)"/></dd>
           </dl>
         </template>
       </template>
@@ -115,7 +115,7 @@ export default {
       }
       return `${n[0]}/${time} ${n.match(eachRegExp) ? 'each' : ''}:`
     },
-    formatSpells: function(spellList) {
+    formatSpellList: function(spellList) {
       const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/
       return spellList
         .map(
