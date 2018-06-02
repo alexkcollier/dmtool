@@ -19,7 +19,7 @@
         </div>
         
         <search
-          :model="bestiary.monster"
+          :model="bestiary"
           :filter-fields="filterFields"
           :filters-to-sort="filterFields"
           search-field="name"
@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import bestiary from '~/data/bestiary-mm.json'
-import Search from '~/components/Search'
+import bestiary from '~/data/bestiary'
 import CreatureEntries from '~/components/CreatureEntries'
+import Search from '~/components/Search'
 import { mapActions } from 'vuex'
 
 export default {
@@ -93,8 +93,8 @@ export default {
   },
 
   created: function() {
-    this.parseSizes(this.bestiary.monster)
-    this.parseAlignment(this.bestiary.monster)
+    this.parseSizes(this.bestiary)
+    this.parseAlignment(this.bestiary)
   },
 
   methods: {
@@ -113,7 +113,12 @@ export default {
       return `creature-${index}`
     },
     parseSizes: function(arr) {
-      arr.forEach(creature => (creature.size = this.sizes[creature.size]))
+      arr.forEach(
+        creature =>
+          (creature.size = this.sizes.hasOwnProperty(creature.size)
+            ? this.sizes[creature.size]
+            : creature.size)
+      )
     },
     parseAlignment: function(arr) {
       arr.forEach(creature => {

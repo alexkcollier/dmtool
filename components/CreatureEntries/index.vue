@@ -8,6 +8,7 @@
           <h6 class="subtitle is-size-6 is-creature-type is-italic">
             {{ model.size }} {{ concatType }}, {{ model.prettyAlignment }}
           </h6>
+          <p class="control is-italic is-help">{{ source }}</p>
         </a>
       </div>
 
@@ -156,9 +157,6 @@
             :key="legendary.index" />
         </template>
 
-        <p class="control is-italic is-help">
-          Source: {{ source }}
-        </p>
       </div>
     </transition>
     <hr>
@@ -341,7 +339,7 @@ export default {
       return [...pre, items.join(', ')].join('; ')
     },
     parseSize: function(str) {
-      return this.sizes[str]
+      return this.sizes.hasOwnProperty(str) ? this.sizes[str] : str
     },
     ...mapMutations('encounter', {
       addToEncounter: 'ADD_TO_ENCOUNTER',
