@@ -121,9 +121,9 @@
 
         <template v-if="model.spellcasting">
           <spellcasting
-            v-for="(entry, index) in model.spellcasting"
+            v-for="entry in model.spellcasting"
             :model="entry"
-            :key="index"/>
+            :key="entry.index"/>
         </template>
 
         <!-- Actions -->
