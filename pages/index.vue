@@ -1,6 +1,12 @@
 <template>
   <section class="hero is-primary is-bold is-fullheight">
     <div class="hero-body">
+      
+      <!-- Animation -->
+      <Lottie 
+        :options="options"
+        class="ampersand-animation"/>
+
       <div class="container has-text-centered">
         <h1 class="title is-size-1">
           dmtool
@@ -14,29 +20,43 @@
         <nuxt-link to="/bestiary" class="button is-medium">Bestiary</nuxt-link>
         <nuxt-link to="/encounter" class="button is-medium">Encounter</nuxt-link>
       </div>
+
     </div>
   </section>
 </template>
 
 <script>
+import Lottie from 'vue-lottie/src/lottie.vue'
+import * as animationData from '~/assets/animations/ampersand-animation.json'
+
 export default {
   layout: 'HomePage',
-  head() {
+
+  components: {
+    Lottie
+  },
+
+  data: function() {
+    return {
+      options: {
+        animationData,
+        loop: false
+      }
+    }
+  },
+
+  head: function() {
     return { title: 'Home' }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.hero::before {
-  height: 90%;
-  width: 100%;
+.ampersand-animation {
+  margin: 0 auto;
+  max-width: 90vw;
+  mix-blend-mode: darken;
+  opacity: 0.2;
   position: absolute;
-  top: 5vh;
-  background: url('~assets/ampersand.svg') center center / contain no-repeat;
-  background-blend-mode: multiply;
-  mix-blend-mode: multiply;
-  opacity: 0.1;
-  content: '';
 }
 </style>

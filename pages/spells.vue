@@ -68,7 +68,7 @@ export default {
         this.setActiveEl({ el: `spell-1`, delay: 300 })
     },
     spellIndex: function(name) {
-      let index =
+      const index =
         this.results.truncated.findIndex(result => result.name === name) + 1
       return `spell-${index}`
     }

@@ -2,7 +2,7 @@
   <div>
     <p>
       <strong><i>{{ model.name }}. </i></strong>
-      <span v-html="formatTrait(model.text[0])"/>
+      <span v-html="formatTrait(model.entries[0])"/>
     </p>
     
     <p v-for="p in shiftModel" :key="p.index" v-html="formatTrait(p)"/>
@@ -22,43 +22,24 @@ export default {
 
   computed: {
     shiftModel() {
-      let r = this.model.text.slice(1)
+      const r = this.model.entries.slice(1)
       return r.length > 0 ? r : null
     }
   },
 
   methods: {
     formatTrait: function(str) {
-      let spellListRegExp = /^(Cantrip.*\s*|[0-9].*\s*|At will|\d+\/.*):/g
-      let labelRegExp = /^(\w+\s*){0,5}:/g
-      let attackRegExp = /(Melee|Ranged).*Attack:/g
-      if (str.match(spellListRegExp)) {
-        let list = str.split(': ')[0]
-        let spells = str.split(': ')[1].split(', ')
-        let spellDetailRegExp = /\s\(.*\)/g
-        spells = spells.map(
-          spell =>
-            `<i>${spell.replace(spellDetailRegExp, '')}</i>${
-              spell.match(spellDetailRegExp)
-                ? spell.match(spellDetailRegExp)
-                : ''
-            }`
-        )
-        let result = `${list}: ${spells.join(', ')}`
-        return result
-      } else if (str.match(attackRegExp)) {
-        let attackType = str.match(attackRegExp)
-        let result = str
-          .replace(attackRegExp, `<i>${attackType}</i>`)
-          .replace(/Hit:/, '<i>Hit:</i>')
-        return result
-      } else if (str.match(labelRegExp)) {
-        let label = str.match(labelRegExp)
-        let result = str.replace(labelRegExp, `<i>${label}</i>`)
-        return result
-      } else {
-        return str
-      }
+      const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const labelRegExp = /^((\w+\s*){0,5}:)/g
+      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      return str
+        .replace(creatureRegExp, '<b>$1</b>')
+        .replace(diceRegExp, '$1')
+        .replace(hitRegExp, '$1')
+        .replace(labelRegExp, '<i>$1</i>')
+        .replace(spellRegExp, '<i>$1</i>')
     }
   }
 }

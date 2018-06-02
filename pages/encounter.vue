@@ -74,7 +74,7 @@ export default {
 
   methods: {
     creatureIndex: function(name) {
-      let index =
+      const index =
         this.encounter.findIndex(creature => creature.name === name) + 1
       return `creature-${index}`
     },

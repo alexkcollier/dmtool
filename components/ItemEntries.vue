@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import ItemEntry from './ItemEntry.vue'
+import ItemEntry from '~/components/DataEntry'
 import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
