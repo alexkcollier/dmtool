@@ -118,10 +118,7 @@ export default {
     formatSpellList: function(spellList) {
       const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/
       return spellList
-        .map(
-          el =>
-            el.match(spellRegExp) ? `<em>${spellRegExp.exec(el)[1]}</em>` : el
-        )
+        .map(el => el.replace(spellRegExp, '<em>$1</em>'))
         .join(', ')
     }
   }
