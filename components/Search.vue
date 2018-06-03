@@ -223,15 +223,17 @@ export default {
         // convert to array of objects
         options = options.map(option => ({ name: option, allowed: true }))
         // sort
-        if (this.filtersToSort.includes(f)) {
-          options = _.sortBy(options, o => {
-            if (!isNaN(o.name)) {
-              return Number(o.name)
-            } else if (typeof o.name === 'string' && o.name.match(/\d\/\d/)) {
-              return o.name[0] / o.name[2]
-            }
-          })
-        }
+        if (this.filtersToSort.includes(f))
+          options = _.sortBy(
+            options,
+            o =>
+              !isNaN(o.name)
+                ? Number(o.name)
+                : o.name.match(/\d\/\d/)
+                  ? o.name[0] / o.name[2]
+                  : o.name
+          )
+
         // Set filter options. Must use vm.set to make this.filters reactive.
         this.$set(this.filters, f, options)
       })

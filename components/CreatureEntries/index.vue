@@ -217,24 +217,19 @@ export default {
     }),
     concatCR: function() {
       const { cr, coven, lair } = this.model.cr
-      if (typeof this.model.cr === 'string') {
-        return this.model.cr
-      } else if (coven) {
-        return `${cr}; ${coven} when part of a coven`
-      } else if (lair) {
-        return `${cr}; ${lair} when encountered in its lair`
-      }
+      return coven
+        ? `${cr}; ${coven} when part of a coven`
+        : lair
+          ? `${cr}; ${lair} when encountered in its lair`
+          : this.model.cr
     },
     concatType: function() {
       const { type, tags, swarmSize } = this.model.type
-      if (typeof this.model.type === 'string') {
-        return this.model.type
-      } else if (tags) {
-        return `${type} (${tags.join(', ')})`
-      } else {
-        // Swarms
-        return `swarm of ${this.parseSize(swarmSize)} ${type}s`
-      }
+      return this.model.type.tags
+        ? `${type} (${tags.join(', ')})`
+        : swarmSize
+          ? `swarm of ${this.parseSize(swarmSize)} ${type}s`
+          : this.model.type
     },
     concatSave: function() {
       return this.concatKeyVal(this.model.save)
@@ -280,23 +275,20 @@ export default {
     },
     speed: function() {
       let { walk, ...speeds } = this.model.speed
-      speeds = Object.keys(speeds).reduce(
-        (a, k) =>
-          typeof speeds[k] !== 'object'
-            ? a.concat(`${k} ${speeds[k]} ft.`)
-            : a.concat(`${k} ${speeds[k].number} ft. ${speeds[k].condition}`),
-        []
+      speeds = Object.keys(speeds).map(
+        k =>
+          typeof speeds[k] === 'object' && speeds[k].condition
+            ? `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
+            : `${k} ${speeds[k]} ft.`
       )
-      if (walk && `${walk}` !== '0') {
-        if (typeof walk !== 'object') {
-          walk = `${walk} ft.`
-        } else {
-          walk = `${walk.number} ${walk.condition}`
-        }
-        return [walk, ...speeds].join(', ')
-      } else {
-        return speeds.join(', ')
-      }
+      return walk !== 0
+        ? [
+            typeof walk === 'object' && walk.condition
+              ? `${walk.number} ${walk.condition}`
+              : `${walk} ft.`,
+            ...speeds
+          ].join(', ')
+        : speeds.join(', ')
     },
     stats: function() {
       // Create stats object
@@ -317,7 +309,7 @@ export default {
   methods: {
     concatKeyVal: function(o) {
       return Object.keys(o)
-        .reduce((a, k) => a.concat(`${k} ${o[k]}`), []) // Add combined key-value pair to an array
+        .map(k => `${k} ${o[k]}`) // Add combined key-value pair to an array
         .join(', ') // Combine array values to string
     },
     dmgCon: function(arr, type) {
@@ -325,15 +317,14 @@ export default {
       let pre = []
       // `items` are resistances, vulnerabilites, or immunities
       const items = arr.reduce((a, c) => {
-        if (typeof c === 'string') {
-          a.push(c)
-        } else {
-          if (c.special) pre.push(`${c.special}`)
-          // TODO: More readable formatting. Commas separate notes from other damage types.
-          // non-magical resistances appearing before other types
-          if (c[type])
-            a.push([c.preNote, this.dmgCon(c[type]), c.note].join(' '))
-        }
+        c.special
+          ? pre.push(`${c.special}`)
+          : c[type]
+            ? /** TODO: More readable formatting. Commas separate notes from other damage types.
+               * non-magical resistances appearing before other types
+               */
+              a.push([c.preNote, this.dmgCon(c[type], type), c.note].join(' '))
+            : a.push(c)
         return a
       }, [])
       return [...pre, items.join(', ')].join('; ')
