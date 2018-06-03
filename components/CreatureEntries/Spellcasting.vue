@@ -2,10 +2,10 @@
   <div>
     <p>
       <strong><em>{{ model.name }}. </em></strong>
-      <span v-html="model.headerEntries[0]"/>
+      <span v-html="formatEntry(model.headerEntries[0])"/>
     </p>
 
-    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="entry"/>
+    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="formatEntry(entry)"/>
 
     <!-- Slot based spells -->
     <template v-if="model.spells">
@@ -120,6 +120,21 @@ export default {
       return spellList
         .map(el => el.replace(spellRegExp, '<em>$1</em>'))
         .join(', ')
+    },
+    formatEntry: function(str) {
+      const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      const labelRegExp = /^((\w+\s*){0,5}:)/g
+      const noSignHitRegExp = /{@hit\s(\d*?)(\|(.*?))?(\|.*?)?}/g
+      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      return str
+        .replace(creatureRegExp, '<b>$1</b>')
+        .replace(diceRegExp, '$1')
+        .replace(noSignHitRegExp, '+$1')
+        .replace(hitRegExp, '$1')
+        .replace(labelRegExp, '<i>$1</i>')
+        .replace(spellRegExp, '<i>$1</i>')
     }
   }
 }
