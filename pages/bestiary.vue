@@ -93,6 +93,7 @@ export default {
   },
 
   created: function() {
+    this.bestiary = this.bestiary.filter(creature => creature.cr !== 'Unknown')
     this.parseSizes(this.bestiary)
     this.parseAlignment(this.bestiary)
   },
