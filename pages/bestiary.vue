@@ -62,8 +62,8 @@ export default {
     return {
       bestiary,
       results: {},
-      // TODO: filter by type
-      filterFields: ['cr', 'size', 'source'],
+      // TODO: filter by alignment?
+      filterFields: ['cr', 'size', 'source', 'type'],
       sizes: {
         T: 'Tiny',
         S: 'Small',
