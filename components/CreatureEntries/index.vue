@@ -24,7 +24,7 @@
             </button>
           </transition>
           <button 
-            v-if="$route.path === '/bestiary'"
+            v-if="$route.name === '/bestiary'"
             :disabled="encounterIncludesCreature"
             class="button is-primary"
             @click="addToEncounter(model)">
