@@ -26,15 +26,17 @@
           search-type="creature"
           @update-data="updateData"/>
         
-        <div v-if="results.show">
+        <template v-if="results.show">
           <!-- List creatures -->
-          <creature-entries
-            v-for="creature in results.truncated"
-            :model="creature"
-            :key="creature.index"
-            :id="creatureIndex(creature.name)"
-            :ref="creatureIndex(creature.name)"/>
-        </div>
+          <template v-for="creature in results.truncated">
+            <creature-entries
+              :model="creature"
+              :key="creature.index"
+              :id="creatureIndex(creature.name)"
+              :ref="creatureIndex(creature.name)"/>
+            <hr :key="creature.index">
+          </template>
+        </template>
         <div v-else class="ampersand"/>
 
       </div>
@@ -148,5 +150,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+hr {
+  margin-top: 1rem;
+}
 </style>

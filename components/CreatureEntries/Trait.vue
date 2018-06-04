@@ -77,4 +77,7 @@ export default {
 div:not(:last-child) {
   margin-bottom: 1em !important;
 }
+ul {
+  margin-left: 1em;
+}
 </style>

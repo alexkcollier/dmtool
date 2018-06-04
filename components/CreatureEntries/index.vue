@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="is-sans-serif">
     <!-- Name, size, type and alignment -->
     <div class="columns is-mobile" style="margin-bottom:0">
       <div class="column">
@@ -51,12 +51,12 @@
           <hr>
 
           <!-- Stats -->
-          <table>
-            <thead>
+          <table class="has-text-red">
+            <thead class="has-text-red">
               <th
                 v-for="(stat, val) in stats"
                 :key="stat.index"
-                class="is-uppercase has-text-centered">
+                class="is-uppercase has-text-centered has-text-red">
                 {{ val }}
               </th>
             </thead>
@@ -74,45 +74,47 @@
           <hr>
 
           <!-- Other stats -->
-          <div v-if="model.save" class="is-capitalized">
-            <strong>Saving Throws</strong>
-            {{ concatSave }}
+          <div class="has-text-red">
+            <div v-if="model.save" class="is-capitalized">
+              <strong>Saving Throws</strong>
+              {{ concatSave }}
+            </div>
+            <div v-if="model.skill" class="is-capitalized">
+              <strong>Skills</strong>
+              {{ concatSkill }}
+            </div>
+            <div v-if="model.resist">
+              <strong>Damage Resistances</strong>
+              {{ dmgResist }}
+            </div>
+            <div v-if="model.immune">
+              <strong>Damage Immunities</strong>
+              {{ dmgImmune }}
+            </div>
+            <div v-if="model.vulnerable">
+              <strong>Damage Vulnerabilities</strong>
+              {{ dmgVulnerable }}
+            </div>
+            <div v-if="model.conditionImmune">
+              <strong>Condition Immunities</strong>
+              {{ conditionImmune }}
+            </div>
+            <div>
+              <strong>Senses</strong>
+              <template v-if="model.senses"> {{ model.senses }},</template>
+              passive Perception {{ model.passive }}
+            </div>
+            <div>
+              <strong>Languages</strong>
+              <template v-if="model.languages"> {{ model.languages }}</template>
+              <template v-else> &mdash;</template>
+            </div>
+            <div>
+              <strong>Challenge</strong>
+              {{ concatCR }}
+            </div>
+            <hr>
           </div>
-          <div v-if="model.skill" class="is-capitalized">
-            <strong>Skills</strong>
-            {{ concatSkill }}
-          </div>
-          <div v-if="model.resist">
-            <strong>Damage Resistances</strong>
-            {{ dmgResist }}
-          </div>
-          <div v-if="model.immune">
-            <strong>Damage Immunities</strong>
-            {{ dmgImmune }}
-          </div>
-          <div v-if="model.vulnerable">
-            <strong>Damage Vulnerabilities</strong>
-            {{ dmgVulnerable }}
-          </div>
-          <div v-if="model.conditionImmune">
-            <strong>Condition Immunities</strong>
-            {{ conditionImmune }}
-          </div>
-          <div>
-            <strong>Senses</strong>
-            <template v-if="model.senses"> {{ model.senses }},</template>
-            passive Perception {{ model.passive }}
-          </div>
-          <div>
-            <strong>Languages</strong>
-            <template v-if="model.languages"> {{ model.languages }}</template>
-            <template v-else> &mdash;</template>
-          </div>
-          <div>
-            <strong>Challenge</strong>
-            {{ concatCR }}
-          </div>
-          <hr>
         </div>
         
         <!-- Creature Traits -->
@@ -129,7 +131,7 @@
 
         <!-- Actions -->
         <template v-if="model.action">
-          <h2>Actions</h2>
+          <h2 class="is-sans-serif">Actions</h2>
           <Action
             v-for="action in model.action"
             :model="action"
@@ -138,7 +140,7 @@
 
         <!-- Reactions -->
         <template v-if="model.reaction">
-          <h2>Reactions</h2>
+          <h2 class="is-sans-serif">Reactions</h2>
           <Action
             v-for="reaction in model.reaction"
             :model="reaction"
@@ -148,7 +150,7 @@
         <!-- Legendary and Lair actions -->
         <!-- TODO: Lair actions -->
         <template v-if="model.legendaryGroup && model.legendary">
-          <h2>Legendary Actions</h2>
+          <h2 class="is-sans-serif">Legendary Actions</h2>
           <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
           
           <Action
@@ -159,7 +161,6 @@
 
       </div>
     </transition>
-    <hr>
   </div>
 </template>
 
@@ -182,7 +183,7 @@ export default {
   filters: {
     getStatMod: function(stat) {
       const mod = Math.floor((stat - 10) / 2)
-      return `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})` // \xa0 is nbsp
+      return `${stat} (${mod < 0 ? '' : '+'}${mod})` // \xa0 is nbsp
     }
   },
 
@@ -281,14 +282,15 @@ export default {
             ? `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
             : `${k} ${speeds[k]} ft.`
       )
-      return walk !== 0
-        ? [
-            typeof walk === 'object' && walk.condition
-              ? `${walk.number} ${walk.condition}`
-              : `${walk} ft.`,
-            ...speeds
-          ].join(', ')
-        : speeds.join(', ')
+
+      walk =
+        walk && walk !== 0
+          ? typeof walk === 'object' && walk.condition
+            ? `${walk.number} ft. ${walk.condition}`
+            : `${walk} ft.`
+          : ''
+
+      return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
     stats: function() {
       // Create stats object
@@ -312,22 +314,39 @@ export default {
         .map(k => `${k} ${o[k]}`) // Add combined key-value pair to an array
         .join(', ') // Combine array values to string
     },
-    dmgCon: function(arr, type) {
-      // Caches `special` text. Special text should come before `items`
-      let pre = []
-      // `items` are resistances, vulnerabilites, or immunities
-      const items = arr.reduce((a, c) => {
-        c.special
-          ? pre.push(`${c.special}`)
-          : c[type]
-            ? /** TODO: More readable formatting. Commas separate notes from other damage types.
-               * non-magical resistances appearing before other types
-               */
-              a.push([c.preNote, this.dmgCon(c[type], type), c.note].join(' '))
-            : a.push(c)
-        return a
-      }, [])
-      return [...pre, items.join(', ')].join('; ')
+    dmgCon: function(toParse, type) {
+      let nested = false
+
+      const joinConjunct = (arr, conjunctWith) =>
+        arr.length === 1
+          ? String(arr[0])
+          : arr.length === 2
+            ? arr.join(` ${conjunctWith} `)
+            : `${arr.slice(0, -1).join(', ')} ${conjunctWith} ${arr.slice(-1)}`
+
+      const toString = (it, depth = false) => {
+        nested = depth
+
+        if (typeof it === 'string') {
+          return it
+        } else if (it.special) {
+          return it.special
+        } else if (it[type]) {
+          let stack = it.preNote ? `${it.preNote} ` : ''
+
+          const toJoin = it[type].map(nxt => toString(nxt, true))
+
+          stack += depth
+            ? toJoin.join(depth ? '; ' : ', ')
+            : joinConjunct(toJoin, 'and')
+
+          stack += it.note ? ` ${it.note}` : ''
+
+          return stack
+        }
+      }
+
+      return toParse.map(it => toString(it)).join(nested ? '; ' : ', ')
     },
     parseSize: function(str) {
       return this.sizes.hasOwnProperty(str) ? this.sizes[str] : str
@@ -351,6 +370,16 @@ export default {
     overflow-x: scroll;
   }
 
+  thead th,
+  td,
+  tr {
+    border: none;
+    padding: 0;
+    &:hover {
+      background-color: inherit;
+    }
+  }
+
   & td,
   & tr {
     @media screen and (max-width: 768px) {
@@ -358,13 +387,17 @@ export default {
     }
   }
 }
+h2 {
+  border-color: #ac1e15;
+}
 
 h6 {
   margin-bottom: 0 !important;
 }
 
 hr {
-  margin: 0.75rem 0 1.5rem 0;
+  background-color: #ac1e15;
+  height: 2px;
 }
 
 .is-encounter-buttons {
@@ -384,5 +417,9 @@ $fade-time: 200ms;
   &-leave-to {
     opacity: 0;
   }
+}
+
+strong {
+  color: inherit;
 }
 </style>

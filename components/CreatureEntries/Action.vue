@@ -85,4 +85,9 @@ export default {
 div:not(:last-child) {
   margin-bottom: 1em !important;
 }
+dd {
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+}
 </style>
