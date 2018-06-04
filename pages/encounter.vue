@@ -26,14 +26,16 @@
         </div>
 
         <hr>
-        <div v-if="encounter.length">
+        <template v-if="encounter.length">
           <!-- List creatures -->
-          <creature-entries
-            v-for="creature in encounter"
-            :model="creature"
-            :key="creature.index"
-            :id="creatureIndex(creature.name)" />
-        </div>
+          <template v-for="creature in encounter">
+            <creature-entries
+              :model="creature"
+              :key="creature.index"
+              :id="creatureIndex(creature.name)" />
+            <hr :key="creature.index">
+          </template>
+        </template>
 
         <div v-else class="ampersand" style="height:60vh;">
           
@@ -86,7 +88,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-hr {
-  margin-top: 0;
-}
 </style>
