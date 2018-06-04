@@ -150,6 +150,11 @@ div:not(:last-child) {
 }
 
 dd {
-  line-height: 2em;
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+  &:not(:last-child) {
+    margin-bottom: 0.25em;
+  }
 }
 </style>
