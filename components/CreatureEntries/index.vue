@@ -37,7 +37,7 @@
     <transition name="fade-grow">
       <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
-        <div class="is-sans-serif">
+        <div class="is-sans-serif has-text-red">
           <!-- AC/HP/Speed -->
           <div>
             <strong>Armor Class</strong> {{ model.ac }}
