@@ -281,14 +281,15 @@ export default {
             ? `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
             : `${k} ${speeds[k]} ft.`
       )
-      return walk !== 0
-        ? [
-            typeof walk === 'object' && walk.condition
-              ? `${walk.number} ft. ${walk.condition}`
-              : `${walk} ft.`,
-            ...speeds
-          ].join(', ')
-        : speeds.join(', ')
+
+      walk =
+        walk && walk !== 0
+          ? typeof walk === 'object' && walk.condition
+            ? `${walk.number} ft. ${walk.condition}`
+            : `${walk} ft.`
+          : ''
+
+      return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
     stats: function() {
       // Create stats object
