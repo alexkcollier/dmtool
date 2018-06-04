@@ -182,7 +182,7 @@ export default {
   filters: {
     getStatMod: function(stat) {
       const mod = Math.floor((stat - 10) / 2)
-      return `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})` // \xa0 is nbsp
+      return `${stat} (${mod < 0 ? '' : '+'}${mod})` // \xa0 is nbsp
     }
   },
 
@@ -281,14 +281,15 @@ export default {
             ? `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
             : `${k} ${speeds[k]} ft.`
       )
-      return walk !== 0
-        ? [
-            typeof walk === 'object' && walk.condition
-              ? `${walk.number} ${walk.condition}`
-              : `${walk} ft.`,
-            ...speeds
-          ].join(', ')
-        : speeds.join(', ')
+
+      walk =
+        walk && walk !== 0
+          ? typeof walk === 'object' && walk.condition
+            ? `${walk.number} ft. ${walk.condition}`
+            : `${walk} ft.`
+          : ''
+
+      return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
     stats: function() {
       // Create stats object
@@ -312,22 +313,39 @@ export default {
         .map(k => `${k} ${o[k]}`) // Add combined key-value pair to an array
         .join(', ') // Combine array values to string
     },
-    dmgCon: function(arr, type) {
-      // Caches `special` text. Special text should come before `items`
-      let pre = []
-      // `items` are resistances, vulnerabilites, or immunities
-      const items = arr.reduce((a, c) => {
-        c.special
-          ? pre.push(`${c.special}`)
-          : c[type]
-            ? /** TODO: More readable formatting. Commas separate notes from other damage types.
-               * non-magical resistances appearing before other types
-               */
-              a.push([c.preNote, this.dmgCon(c[type], type), c.note].join(' '))
-            : a.push(c)
-        return a
-      }, [])
-      return [...pre, items.join(', ')].join('; ')
+    dmgCon: function(toParse, type) {
+      let nested = false
+
+      const joinConjunct = (arr, conjunctWith) =>
+        arr.length === 1
+          ? String(arr[0])
+          : arr.length === 2
+            ? arr.join(` ${conjunctWith} `)
+            : `${arr.slice(0, -1).join(', ')} ${conjunctWith} ${arr.slice(-1)}`
+
+      const toString = (it, depth = false) => {
+        nested = depth
+
+        if (typeof it === 'string') {
+          return it
+        } else if (it.special) {
+          return it.special
+        } else if (it[type]) {
+          let stack = it.preNote ? `${it.preNote} ` : ''
+
+          const toJoin = it[type].map(nxt => toString(nxt, true))
+
+          stack += depth
+            ? toJoin.join(depth ? '; ' : ', ')
+            : joinConjunct(toJoin, 'and')
+
+          stack += it.note ? ` ${it.note}` : ''
+
+          return stack
+        }
+      }
+
+      return toParse.map(it => toString(it)).join(nested ? '; ' : ', ')
     },
     parseSize: function(str) {
       return this.sizes.hasOwnProperty(str) ? this.sizes[str] : str
