@@ -6,8 +6,9 @@
         <a @click="toggleActive">
           <h3 class="title">{{ model.name }}</h3>
           <h6 class="subtitle is-size-6 is-creature-type is-italic">
-            {{ model.size }} {{ concatType }}, {{ model.alignment }}
+            {{ model.size }} {{ concatType }}, {{ model.prettyAlignment }}
           </h6>
+          <p class="control is-italic is-help">{{ source }}</p>
         </a>
       </div>
 
@@ -38,36 +39,31 @@
 
         <div class="is-sans-serif">
           <!-- AC/HP/Speed -->
-          <template>
-            <div>
-              <strong>Armor Class</strong>
-              {{ model.ac }}
-            </div>
-            <div>
-              <strong>Hit Points</strong>
-              {{ model.hp }}
-            </div>
-            <div>
-              <strong>Speed</strong>
-              {{ model.speed }}
-            </div>
-          </template>
+          <div>
+            <strong>Armor Class</strong> {{ model.ac }}
+          </div>
+          <div>
+            <strong>Hit Points</strong> {{ hp }}
+          </div>
+          <div>
+            <strong>Speed</strong> {{ speed }}
+          </div>
           <hr>
 
           <!-- Stats -->
           <table>
             <thead>
               <th
-                v-for="(stat, k) in model.stats"
+                v-for="(stat, val) in stats"
                 :key="stat.index"
                 class="is-uppercase has-text-centered">
-                {{ k }}
+                {{ val }}
               </th>
             </thead>
             <tbody>
               <tr>
                 <td 
-                  v-for="stat in model.stats" 
+                  v-for="stat in stats" 
                   :key="stat.index" 
                   class="has-text-centered">
                   {{ stat | getStatMod }}
@@ -78,46 +74,44 @@
           <hr>
 
           <!-- Other stats -->
-          <template>
-            <div v-if="model.save">
-              <strong>Saving Throws</strong>
-              {{ model.save }}
-            </div>
-            <div v-if="model.skill" class="is-capitalized">
-              <strong>Skills</strong>
-              {{ concatSkill }}
-            </div>
-            <div v-if="model.resist">
-              <strong>Damage Resistances</strong>
-              {{ model.resist }}
-            </div>
-            <div v-if="model.immune">
-              <strong>Damage Immunities</strong>
-              {{ model.immune }}
-            </div>
-            <div v-if="model.vulnerable">
-              <strong>Damage Vulnerabilities</strong>
-              {{ model.vulnerable }}
-            </div>
-            <div v-if="model.conditionImmune">
-              <strong>Condition Immunities</strong>
-              {{ model.conditionImmune }}
-            </div>
-            <div>
-              <strong>Senses</strong>
-              <template v-if="model.senses"> {{ model.senses }},</template>
-              passive Perception {{ model.passive }}
-            </div>
-            <div>
-              <strong>Languages</strong>
-              <template v-if="model.languages"> {{ model.languages }}</template>
-              <template v-else> &mdash;</template>
-            </div>
-            <div>
-              <strong>Challenge</strong>
-              {{ model.cr | parseNumToFrac }}
-            </div>
-          </template>
+          <div v-if="model.save" class="is-capitalized">
+            <strong>Saving Throws</strong>
+            {{ concatSave }}
+          </div>
+          <div v-if="model.skill" class="is-capitalized">
+            <strong>Skills</strong>
+            {{ concatSkill }}
+          </div>
+          <div v-if="model.resist">
+            <strong>Damage Resistances</strong>
+            {{ dmgResist }}
+          </div>
+          <div v-if="model.immune">
+            <strong>Damage Immunities</strong>
+            {{ dmgImmune }}
+          </div>
+          <div v-if="model.vulnerable">
+            <strong>Damage Vulnerabilities</strong>
+            {{ dmgVulnerable }}
+          </div>
+          <div v-if="model.conditionImmune">
+            <strong>Condition Immunities</strong>
+            {{ conditionImmune }}
+          </div>
+          <div>
+            <strong>Senses</strong>
+            <template v-if="model.senses"> {{ model.senses }},</template>
+            passive Perception {{ model.passive }}
+          </div>
+          <div>
+            <strong>Languages</strong>
+            <template v-if="model.languages"> {{ model.languages }}</template>
+            <template v-else> &mdash;</template>
+          </div>
+          <div>
+            <strong>Challenge</strong>
+            {{ concatCR }}
+          </div>
           <hr>
         </div>
         
@@ -126,28 +120,43 @@
           <trait v-for="trait in model.trait" :model="trait" :key="trait.index" />
         </template>
 
+        <template v-if="model.spellcasting">
+          <spellcasting
+            v-for="entry in model.spellcasting"
+            :model="entry"
+            :key="entry.index"/>
+        </template>
+
         <!-- Actions -->
         <template v-if="model.action">
           <h2>Actions</h2>
-          <trait v-for="action in model.action" :model="action" :key="action.index" />
+          <Action
+            v-for="action in model.action"
+            :model="action"
+            :key="action.index" />
         </template>
 
         <!-- Reactions -->
         <template v-if="model.reaction">
           <h2>Reactions</h2>
-          <trait v-for="reaction in model.reaction" :model="reaction" :key="reaction.index" />
+          <Action
+            v-for="reaction in model.reaction"
+            :model="reaction"
+            :key="reaction.index" />
         </template>
 
         <!-- Legendary and Lair actions -->
         <!-- TODO: Lair actions -->
         <template v-if="model.legendaryGroup && model.legendary">
           <h2>Legendary Actions</h2>
-          <p>The creature can take {{ model.legendary.length }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of anohter creature's turn. The creature regains spent legendary actions at the start of its turn.</p>
+          <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
           
-          <trait v-for="legendary in model.legendary" :model="legendary" :key="legendary.index" />
+          <Action
+            v-for="legendary in model.legendary"
+            :model="legendary"
+            :key="legendary.index" />
         </template>
 
-        <p class="control is-italic is-help">Source: {{ model.source }}</p>
       </div>
     </transition>
     <hr>
@@ -155,26 +164,25 @@
 </template>
 
 <script>
-import Trait from './Trait.vue'
-import ToggleActive from '~/mixins/toggle-active-el'
+import Action from './Action'
 import { mapMutations, mapState, mapGetters } from 'vuex'
+import Spellcasting from './Spellcasting'
+import ToggleActive from '~/mixins/toggle-active-el'
+import Trait from './Trait'
 
 export default {
   name: 'CreatureEntries',
 
   components: {
+    Action,
+    Spellcasting,
     Trait
   },
 
   filters: {
     getStatMod: function(stat) {
       const mod = Math.floor((stat - 10) / 2)
-      return `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})`
-    },
-    parseNumToFrac: function(num) {
-      return typeof num === 'number' && num > 0 && num < 1
-        ? `1/${1 / num}` // converts decimal to denominator
-        : num
+      return `${stat} (${mod < 0 ? '' : '+'}\xa0${mod})` // \xa0 is nbsp
     }
   },
 
@@ -187,6 +195,19 @@ export default {
     }
   },
 
+  data: function() {
+    return {
+      sizes: {
+        T: 'tiny',
+        S: 'small',
+        M: 'medium',
+        L: 'large',
+        H: 'huge',
+        G: 'gargantuan'
+      }
+    }
+  },
+
   computed: {
     ...mapState('encounter', {
       encounter: 'encounter'
@@ -194,36 +215,122 @@ export default {
     ...mapGetters('encounter', {
       encounterCreatures: 'encounterCreatures'
     }),
+    concatCR: function() {
+      const { cr, coven, lair } = this.model.cr
+      return coven
+        ? `${cr}; ${coven} when part of a coven`
+        : lair
+          ? `${cr}; ${lair} when encountered in its lair`
+          : this.model.cr
+    },
     concatType: function() {
       const { type, tags, swarmSize } = this.model.type
-      if (typeof this.model.type === 'string') {
-        // Simple creature type
-        return this.model.type
-      } else if (tags) {
-        // Creature type has tags
-        return `${type} (${tags.join(', ')})`
-      } else {
-        // Swarms
-        return `swarm of ${swarmSize} ${type}s`
-      }
+      return this.model.type.tags
+        ? `${type} (${tags.join(', ')})`
+        : swarmSize
+          ? `swarm of ${this.parseSize(swarmSize)} ${type}s`
+          : this.model.type
+    },
+    concatSave: function() {
+      return this.concatKeyVal(this.model.save)
     },
     concatSkill: function() {
-      return this.concatKeyVal(this.model.skill)
+      const { other, ...skills } = this.model.skill
+      // TODO: This will break in the future when Wizards releases other skill possibilities.
+      return !other
+        ? this.concatKeyVal(skills)
+        : `${this.concatKeyVal(
+            skills
+          )}, plus one of the following: ${this.concatKeyVal(other[0].oneOf)}`
+    },
+    conditionImmune: function() {
+      return this.dmgCon(this.model.conditionImmune, 'immune')
+    },
+    creatureName: function() {
+      return this.model.isNamedCreature ? this.model.name : 'The creature'
+    },
+    dmgImmune: function() {
+      return this.dmgCon(this.model.immune, 'immune')
+    },
+    dmgResist: function() {
+      return this.dmgCon(this.model.resist, 'resist')
+    },
+    dmgVulnerable: function() {
+      return this.dmgCon(this.model.vulnerable, 'vulnerable')
     },
     encounterIncludesCreature: function() {
       return this.encounterCreatures.includes(this.model.name)
+    },
+    hp: function() {
+      const { average, formula, special } = this.model.hp
+      return special || `${average} (${formula})`
+    },
+    legendaryActionCount: function() {
+      return this.model.legendaryActions || 3
+    },
+    source: function() {
+      const { page, source, sourceSub } = this.model
+      // eslint-disable-next-line
+      return `${source}${sourceSub ? ` - ${sourceSub}` : ''}${page ? `, p. ${page}` : ''}`
+    },
+    speed: function() {
+      let { walk, ...speeds } = this.model.speed
+      speeds = Object.keys(speeds).map(
+        k =>
+          typeof speeds[k] === 'object' && speeds[k].condition
+            ? `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
+            : `${k} ${speeds[k]} ft.`
+      )
+      return walk !== 0
+        ? [
+            typeof walk === 'object' && walk.condition
+              ? `${walk.number} ${walk.condition}`
+              : `${walk} ft.`,
+            ...speeds
+          ].join(', ')
+        : speeds.join(', ')
+    },
+    stats: function() {
+      // Create stats object
+      const { str, dex, con, wis, int, cha } = this.model
+      return { str, dex, con, wis, int, cha }
     }
   },
 
+  mounted: function() {
+    if (
+      process.env !== 'production' &&
+      this.model.trait &&
+      this.model.trait.entries.entries
+    )
+      console.warn(`${this.model.name} has entries that not being displayed`)
+  },
+
   methods: {
-    removeFirst: function(arr) {
-      const r = arr.slice(1)
-      return r.length > 0 ? r : null
-    },
     concatKeyVal: function(o) {
       return Object.keys(o)
-        .reduce((a, k) => a.concat(k + ' ' + o[k]), []) // Add combined key-value pair to an array
+        .map(k => `${k} ${o[k]}`) // Add combined key-value pair to an array
         .join(', ') // Combine array values to string
+    },
+    dmgCon: function(arr, type) {
+      // Caches `special` text. Special text should come before `items`
+      let pre = []
+      // `items` are resistances, vulnerabilites, or immunities
+      const items = arr.reduce((a, c) => {
+        c.special
+          ? pre.push(`${c.special}`)
+          : c[type]
+            ? /** TODO: More readable formatting. Commas separate notes from other damage types.
+               * non-magical resistances appearing before other types
+               */
+              a.push([c.preNote, this.dmgCon(c[type], type), c.note].join(' '))
+            : a.push(c)
+        return a
+      }, [])
+      return [...pre, items.join(', ')].join('; ')
+    },
+    parseSize: function(str) {
+      return this.sizes.hasOwnProperty(str) ? this.sizes[str] : str
     },
     ...mapMutations('encounter', {
       addToEncounter: 'ADD_TO_ENCOUNTER',

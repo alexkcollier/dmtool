@@ -78,10 +78,10 @@
             </b-field>
             <b-field grouped group-multiline>
               <div
-                v-for="option in filters[visibleFilterOptions]"
-                :key="option.name"
+                v-for="(option, index) in filters[visibleFilterOptions]"
+                :key="index"
                 class="control">
-                <b-switch v-model="option.value" @input="query">
+                <b-switch v-model="option.allowed" @input="query">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
               </div>
@@ -162,14 +162,19 @@ export default {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
     visibleFilterOptions: function() {
+      /* eslint-disable*/
       return this.visibleFilter
         ? this.visibleFilter
         : Object.keys(this.filters)
           ? Object.keys(this.filters)[0]
           : ''
+      /* eslint-enable */
     },
     resultCount: function() {
       return this.queryResult.length
+    },
+    cleanSearchTerm: function() {
+      return this.searchTerm.toLowerCase().trim()
     }
   },
 
@@ -178,7 +183,7 @@ export default {
       window.addEventListener('scroll', this.handleScroll)
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
     this.query()
-    this.getFilters(...this.filterFields)
+    this.getFilters(this.filterFields)
   },
 
   destroyed() {
@@ -196,62 +201,56 @@ export default {
       if (!this.visibleFilter) this.visibleFilter = Object.keys(this.filters)[0]
       this.collapseFilters = !this.collapseFilters
     },
-    setAllFilterOptions: function(filter, val) {
-      this.filters[filter].forEach(option => {
-        option.value = val
-      })
+    setAllFilterOptions: function(filter, isAllowed) {
+      // `isAllowed` should be boolean
+      this.filters[filter].forEach(option => (option.allowed = isAllowed))
     },
     resetFilters: function() {
-      Object.keys(this.filters).map(filter =>
-        this.setAllFilterOptions(filter, true)
-      )
+      Object.keys(this.filters).map(f => this.setAllFilterOptions(f, true))
     },
-    filterTest: function(filter, testValue) {
-      return this.filters[filter]
-        .reduce((valid, option) => {
-          if (option.value) valid.push(option.name)
-          return valid
-        }, [])
-        .includes(testValue) // return if true if filter contains testValue
+    filterTest: function(f, t) {
+      /**
+       *  return true if `t` is allowed by filter options
+       *  i.e.: this.filters['cr'].map() = [1,2,3], t = 4 -> false
+       */
+      return this.filters[f].map(o => (o.allowed ? o.name : '')).includes(t)
     },
-    getFilters: function(...filters) {
-      // Iterate over provided filters
-      filters.map(filter => {
-        // Generate filter options from model
-        let options = [...new Set(this.model.map(item => item[filter]))].reduce(
-          (arr, option) => {
-            if (typeof option !== 'undefined')
-              arr.push({ name: option, value: true })
-            return arr
-          },
-          []
-        )
-        if (this.filtersToSort.includes(filter)) {
+    getFilters: function(filters) {
+      // Generate filter options from model
+      filters.map(f => {
+        // get unique filter options. `i[f][f] || i[f]` checks properties that can be objects or strings.
+        let options = [...new Set(this.model.map(i => i[f][f] || i[f]))]
+        // convert to array of objects
+        options = options.map(option => ({ name: option, allowed: true }))
+        // sort
+        if (this.filtersToSort.includes(f))
           options = _.sortBy(
             options,
-            o => (typeof o.name === 'number' ? Number(o.name) : String(o.name))
-          ) // sort
-        }
-        this.$set(this.filters, filter, options) // Set filter options. Must use vm.set to make this.filters reactive.
+            o =>
+              !isNaN(o.name)
+                ? Number(o.name)
+                : o.name.match(/\d\/\d/)
+                  ? o.name[0] / o.name[2]
+                  : o.name
+          )
+
+        // Set filter options. Must use vm.set to make this.filters reactive.
+        this.$set(this.filters, f, options)
       })
     },
     toLowerCaseTrim: function(str) {
       return _.trim(str.toLowerCase())
     },
     query: _.debounce(function() {
+      // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
       this.clearActiveEl()
+      const filters = Object.keys(this.filters)
       const result = this.model.filter(
+        // el is creature, spell, item, etc. `el[f][f] || el[f]` ensures string is checked
         el =>
-          // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
-          this.toLowerCaseTrim(el[this.searchField]).includes(
-            this.toLowerCaseTrim(this.searchTerm)
-          ) &&
-          Object.keys(this.filters).reduce(
-            (testRes, filter) => testRes * this.filterTest(filter, el[filter]), // check each element against all filters
-            1
-          ) // ensure element contains search term and passes filter test
+          el[this.searchField].toLowerCase().includes(this.cleanSearchTerm) &&
+          filters.reduce((r, f) => r * this.filterTest(f, el[f][f] || el[f]), 1)
       )
-
       this.queryResult = _.sortBy(result, 'name')
       this.emitUpdateData()
     }, 300),
