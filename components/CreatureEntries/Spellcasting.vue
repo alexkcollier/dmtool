@@ -23,8 +23,8 @@
     <template v-if="hasRechargeSpells">
       <template v-for="time in rechargeTimes">
         <template v-if="model[time]">
-          <dl v-for="(list, key, i) in model[time]" :key="'recharge-' + i">
-            <dd>{{ i }} {{ formatTime(key, time) }} <span v-html="formatSpellList(list)"/></dd>
+          <dl v-for="(list, key) in model[time]" :key="`${time}-recharge-${key}`">
+            <dd>{{ formatTime(key, time) }} <span v-html="formatSpellList(list)"/></dd>
           </dl>
         </template>
       </template>
