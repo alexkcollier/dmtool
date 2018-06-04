@@ -14,10 +14,13 @@
       
       <!-- Lists -->
       <dl v-else-if="entry.type === 'list'" :key="entry.index">
-        <dd v-for="item in entry.items" :key="item.index">
-          <strong>{{ item.name }} </strong>
-          <span v-html="formatActionEntry(item.entry)"/>
-        </dd>
+        <template v-for="item in entry.items">
+          <dd v-if="item.entry" :key="item.index">
+            <strong>{{ item.name }} </strong>
+            <span v-html="formatActionEntry(item.entry)"/>
+          </dd>
+          <dd v-else :key="item.index" v-html="formatActionEntry(item)"/>
+        </template>
       </dl>
     
       <!-- Tables -->
@@ -81,5 +84,10 @@ export default {
 <style lang="scss" scoped>
 div:not(:last-child) {
   margin-bottom: 1em !important;
+}
+dd {
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
 }
 </style>
