@@ -51,7 +51,7 @@
             <template v-for="(data, filter) in filters">
               <a 
                 :key="filter"
-                :class="{'is-active': visibleFilterOptions === filter}"
+                :class="{'is-active': filter === visibleFilter}"
                 class="card-footer-item is-capitalized"
                 @click="visibleFilter = filter">
                 {{ filter | formatFilterOptionName }}
@@ -78,7 +78,7 @@
             </b-field>
             <b-field grouped group-multiline>
               <div
-                v-for="(option, index) in filters[visibleFilterOptions]"
+                v-for="(option, index) in filters[visibleFilter]"
                 :key="index"
                 class="control">
                 <b-switch v-model="option.allowed" @input="query">
@@ -172,10 +172,6 @@ export default {
 
     resultCount() {
       return this.queryResult.length
-    },
-
-    visibleFilterOptions() {
-      return this.visibleFilter || Object.keys(this.filters)[0] || ''
     },
 
     updateDataPayload() {
