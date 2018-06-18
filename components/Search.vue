@@ -66,13 +66,13 @@
               <a
                 class="control button button-grouped"
                 style="margin-left:0;"
-                @click="setAllFilterOptions(visibleFilter, true)">
+                @click="setAllOptions(visibleFilter, true)">
                 Enable all
               </a>
               <a
                 class="control button button-grouped"
                 style="margin-left:0;"
-                @click="setAllFilterOptions(visibleFilter, false)">
+                @click="setAllOptions(visibleFilter, false)">
                 Disable all
               </a>
             </b-field>
@@ -287,17 +287,12 @@ export default {
     },
 
     passesFilters(el) {
-      return Object.keys(this.filters).reduce(
-        (result, f) => result * this.filterAllowsValue(f, el[f][f] || el[f]),
-        1
+      return Object.keys(this.filters).every(f =>
+        this.filters[f]
+          .filter(({ allowed }) => allowed)
+          .map(({ name }) => name)
+          .includes(el[f][f] || el[f])
       )
-    },
-
-    filterAllowsValue(filter, val) {
-      return this.filters[filter]
-        .filter(({ allowed }) => allowed)
-        .map(({ name }) => name)
-        .includes(val)
     },
 
     handleScroll: throttle(function(event) {
