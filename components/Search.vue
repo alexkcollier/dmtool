@@ -203,10 +203,12 @@ export default {
 
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
 
-    this.visibleFilter = Object.keys(this.filters)[0]
-
     this.query()
     this.generateFilters()
+  },
+
+  mounted() {
+    this.visibleFilter = Object.keys(this.filters)[0]
   },
 
   destroyed() {
@@ -260,7 +262,7 @@ export default {
     },
 
     setAllOptions(filter, allowed) {
-      this.filters[filter].forEach(({ allowed }) => allowed)
+      this.filters[filter].forEach(option => (option.allowed = allowed))
     },
 
     clearSearch() {
