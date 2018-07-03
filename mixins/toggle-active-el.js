@@ -10,16 +10,16 @@ export default {
 
   computed: {
     ...mapState('toggle-active-el', ['activeEl']),
-    active: function() {
+    active() {
       return this.id === this.activeEl
     }
   },
 
-  mounted: function() {
+  mounted() {
     this.setId()
   },
 
-  destroyed: function() {
+  destroyed() {
     this.clearActiveEl()
   },
 
@@ -28,10 +28,12 @@ export default {
       setActiveEl: 'SET_ACTIVE_EL',
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
-    setId: function() {
+
+    setId() {
       this.id = this.$el.id
     },
-    toggleActive: function() {
+
+    toggleActive() {
       this.active
         ? this.clearActiveEl()
         : this.setActiveEl({

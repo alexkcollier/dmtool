@@ -181,7 +181,7 @@ export default {
   },
 
   filters: {
-    getStatMod: function(stat) {
+    getStatMod(stat) {
       const mod = Math.floor((stat - 10) / 2)
       return `${stat} (${mod < 0 ? '' : '+'}${mod})` // \xa0 is nbsp
     }
@@ -196,7 +196,7 @@ export default {
     }
   },
 
-  data: function() {
+  data() {
     return {
       sizes: {
         T: 'tiny',
@@ -213,73 +213,99 @@ export default {
     ...mapState('encounter', {
       encounter: 'encounter'
     }),
+
     ...mapGetters('encounter', {
       encounterCreatures: 'encounterCreatures'
     }),
-    armorClass: function() {
+
+    armorClass() {
       const { ac } = this.model
       return typeof ac === 'string' ? ac : ac.reduce(this.acToString, '').trim()
     },
-    concatCR: function() {
+
+    concatCR() {
       const { cr, coven, lair } = this.model.cr
-      return coven
-        ? `${cr}; ${coven} when part of a coven`
-        : lair
-          ? `${cr}; ${lair} when encountered in its lair`
-          : this.model.cr
+      if (coven) return `${cr}; ${coven} when part of a coven`
+      if (lair) return `${cr}; ${lair} when encountered in its lair`
+      return this.model.cr
     },
-    concatType: function() {
+
+    concatType() {
       const { type, tags, swarmSize } = this.model.type
-      return this.model.type.tags
-        ? `${type} (${tags.join(', ')})`
-        : swarmSize
-          ? `swarm of ${this.parseSize(swarmSize)} ${type}s`
-          : this.model.type
+      if (tags) return `${type} (${tags.join(', ')})`
+      if (swarmSize) return `swarm of ${this.parseSize(swarmSize)} ${type}s`
+      return this.model.type
     },
-    concatSave: function() {
+
+    concatSave() {
       return this.concatKeyVal(this.model.save)
     },
-    concatSkill: function() {
+
+    concatSkill() {
       const { other, ...skills } = this.model.skill
-      // TODO: This will break in the future when Wizards releases other skill possibilities.
-      return !other
-        ? this.concatKeyVal(skills)
-        : `${this.concatKeyVal(
-            skills
-          )}, plus one of the following: ${this.concatKeyVal(other[0].oneOf)}`
+      let stack = this.concatKeyVal(skills)
+
+      if (other) {
+        other.map(el => {
+          if (el.oneOf) {
+            const oneOf = this.concatKeyVal(el.oneOf)
+            stack += `, plus one of the following: ${oneOf}`
+          }
+        })
+      }
+
+      return stack
     },
-    conditionImmune: function() {
+
+    conditionImmune() {
       return this.dmgCon(this.model.conditionImmune, 'immune')
     },
-    creatureName: function() {
+
+    creatureName() {
       return this.model.isNamedCreature ? this.model.name : 'The creature'
     },
-    dmgImmune: function() {
+
+    dmgImmune() {
       return this.dmgCon(this.model.immune, 'immune')
     },
-    dmgResist: function() {
+
+    dmgResist() {
       return this.dmgCon(this.model.resist, 'resist')
     },
-    dmgVulnerable: function() {
+
+    dmgVulnerable() {
       return this.dmgCon(this.model.vulnerable, 'vulnerable')
     },
-    encounterIncludesCreature: function() {
+
+    encounterIncludesCreature() {
       return this.encounterCreatures.includes(this.model.name)
     },
-    hp: function() {
+
+    hp() {
       const { average, formula, special } = this.model.hp
       return special || `${average} (${formula})`
     },
-    legendaryActionCount: function() {
+
+    legendaryActionCount() {
       return this.model.legendaryActions || 3
     },
-    source: function() {
+
+    source() {
       const { page, source, sourceSub } = this.model
       // eslint-disable-next-line
       return `${source}${sourceSub ? ` - ${sourceSub}` : ''}${page ? `, p. ${page}` : ''}`
     },
-    speed: function() {
+
+    speed() {
       let { walk, ...speeds } = this.model.speed
+
+      walk =
+        walk && !!walk
+          ? typeof walk === 'object' && walk.condition
+            ? `${walk.number} ft. ${walk.condition}`
+            : `${walk} ft.`
+          : ''
+
       speeds = Object.keys(speeds).map(
         k =>
           typeof speeds[k] === 'object' && speeds[k].condition
@@ -287,23 +313,17 @@ export default {
             : `${k} ${speeds[k]} ft.`
       )
 
-      walk =
-        walk && walk !== 0
-          ? typeof walk === 'object' && walk.condition
-            ? `${walk.number} ft. ${walk.condition}`
-            : `${walk} ft.`
-          : ''
-
       return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
-    stats: function() {
+
+    stats() {
       // Create stats object
       const { str, dex, con, wis, int, cha } = this.model
       return { str, dex, con, wis, int, cha }
     }
   },
 
-  mounted: function() {
+  mounted() {
     const { name, trait } = this.model
 
     if (process.env !== 'production' && trait && trait.entries.entries) {
@@ -312,36 +332,30 @@ export default {
   },
 
   methods: {
-    concatKeyVal: function(o) {
+    concatKeyVal(o) {
       return Object.keys(o)
-        .map(k => `${k} ${o[k]}`) // Add combined key-value pair to an array
-        .join(', ') // Combine array values to string
+        .map(k => `${k} ${o[k]}`)
+        .join(', ')
     },
-    dmgCon: function(toParse, type) {
+
+    dmgCon(arr, type) {
       let nested = false
 
-      const joinConjunct = (arr, conjunctWith) =>
-        arr.length === 1
-          ? String(arr[0])
-          : arr.length === 2
-            ? arr.join(` ${conjunctWith} `)
-            : `${arr.slice(0, -1).join(', ')} ${conjunctWith} ${arr.slice(-1)}`
-
-      const toString = (it, depth = false) => {
+      const flatten = (it, depth = false) => {
         nested = depth
 
-        if (typeof it === 'string') {
-          return it
-        } else if (it.special) {
-          return it.special
-        } else if (it[type]) {
+        if (typeof it === 'string') return it
+
+        if (it.special) return it.special
+
+        if (it[type]) {
           let stack = it.preNote ? `${it.preNote} ` : ''
 
-          const toJoin = it[type].map(nxt => toString(nxt, true))
+          const toJoin = it[type].map(item => flatten(item, true))
 
           stack += depth
             ? toJoin.join(depth ? '; ' : ', ')
-            : joinConjunct(toJoin, 'and')
+            : this.conjunctWith(toJoin, 'and')
 
           stack += it.note ? ` ${it.note}` : ''
 
@@ -349,9 +363,16 @@ export default {
         }
       }
 
-      return toParse.map(it => toString(it)).join(nested ? '; ' : ', ')
+      return arr.map(it => flatten(it)).join(nested ? '; ' : ', ')
     },
-    acToString: function(stack, cur, idx, arr) {
+
+    conjunctWith(arr, conjunction) {
+      if (arr.length === 1) return String(arr[0])
+      if (arr.length === 2) return arr.join(` ${conjunction} `)
+      return `${arr.slice(0, -1).join(', ')} ${conjunction} ${arr.slice(-1)}`
+    },
+
+    acToString(stack, cur, idx, arr) {
       if (cur.ac) {
         stack += cur.ac
         if (cur.from) stack += ` (${cur.from.join(', ')})`
@@ -366,9 +387,11 @@ export default {
       const regExp = /{@(spell|item)\s(.*?)(\|(.*?))?(\|.*?)?}/g
       return stack.replace(regExp, '$2')
     },
-    parseSize: function(str) {
-      return this.sizes.hasOwnProperty(str) ? this.sizes[str] : str
+
+    parseSize(size) {
+      return this.sizes[size] || size
     },
+
     ...mapMutations('encounter', {
       addToEncounter: 'ADD_TO_ENCOUNTER',
       removeFromEncounter: 'REMOVE_FROM_ENCOUNTER'

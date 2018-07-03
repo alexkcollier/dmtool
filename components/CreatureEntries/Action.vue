@@ -61,7 +61,7 @@ export default {
   },
 
   methods: {
-    formatActionEntry: function(str) {
+    formatActionEntry(str) {
       const attackRegExp = /((Melee|Ranged).*Attack:)/g
       const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
       const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g

@@ -56,15 +56,16 @@ export default {
   },
 
   methods: {
-    itemIndex: function(name) {
-      const index =
-        this.results.truncated.findIndex(result => result.name === name) + 1
+    itemIndex(name) {
+      const index = this.results.truncated.findIndex(r => r.name === name) + 1
       return `item-${index}`
     },
+
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL'
     }),
-    updateData: function(value) {
+
+    updateData(value) {
       this.results = value // Use results from Search.vue
       // Expand first entry if only one result. Must match search debounce time
       if (this.results.truncated.length === 1)

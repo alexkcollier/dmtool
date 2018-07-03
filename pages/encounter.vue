@@ -69,17 +69,19 @@ export default {
     ...mapState('encounter', {
       encounter: 'encounter'
     }),
-    something: function() {
+
+    something() {
       return 3
     }
   },
 
   methods: {
-    creatureIndex: function(name) {
+    creatureIndex(name) {
       const index =
         this.encounter.findIndex(creature => creature.name === name) + 1
       return `creature-${index}`
     },
+
     ...mapMutations('encounter', {
       clearEncounter: 'CLEAR_ENCOUNTER'
     })

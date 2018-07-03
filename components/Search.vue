@@ -240,17 +240,19 @@ export default {
       return [...new Set(this.model.map(el => el[key][key] || el[key]))]
     },
 
-    sortFilterOptions(filterName, filterOptions) {
-      const sortFn = option =>
-        !isNaN(option.name)
-          ? Number(option.name)
-          : option.name.match(/\d\/\d/)
-            ? option.name[0] / option.name[2]
-            : option.name
+    sortFilterOptions(f, o) {
+      const sortFn = ({ name }) => {
+        if (isNaN(name)) {
+          if (name.match(/\d\/\d/)) return name[0] / name[2]
+          if (name === 'Unknown') return Number(name)
 
-      return this.filtersToSort.includes(filterName)
-        ? sortBy(filterOptions, sortFn)
-        : filterOptions
+          return name
+        }
+
+        return Number(name)
+      }
+
+      return this.filtersToSort.includes(f) ? sortBy(o, sortFn) : o
     },
 
     resetFilters() {
