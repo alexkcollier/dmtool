@@ -57,8 +57,7 @@ export default {
 
   methods: {
     itemIndex(name) {
-      const index =
-        this.results.truncated.findIndex(result => result.name === name) + 1
+      const index = this.results.truncated.findIndex(r => r.name === name) + 1
       return `item-${index}`
     },
 

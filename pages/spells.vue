@@ -54,7 +54,7 @@ export default {
   },
 
   created() {
-    this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
+    this.spells = this.spells.filter(spell => !spell.source.includes('UA')) // remove UA spells
   },
 
   methods: {
@@ -70,8 +70,7 @@ export default {
     },
 
     spellIndex(name) {
-      const index =
-        this.results.truncated.findIndex(result => result.name === name) + 1
+      const index = this.results.truncated.findIndex(r => r.name === name) + 1
       return `spell-${index}`
     }
   }
