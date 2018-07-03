@@ -51,7 +51,7 @@
             <template v-for="(data, filter) in filters">
               <a 
                 :key="filter"
-                :class="{'is-active': visibleFilterOptions === filter}"
+                :class="{'is-active': filter === visibleFilter}"
                 class="card-footer-item is-capitalized"
                 @click="visibleFilter = filter">
                 {{ filter | formatFilterOptionName }}
@@ -66,19 +66,19 @@
               <a
                 class="control button button-grouped"
                 style="margin-left:0;"
-                @click="setAllFilterOptions(visibleFilter, true)">
+                @click="setAllOptions(visibleFilter, true)">
                 Enable all
               </a>
               <a
                 class="control button button-grouped"
                 style="margin-left:0;"
-                @click="setAllFilterOptions(visibleFilter, false)">
+                @click="setAllOptions(visibleFilter, false)">
                 Disable all
               </a>
             </b-field>
             <b-field grouped group-multiline>
               <div
-                v-for="(option, index) in filters[visibleFilterOptions]"
+                v-for="(option, index) in filters[visibleFilter]"
                 :key="index"
                 class="control">
                 <b-switch v-model="option.allowed" @input="query">
@@ -94,8 +94,8 @@
 
     <!-- Result count -->
     <div class="control">
-      <div :class="{'is-danger': resultCount == 0}" class="help has-text-right">
-        {{ resultCount }} {{ searchType }}<span v-if="resultCount != 1">s</span> found.
+      <div :class="{'is-danger': resultCount === 0}" class="help has-text-right">
+        {{ resultCount }} {{ searchType }}<span v-if="searchType && resultCount !== 1">s</span> found.
       </div>
     </div>
 
@@ -104,19 +104,20 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import { debounce, sortBy, throttle } from 'lodash'
 import { mapActions } from 'vuex'
 
 export default {
   name: 'Search',
 
   filters: {
-    parseNumToFrac: function(num) {
+    parseNumToFrac(num) {
       return typeof num === 'number' && num > 0 && num < 1
         ? `1/${1 / num}` // converts decimal to denominator
         : num
     },
-    formatFilterOptionName: function(str) {
+
+    formatFilterOptionName(str) {
       return str.length <= 2 ? str.toUpperCase() : str
     }
   },
@@ -126,18 +127,22 @@ export default {
       type: Array,
       default: () => []
     },
+
     searchField: {
       type: String,
       default: ''
     },
+
     searchType: {
       type: String,
       default: ''
     },
+
     filtersToSort: {
       type: Array,
       default: () => []
     },
+
     filterFields: {
       type: Array,
       default: () => []
@@ -147,134 +152,160 @@ export default {
   data() {
     return {
       searchTerm: '',
-      queryResult: _.sortBy(this.model, 'name'),
+      queryResult: sortBy(this.model, this.searchField),
       collapseFilters: true,
       visibleFilter: '',
       filters: {},
-      scrollPos: 0,
       prevScroll: 0,
       count: 10
     }
   },
 
   computed: {
-    placeholder: function() {
+    cleanSearchTerm() {
+      return this.searchTerm.toLowerCase().trim()
+    },
+
+    placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
     },
-    visibleFilterOptions: function() {
-      /* eslint-disable*/
-      return this.visibleFilter
-        ? this.visibleFilter
-        : Object.keys(this.filters)
-          ? Object.keys(this.filters)[0]
-          : ''
-      /* eslint-enable */
-    },
-    resultCount: function() {
+
+    resultCount() {
       return this.queryResult.length
     },
-    cleanSearchTerm: function() {
-      return this.searchTerm.toLowerCase().trim()
+
+    updateDataPayload() {
+      return {
+        truncated: this.queryResult.slice(0, this.count),
+        show: this.queryResult.length > 0
+      }
+    }
+  },
+
+  watch: {
+    count() {
+      this.$emit('update-data', this.updateDataPayload)
+    },
+
+    queryResult() {
+      this.$emit('update-data', this.updateDataPayload)
     }
   },
 
   created() {
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
       window.addEventListener('scroll', this.handleScroll)
+    }
+
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
+
     this.query()
-    this.getFilters(this.filterFields)
+    this.generateFilters()
+  },
+
+  mounted() {
+    this.visibleFilter = Object.keys(this.filters)[0]
   },
 
   destroyed() {
-    if (typeof window !== 'undefined')
+    if (typeof window !== 'undefined') {
       window.removeEventListener('scroll', this.handleScroll)
+    }
   },
 
   methods: {
-    ...mapActions('toggle-active-el', { clearActiveEl: 'CLEAR_ACTIVE_EL' }),
-    clearSearch: function() {
+    ...mapActions('toggle-active-el', {
+      clearActiveEl: 'CLEAR_ACTIVE_EL'
+    }),
+
+    filterViewToggle() {
+      this.collapseFilters = !this.collapseFilters
+    },
+
+    generateFilters() {
+      this.filterFields.map(filter => {
+        let options = this.setFilterOptions(filter)
+        this.$set(this.filters, filter, this.sortFilterOptions(filter, options))
+      })
+    },
+
+    setFilterOptions(filter) {
+      return this.getUniqueValues(filter).map(val => ({
+        name: val,
+        allowed: true
+      }))
+    },
+
+    getUniqueValues(key) {
+      return [...new Set(this.model.map(el => el[key][key] || el[key]))]
+    },
+
+    sortFilterOptions(filterName, filterOptions) {
+      const sortFn = option =>
+        !isNaN(option.name)
+          ? Number(option.name)
+          : option.name.match(/\d\/\d/)
+            ? option.name[0] / option.name[2]
+            : option.name
+
+      return this.filtersToSort.includes(filterName)
+        ? sortBy(filterOptions, sortFn)
+        : filterOptions
+    },
+
+    resetFilters() {
+      Object.keys(this.filters).map(filter => this.setAllOptions(filter, true))
+    },
+
+    setAllOptions(filter, allowed) {
+      this.filters[filter].forEach(option => (option.allowed = allowed))
+    },
+
+    clearSearch() {
       this.searchTerm = ''
       this.query()
     },
-    filterViewToggle: function() {
-      if (!this.visibleFilter) this.visibleFilter = Object.keys(this.filters)[0]
-      this.collapseFilters = !this.collapseFilters
-    },
-    setAllFilterOptions: function(filter, isAllowed) {
-      // `isAllowed` should be boolean
-      this.filters[filter].forEach(option => (option.allowed = isAllowed))
-    },
-    resetFilters: function() {
-      Object.keys(this.filters).map(f => this.setAllFilterOptions(f, true))
-    },
-    filterTest: function(f, t) {
-      /**
-       *  return true if `t` is allowed by filter options
-       *  i.e.: this.filters['cr'].map() = [1,2,3], t = 4 -> false
-       */
-      return this.filters[f].map(o => (o.allowed ? o.name : '')).includes(t)
-    },
-    getFilters: function(filters) {
-      // Generate filter options from model
-      filters.map(f => {
-        // get unique filter options. `i[f][f] || i[f]` checks properties that can be objects or strings.
-        let options = [...new Set(this.model.map(i => i[f][f] || i[f]))]
-        // convert to array of objects
-        options = options.map(option => ({ name: option, allowed: true }))
-        // sort
-        if (this.filtersToSort.includes(f))
-          options = _.sortBy(
-            options,
-            o =>
-              !isNaN(o.name)
-                ? Number(o.name)
-                : o.name.match(/\d\/\d/)
-                  ? o.name[0] / o.name[2]
-                  : o.name
-          )
 
-        // Set filter options. Must use vm.set to make this.filters reactive.
-        this.$set(this.filters, f, options)
-      })
-    },
-    toLowerCaseTrim: function(str) {
-      return _.trim(str.toLowerCase())
-    },
-    query: _.debounce(function() {
-      // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
+    // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
+    query: debounce(function() {
       this.clearActiveEl()
-      const filters = Object.keys(this.filters)
-      const result = this.model.filter(
-        // el is creature, spell, item, etc. `el[f][f] || el[f]` ensures string is checked
-        el =>
-          el[this.searchField].toLowerCase().includes(this.cleanSearchTerm) &&
-          filters.reduce((r, f) => r * this.filterTest(f, el[f][f] || el[f]), 1)
+      this.queryResult = sortBy(
+        this.searchAndFilter(this.model),
+        this.searchField
       )
-      this.queryResult = _.sortBy(result, 'name')
-      this.emitUpdateData()
     }, 300),
-    loadMore: function(n = 10) {
-      this.count += n
+
+    searchAndFilter(arr) {
+      return arr.filter(el => this.includesTerm(el) && this.passesFilters(el))
     },
-    emitUpdateData: function() {
-      this.$emit('update-data', {
-        truncated: this.queryResult.slice(0, this.count),
-        show: this.queryResult.length > 0
-      })
+
+    includesTerm(el) {
+      const testVal = el[this.searchField].toLowerCase().trim()
+      return testVal.includes(this.cleanSearchTerm)
     },
-    handleScroll: _.throttle(function(event) {
-      const d = document.documentElement
-      const offset = d.scrollTop + window.innerHeight // Distance scrolled and viewport height
-      const height = d.offsetHeight // Total CSS height
-      const scrollDir = this.prevScroll - d.scrollTop // scrollDir < 0 = scrolled down
-      if (scrollDir < 0 && offset >= height - 300 && this.resultCount > 1) {
-        this.loadMore(1)
-        this.scrollPos = offset
-        this.emitUpdateData()
-      }
-      this.prevScroll = d.scrollTop
-    }, 50)
+
+    passesFilters(el) {
+      return Object.keys(this.filters).every(f =>
+        this.filters[f]
+          .filter(({ allowed }) => allowed)
+          .map(({ name }) => name)
+          .includes(el[f][f] || el[f])
+      )
+    },
+
+    handleScroll: throttle(function(event) {
+      const { offsetHeight, scrollTop } = document.documentElement
+      const scrollDistance = scrollTop + window.innerHeight
+      const atBottom = scrollDistance >= offsetHeight - 300
+
+      if (atBottom) this.loadMore()
+
+      this.prevScroll = scrollTop
+    }, 50),
+
+    loadMore() {
+      this.count += 1
+    }
   }
 }
 </script>
