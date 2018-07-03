@@ -74,12 +74,12 @@ export default {
     },
 
     spellComponents() {
-      const componentList = Object.keys(this.model.components)
+      let stack = Object.keys(this.model.components)
         .join(', ')
         .toUpperCase()
-      return this.model.components.m
-        ? componentList.concat(` (${this.model.components.m})`)
-        : componentList
+
+      if (this.model.components.m) stack += ` (${this.model.components.m})`
+      return stack
     },
 
     spellDuration() {
