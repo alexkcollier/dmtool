@@ -95,7 +95,6 @@ export default {
   },
 
   created: function() {
-    this.bestiary = this.bestiary.filter(creature => creature.cr !== 'Unknown')
     this.parseSizes(this.bestiary)
     this.parseAlignment(this.bestiary)
   },
@@ -111,17 +110,11 @@ export default {
         this.setActiveEl({ el: `creature-1`, delay: 300 })
     },
     creatureIndex: function(name) {
-      const index =
-        this.results.truncated.findIndex(result => result.name === name) + 1
+      const index = this.results.truncated.findIndex(r => r.name === name) + 1
       return `creature-${index}`
     },
     parseSizes: function(arr) {
-      arr.forEach(
-        creature =>
-          (creature.size = this.sizes.hasOwnProperty(creature.size)
-            ? this.sizes[creature.size]
-            : creature.size)
-      )
+      arr.forEach(c => (c.size = this.sizes[c.size] || c.size))
     },
     parseAlignment: function(arr) {
       arr.forEach(
