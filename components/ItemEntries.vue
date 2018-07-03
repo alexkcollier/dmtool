@@ -36,7 +36,7 @@ export default {
   },
 
   filters: {
-    lowerCase: function(str) {
+    lowerCase(str) {
       return str ? str.toLowerCase() : ''
     }
   },

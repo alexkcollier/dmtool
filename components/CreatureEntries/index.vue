@@ -181,7 +181,7 @@ export default {
   },
 
   filters: {
-    getStatMod: function(stat) {
+    getStatMod(stat) {
       const mod = Math.floor((stat - 10) / 2)
       return `${stat} (${mod < 0 ? '' : '+'}${mod})` // \xa0 is nbsp
     }
@@ -196,7 +196,7 @@ export default {
     }
   },
 
-  data: function() {
+  data() {
     return {
       sizes: {
         T: 'tiny',
@@ -213,29 +213,35 @@ export default {
     ...mapState('encounter', {
       encounter: 'encounter'
     }),
+
     ...mapGetters('encounter', {
       encounterCreatures: 'encounterCreatures'
     }),
-    armorClass: function() {
+
+    armorClass() {
       const { ac } = this.model
       return typeof ac === 'string' ? ac : ac.reduce(this.acToString, '').trim()
     },
-    concatCR: function() {
+
+    concatCR() {
       const { cr, coven, lair } = this.model.cr
       if (coven) return `${cr}; ${coven} when part of a coven`
       if (lair) return `${cr}; ${lair} when encountered in its lair`
       return this.model.cr
     },
-    concatType: function() {
+
+    concatType() {
       const { type, tags, swarmSize } = this.model.type
       if (tags) return `${type} (${tags.join(', ')})`
       if (swarmSize) return `swarm of ${this.parseSize(swarmSize)} ${type}s`
       return this.model.type
     },
-    concatSave: function() {
+
+    concatSave() {
       return this.concatKeyVal(this.model.save)
     },
-    concatSkill: function() {
+
+    concatSkill() {
       const { other, ...skills } = this.model.skill
       let stack = this.concatKeyVal(skills)
 
@@ -250,37 +256,47 @@ export default {
 
       return stack
     },
-    conditionImmune: function() {
+
+    conditionImmune() {
       return this.dmgCon(this.model.conditionImmune, 'immune')
     },
-    creatureName: function() {
+
+    creatureName() {
       return this.model.isNamedCreature ? this.model.name : 'The creature'
     },
-    dmgImmune: function() {
+
+    dmgImmune() {
       return this.dmgCon(this.model.immune, 'immune')
     },
-    dmgResist: function() {
+
+    dmgResist() {
       return this.dmgCon(this.model.resist, 'resist')
     },
-    dmgVulnerable: function() {
+
+    dmgVulnerable() {
       return this.dmgCon(this.model.vulnerable, 'vulnerable')
     },
-    encounterIncludesCreature: function() {
+
+    encounterIncludesCreature() {
       return this.encounterCreatures.includes(this.model.name)
     },
-    hp: function() {
+
+    hp() {
       const { average, formula, special } = this.model.hp
       return special || `${average} (${formula})`
     },
-    legendaryActionCount: function() {
+
+    legendaryActionCount() {
       return this.model.legendaryActions || 3
     },
-    source: function() {
+
+    source() {
       const { page, source, sourceSub } = this.model
       // eslint-disable-next-line
       return `${source}${sourceSub ? ` - ${sourceSub}` : ''}${page ? `, p. ${page}` : ''}`
     },
-    speed: function() {
+
+    speed() {
       let { walk, ...speeds } = this.model.speed
 
       walk =
@@ -299,14 +315,15 @@ export default {
 
       return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
-    stats: function() {
+
+    stats() {
       // Create stats object
       const { str, dex, con, wis, int, cha } = this.model
       return { str, dex, con, wis, int, cha }
     }
   },
 
-  mounted: function() {
+  mounted() {
     const { name, trait } = this.model
 
     if (process.env !== 'production' && trait && trait.entries.entries) {
@@ -315,12 +332,13 @@ export default {
   },
 
   methods: {
-    concatKeyVal: function(o) {
+    concatKeyVal(o) {
       return Object.keys(o)
         .map(k => `${k} ${o[k]}`)
         .join(', ')
     },
-    dmgCon: function(arr, type) {
+
+    dmgCon(arr, type) {
       let nested = false
 
       const flatten = (it, depth = false) => {
@@ -347,12 +365,14 @@ export default {
 
       return arr.map(it => flatten(it)).join(nested ? '; ' : ', ')
     },
-    conjunctWith: function(arr, conjunction) {
+
+    conjunctWith(arr, conjunction) {
       if (arr.length === 1) return String(arr[0])
       if (arr.length === 2) return arr.join(` ${conjunction} `)
       return `${arr.slice(0, -1).join(', ')} ${conjunction} ${arr.slice(-1)}`
     },
-    acToString: function(stack, cur, idx, arr) {
+
+    acToString(stack, cur, idx, arr) {
       if (cur.ac) {
         stack += cur.ac
         if (cur.from) stack += ` (${cur.from.join(', ')})`
@@ -367,9 +387,11 @@ export default {
       const regExp = /{@(spell|item)\s(.*?)(\|(.*?))?(\|.*?)?}/g
       return stack.replace(regExp, '$2')
     },
-    parseSize: function(size) {
+
+    parseSize(size) {
       return this.sizes[size] || size
     },
+
     ...mapMutations('encounter', {
       addToEncounter: 'ADD_TO_ENCOUNTER',
       removeFromEncounter: 'REMOVE_FROM_ENCOUNTER'

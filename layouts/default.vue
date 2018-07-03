@@ -70,7 +70,7 @@ export default {
   },
 
   methods: {
-    toggleNavigation: function() {
+    toggleNavigation() {
       this.showNavigation = !this.showNavigation
       // Set document overflow
       document.documentElement.style.overflowY = this.showNavigation

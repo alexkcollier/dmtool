@@ -36,7 +36,7 @@ export default {
     Lottie
   },
 
-  data: function() {
+  data() {
     return {
       options: {
         animationData,
@@ -45,7 +45,7 @@ export default {
     }
   },
 
-  head: function() {
+  head() {
     return { title: 'Home' }
   }
 }

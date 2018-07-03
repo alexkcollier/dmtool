@@ -53,7 +53,7 @@ export default {
     return { title: 'Spells' }
   },
 
-  created: function() {
+  created() {
     this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
   },
 
@@ -61,13 +61,15 @@ export default {
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL'
     }),
-    updateData: function(value) {
+
+    updateData(value) {
       this.results = value // Use results from Search.vue
       // Expand first entry if only one result. Must match search debounce time
       if (this.results.truncated.length === 1)
         this.setActiveEl({ el: `spell-1`, delay: 300 })
     },
-    spellIndex: function(name) {
+
+    spellIndex(name) {
       const index =
         this.results.truncated.findIndex(result => result.name === name) + 1
       return `spell-${index}`

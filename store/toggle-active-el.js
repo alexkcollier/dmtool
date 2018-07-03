@@ -3,13 +3,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_ACTIVE_EL: function(state, payload) {
+  SET_ACTIVE_EL(state, payload) {
     state.activeEl = payload
   }
 }
 
 export const actions = {
-  SET_ACTIVE_EL: function({ dispatch, commit, state }, { el, delay }) {
+  SET_ACTIVE_EL({ dispatch, commit, state }, { el, delay }) {
     const oldActive = state.activeEl !== null
     return dispatch('CLEAR_ACTIVE_EL').then(() => {
       return new Promise((resolve, reject) =>
@@ -20,7 +20,7 @@ export const actions = {
       )
     })
   },
-  CLEAR_ACTIVE_EL: function({ commit }) {
+  CLEAR_ACTIVE_EL({ commit }) {
     return new Promise((resolve, reject) => {
       commit('SET_ACTIVE_EL', null)
       resolve()

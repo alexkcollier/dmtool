@@ -29,10 +29,11 @@ export default {
   },
 
   methods: {
-    handleScroll: function() {
+    handleScroll() {
       this.showTopButton = window.scrollY > window.innerHeight
     },
-    scrollToTop: function() {
+
+    scrollToTop() {
       window.scrollTo(0, 0)
     }
   }

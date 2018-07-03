@@ -48,7 +48,7 @@ export default {
   },
 
   computed: {
-    spellLevelSchool: function() {
+    spellLevelSchool() {
       let sf = ''
       switch (this.model.level) {
         case 'cantrip':
@@ -72,7 +72,8 @@ export default {
       }
       return `${this.model.level}${sf}-level ${this.model.school}`.toLowerCase()
     },
-    spellComponents: function() {
+
+    spellComponents() {
       const componentList = Object.keys(this.model.components)
         .join(', ')
         .toUpperCase()
@@ -80,7 +81,8 @@ export default {
         ? componentList.concat(` (${this.model.components.m})`)
         : componentList
     },
-    spellDuration: function() {
+
+    spellDuration() {
       const { type, concentration, duration, ends } = this.model.duration[0]
       switch (type) {
         case 'timed':

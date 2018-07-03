@@ -3,19 +3,19 @@ export const state = () => ({
 })
 
 export const getters = {
-  encounterCreatures: function(state) {
+  encounterCreatures(state) {
     return [...new Set(state.encounter.map(creature => creature.name))]
   }
 }
 
 export const mutations = {
-  ADD_TO_ENCOUNTER: function(state, payload) {
+  ADD_TO_ENCOUNTER(state, payload) {
     if (!state.encounter.includes(payload)) state.encounter.push(payload)
   },
-  REMOVE_FROM_ENCOUNTER: function(state, payload) {
+  REMOVE_FROM_ENCOUNTER(state, payload) {
     state.encounter = state.encounter.filter(e => e !== payload)
   },
-  CLEAR_ENCOUNTER: function(state) {
+  CLEAR_ENCOUNTER(state) {
     state.encounter = []
   }
 }

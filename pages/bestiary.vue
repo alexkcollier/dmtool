@@ -74,6 +74,7 @@ export default {
         H: 'Huge',
         G: 'Gargantuan'
       },
+
       alignmentMap: {
         'any non-good alignment': ['L', 'NX', 'C', 'NY', 'E'],
         'any non-lawful alignment': ['NX', 'C', 'G', 'NY', 'E'],
@@ -94,7 +95,7 @@ export default {
     }
   },
 
-  created: function() {
+  created() {
     this.parseSizes(this.bestiary)
     this.parseAlignment(this.bestiary)
   },
@@ -103,20 +104,24 @@ export default {
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL'
     }),
-    updateData: function(value) {
+
+    updateData(value) {
       this.results = value // Use results from Search.vue
       // Expand first entry if only one result. Must match search debounce time
       if (this.results.truncated.length === 1)
         this.setActiveEl({ el: `creature-1`, delay: 300 })
     },
-    creatureIndex: function(name) {
+
+    creatureIndex(name) {
       const index = this.results.truncated.findIndex(r => r.name === name) + 1
       return `creature-${index}`
     },
-    parseSizes: function(arr) {
+
+    parseSizes(arr) {
       arr.forEach(c => (c.size = this.sizes[c.size] || c.size))
     },
-    parseAlignment: function(arr) {
+
+    parseAlignment(arr) {
       arr.forEach(
         creature =>
           (creature.prettyAlignment = creature.alignment[0].special
@@ -132,7 +137,8 @@ export default {
                 this.setCleanAlignment(creature.alignment))
       )
     },
-    setCleanAlignment: function(target) {
+
+    setCleanAlignment(target) {
       const cleanAlignment = Object.keys(this.alignmentMap)
       const aligns = Object.values(this.alignmentMap)
       // Find the index of the alignmentMap array matching the creature's alignment array
