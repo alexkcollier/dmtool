@@ -83,24 +83,32 @@ export default {
     },
 
     spellDuration() {
-      const { type, concentration, duration, ends } = this.model.duration[0]
+      const {
+        type,
+        concentration,
+        condition,
+        duration,
+        ends
+      } = this.model.duration[0]
+
       switch (type) {
         case 'timed':
-          return concentration
-            ? `Concentration, up to ${duration.amount} ${duration.type}`
-            : `${duration.amount} ${duration.type}`
+          const dur = `${duration.amount} ${duration.type}`
+          return concentration ? `Concentration, up to ${dur}` : dur
 
         case 'instant':
-          return 'Instantaneous'
+          return `Instantaneous${condition ? ` (${condition})` : ''}`
 
         case 'special':
           return 'Special'
 
         case 'permanent':
           // `ends` can be triggered and/or dispelled
-          return ends.length === 2
-            ? `Until ${ends[0]}ed or ${ends[1]}ed`
-            : `Until ${ends[0]}ed`
+          return ends
+            ? ends.length === 2
+              ? `Until ${ends[0]}ed or ${ends[1]}ed`
+              : `Until ${ends[0]}ed`
+            : 'Permanent'
       }
     }
   }
