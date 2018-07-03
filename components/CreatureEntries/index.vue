@@ -352,7 +352,6 @@ export default {
       return toParse.map(it => toString(it)).join(nested ? '; ' : ', ')
     },
     acToString: function(stack, cur, idx, arr) {
-      const regExp = /{@(spell|item)\s(.*?)(\|(.*?))?(\|.*?)?}/g
       if (cur.ac) {
         stack += cur.ac
         if (cur.from) stack += ` (${cur.from.join(', ')})`
@@ -364,6 +363,7 @@ export default {
 
       if (arr[idx + 1]) stack += arr[idx + 1].braces ? ' (' : ', '
 
+      const regExp = /{@(spell|item)\s(.*?)(\|(.*?))?(\|.*?)?}/g
       return stack.replace(regExp, '$2')
     },
     parseSize: function(str) {
