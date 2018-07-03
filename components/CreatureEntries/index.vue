@@ -40,7 +40,7 @@
         <div class="is-sans-serif has-text-red">
           <!-- AC/HP/Speed -->
           <div>
-            <strong>Armor Class</strong> {{ model.ac }}
+            <strong>Armor Class</strong> {{ armorClass }}
           </div>
           <div>
             <strong>Hit Points</strong> {{ hp }}
@@ -216,6 +216,10 @@ export default {
     ...mapGetters('encounter', {
       encounterCreatures: 'encounterCreatures'
     }),
+    armorClass: function() {
+      const { ac } = this.model
+      return typeof ac === 'string' ? ac : ac.reduce(this.acToString, '').trim()
+    },
     concatCR: function() {
       const { cr, coven, lair } = this.model.cr
       return coven
@@ -300,12 +304,11 @@ export default {
   },
 
   mounted: function() {
-    if (
-      process.env !== 'production' &&
-      this.model.trait &&
-      this.model.trait.entries.entries
-    )
-      console.warn(`${this.model.name} has entries that not being displayed`)
+    const { name, trait } = this.model
+
+    if (process.env !== 'production' && trait && trait.entries.entries) {
+      console.warn(`${name} has entries that not being displayed`)
+    }
   },
 
   methods: {
@@ -347,6 +350,21 @@ export default {
       }
 
       return toParse.map(it => toString(it)).join(nested ? '; ' : ', ')
+    },
+    acToString: function(stack, cur, idx, arr) {
+      const regExp = /{@(spell|item)\s(.*?)(\|(.*?))?(\|.*?)?}/g
+      if (cur.ac) {
+        stack += cur.ac
+        if (cur.from) stack += ` (${cur.from.join(', ')})`
+        if (cur.condition) stack += ` ${cur.condition}`
+        if (cur.braces) stack += ')'
+      } else {
+        stack += cur
+      }
+
+      if (arr[idx + 1]) stack += arr[idx + 1].braces ? ' (' : ', '
+
+      return stack.replace(regExp, '$2')
     },
     parseSize: function(str) {
       return this.sizes.hasOwnProperty(str) ? this.sizes[str] : str
