@@ -51,8 +51,8 @@ export default {
     spellLevelSchool() {
       let sf = ''
       switch (this.model.level) {
-        case 'cantrip':
-          return `${this.model.school} ${this.model.level}`
+        case 'Cantrip':
+          return `${this.model.school} ${this.model.level.toLowerCase()}`
 
         case 1:
           sf = 'st'
