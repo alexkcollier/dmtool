@@ -9,15 +9,14 @@ export const mutations = {
 export const actions = {
   SET_ACTIVE_EL: ({ dispatch, commit, state }, { el, delay }) => {
     const oldActive = state.activeEl !== null
-    return dispatch('CLEAR_ACTIVE_EL').then(
-      () =>
-        new Promise(resolve =>
-          setTimeout(() => {
-            commit('SET_ACTIVE_EL', el)
-            resolve()
-          }, oldActive ? delay : 0)
-        )
-    )
+    const activateNext = () =>
+      new Promise(resolve =>
+        setTimeout(() => {
+          commit('SET_ACTIVE_EL', el)
+          resolve()
+        }, oldActive ? delay : 0)
+      )
+    return dispatch('CLEAR_ACTIVE_EL').then(activateNext)
   },
 
   CLEAR_ACTIVE_EL: ({ commit }) => {
