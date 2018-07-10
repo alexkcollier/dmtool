@@ -10,17 +10,13 @@ export default {
 
   computed: {
     ...mapState('toggle-active-el', ['activeEl']),
-    active: function() {
+    active() {
       return this.id === this.activeEl
     }
   },
 
-  mounted: function() {
+  mounted() {
     this.setId()
-  },
-
-  destroyed: function() {
-    this.clearActiveEl()
   },
 
   methods: {
@@ -28,15 +24,17 @@ export default {
       setActiveEl: 'SET_ACTIVE_EL',
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
-    setId: function() {
+
+    setId() {
       this.id = this.$el.id
     },
-    toggleActive: function() {
+
+    toggleActive() {
       this.active
         ? this.clearActiveEl()
         : this.setActiveEl({
             el: this.$el.id,
-            delay: this.transitionDuration + 100
+            delay: this.transitionDuration
           }).then(() =>
             this.$scrollTo(`#${this.activeEl}`, 500, {
               offset: -27,

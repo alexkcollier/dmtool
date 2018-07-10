@@ -20,8 +20,8 @@
             v-for="item in results.truncated"
             :model="item"
             :key="item.index"
-            :id="itemIndex(item.name)"
-            :ref="itemIndex(item.name)"/>
+            :id="itemIndex(item)"
+            :ref="itemIndex(item)"/>
         </div>
         <div v-else class="ampersand"/>
 
@@ -56,15 +56,19 @@ export default {
   },
 
   methods: {
-    itemIndex: function(name) {
+    itemIndex({ name, source }) {
       const index =
-        this.results.truncated.findIndex(result => result.name === name) + 1
+        this.results.truncated.findIndex(
+          r => r.name === name && r.source === source
+        ) + 1
       return `item-${index}`
     },
+
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL'
     }),
-    updateData: function(value) {
+
+    updateData(value) {
       this.results = value // Use results from Search.vue
       // Expand first entry if only one result. Must match search debounce time
       if (this.results.truncated.length === 1)

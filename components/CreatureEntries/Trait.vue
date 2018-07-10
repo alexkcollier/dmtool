@@ -56,7 +56,7 @@ export default {
   },
 
   methods: {
-    formatTrait: function(str) {
+    formatTrait(str) {
       const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
       const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
       const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g

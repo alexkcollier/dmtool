@@ -48,11 +48,11 @@ export default {
   },
 
   computed: {
-    spellLevelSchool: function() {
+    spellLevelSchool() {
       let sf = ''
       switch (this.model.level) {
-        case 'cantrip':
-          return `${this.model.school} ${this.model.level}`
+        case 'Cantrip':
+          return `${this.model.school} ${this.model.level.toLowerCase()}`
 
         case 1:
           sf = 'st'
@@ -72,33 +72,43 @@ export default {
       }
       return `${this.model.level}${sf}-level ${this.model.school}`.toLowerCase()
     },
-    spellComponents: function() {
-      const componentList = Object.keys(this.model.components)
+
+    spellComponents() {
+      let stack = Object.keys(this.model.components)
         .join(', ')
         .toUpperCase()
-      return this.model.components.m
-        ? componentList.concat(` (${this.model.components.m})`)
-        : componentList
+
+      if (this.model.components.m) stack += ` (${this.model.components.m})`
+      return stack
     },
-    spellDuration: function() {
-      const { type, concentration, duration, ends } = this.model.duration[0]
+
+    spellDuration() {
+      const {
+        type,
+        concentration,
+        condition,
+        duration,
+        ends
+      } = this.model.duration[0]
+
       switch (type) {
         case 'timed':
-          return concentration
-            ? `Concentration, up to ${duration.amount} ${duration.type}`
-            : `${duration.amount} ${duration.type}`
+          const dur = `${duration.amount} ${duration.type}`
+          return concentration ? `Concentration, up to ${dur}` : dur
 
         case 'instant':
-          return 'Instantaneous'
+          return `Instantaneous${condition ? ` (${condition})` : ''}`
 
         case 'special':
           return 'Special'
 
         case 'permanent':
           // `ends` can be triggered and/or dispelled
-          return ends.length === 2
-            ? `Until ${ends[0]}ed or ${ends[1]}ed`
-            : `Until ${ends[0]}ed`
+          return ends
+            ? ends.length === 2
+              ? `Until ${ends[0]}ed or ${ends[1]}ed`
+              : `Until ${ends[0]}ed`
+            : 'Permanent'
       }
     }
   }

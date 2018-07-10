@@ -52,27 +52,29 @@ export default {
     }
   },
 
-  data: function() {
+  data() {
     return {
       rechargeTimes: ['daily', 'weekly', 'rest']
     }
   },
 
   computed: {
-    hasRechargeSpells: function() {
+    hasRechargeSpells() {
       return this.rechargeTimes.some(time => this.model.hasOwnProperty(time))
     },
-    sliceHeaderEntries: function() {
+
+    sliceHeaderEntries() {
       return this.arrRemoveFirst(this.model.headerEntries)
     }
   },
 
   methods: {
-    arrRemoveFirst: function(arr) {
+    arrRemoveFirst(arr) {
       const r = arr.slice(1)
       return r.length > 0 ? r : null
     },
-    formatSpellSlots: function(lvl) {
+
+    formatSpellSlots(lvl) {
       let sf = ''
       switch (lvl) {
         case '0':
@@ -97,7 +99,8 @@ export default {
       const slots = this.model.spells[lvl].slots
       return `${lvl}${sf} level (${slots} slot${slots > 1 ? 's' : ''}):`
     },
-    formatTime: function(n, type) {
+
+    formatTime(n, type) {
       const eachRegExp = new RegExp('\\de')
       let time = ''
       switch (type) {
@@ -119,13 +122,15 @@ export default {
       }
       return `${n[0]}/${time} ${n.match(eachRegExp) ? 'each' : ''}:`
     },
-    formatSpellList: function(spellList) {
+
+    formatSpellList(spellList) {
       const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/
       return spellList
         .map(el => el.replace(spellRegExp, '<em>$1</em>'))
         .join(', ')
     },
-    formatEntry: function(str) {
+
+    formatEntry(str) {
       const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
       const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
       const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g

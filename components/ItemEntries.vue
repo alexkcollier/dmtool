@@ -14,7 +14,7 @@
       <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
         <!-- Item text -->
-        <item-entry :model="model.entries" />
+        <DataEntry :model="model.entries" />
 
         <!-- Source -->
         <p class="control is-italic is-help">Source: {{ model.source }}, p. {{ model.page }}</p>
@@ -25,18 +25,18 @@
 </template>
 
 <script>
-import ItemEntry from '~/components/DataEntry'
+import DataEntry from '~/components/DataEntry'
 import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
   name: 'ItemEntries',
 
   components: {
-    ItemEntry
+    DataEntry
   },
 
   filters: {
-    lowerCase: function(str) {
+    lowerCase(str) {
       return str ? str.toLowerCase() : ''
     }
   },

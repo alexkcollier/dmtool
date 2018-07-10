@@ -19,8 +19,8 @@
             v-for="spell in results.truncated"
             :model="spell"
             :key="spell.index"
-            :id="spellIndex(spell.name)"
-            :ref="spellIndex(spell.name)"/>
+            :id="spellIndex(spell)"
+            :ref="spellIndex(spell)"/>
         </div>
         
         <div v-else class="ampersand"/>
@@ -53,23 +53,27 @@ export default {
     return { title: 'Spells' }
   },
 
-  created: function() {
-    this.spells = this.spells.filter(spell => !spell['source'].includes('UA')) // remove UA spells
+  created() {
+    this.spells = this.spells.filter(spell => !spell.source.includes('UA')) // remove UA spells
   },
 
   methods: {
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL'
     }),
-    updateData: function(value) {
+
+    updateData(value) {
       this.results = value // Use results from Search.vue
       // Expand first entry if only one result. Must match search debounce time
       if (this.results.truncated.length === 1)
         this.setActiveEl({ el: `spell-1`, delay: 300 })
     },
-    spellIndex: function(name) {
+
+    spellIndex({ name, source }) {
       const index =
-        this.results.truncated.findIndex(result => result.name === name) + 1
+        this.results.truncated.findIndex(
+          r => r.name === name && r.source === source
+        ) + 1
       return `spell-${index}`
     }
   }
