@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import TheTopButton from '~/components/TheTopButton'
 
 export default {
@@ -69,7 +70,15 @@ export default {
     }
   },
 
+  destroyed() {
+    this.clearActiveEl()
+  },
+
   methods: {
+    ...mapActions('toggle-active-el', {
+      clearActiveEl: 'CLEAR_ACTIVE_EL'
+    }),
+
     toggleNavigation() {
       this.showNavigation = !this.showNavigation
       // Set document overflow
