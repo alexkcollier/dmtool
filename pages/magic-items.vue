@@ -20,8 +20,8 @@
             v-for="item in results.truncated"
             :model="item"
             :key="item.index"
-            :id="itemIndex(item.name)"
-            :ref="itemIndex(item.name)"/>
+            :id="itemIndex(item)"
+            :ref="itemIndex(item)"/>
         </div>
         <div v-else class="ampersand"/>
 
@@ -56,8 +56,11 @@ export default {
   },
 
   methods: {
-    itemIndex(name) {
-      const index = this.results.truncated.findIndex(r => r.name === name) + 1
+    itemIndex({ name, source }) {
+      const index =
+        this.results.truncated.findIndex(
+          r => r.name === name && r.source === source
+        ) + 1
       return `item-${index}`
     },
 

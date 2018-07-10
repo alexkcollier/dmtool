@@ -32,7 +32,7 @@
             <creature-entries
               :model="creature"
               :key="creature.index"
-              :id="creatureIndex(creature.name)" />
+              :id="creatureIndex(creature)" />
             <hr :key="creature.index">
           </template>
         </template>
@@ -76,9 +76,10 @@ export default {
   },
 
   methods: {
-    creatureIndex(name) {
+    creatureIndex({ name, source }) {
       const index =
-        this.encounter.findIndex(creature => creature.name === name) + 1
+        this.encounter.findIndex(c => c.name === name && c.source === source) +
+        1
       return `creature-${index}`
     },
 
