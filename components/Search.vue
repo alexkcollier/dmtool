@@ -299,8 +299,10 @@ export default {
       const { offsetHeight, scrollTop } = document.documentElement
       const scrollDistance = scrollTop + window.innerHeight
       const atBottom = scrollDistance >= offsetHeight - 300
+      const showingCount = this.updateDataPayload.truncated.length
+      const hiddenResults = showingCount < this.resultCount
 
-      if (atBottom) this.loadMore()
+      if (atBottom && hiddenResults) this.loadMore()
 
       this.prevScroll = scrollTop
     }, 50),

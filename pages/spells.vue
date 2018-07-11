@@ -19,8 +19,8 @@
             v-for="spell in results.truncated"
             :model="spell"
             :key="spell.index"
-            :id="spellIndex(spell.name)"
-            :ref="spellIndex(spell.name)"/>
+            :id="spellIndex(spell)"
+            :ref="spellIndex(spell)"/>
         </div>
         
         <div v-else class="ampersand"/>
@@ -69,8 +69,11 @@ export default {
         this.setActiveEl({ el: `spell-1`, delay: 300 })
     },
 
-    spellIndex(name) {
-      const index = this.results.truncated.findIndex(r => r.name === name) + 1
+    spellIndex({ name, source }) {
+      const index =
+        this.results.truncated.findIndex(
+          r => r.name === name && r.source === source
+        ) + 1
       return `spell-${index}`
     }
   }

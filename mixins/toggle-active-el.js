@@ -19,10 +19,6 @@ export default {
     this.setId()
   },
 
-  destroyed() {
-    this.clearActiveEl()
-  },
-
   methods: {
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL',
@@ -38,7 +34,7 @@ export default {
         ? this.clearActiveEl()
         : this.setActiveEl({
             el: this.$el.id,
-            delay: this.transitionDuration + 100
+            delay: this.transitionDuration
           }).then(() =>
             this.$scrollTo(`#${this.activeEl}`, 500, {
               offset: -27,

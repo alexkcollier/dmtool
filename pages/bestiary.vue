@@ -32,8 +32,8 @@
             <creature-entries
               :model="creature"
               :key="creature.index"
-              :id="creatureIndex(creature.name)"
-              :ref="creatureIndex(creature.name)"/>
+              :id="creatureIndex(creature)"
+              :ref="creatureIndex(creature)"/>
             <hr :key="creature.index">
           </template>
         </template>
@@ -112,8 +112,11 @@ export default {
         this.setActiveEl({ el: `creature-1`, delay: 300 })
     },
 
-    creatureIndex(name) {
-      const index = this.results.truncated.findIndex(r => r.name === name) + 1
+    creatureIndex({ name, source }) {
+      const index =
+        this.results.truncated.findIndex(
+          r => r.name === name && r.source === source
+        ) + 1
       return `creature-${index}`
     },
 
