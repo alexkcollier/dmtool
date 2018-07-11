@@ -96,8 +96,8 @@ export default {
   },
 
   created() {
-    this.parseSizes(this.bestiary)
-    this.parseAlignment(this.bestiary)
+    this.parseSizes()
+    this.parseAlignment()
   },
 
   methods: {
@@ -113,32 +113,34 @@ export default {
     },
 
     creatureIndex({ name, source }) {
-      const index =
-        this.results.truncated.findIndex(
-          r => r.name === name && r.source === source
-        ) + 1
+      const { truncated: t } = this.results
+      const index = t.findIndex(r => r.name === name && r.source === source) + 1
       return `creature-${index}`
     },
 
-    parseSizes(arr) {
-      arr.forEach(c => (c.size = this.sizes[c.size] || c.size))
+    parseSizes() {
+      for (const creature of this.bestiary) {
+        creature.size = this.sizes[creature.size] || creature.size
+      }
     },
 
-    parseAlignment(arr) {
-      arr.forEach(
-        creature =>
-          (creature.prettyAlignment = creature.alignment[0].special
-            ? // Creatures with special alignments. e.g.: Sacred Statue (Mordenkainen's Tome of Foes)
-              creature.alignment[0].special
-            : creature.alignment[0].chance
-              ? // Creatures with chance alignments. e.g.: Cloud Giant, Empyrean
-                `${this.setCleanAlignment(creature.alignment[0].alignment)}
-                (${creature.alignment[0].chance}%) or
-                ${this.setCleanAlignment(creature.alignment[1].alignment)}
-                (${creature.alignment[1].chance}%)`
-              : // Standard alignments
-                this.setCleanAlignment(creature.alignment))
-      )
+    parseAlignment() {
+      for (const creature of this.bestiary) {
+        if (creature.alignment[0].special) {
+          // Creatures with special alignments. e.g.: Sacred Statue (Mordenkainen's Tome of Foes)
+          creature.prettyAlignment = creature.alignment[0].special
+        } else if (creature.alignment[0].chance) {
+          // Creatures with chance alignments. e.g.: Cloud Giant, Empyrean
+          const a1 = this.setCleanAlignment(creature.alignment[0].alignment)
+          const a2 = this.setCleanAlignment(creature.alignment[1].alignment)
+          const c1 = creature.alignment[0].chance
+          const c2 = creature.alignment[1].chance
+          creature.prettyAlignment = `${a1} (${c1}%) or ${a2} (${c2}%)`
+        } else {
+          // Standard alignments
+          creature.prettyAlignment = this.setCleanAlignment(creature.alignment)
+        }
+      }
     },
 
     setCleanAlignment(target) {
