@@ -28,7 +28,7 @@ module.exports = {
   /*
   ** Plugins
   */
-  plugins: ['@plugins/buefy', '@plugins/vue-scrollto'],
+  plugins: ['@plugins/buefy', '@plugins/vue-scrollto', '@plugins/entry-helper'],
   /*
   ** Modules
   */

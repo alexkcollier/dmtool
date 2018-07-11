@@ -2,19 +2,19 @@
   <div>
     <p>
       <strong><i>{{ model.name }}. </i></strong>
-      <span v-html="formatTrait(model.entries[0])"/>
+      <span v-html="$entryHelper.setHtml(model.entries[0])"/>
     </p>
 
     <template v-for="entry in shiftModel">
-      <p v-if="!entry.type" :key="entry.index" v-html="formatTrait(entry)"/>
+      <p v-if="!entry.type" :key="entry.index" v-html="$entryHelper.setHtml(entry)"/>
 
       <ul v-else-if="entry.type === 'list'" :key="entry.index">
         <template v-for="item in entry.items">
           <li v-if="item.entry" :key="item.index">
             <strong>{{ item.name }} </strong>
-            <span v-html="formatTrait(item.entry)"/>
+            <span v-html="$entryHelper.setHtml(item.entry)"/>
           </li>
-          <li v-else :key="item.index" v-html="formatTrait(item)"/>
+          <li v-else :key="item.index" v-html="$entryHelper.setHtml(item)"/>
         </template>
       </ul>
     
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr v-for="row in entry.rows" :key="row.index">
-            <td v-for="cell in row" :key="cell.index" v-html="formatTrait(cell)"/>
+            <td v-for="cell in row" :key="cell.index" v-html="$entryHelper.setHtml(cell)"/>
           </tr>
         </tbody>
       </table>
@@ -52,22 +52,6 @@ export default {
     shiftModel() {
       const r = this.model.entries.slice(1)
       return r.length > 0 ? r : null
-    }
-  },
-
-  methods: {
-    formatTrait(str) {
-      const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      const labelRegExp = /^((\w+\s*){0,5}:)/g
-      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      return str
-        .replace(creatureRegExp, '<b>$1</b>')
-        .replace(diceRegExp, '$1')
-        .replace(hitRegExp, '$1')
-        .replace(labelRegExp, '<i>$1</i>')
-        .replace(spellRegExp, '<i>$1</i>')
     }
   }
 }

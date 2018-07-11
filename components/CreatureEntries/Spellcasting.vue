@@ -2,10 +2,10 @@
   <div>
     <p>
       <strong><em>{{ model.name }}. </em></strong>
-      <span v-html="formatEntry(model.headerEntries[0])"/>
+      <span v-html="$entryHelper.setHtml(model.headerEntries[0])"/>
     </p>
 
-    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="formatEntry(entry)"/>
+    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="$entryHelper.setHtml(entry)"/>
 
     <!-- Slot based spells -->
     <template v-if="model.spells">
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import { regExps } from '~/plugins/entry-helper'
+
 export default {
   name: 'Spellcasting',
 
@@ -124,26 +126,8 @@ export default {
     },
 
     formatSpellList(spellList) {
-      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/
-      return spellList
-        .map(el => el.replace(spellRegExp, '<em>$1</em>'))
-        .join(', ')
-    },
-
-    formatEntry(str) {
-      const creatureRegExp = /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      const diceRegExp = /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      const hitRegExp = /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      const labelRegExp = /^((\w+\s*){0,5}:)/g
-      const noSignHitRegExp = /{@hit\s(\d*?)(\|(.*?))?(\|.*?)?}/g
-      const spellRegExp = /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g
-      return str
-        .replace(creatureRegExp, '<b>$1</b>')
-        .replace(diceRegExp, '$1')
-        .replace(noSignHitRegExp, '+$1')
-        .replace(hitRegExp, '$1')
-        .replace(labelRegExp, '<i>$1</i>')
-        .replace(spellRegExp, '<i>$1</i>')
+      const { spell } = regExps
+      return spellList.map(el => el.replace(spell.find, spell.html)).join(', ')
     }
   }
 }
