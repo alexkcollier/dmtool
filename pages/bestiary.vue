@@ -2,6 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="content">
+        {{ $store.state.bestiary.bestiary.length }}
         
         <search
           :model="bestiary"
