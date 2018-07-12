@@ -1,10 +1,10 @@
 // Import Bulma's core
-@import "~bulma/sass/utilities/initial-variables";
-@import "~bulma/sass/utilities/functions";
-@import "~bulma/sass/utilities/mixins";
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
+@import '~bulma/sass/utilities/mixins';
 
 // Import typekit
-@import url("https://use.typekit.net/fnw1iwa.css");
+@import url('https://use.typekit.net/fnw1iwa.css');
 
 // Custom colors
 $primary: #3d4f5d;
@@ -20,21 +20,30 @@ $navbtn: rgb(70, 90, 100);
 $navbtn-invert: findColorInvert($navbtn);
 
 // Add custom colors to map
-@import "~bulma/sass/utilities/derived-variables";
+@import '~bulma/sass/utilities/derived-variables';
 $addColors: (
-  "red": ($red, $red-invert),
-  "gold": ($gold, $gold-invert),
-  "navbtn": ($navbtn, $navbtn-invert)
+  'red': (
+    $red,
+    $red-invert
+  ),
+  'gold': (
+    $gold,
+    $gold-invert
+  ),
+  'navbtn': (
+    $navbtn,
+    $navbtn-invert
+  )
 );
 $colors: map-merge($colors, $addColors);
 
 // Typography
 $body-size: 18px;
-$family-serif: "bookmania", Georgia, "Times New Roman", Times, serif;
+$family-serif: 'bookmania', Georgia, 'Times New Roman', Times, serif;
 $family-primary: $family-serif;
 
-$family-sans-serif: "freight-sans-pro", -apple-system, BlinkMacSystemFont,
-  "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+$family-sans-serif: 'freight-sans-pro', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
   Arial, sans-serif;
 
 $content-heading-color: $red;
@@ -46,7 +55,7 @@ h4,
 h5,
 .title,
 .button {
-  font-family: "mrs-eaves-roman-small-caps", $family-primary;
+  font-family: 'mrs-eaves-roman-small-caps', $family-primary;
   font-weight: normal;
   font-variant: small-caps;
 }
@@ -68,7 +77,7 @@ h5,
 
 .is-sans-serif {
   font-family: $family-sans-serif;
-  font-feature-settings: "lnum";
+  font-feature-settings: 'lnum';
 }
 
 // Fix button margins
@@ -89,7 +98,7 @@ $link-focus-border: $primary;
 }
 
 // Controls
-.switch input[type="checkbox"] + .check:before {
+.switch input[type='checkbox'] + .check:before {
   background: $input-background-color;
 }
 
@@ -97,7 +106,7 @@ table,
 .input,
 .control {
   font-family: $family-sans-serif;
-  font-feature-settings: "lnum";
+  font-feature-settings: 'lnum';
 }
 
 // Global transitions
@@ -137,13 +146,13 @@ $fade-time: 500ms;
   height: inherit;
   width: 100%;
   position: absolute;
-  background: url("~assets/ampersand.svg") center center / contain no-repeat;
+  background: url('~assets/ampersand.svg') center center / contain no-repeat;
   background-blend-mode: multiply;
   mix-blend-mode: multiply;
   opacity: 0.1;
-  content: "";
+  content: '';
 }
 
 // Import Bulma and Buefy styles
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
