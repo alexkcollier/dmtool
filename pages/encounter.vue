@@ -3,26 +3,16 @@
     <div class="container">
       <div class="content">
 
-        <div class="level is-mobile" style="margin:0;">
-          <div class="level-left">
-            <div class="level-item">
-              <h1>Encounter</h1>
-            </div>
-          </div>
-          <div v-if="encounter.length" class="level-right">
-            <div class="level-item" style="margin-right:0;">
-              <button
-                :disabled="encounter.length === 0"
-                class="button is-text"
-                style="margin:0 0.25rem 1rem 0;"
-                @click="clearEncounter">
-                <b-icon icon="delete" />
-              </button>
-              <nuxt-link to="/bestiary" class="button is-primary" style="margin:0 0 1rem 0.25rem;">
-                Add
-              </nuxt-link>
-            </div>
-          </div>
+        <div v-if="encounter.length" class="buttons">
+          <nuxt-link to="/bestiary" class="button is-primary">
+            Add a creature
+          </nuxt-link>
+          <button
+            :disabled="encounter.length === 0"
+            class="button is-red"
+            @click="clearEncounter">
+            Clear encounter
+          </button>
         </div>
 
         <hr>

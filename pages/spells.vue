@@ -2,7 +2,6 @@
   <section class="section">
     <div class="container">
       <div class="content">
-        <h1>Spells</h1>
 
         <!-- Search and filter -->
         <search
