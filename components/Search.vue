@@ -9,7 +9,7 @@
           :placeholder="placeholder"
           icon="magnify"
           type="text"
-          @input="query"/>
+          @input="debounceQuery"/>
       </div>
       <div class="control">
         <button
@@ -81,7 +81,7 @@
                 v-for="(option, index) in filters[visibleFilter]"
                 :key="index"
                 class="control">
-                <b-switch v-model="option.allowed" @input="query">
+                <b-switch v-model="option.allowed" @input="debounceQuery">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
               </div>
@@ -217,6 +217,7 @@ export default {
     ...mapActions('toggle-active-el', {
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
+    debounce,
 
     filterViewToggle() {
       this.collapseFilters = !this.collapseFilters
@@ -269,12 +270,16 @@ export default {
     },
 
     // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
-    query: debounce(function() {
+    query() {
       this.clearActiveEl()
       this.queryResult = sortBy(
         this.searchAndFilter(this.model),
         this.searchField
       )
+    },
+
+    debounceQuery: debounce(function() {
+      this.query()
     }, 300),
 
     searchAndFilter(arr) {
