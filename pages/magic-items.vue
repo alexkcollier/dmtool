@@ -3,7 +3,6 @@
     <div class="container">
 
       <div class="content">
-        <h1>Magic Item Search</h1>
         
         <!-- Search box -->
         <search

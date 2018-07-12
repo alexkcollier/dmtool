@@ -3,21 +3,6 @@
     <div class="container">
       <div class="content">
         
-        <div class="level is-mobile" style="margin:0;">
-          <div class="level-left">
-            <div class="level-item">
-              <h1>Bestiary</h1>
-            </div>
-          </div>
-          <div class="level-right">
-            <div class="level-item" style="margin-right:0;">
-              <nuxt-link to="/encounter" class="button is-text" style="margin:0 0 1rem 0;">
-                Manage Encounter
-              </nuxt-link>
-            </div>
-          </div>
-        </div>
-        
         <search
           :model="bestiary"
           :filter-fields="filterFields"
