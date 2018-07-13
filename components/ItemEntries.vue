@@ -11,7 +11,6 @@
 <script>
 import CollapsePanel from '~/components/CollapsePanel'
 import DataEntry from '~/components/DataEntry'
-import ToggleActive from '~/mixins/toggle-active-el'
 
 export default {
   name: 'ItemEntries',
@@ -20,8 +19,6 @@ export default {
     CollapsePanel,
     DataEntry
   },
-
-  mixins: [ToggleActive],
 
   props: {
     model: {
