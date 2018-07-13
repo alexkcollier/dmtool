@@ -51,6 +51,12 @@ module.exports = {
     middleware: 'clear-active-el'
   },
   /*
+  ** generate configuration
+  */
+  generate: {
+    routes: ['/bestiary', '/magic-items', '/spells']
+  },
+  /*
   ** Build configuration
   */
   build: {
