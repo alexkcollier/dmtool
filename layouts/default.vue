@@ -3,7 +3,10 @@
     <Navigation/>
 
     <!-- content -->
-    <nuxt/>
+    <BaseContainer>
+      <nuxt/>
+    </BaseContainer>
+    
     <TheTopButton/>
 
   </div>
@@ -11,11 +14,13 @@
 
 <script>
 import { mapActions } from 'vuex'
+import BaseContainer from '~/components/BaseContainer'
 import Navigation from '~/components/Navigation'
 import TheTopButton from '~/components/TheTopButton'
 
 export default {
   components: {
+    BaseContainer,
     Navigation,
     TheTopButton
   },

@@ -1,31 +1,27 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="content">
+  <main class="content">
 
-        <!-- Search and filter -->
-        <search
-          :model="spells"
-          :filter-fields="filterFields"
-          :filters-to-sort="filterFields"
-          search-field="name"
-          search-type="spell"
-          @update-data="updateData"/>
+    <!-- Search and filter -->
+    <Search
+      :model="spells"
+      :filter-fields="filterFields"
+      :filters-to-sort="filterFields"
+      search-field="name"
+      search-type="spell"
+      @update-data="updateData"/>
         
-        <template v-if="results.show">
-          <SpellEntries
-            v-for="spell in results.truncated"
-            :model="spell"
-            :key="spell.index"
-            :id="spellIndex(spell)"
-            :ref="spellIndex(spell)"/>
-        </template>
+    <template v-if="results.show">
+      <SpellEntries
+        v-for="spell in results.truncated"
+        :model="spell"
+        :key="spell.index"
+        :id="spellIndex(spell)"
+        :ref="spellIndex(spell)"/>
+    </template>
         
-        <div v-else class="ampersand"/>
+    <div v-else class="ampersand"/>
         
-      </div>
-    </div>
-  </section>
+  </main>
 </template>
 
 <script>
