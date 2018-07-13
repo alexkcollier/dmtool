@@ -12,17 +12,17 @@
           search-type="spell"
           @update-data="updateData"/>
         
-        <div v-if="results.show">
-          <!-- List spells -->
-          <spell-entries
+        <template v-if="results.show">
+          <SpellEntries
             v-for="spell in results.truncated"
             :model="spell"
             :key="spell.index"
             :id="spellIndex(spell)"
             :ref="spellIndex(spell)"/>
-        </div>
+        </template>
         
         <div v-else class="ampersand"/>
+        
       </div>
     </div>
   </section>

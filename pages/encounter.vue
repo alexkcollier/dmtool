@@ -13,18 +13,15 @@
             @click="clearEncounter">
             Clear encounter
           </button>
+          <hr>
         </div>
 
-        <hr>
         <template v-if="encounter.length">
-          <!-- List creatures -->
-          <template v-for="creature in encounter">
-            <creature-entries
-              :model="creature"
-              :key="creature.index"
-              :id="creatureIndex(creature)" />
-            <hr :key="creature.index">
-          </template>
+          <CreatureEntries
+            v-for="creature in encounter"
+            :model="creature"
+            :key="creature.index"
+            :id="creatureIndex(creature)" />
         </template>
 
         <div v-else class="ampersand" style="height:60vh;">

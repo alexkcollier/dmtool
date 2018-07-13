@@ -1,181 +1,170 @@
 <template>
-  <div class="is-sans-serif">
-    <!-- Name, size, type and alignment -->
-    <div class="columns is-mobile" style="margin-bottom:0">
-      <div class="column">
-        <a @click="toggleActive">
-          <h3 class="title">{{ model.name }}</h3>
-          <h6 class="subtitle is-size-6 is-creature-type is-italic">
-            {{ model.size }} {{ concatType }}, {{ model.prettyAlignment }}
-          </h6>
-          <p class="control is-italic is-help">{{ source }}</p>
-        </a>
-      </div>
+  <CollapsePanel
+    :name="model.name"
+    :info="creatureMeta"
+    :source="source"
+    class="is-sans-serif">
 
-      <!-- Encounter management button -->
-      <div class="column is-narrow">
-        <div class="is-encounter-buttons">
-          <transition name="fade">
-            <button
-              v-if="encounterIncludesCreature"
-              class="button"
-              @click="removeFromEncounter(model)">
-              <b-icon icon="minus" />
-            </button>
-          </transition>
-          <button 
-            v-if="$route.name === 'bestiary'"
-            :disabled="encounterIncludesCreature"
-            class="button is-primary"
-            @click="addToEncounter(model)">
-            <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
+    <div slot="col2" class="column is-narrow">
+      <div class="is-encounter-buttons">
+
+        <transition name="fade">
+          <button
+            v-if="encounterIncludesCreature"
+            class="button"
+            @click="removeFromEncounter(model)">
+            <b-icon icon="minus" />
           </button>
-        </div>
-      </div>
+        </transition>
 
+        <button 
+          v-if="$route.name === 'bestiary'"
+          :disabled="encounterIncludesCreature"
+          class="button is-primary"
+          @click="addToEncounter(model)">
+          <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
+        </button>
+
+      </div>
     </div>
-    <transition name="fade-grow">
-      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
 
-        <div class="is-sans-serif has-text-red">
-          <!-- AC/HP/Speed -->
-          <div>
-            <strong>Armor Class</strong> {{ armorClass }}
-          </div>
-          <div>
-            <strong>Hit Points</strong> {{ hp }}
-          </div>
-          <div>
-            <strong>Speed</strong> {{ speed }}
-          </div>
-          <hr>
 
-          <!-- Stats -->
-          <table class="has-text-red">
-            <thead class="has-text-red">
-              <th
-                v-for="(stat, val) in stats"
-                :key="stat.index"
-                class="is-uppercase has-text-centered has-text-red">
-                {{ val }}
-              </th>
-            </thead>
-            <tbody>
-              <tr>
-                <td 
-                  v-for="stat in stats" 
-                  :key="stat.index" 
-                  class="has-text-centered">
-                  {{ stat | getStatMod }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <hr>
-
-          <!-- Other stats -->
-          <div class="has-text-red">
-            <div v-if="model.save" class="is-capitalized">
-              <strong>Saving Throws</strong>
-              {{ concatSave }}
-            </div>
-            <div v-if="model.skill" class="is-capitalized">
-              <strong>Skills</strong>
-              {{ concatSkill }}
-            </div>
-            <div v-if="model.resist">
-              <strong>Damage Resistances</strong>
-              {{ dmgResist }}
-            </div>
-            <div v-if="model.immune">
-              <strong>Damage Immunities</strong>
-              {{ dmgImmune }}
-            </div>
-            <div v-if="model.vulnerable">
-              <strong>Damage Vulnerabilities</strong>
-              {{ dmgVulnerable }}
-            </div>
-            <div v-if="model.conditionImmune">
-              <strong>Condition Immunities</strong>
-              {{ conditionImmune }}
-            </div>
-            <div>
-              <strong>Senses</strong>
-              <template v-if="model.senses"> {{ model.senses }},</template>
-              passive Perception {{ model.passive }}
-            </div>
-            <div>
-              <strong>Languages</strong>
-              <template v-if="model.languages"> {{ model.languages }}</template>
-              <template v-else> &mdash;</template>
-            </div>
-            <div>
-              <strong>Challenge</strong>
-              {{ concatCR }}
-            </div>
-            <hr>
-          </div>
-        </div>
-        
-        <!-- Creature Traits -->
-        <template v-if="model.trait">
-          <trait v-for="trait in model.trait" :model="trait" :key="trait.index" />
-        </template>
-
-        <template v-if="model.spellcasting">
-          <spellcasting
-            v-for="entry in model.spellcasting"
-            :model="entry"
-            :key="entry.index"/>
-        </template>
-
-        <!-- Actions -->
-        <template v-if="model.action">
-          <h2 class="is-sans-serif">Actions</h2>
-          <Action
-            v-for="action in model.action"
-            :model="action"
-            :key="action.index" />
-        </template>
-
-        <!-- Reactions -->
-        <template v-if="model.reaction">
-          <h2 class="is-sans-serif">Reactions</h2>
-          <Action
-            v-for="reaction in model.reaction"
-            :model="reaction"
-            :key="reaction.index" />
-        </template>
-
-        <!-- Legendary and Lair actions -->
-        <!-- TODO: Lair actions -->
-        <template v-if="model.legendaryGroup && model.legendary">
-          <h2 class="is-sans-serif">Legendary Actions</h2>
-          <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
-          
-          <Action
-            v-for="legendary in model.legendary"
-            :model="legendary"
-            :key="legendary.index" />
-        </template>
-
+    <div class="is-sans-serif has-text-red">
+      <!-- AC/HP/Speed -->
+      <div>
+        <strong>Armor Class</strong> {{ armorClass }}
       </div>
-    </transition>
-  </div>
+      <div>
+        <strong>Hit Points</strong> {{ hp }}
+      </div>
+      <div>
+        <strong>Speed</strong> {{ speed }}
+      </div>
+      <hr>
+
+      <!-- Stats -->
+      <table>
+
+        <thead>
+          <tr>
+            <th
+              v-for="(stat, val) in stats"
+              :key="stat.index"
+              class="is-uppercase has-text-centered has-text-red">
+              {{ val }}
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td 
+              v-for="stat in stats" 
+              :key="stat.index" 
+              class="has-text-centered has-text-red">
+              {{ stat | getStatMod }}
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+      <hr>
+
+      <!-- Other stats -->
+      <div class="has-text-red">
+        <div v-if="model.save" class="is-capitalized">
+          <strong>Saving Throws</strong> {{ concatSave }}
+        </div>
+
+        <div v-if="model.skill" class="is-capitalized">
+          <strong>Skills</strong> {{ concatSkill }}
+        </div>
+
+        <div v-if="model.resist">
+          <strong>Damage Resistances</strong> {{ dmgResist }}
+        </div>
+
+        <div v-if="model.immune">
+          <strong>Damage Immunities</strong> {{ dmgImmune }}
+        </div>
+
+        <div v-if="model.vulnerable">
+          <strong>Damage Vulnerabilities</strong> {{ dmgVulnerable }}
+        </div>
+
+        <div v-if="model.conditionImmune">
+          <strong>Condition Immunities</strong> {{ conditionImmune }}
+        </div>
+
+        <div>
+          <strong>Senses</strong> {{ senses }}
+        </div>
+
+        <div>
+          <strong>Languages</strong> {{ languages }}
+        </div>
+
+        <div>
+          <strong>Challenge</strong> {{ concatCR }}
+        </div>
+        <hr>
+      </div>
+    </div>
+        
+    <template v-if="model.trait">
+      <Trait v-for="trait in model.trait" :model="trait" :key="trait.index" />
+    </template>
+
+    <template v-if="model.spellcasting">
+      <Spellcasting
+        v-for="entry in model.spellcasting"
+        :model="entry"
+        :key="entry.index"/>
+    </template>
+
+    <template v-if="model.action">
+      <h2 class="is-sans-serif">Actions</h2>
+      <Action
+        v-for="action in model.action"
+        :model="action"
+        :key="action.index" />
+    </template>
+
+    <template v-if="model.reaction">
+      <h2 class="is-sans-serif">Reactions</h2>
+      <Action
+        v-for="reaction in model.reaction"
+        :model="reaction"
+        :key="reaction.index" />
+    </template>
+
+    <!-- TODO: Lair actions -->
+    <template v-if="model.legendaryGroup && model.legendary">
+      <h2 class="is-sans-serif">Legendary Actions</h2>
+      <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
+          
+      <Action
+        v-for="legendary in model.legendary"
+        :model="legendary"
+        :key="legendary.index" />
+    </template>
+
+  </CollapsePanel>
 </template>
 
 <script>
 import Action from './Action'
-import { mapMutations, mapState, mapGetters } from 'vuex'
+import CollapsePanel from '~/components/CollapsePanel'
 import Spellcasting from './Spellcasting'
-import ToggleActive from '~/mixins/toggle-active-el'
 import Trait from './Trait'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'CreatureEntries',
 
   components: {
     Action,
+    CollapsePanel,
     Spellcasting,
     Trait
   },
@@ -186,8 +175,6 @@ export default {
       return `${stat} (${mod < 0 ? '' : '+'}${mod})` // \xa0 is nbsp
     }
   },
-
-  mixins: [ToggleActive],
 
   props: {
     model: {
@@ -243,22 +230,25 @@ export default {
 
     concatSkill() {
       const { other, ...skills } = this.model.skill
-      let stack = this.concatKeyVal(skills)
+      let st = this.concatKeyVal(skills)
 
       if (other) {
         other.map(el => {
-          if (el.oneOf) {
-            const oneOf = this.concatKeyVal(el.oneOf)
-            stack += `, plus one of the following: ${oneOf}`
-          }
+          const { oneOf: sk } = el
+          if (sk) st += `, plus one of the following: ${this.concatKeyVal(sk)}`
         })
       }
 
-      return stack
+      return st
     },
 
     conditionImmune() {
       return this.dmgCon(this.model.conditionImmune, 'immune')
+    },
+
+    creatureMeta() {
+      const { size, prettyAlignment } = this.model
+      return `${size} ${this.concatType}, ${prettyAlignment}`
     },
 
     creatureName() {
@@ -286,8 +276,18 @@ export default {
       return special || `${average} (${formula})`
     },
 
+    languages() {
+      return this.model.languages || '—'
+    },
+
     legendaryActionCount() {
       return this.model.legendaryActions || 3
+    },
+
+    senses() {
+      const { senses, passive } = this.model
+      const passiveStr = `passive Perception ${passive}`
+      return senses ? `${senses}, ${passiveStr}` : passiveStr
     },
 
     source() {
@@ -401,10 +401,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.is-creature-type {
-  padding-top: 0.3em;
-}
-
 .content table {
   @media screen and (max-width: 768px) {
     display: block;
@@ -428,12 +424,9 @@ export default {
     }
   }
 }
+
 h2 {
   border-color: #ac1e15;
-}
-
-h6 {
-  margin-bottom: 0 !important;
 }
 
 hr {
