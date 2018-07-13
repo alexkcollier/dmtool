@@ -43,7 +43,7 @@
 import { regExps } from '~/plugins/entry-helper'
 
 export default {
-  name: 'Spellcasting',
+  name: 'CreatureEntriesSpellcasting',
 
   filters: {},
 
