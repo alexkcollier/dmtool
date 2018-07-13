@@ -51,19 +51,14 @@ export default {
   computed: {
     ...mapState('encounter', {
       encounter: 'encounter'
-    }),
-
-    something() {
-      return 3
-    }
+    })
   },
 
   methods: {
-    creatureIndex({ name, source }) {
-      const index =
-        this.encounter.findIndex(c => c.name === name && c.source === source) +
-        1
-      return `creature-${index}`
+    creatureIndex({ name: n, source: s }) {
+      const i =
+        this.encounter.findIndex(c => c.name === n && c.source === s) + 1
+      return `creature-${i}`
     },
 
     ...mapMutations('encounter', {
