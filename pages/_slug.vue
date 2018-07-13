@@ -66,6 +66,11 @@ export default {
       }
     },
 
+    activeData() {
+      const { default: activeData } = require(`~/data/${this.slug}`)
+      return { activeData }
+    },
+
     searchType() {
       switch (this.slug) {
         case 'spells':
@@ -86,8 +91,7 @@ export default {
 
   asyncData({ params, error }) {
     try {
-      const { default: activeData } = require(`~/data/${params.slug}`)
-      return { activeData }
+      require(`~/data/${params.slug}`)
     } catch (e) {
       error({ statusCode: 404, message: 'This page could not be found' })
     }
