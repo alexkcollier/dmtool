@@ -1,30 +1,15 @@
 <template>
-  <div>
-    <a @click="toggleActive">
-      <h3 class="title">{{ model.name }}</h3>
-      <h6 class="subtitle is-item-rarity is-size-6 is-italic">
-        <span>{{ model.type }}<span v-if="model.subtype"> ({{ model.subtype }})</span>, {{ model.rarity | lowerCase }}</span>
+  <CollapsePanel
+    :name="model.name"
+    :info="itemMeta"
+    :source="source">
 
-        <!-- Attunement options -->
-        <span v-if="model.reqAttune === 'YES'"> (requires attunement)</span>
-        <span v-else-if="model.reqAttune"> (requires attunement {{ model.reqAttune | lowerCase }})</span>
-      </h6>
-    </a>
-    <transition name="fade-grow">
-      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
-
-        <!-- Item text -->
-        <DataEntry :model="model.entries" />
-
-        <!-- Source -->
-        <p class="control is-italic is-help">Source: {{ model.source }}, p. {{ model.page }}</p>
-      </div>
-    </transition>
-    <hr>
-  </div>
+    <DataEntry :model="model.entries" />
+  </CollapsePanel>
 </template>
 
 <script>
+import CollapsePanel from '~/components/CollapsePanel'
 import DataEntry from '~/components/DataEntry'
 import ToggleActive from '~/mixins/toggle-active-el'
 
@@ -32,13 +17,8 @@ export default {
   name: 'ItemEntries',
 
   components: {
+    CollapsePanel,
     DataEntry
-  },
-
-  filters: {
-    lowerCase(str) {
-      return str ? str.toLowerCase() : ''
-    }
   },
 
   mixins: [ToggleActive],
@@ -48,12 +28,22 @@ export default {
       type: Object,
       default: () => {}
     }
+  },
+
+  computed: {
+    itemMeta() {
+      const { type, subtype, rarity, reqAttune } = this.model
+      const attuneOptions = reqAttune === 'YES' ? '' : ` ${reqAttune}`
+      let stack = type
+      if (subtype) stack += ` (${subtype})`
+      stack += `, ${rarity}`
+      if (reqAttune) stack += ` (requires attunement${attuneOptions})`
+      return stack.toLowerCase()
+    },
+
+    source() {
+      return `${this.model.source}, p. ${this.model.page}`
+    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.is-item-rarity {
-  padding-top: 0.3em;
-}
-</style>

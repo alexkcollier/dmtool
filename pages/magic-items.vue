@@ -13,15 +13,15 @@
           search-type="magic item"
           @update-data="updateData"/>
 
-        <div v-if="results.show">
-          <!-- Item entries -->
-          <item-entries
+        <template v-if="results.show">
+          <ItemEntries
             v-for="item in results.truncated"
             :model="item"
             :key="item.index"
             :id="itemIndex(item)"
             :ref="itemIndex(item)"/>
-        </div>
+        </template>
+        
         <div v-else class="ampersand"/>
 
       </div>
@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import magicItems from '~/data/magic-items.json'
 import ItemEntries from '~/components/ItemEntries'
+import magicItems from '~/data/magic-items.json'
 import Search from '~/components/Search'
 import { mapActions } from 'vuex'
 

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content">
         
-        <search
+        <Search
           :model="bestiary"
           :filter-fields="filterFields"
           :filters-to-sort="filterFields"
@@ -12,16 +12,14 @@
           @update-data="updateData"/>
         
         <template v-if="results.show">
-          <!-- List creatures -->
-          <template v-for="creature in results.truncated">
-            <creature-entries
-              :model="creature"
-              :key="creature.index"
-              :id="creatureIndex(creature)"
-              :ref="creatureIndex(creature)"/>
-            <hr :key="creature.index">
-          </template>
+          <CreatureEntries
+            v-for="creature in results.truncated"
+            :model="creature"
+            :key="creature.index"
+            :id="creatureIndex(creature)"
+            :ref="creatureIndex(creature)"/>
         </template>
+        
         <div v-else class="ampersand"/>
 
       </div>
@@ -46,7 +44,6 @@ export default {
 
   data() {
     return {
-      // bestiary,
       results: {},
       // TODO: filter by alignment?
       filterFields: ['cr', 'size', 'source', 'type']

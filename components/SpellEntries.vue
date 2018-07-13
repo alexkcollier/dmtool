@@ -1,44 +1,31 @@
 <template>
-  <div>
-    <a @click="toggleActive">
-      <h3 class="title">{{ model.name }}</h3>
-      <h6 class="subtitle is-size-6 is-italic is-spell-level">{{ spellLevelSchool }}</h6>
-    </a>
-    <transition name="fade-grow">
-      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
+  <CollapsePanel
+    :name="model.name"
+    :info="spellLevelSchool"
+    :source="model.source">
         
-        <!-- Spell parameters -->
-        <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
-        <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
-        <p><strong>Components:</strong> {{ spellComponents }}</p>
-        <p><strong>Duration:</strong> {{ spellDuration }}</p>
+    <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
+    <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
+    <p><strong>Components:</strong> {{ spellComponents }}</p>
+    <p><strong>Duration:</strong> {{ spellDuration }}</p>
 
-        <!-- Spell text -->
-        <spell-entry :model="model.entries" />
+    <DataEntry :model="model.entries" />
 
-        <!-- Casting at higher level -->
-        <spell-entry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
-
-        <!-- Source -->
-        <p class="control is-italic is-help">Source: {{ model.source }}</p>
-      </div>
-    </transition>
-    <hr>
-  </div>
+    <DataEntry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
+  </CollapsePanel>
 </template>
 
 <script>
-import SpellEntry from '~/components/DataEntry'
-import ToggleActive from '~/mixins/toggle-active-el'
+import CollapsePanel from '~/components/CollapsePanel'
+import DataEntry from '~/components/DataEntry'
 
 export default {
   name: 'SpellEntries',
 
   components: {
-    SpellEntry
+    CollapsePanel,
+    DataEntry
   },
-
-  mixins: [ToggleActive],
 
   props: {
     model: {
@@ -114,12 +101,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.is-spell-level {
-  padding-top: 0.3em;
-  &::first-letter {
-    text-transform: capitalize;
-  }
-}
-</style>
