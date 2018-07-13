@@ -1,32 +1,27 @@
 <template>
-  <section class="section">
-    <div class="container">
-
-      <div class="content">
+  <main class="content">
         
-        <!-- Search box -->
-        <search
-          :model="magicItems"
-          :filter-fields="filterFields"
-          :filters-to-sort="filtersToSort"
-          search-field="name"
-          search-type="magic item"
-          @update-data="updateData"/>
+    <!-- Search box -->
+    <Search
+      :model="magicItems"
+      :filter-fields="filterFields"
+      :filters-to-sort="filtersToSort"
+      search-field="name"
+      search-type="magic item"
+      @update-data="updateData"/>
 
-        <template v-if="results.show">
-          <ItemEntries
-            v-for="item in results.truncated"
-            :model="item"
-            :key="item.index"
-            :id="itemIndex(item)"
-            :ref="itemIndex(item)"/>
-        </template>
+    <template v-if="results.show">
+      <ItemEntries
+        v-for="item in results.truncated"
+        :model="item"
+        :key="item.index"
+        :id="itemIndex(item)"
+        :ref="itemIndex(item)"/>
+    </template>
         
-        <div v-else class="ampersand"/>
+    <div v-else class="ampersand"/>
 
-      </div>
-    </div>
-  </section>
+  </main>
 </template>
 
 <script>

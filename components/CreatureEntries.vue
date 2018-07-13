@@ -153,10 +153,10 @@
 </template>
 
 <script>
-import Action from './Action'
+import Action from '~/components/CreatureEntriesAction'
+import Spellcasting from '~/components/CreatureEntriesSpellcasting'
+import Trait from '~/components/CreatureEntriesTrait'
 import CollapsePanel from '~/components/CollapsePanel'
-import Spellcasting from './Spellcasting'
-import Trait from './Trait'
 import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {

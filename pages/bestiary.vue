@@ -1,30 +1,26 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="content">
+  <main class="content">
         
-        <Search
-          :model="bestiary"
-          :filter-fields="filterFields"
-          :filters-to-sort="filterFields"
-          search-field="name"
-          search-type="creature"
-          @update-data="updateData"/>
+    <Search
+      :model="bestiary"
+      :filter-fields="filterFields"
+      :filters-to-sort="filterFields"
+      search-field="name"
+      search-type="creature"
+      @update-data="updateData"/>
         
-        <template v-if="results.show">
-          <CreatureEntries
-            v-for="creature in results.truncated"
-            :model="creature"
-            :key="creature.index"
-            :id="creatureIndex(creature)"
-            :ref="creatureIndex(creature)"/>
-        </template>
+    <template v-if="results.show">
+      <CreatureEntries
+        v-for="creature in results.truncated"
+        :model="creature"
+        :key="creature.index"
+        :id="creatureIndex(creature)"
+        :ref="creatureIndex(creature)"/>
+    </template>
 
-        <div v-else class="ampersand"/>
+    <div v-else class="ampersand"/>
 
-      </div>
-    </div>
-  </section>
+  </main>
 </template>
 
 <script>

@@ -1,22 +1,27 @@
 <template>
   <div>
-    <p>
+      
+    <!-- Paragraphs -->
+    <p :key="model.index">
       <strong><i>{{ model.name }}. </i></strong>
       <span v-html="$entryHelper.setHtml(model.entries[0])"/>
     </p>
-
-    <template v-for="entry in shiftModel">
-      <p v-if="!entry.type" :key="entry.index" v-html="$entryHelper.setHtml(entry)"/>
-
-      <ul v-else-if="entry.type === 'list'" :key="entry.index">
+    
+    <template v-for="entry in model.entries.slice(1)">
+      <p v-if="!entry.type" :key="entry.index">
+        {{ entry }}
+      </p>
+      
+      <!-- Lists -->
+      <dl v-else-if="entry.type === 'list'" :key="entry.index">
         <template v-for="item in entry.items">
-          <li v-if="item.entry" :key="item.index">
+          <dd v-if="item.entry" :key="item.index">
             <strong>{{ item.name }} </strong>
             <span v-html="$entryHelper.setHtml(item.entry)"/>
-          </li>
-          <li v-else :key="item.index" v-html="$entryHelper.setHtml(item)"/>
+          </dd>
+          <dd v-else :key="item.index" v-html="$entryHelper.setHtml(item)"/>
         </template>
-      </ul>
+      </dl>
     
       <!-- Tables -->
       <table v-else-if="entry.type === 'table'" :key="entry.index" class="table">
@@ -32,6 +37,13 @@
         </tbody>
       </table>
 
+      <!-- Highlight entries of unexpected type. -->
+      <p
+        v-else
+        :key="entry.index"
+        style="color: red;">
+        {{ entry }}
+      </p>
     </template>
 
   </div>
@@ -39,19 +51,12 @@
 
 <script>
 export default {
-  name: 'Trait',
+  name: 'CreatureEntriesAction',
 
   props: {
     model: {
       type: Object,
       default: () => {}
-    }
-  },
-
-  computed: {
-    shiftModel() {
-      const r = this.model.entries.slice(1)
-      return r.length > 0 ? r : null
     }
   }
 }
@@ -61,7 +66,9 @@ export default {
 div:not(:last-child) {
   margin-bottom: 1em !important;
 }
-ul {
-  margin-left: 1em;
+dd {
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
 }
 </style>
