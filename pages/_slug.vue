@@ -86,7 +86,7 @@ export default {
 
   async asyncData({ params, error }) {
     try {
-      const { default: activeData } = await import(`~/data/${params.slug}`)
+      const { default: activeData } = require(`~/data/${params.slug}`)
       return { activeData }
     } catch (e) {
       error({ statusCode: 404, message: 'This page could not be found' })
