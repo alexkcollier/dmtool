@@ -24,13 +24,13 @@
 
 <script>
 import { mapActions } from 'vuex'
+import CreatureEntries from '~/components/CreatureEntries'
+import ItemEntries from '~/components/ItemEntries'
+import SpellEntries from '~/components/SpellEntries'
 import Search from '~/components/Search'
 
 export default {
   components: {
-    CreatureEntries: () => import('~/components/CreatureEntries'),
-    ItemEntries: () => import('~/components/ItemEntries'),
-    SpellEntries: () => import('~/components/SpellEntries'),
     Search
   },
 
@@ -56,11 +56,11 @@ export default {
     activeComponent() {
       switch (this.slug) {
         case 'spells':
-          return 'SpellEntries'
+          return SpellEntries
         case 'magic-items':
-          return 'ItemEntries'
+          return ItemEntries
         case 'bestiary':
-          return 'CreatureEntries'
+          return CreatureEntries
         default:
           return null
       }
