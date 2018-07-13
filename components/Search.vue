@@ -130,7 +130,7 @@ export default {
 
     searchField: {
       type: String,
-      default: ''
+      default: 'name'
     },
 
     searchType: {
