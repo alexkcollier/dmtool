@@ -67,8 +67,8 @@ export default {
     },
 
     activeData() {
-      const { default: activeData } = require(`~/data/${this.slug}`)
-      return activeData
+      const activeData = require(`~/data/${this.slug}`)
+      return activeData.default
     },
 
     searchType() {
