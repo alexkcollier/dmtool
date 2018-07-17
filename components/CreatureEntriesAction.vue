@@ -8,9 +8,7 @@
     </p>
     
     <template v-for="entry in model.entries.slice(1)">
-      <p v-if="!entry.type" :key="entry.index">
-        {{ entry }}
-      </p>
+      <p v-if="!entry.type" :key="entry.index" v-html="$entryHelper.setHtml(entry)"/>
       
       <!-- Lists -->
       <dl v-else-if="entry.type === 'list'" :key="entry.index">
