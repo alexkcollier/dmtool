@@ -49,7 +49,20 @@ export default {
   },
 
   head() {
-    return { title: 'Spells' }
+    return {
+      title: () => {
+        switch (this.slug) {
+          case 'spells':
+            return 'Spells'
+          case 'magic-items':
+            return 'Magic Items'
+          case 'bestiary':
+            return 'Creatures'
+          default:
+            return null
+        }
+      }
+    }
   },
 
   computed: {
