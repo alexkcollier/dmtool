@@ -1,6 +1,7 @@
 // Import Bulma's core
 @import '~bulma/sass/utilities/initial-variables';
 @import '~bulma/sass/utilities/functions';
+@import '~bulma/sass/utilities/derived-variables';
 @import '~bulma/sass/utilities/mixins';
 
 // Import typekit
@@ -20,7 +21,6 @@ $navbtn: rgb(70, 90, 100);
 $navbtn-invert: findColorInvert($navbtn);
 
 // Add custom colors to map
-@import '~bulma/sass/utilities/derived-variables';
 $addColors: (
   'red': (
     $red,
