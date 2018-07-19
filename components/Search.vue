@@ -151,7 +151,7 @@ export default {
 
   data() {
     return {
-      searchTerm: '',
+      // searchTerm: '',
       queryResult: sortBy(this.model, this.searchField),
       collapseFilters: true,
       visibleFilter: '',
@@ -162,6 +162,17 @@ export default {
   },
 
   computed: {
+    searchTerm: {
+      get() {
+        return this.$store.state[this.$route.params.slug].searchString
+      },
+      set(value) {
+        this.$store.commit(
+          `${this.$route.params.slug}/UPDATE_SEARCH_STRING`,
+          value
+        )
+      }
+    },
     cleanSearchTerm() {
       return this.searchTerm.toLowerCase().trim()
     },
