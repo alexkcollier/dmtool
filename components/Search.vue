@@ -234,6 +234,7 @@ export default {
       this.collapseFilters = !this.collapseFilters
     },
 
+    // TODO: filters in store
     generateFilters() {
       this.filterFields.map(filter => {
         let options = this.setFilterOptions(filter)
