@@ -216,12 +216,6 @@ export default {
     }
   },
 
-  watch: {
-    count() {
-      this.$emit('update-data', this.updateDataPayload)
-    }
-  },
-
   created() {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', this.handleScroll)
@@ -350,6 +344,7 @@ export default {
 
     loadMore() {
       this.count += 1
+      this.$emit('update-data', this.updateDataPayload)
     }
   }
 }
