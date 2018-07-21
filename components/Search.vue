@@ -81,7 +81,7 @@
                 v-for="(option, index) in filters[visibleFilter]"
                 :key="index"
                 class="control">
-                <b-switch v-model="option.allowed" @input="debounceQuery">
+                <b-switch :value="option.allowed" @input="filterResults(visibleFilter, index, $event)">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
               </div>
@@ -151,11 +151,9 @@ export default {
 
   data() {
     return {
-      // searchTerm: '',
       queryResult: sortBy(this.model, this.searchField),
       collapseFilters: true,
       visibleFilter: '',
-      filters: {},
       prevScroll: 0,
       count: 10
     }
@@ -164,15 +162,21 @@ export default {
   computed: {
     searchTerm: {
       get() {
-        return this.$store.state[this.$route.params.slug].searchString
+        return this.$store.state[this.slug].searchString
       },
       set(value) {
-        this.$store.commit(
-          `${this.$route.params.slug}/UPDATE_SEARCH_STRING`,
-          value
-        )
+        this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, value)
       }
     },
+
+    filters() {
+      return this.$store.state[this.slug].filters
+    },
+
+    slug() {
+      return this.$route.params.slug
+    },
+
     cleanSearchTerm() {
       return this.searchTerm.toLowerCase().trim()
     },
@@ -196,10 +200,6 @@ export default {
   watch: {
     count() {
       this.$emit('update-data', this.updateDataPayload)
-    },
-
-    queryResult() {
-      this.$emit('update-data', this.updateDataPayload)
     }
   },
 
@@ -211,42 +211,39 @@ export default {
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
 
     this.query()
-    this.generateFilters()
-  },
 
-  mounted() {
+    const noFilters = !Object.keys(this.filters).length
+
+    if (noFilters) this.initFilters()
+
     this.visibleFilter = Object.keys(this.filters)[0]
   },
 
   destroyed() {
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
+    window.removeEventListener('scroll', this.handleScroll)
   },
 
   methods: {
+    debounce,
+
     ...mapActions('toggle-active-el', {
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
-    debounce,
 
     filterViewToggle() {
       this.collapseFilters = !this.collapseFilters
     },
 
-    // TODO: filters in store
-    generateFilters() {
+    initFilters() {
       this.filterFields.map(filter => {
-        let options = this.setFilterOptions(filter)
-        this.$set(this.filters, filter, this.sortFilterOptions(filter, options))
+        const initOptions = this.initFilterOptions(filter)
+        const options = this.sortFilterOptions(filter, initOptions)
+        this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
       })
     },
 
-    setFilterOptions(filter) {
-      return this.getUniqueValues(filter).map(val => ({
-        name: val,
-        allowed: true
-      }))
+    initFilterOptions(filter, allowed = true) {
+      return this.getUniqueValues(filter).map(name => ({ name, allowed }))
     },
 
     getUniqueValues(key) {
@@ -273,7 +270,13 @@ export default {
     },
 
     setAllOptions(filter, allowed) {
-      this.filters[filter].forEach(option => (option.allowed = allowed))
+      this.filters[filter].map((o, i) => this.filterResults(filter, i, allowed))
+    },
+
+    filterResults(filter, optionIndex, value) {
+      const payload = { filter, optionIndex, value }
+      this.$store.commit(`${this.slug}/UPDATE_FILTER`, payload)
+      this.debounceQuery()
     },
 
     clearSearch() {
@@ -288,6 +291,7 @@ export default {
         this.searchAndFilter(this.model),
         this.searchField
       )
+      this.$emit('update-data', this.updateDataPayload)
     },
 
     debounceQuery: debounce(function() {
