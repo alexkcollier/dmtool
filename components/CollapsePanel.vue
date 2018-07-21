@@ -64,12 +64,17 @@ export default {
 
   computed: {
     ...mapState('toggle-active-el', ['activeEl']),
+
     isActive() {
       return this.id === this.activeEl
     }
   },
 
   mounted() {
+    this.setId()
+  },
+
+  updated() {
     this.setId()
   },
 
