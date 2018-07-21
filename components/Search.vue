@@ -2,6 +2,7 @@
   <div>
     <!-- Search box -->
     <b-field>
+
       <div class="control is-expanded">
         <b-input
           v-model="searchTerm" 
@@ -11,6 +12,7 @@
           type="text"
           @input="debounceQuery"/>
       </div>
+
       <div class="control">
         <button
           :disabled="!searchTerm" 
@@ -27,19 +29,25 @@
       <div class="card-header">
 
         <!-- Filter collapse control-->
-        <a class="card-header-title" @click="filterViewToggle">
+        <a class="card-header-title" href="#" @click="toggleFilterView">
           <b-icon
             icon="filter"
             size="is-small"
             style="margin-right:0.25rem;"
             type="is-dark"/>
+          
           Filters
-          <!-- <b-icon :icon="collapseFilters ? 'chevron-down' : 'chevron-up'"/> -->
-          <b-icon :class="{'point-up': !collapseFilters}" icon="chevron-down" class="icon-point"/>
+          
+          <b-icon
+            :class="{'point-up': !collapseFilters}"
+            icon="chevron-down"
+            class="icon-point"/>
         </a>
 
         <!-- Reset filters -->
-        <a class="button is-text" @click="resetFilters">Reset filters</a>
+        <button class="button is-text" @click="resetFilters">
+          Reset filters
+        </button>
       </div>
 
       <!-- Filter options display -->
@@ -48,44 +56,55 @@
           
           <!-- Filter options select -->
           <div class="card-header">
-            <template v-for="(data, filter) in filters">
-              <a 
-                :key="filter"
-                :class="{'is-active': filter === visibleFilter}"
-                class="card-footer-item is-capitalized"
-                @click="visibleFilter = filter">
-                {{ filter | formatFilterOptionName }}
-              </a>
-            </template>
+            <a
+              v-for="(data, filter) in filters"
+              :key="filter"
+              :class="{'is-active': filter === visibleFilter}"
+              class="card-footer-item is-capitalized"
+              href="#"
+              @click="visibleFilter = filter">
+              {{ filter | formatFilterOptionName }}
+            </a>
           </div>
 
           <!-- Filter options -->
           <!-- TODO: improve display -->
-          <div class="card-content">
-            <b-field grouped group-multiline>
-              <a
-                class="control button button-grouped"
-                style="margin-left:0;"
-                @click="setAllOptions(visibleFilter, true)">
-                Enable all
-              </a>
-              <a
-                class="control button button-grouped"
-                style="margin-left:0;"
-                @click="setAllOptions(visibleFilter, false)">
-                Disable all
-              </a>
+          <div 
+            v-for="(data, filter) in filters"
+            v-show="visibleFilter === filter"
+            :key="filter"
+            class="card-content">
+
+            <b-field grouped>
+              <div class="control">
+                <button
+                  class="control button"
+                  style="margin-left:0;"
+                  @click="setAllOptions(filter, true)">
+                  Enable all
+                </button>
+              </div>
+
+              <div class="control">
+                <button
+                  class="control button"
+                  @click="setAllOptions(filter, false)">
+                  Disable all
+                </button>
+              </div>
             </b-field>
+            
             <b-field grouped group-multiline>
               <div
-                v-for="(option, index) in filters[visibleFilter]"
+                v-for="(option, index) in filters[filter]"
                 :key="index"
                 class="control">
-                <b-switch :value="option.allowed" @input="filterResults(visibleFilter, index, $event)">
+                <b-switch :value="option.allowed" @input="filterResults(filter, index, $event)">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
               </div>
             </b-field>
+
           </div>
 
         </div>
@@ -94,7 +113,7 @@
 
     <!-- Result count -->
     <div class="control">
-      <div :class="{'is-danger': resultCount === 0}" class="help has-text-right">
+      <div :class="{'is-danger': !resultCount}" class="help has-text-right">
         {{ resultCount }} {{ searchType }}<span v-if="searchType && resultCount !== 1">s</span> found.
       </div>
     </div>
@@ -230,15 +249,17 @@ export default {
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
 
-    filterViewToggle() {
+    toggleFilterView() {
       this.collapseFilters = !this.collapseFilters
     },
 
     initFilters() {
-      this.filterFields.map(filter => {
-        const initOptions = this.initFilterOptions(filter)
-        const options = this.sortFilterOptions(filter, initOptions)
-        this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
+      return new Promise(() => {
+        this.filterFields.map(filter => {
+          const initOptions = this.initFilterOptions(filter)
+          const options = this.sortFilterOptions(filter, initOptions)
+          this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
+        })
       })
     },
 
@@ -281,7 +302,6 @@ export default {
 
     clearSearch() {
       this.searchTerm = ''
-      this.query()
     },
 
     // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
