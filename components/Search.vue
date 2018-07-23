@@ -114,7 +114,12 @@
     <!-- Result count -->
     <div class="control">
       <div :class="{'is-danger': !resultCount}" class="help has-text-right">
-        {{ resultCount }} {{ searchType }}<span v-if="searchType && resultCount !== 1">s</span> found.
+        <template v-if="resultCount === model.length">
+          {{ model.length }} {{ searchType }}s.
+        </template>
+        <template v-else>
+          {{ resultCount }} of  {{ model.length }} {{ searchType }}s match.
+        </template>
       </div>
     </div>
 
@@ -237,8 +242,6 @@ export default {
   },
 
   methods: {
-    debounce,
-
     ...mapActions('toggle-active-el', {
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
