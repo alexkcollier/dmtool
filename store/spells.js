@@ -1,1 +1,1 @@
-export { state, mutations } from './store'
+export { getters, mutations, state } from './store'
