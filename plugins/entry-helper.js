@@ -43,7 +43,7 @@ export const regExps = {
     html: italicReplace
   },
   label: {
-    find: /^((\w+\s*){0,5}:)/g,
+    find: /^((\w+\s*){0,3}:)/g,
     html: italicReplace
   },
   bold: {
@@ -66,7 +66,7 @@ export function setHtml(str) {
   return str
 }
 
-const EntryHelper = {
+const entryHelper = {
   install(Vue, options) {
     Vue.prototype.$entryHelper = { setHtml }
   }
@@ -77,4 +77,4 @@ export default {
   setHtml
 }
 
-Vue.use(EntryHelper)
+Vue.use(entryHelper)
