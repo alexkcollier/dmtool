@@ -8,7 +8,7 @@
       <p 
         v-if="!entry.type"
         :key="entry.index"
-        v-html="formatEntry(entry)"/>
+        v-html="$entryHelper.setHtml(entry)"/>
       
       <!-- Lists -->
       <ul 
@@ -17,7 +17,7 @@
         <li 
           v-for="item in entry.items" 
           :key="item.index" 
-          v-html="formatEntry(item)"/>
+          v-html="$entryHelper.setHtml(item)"/>
       </ul>
 
       <!-- Tables -->
@@ -41,7 +41,7 @@
             <td 
               v-for="cell in row" 
               :key="cell.index" 
-              v-html="formatEntry(cell)"/>
+              v-html="$entryHelper.setHtml(cell)"/>
           </tr>
         </tbody>
       </table>
@@ -50,7 +50,7 @@
       <template v-else-if="entry.type === 'entries'" >
         <p v-if="entry.name" :key="entry.index">
           <strong><i>{{ entry.name }}. </i></strong>
-          <span v-html="formatEntry(entry.entries[0])"/>
+          <span v-html="$entryHelper.setHtml(entry.entries[0])"/>
         </p>
         
         <data-entry 
@@ -82,15 +82,6 @@ export default {
     model: {
       type: Array,
       default: () => []
-    }
-  },
-
-  methods: {
-    formatEntry(str) {
-      const inlineTitle = /^(([a-zA-Z]*\s*){1,5}\.)(?=.+)/g
-      return this.$entryHelper
-        .setHtml(str)
-        .replace(inlineTitle, `<strong><i>$1</i></strong>`)
     }
   }
 }
