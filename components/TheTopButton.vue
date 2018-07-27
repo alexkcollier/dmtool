@@ -29,10 +29,11 @@ export default {
   },
 
   methods: {
-    handleScroll: function() {
+    handleScroll() {
       this.showTopButton = window.scrollY > window.innerHeight
     },
-    scrollToTop: function() {
+
+    scrollToTop() {
       window.scrollTo(0, 0)
     }
   }
@@ -42,12 +43,16 @@ export default {
 <style lang="scss" scoped>
 .button {
   position: fixed;
-  bottom: 5%;
+  bottom: 10%;
   right: 5%;
   text-transform: uppercase;
   opacity: 0.5;
   transition: opacity 100ms;
   box-shadow: 0px 5px 100px rgba($color: #000000, $alpha: 0.25);
+
+  @media screen and (min-width: 1024px) {
+    bottom: 5%;
+  }
 
   &:hover {
     opacity: 1;

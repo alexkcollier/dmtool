@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'spa',
   /*
   ** Headers of the page
   */
@@ -28,7 +29,7 @@ module.exports = {
   /*
   ** Plugins
   */
-  plugins: ['@plugins/buefy', '@plugins/vue-scrollto'],
+  plugins: ['@plugins/buefy', '@plugins/vue-scrollto', '@plugins/entry-helper'],
   /*
   ** Modules
   */
@@ -48,6 +49,12 @@ module.exports = {
   */
   router: {
     middleware: 'clear-active-el'
+  },
+  /*
+  ** generate configuration
+  */
+  generate: {
+    routes: ['/bestiary', '/magic-items', '/spells']
   },
   /*
   ** Build configuration

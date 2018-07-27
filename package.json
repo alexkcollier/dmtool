@@ -16,25 +16,25 @@
   "dependencies": {
     "@nuxtjs/pwa": "^2.0.8",
     "buefy": "^0.6.5",
-    "nuxt": "^1.4.0",
-    "vue": "^2.5.16",
+    "nuxt": "^1.4.1",
     "vue-lottie": "^0.2.1",
-    "vue-scrollto": "^2.11.0"
+    "vue-scrollto": "^2.11.0",
+    "vuex-persist": "^1.4.3"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
+    "babel-eslint": "^8.2.6",
+    "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "eslint-plugin-vue": "^4.5.0",
-    "node-sass": "^4.9.0",
-    "prettier": "^1.12.1",
-    "sass-loader": "^6.0.7"
+    "eslint-plugin-vue": "^4.7.0",
+    "node-sass": "^4.9.2",
+    "prettier": "^1.13.7",
+    "sass-loader": "^7.0.3"
   }
 }

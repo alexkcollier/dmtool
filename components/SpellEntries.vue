@@ -1,44 +1,31 @@
 <template>
-  <div>
-    <a @click="toggleActive">
-      <h3 class="title">{{ model.name }}</h3>
-      <h6 class="subtitle is-size-6 is-italic is-spell-level">{{ spellLevelSchool }}</h6>
-    </a>
-    <transition name="fade-grow">
-      <div v-show="active" :style="{'transition-duration': `${transitionDuration}ms`}">
+  <CollapsePanel
+    :name="model.name"
+    :info="spellLevelSchool"
+    :source="model.source">
         
-        <!-- Spell parameters -->
-        <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
-        <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
-        <p><strong>Components:</strong> {{ spellComponents }}</p>
-        <p><strong>Duration:</strong> {{ spellDuration }}</p>
+    <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
+    <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
+    <p><strong>Components:</strong> {{ spellComponents }}</p>
+    <p><strong>Duration:</strong> {{ spellDuration }}</p>
 
-        <!-- Spell text -->
-        <spell-entry :model="model.entries" />
+    <DataEntry :model="model.entries" />
 
-        <!-- Casting at higher level -->
-        <spell-entry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
-
-        <!-- Source -->
-        <p class="control is-italic is-help">Source: {{ model.source }}</p>
-      </div>
-    </transition>
-    <hr>
-  </div>
+    <DataEntry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
+  </CollapsePanel>
 </template>
 
 <script>
-import SpellEntry from '~/components/DataEntry'
-import ToggleActive from '~/mixins/toggle-active-el'
+import CollapsePanel from '~/components/CollapsePanel'
+import DataEntry from '~/components/DataEntry'
 
 export default {
   name: 'SpellEntries',
 
   components: {
-    SpellEntry
+    CollapsePanel,
+    DataEntry
   },
-
-  mixins: [ToggleActive],
 
   props: {
     model: {
@@ -48,11 +35,11 @@ export default {
   },
 
   computed: {
-    spellLevelSchool: function() {
+    spellLevelSchool() {
       let sf = ''
       switch (this.model.level) {
-        case 'cantrip':
-          return `${this.model.school} ${this.model.level}`
+        case 'Cantrip':
+          return `${this.model.school} ${this.model.level.toLowerCase()}`
 
         case 1:
           sf = 'st'
@@ -72,44 +59,45 @@ export default {
       }
       return `${this.model.level}${sf}-level ${this.model.school}`.toLowerCase()
     },
-    spellComponents: function() {
-      const componentList = Object.keys(this.model.components)
+
+    spellComponents() {
+      let stack = Object.keys(this.model.components)
         .join(', ')
         .toUpperCase()
-      return this.model.components.m
-        ? componentList.concat(` (${this.model.components.m})`)
-        : componentList
+
+      if (this.model.components.m) stack += ` (${this.model.components.m})`
+      return stack
     },
-    spellDuration: function() {
-      const { type, concentration, duration, ends } = this.model.duration[0]
+
+    spellDuration() {
+      const {
+        type,
+        concentration,
+        condition,
+        duration,
+        ends
+      } = this.model.duration[0]
+
       switch (type) {
         case 'timed':
-          return concentration
-            ? `Concentration, up to ${duration.amount} ${duration.type}`
-            : `${duration.amount} ${duration.type}`
+          const dur = `${duration.amount} ${duration.type}`
+          return concentration ? `Concentration, up to ${dur}` : dur
 
         case 'instant':
-          return 'Instantaneous'
+          return `Instantaneous${condition ? ` (${condition})` : ''}`
 
         case 'special':
           return 'Special'
 
         case 'permanent':
           // `ends` can be triggered and/or dispelled
-          return ends.length === 2
-            ? `Until ${ends[0]}ed or ${ends[1]}ed`
-            : `Until ${ends[0]}ed`
+          return ends
+            ? ends.length === 2
+              ? `Until ${ends[0]}ed or ${ends[1]}ed`
+              : `Until ${ends[0]}ed`
+            : 'Permanent'
       }
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.is-spell-level {
-  padding-top: 0.3em;
-  &::first-letter {
-    text-transform: capitalize;
-  }
-}
-</style>
