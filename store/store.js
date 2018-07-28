@@ -16,3 +16,12 @@ export const mutations = {
 
   UPDATE_SEARCH_STRING: (state, searchTerm) => (state.searchString = searchTerm)
 }
+
+export const getters = {
+  hasFilterApplied: ({ filters }) => {
+    const concatOptions = (l, f) => l.concat(filters[f])
+    return Object.keys(filters)
+      .reduce(concatOptions, [])
+      .some(o => !o.allowed)
+  }
+}
