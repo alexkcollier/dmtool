@@ -5,7 +5,7 @@
     :source="model.source">
         
     <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
-    <p><strong>Range:</strong> {{ model.range.distance.amount }} {{ model.range.distance.type }}</p>
+    <p><strong>Range:</strong> {{ spellRange }}</p>
     <p><strong>Components:</strong> {{ spellComponents }}</p>
     <p><strong>Duration:</strong> {{ spellDuration }}</p>
 
@@ -97,6 +97,11 @@ export default {
               : `Until ${ends[0]}ed`
             : 'Permanent'
       }
+    },
+
+    spellRange() {
+      const { distance, type } = this.model.range
+      return type === 'special' ? type : `${distance.amount} ${distance.type}`
     }
   }
 }

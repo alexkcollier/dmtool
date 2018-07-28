@@ -87,6 +87,7 @@ export default {
 
   methods: {
     formatEntry(str) {
+      if (str.roll) str = str.exact || `${str.min}-${str.max}`
       const inlineTitle = /^(([a-zA-Z]*\s*){1,5}\.)(?=.+)/g
       return this.$entryHelper
         .setHtml(str)
