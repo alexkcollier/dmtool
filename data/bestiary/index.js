@@ -73,8 +73,8 @@ const alignmentMap = {
   'lawful good': ['L', 'G']
 }
 
-const reduceToMonsters = (mstrs, src) => mstrs.concat(sources[src].monster)
-let monsters = Object.keys(sources).reduce(reduceToMonsters, [])
+const reduceToMonsters = (mstrs, src) => mstrs.concat(src.monster)
+let monsters = Object.values(sources).reduce(reduceToMonsters, [])
 
 function parseSizes() {
   for (const creature of monsters) {
