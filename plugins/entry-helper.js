@@ -57,6 +57,10 @@ export const regExps = {
   skill: {
     find: /{@skill\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: plainReplace
+  },
+  other: {
+    find: /{@(filter|condition|race)\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+    html: '$2'
   }
 }
 

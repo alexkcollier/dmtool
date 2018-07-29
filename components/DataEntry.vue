@@ -8,7 +8,7 @@
       <p 
         v-if="!entry.type"
         :key="entry.index"
-        v-html="$entryHelper.setHtml(entry)"/>
+        v-html="formatEntry(entry)"/>
       
       <!-- Lists -->
       <ul 
@@ -17,7 +17,7 @@
         <li 
           v-for="item in entry.items" 
           :key="item.index" 
-          v-html="$entryHelper.setHtml(item)"/>
+          v-html="formatEntry(item)"/>
       </ul>
 
       <!-- Tables -->
@@ -30,7 +30,8 @@
           <tr>
             <th 
               v-for="label in entry.colLabels" 
-              :key="label.index">{{ label }}</th>
+              :key="label.index"
+              v-html="formatEntry(label)"/>
           </tr>
         </thead>
 
@@ -41,7 +42,7 @@
             <td 
               v-for="cell in row" 
               :key="cell.index" 
-              v-html="$entryHelper.setHtml(cell)"/>
+              v-html="formatEntry(cell)"/>
           </tr>
         </tbody>
       </table>
@@ -50,7 +51,7 @@
       <template v-else-if="entry.type === 'entries'" >
         <p v-if="entry.name" :key="entry.index">
           <strong><i>{{ entry.name }}. </i></strong>
-          <span v-html="$entryHelper.setHtml(entry.entries[0])"/>
+          <span v-html="formatEntry(entry.entries[0])"/>
         </p>
         
         <data-entry 
@@ -87,8 +88,10 @@ export default {
 
   methods: {
     formatEntry(str) {
-      if (str.roll) str = str.exact || `${str.min}-${str.max}`
-      const inlineTitle = /^(([a-zA-Z]*\s*){1,5}\.)(?=.+)/g
+      const inlineTitle = /^(([a-zA-Z]*\s*){0,3}\.)(?=.+)/g
+
+      if (str.roll) str = str.exact || `${str.roll.min}-${str.roll.max}`
+
       return this.$entryHelper
         .setHtml(str)
         .replace(inlineTitle, `<strong><i>$1</i></strong>`)

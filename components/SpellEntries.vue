@@ -65,7 +65,7 @@ export default {
         .join(', ')
         .toUpperCase()
 
-      if (this.model.components.m) stack += ` (${this.model.components.m})`
+      if (this.model.components.m) stack += ` (${this.model.components.m.text})`
       return stack
     },
 
@@ -101,7 +101,9 @@ export default {
 
     spellRange() {
       const { distance, type } = this.model.range
-      return type === 'special' ? type : `${distance.amount} ${distance.type}`
+      if (type === 'special') return type
+      if (distance.amount) return `${distance.amount} ${distance.type}`
+      return distance.type
     }
   }
 }
