@@ -45,7 +45,10 @@
         </a>
 
         <!-- Reset filters -->
-        <button class="button is-text" @click="resetFilters">
+        <button
+          v-show="hasFilterApplied"
+          class="button is-text"
+          @click="resetFilters">
           Reset filters
         </button>
       </div>
@@ -70,7 +73,7 @@
           <!-- Filter options -->
           <!-- TODO: improve display -->
           <div 
-            v-for="(data, filter) in filters"
+            v-for="(filterOptions, filter) in filters"
             v-show="visibleFilter === filter"
             :key="filter"
             class="card-content">
@@ -96,12 +99,14 @@
             
             <b-field grouped group-multiline>
               <div
-                v-for="(option, index) in filters[filter]"
+                v-for="(option, index) in filterOptions"
                 :key="index"
                 class="control">
+
                 <b-switch :value="option.allowed" @input="filterResults(filter, index, $event)">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
+                
               </div>
             </b-field>
 
@@ -191,6 +196,10 @@ export default {
       set(value) {
         this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, value)
       }
+    },
+
+    hasFilterApplied() {
+      return this.$store.getters[`${this.slug}/hasFilterApplied`]
     },
 
     filters() {
@@ -357,12 +366,10 @@ export default {
 .card {
   border-radius: 2px;
   box-shadow: none;
+
   &-header {
     .is-active {
       font-weight: 600;
-    }
-    &-title {
-      padding: 0.36em 0.75em;
     }
   }
 
@@ -375,14 +382,24 @@ export default {
   }
 }
 
+.button {
+  &.is-text {
+    &:hover {
+      background: 0;
+    }
+  }
+}
+
 hr {
   margin-top: 0.25em;
 }
 
 $icon-transition: transform 200ms ease-in-out;
+
 .icon-point {
   transition: $icon-transition;
 }
+
 .point-up {
   transform: rotateZ(-180deg);
   transition: $icon-transition;

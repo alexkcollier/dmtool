@@ -18,7 +18,8 @@
     "buefy": "^0.6.5",
     "nuxt": "^1.4.1",
     "vue-lottie": "^0.2.1",
-    "vue-scrollto": "^2.11.0"
+    "vue-scrollto": "^2.11.0",
+    "vuex-persist": "^1.4.3"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
