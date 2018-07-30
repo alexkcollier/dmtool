@@ -297,7 +297,7 @@ export default {
     },
 
     speed() {
-      let { walk, ...speeds } = this.model.speed
+      let { walk, canHover, ...speeds } = this.model.speed
 
       walk =
         walk && !!walk
