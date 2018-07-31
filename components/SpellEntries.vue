@@ -65,7 +65,10 @@ export default {
         .join(', ')
         .toUpperCase()
 
-      if (this.model.components.m) stack += ` (${this.model.components.m.text})`
+      if (this.model.components.m) {
+        stack += ` (${this.model.components.m.text || this.model.components.m})`
+      }
+
       return stack
     },
 
