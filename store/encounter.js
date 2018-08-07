@@ -3,7 +3,9 @@ export const state = () => ({
 })
 
 export const getters = {
-  encounterCreatures: ({ encounter: e }) => [...new Set(e.map(c => c.name))]
+  encounterCreatures: ({ encounter }) => {
+    return [...new Set(encounter.map(c => `${c.name} - ${c.source}`))]
+  }
 }
 
 export const mutations = {

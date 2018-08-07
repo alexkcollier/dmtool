@@ -268,7 +268,9 @@ export default {
     },
 
     encounterIncludesCreature() {
-      return this.encounterCreatures.includes(this.model.name)
+      return this.encounterCreatures.includes(
+        `${this.model.name} - ${this.model.source}`
+      )
     },
 
     hp() {
