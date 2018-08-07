@@ -13,18 +13,16 @@ module.exports = {
     'plugin:vue/recommended'
   ],
   // required to lint *.vue files
-  plugins: [
-    'prettier',
-    'vue'
-  ],
+  plugins: ['prettier', 'vue'],
   // add your custom rules here
   rules: {
-    "semi": [2, "never"],
-    "no-console": "off",
-    "prettier/prettier": ["error", 
+    semi: [2, 'never'],
+    'no-console': 'off',
+    'prettier/prettier': [
+      'error',
       {
-        "semi": false,
-        "singleQuote": true
+        semi: false,
+        singleQuote: true
       }
     ],
     'vue/max-attributes-per-line': [
@@ -33,9 +31,9 @@ module.exports = {
         singleline: 3,
         multiline: {
           max: 1,
-          allowFirstLine: false,
-        },
-      },
+          allowFirstLine: false
+        }
+      }
     ]
   }
 }
