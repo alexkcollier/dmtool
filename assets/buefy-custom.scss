@@ -1,8 +1,11 @@
 // Import Bulma's core
 @import '~bulma/sass/utilities/initial-variables';
+
+// bulma 0.7.1 import fix
+$border: $grey-lighter;
+
 @import '~bulma/sass/utilities/functions';
 @import '~bulma/sass/utilities/mixins';
-
 // Import typekit
 @import url('https://use.typekit.net/fnw1iwa.css');
 
@@ -36,7 +39,9 @@ $addColors: (
     $navbtn-invert
   )
 );
+
 $colors: map-merge($colors, $addColors);
+
 // Typography
 $body-size: 18px;
 $family-serif: 'bookmania', Georgia, 'Times New Roman', Times, serif;
@@ -45,6 +50,8 @@ $family-sans-serif: 'freight-sans-pro', -apple-system, BlinkMacSystemFont,
   'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
   Arial, sans-serif;
 $content-heading-color: $red;
+$content-heading-weight: $weight-normal;
+
 h1,
 h2,
 h3,
@@ -53,50 +60,59 @@ h5,
 .title,
 .button {
   font-family: 'mrs-eaves-roman-small-caps', $family-primary;
-  font-weight: normal;
   font-variant: small-caps;
 }
+
 .content {
   h2 {
     border-bottom: 2px solid $gold;
   }
+  
   h6 {
     color: $grey-dark !important;
     font-variant: unset;
   }
 }
+
 // Typography helper
 .is-italic {
   font-style: italic;
 }
+
 .is-sans-serif {
   font-family: $family-sans-serif;
   font-feature-settings: 'lnum';
 }
+
 // Fix button margins
 .button {
   margin: 0.25em;
   font-family: $family-sans-serif;
   font-variant-caps: normal;
 }
+
 // Links
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
+
 // Card
 .card {
   font-family: $family-sans-serif;
 }
+
 // Controls
 .switch input[type='checkbox'] + .check:before {
   background: $input-background-color;
 }
+
 table,
 .input,
 .control {
   font-family: $family-sans-serif;
   font-feature-settings: 'lnum';
 }
+
 // Global transitions
 $fade-time: 500ms;
 .fade {
@@ -109,6 +125,7 @@ $fade-time: 500ms;
     opacity: 0;
   }
 }
+
 .fade-grow {
   &-enter-active,
   &-leave-active {
@@ -122,20 +139,28 @@ $fade-time: 500ms;
     opacity: 0;
   }
 }
+
 // Custom
 .ampersand {
   height: 40vh;
+
+  &::before {
+    height: inherit;
+    width: 100%;
+    position: absolute;
+    background: url('~assets/ampersand.svg') center center / contain no-repeat;
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    opacity: 0.1;
+    content: '';
+  }
 }
-.ampersand::before {
-  height: inherit;
-  width: 100%;
-  position: absolute;
-  background: url('~assets/ampersand.svg') center center / contain no-repeat;
-  background-blend-mode: multiply;
-  mix-blend-mode: multiply;
-  opacity: 0.1;
-  content: '';
-}
+
 // Import Bulma and Buefy styles
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
+
+hr {
+  background-color: darken($body-background-color, 5%);
+  height: 1px;
+}
