@@ -5,13 +5,37 @@ const italicReplace = '<em>$1</em>'
 const plainReplace = '$1'
 
 export const regExps = {
-  attack: {
-    find: /((Melee|Ranged).*Attack:)/g,
-    html: italicReplace
+  meleeWeaponAttack: {
+    find: /{@atk\s(mw?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>Melee Weapon Attack: </em>'
+  },
+  rangedWeaponAttack: {
+    find: /{@atk\s(rw?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>Ranged Weapon Attack: </em>'
+  },
+  meleeOrRangedWeaponAttack: {
+    find: /{@atk\s(mw,rw?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>Melee or Ranged Weapon Attack: </em>'
+  },
+  meleeSpellAttack: {
+    find: /{@atk\s(ms?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>Melee Spell Attack: </em>'
+  },
+  rangedSpellAttack: {
+    find: /{@atk\s(rs?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>Ranged Spell Attack: </em>'
+  },
+  meleeOrRangedSpellAttack: {
+    find: /{@atk\s(ms,rs?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>Melee or Ranged Spell Attack: </em>'
   },
   creature: {
     find: /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: boldReplace
+  },
+  condition: {
+    find: /{@condition\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+    html: plainReplace
   },
   dice: {
     find: /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g,
@@ -65,9 +89,13 @@ export const regExps = {
 }
 
 export function setHtml(str) {
-  const format = r => (str = str.replace(regExps[r].find, regExps[r].html))
-  Object.keys(regExps).map(format)
-  return str
+  try {
+    const format = r => (str = str.replace(regExps[r].find, regExps[r].html))
+    Object.keys(regExps).map(format)
+    return str
+  } catch (e) {
+    console.log(str)
+  }
 }
 
 const entryHelper = {
