@@ -33,10 +33,6 @@ export const regExps = {
     find: /{@creature\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: boldReplace
   },
-  condition: {
-    find: /{@condition\s(.*?)(\|(.*?))?(\|.*?)?}/g,
-    html: plainReplace
-  },
   dice: {
     find: /{@dice\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: plainReplace
@@ -71,11 +67,11 @@ export const regExps = {
     html: italicReplace
   },
   bold: {
-    find: /{@bold\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+    find: /{@bold|b\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: boldReplace
   },
   italic: {
-    find: /{@italic\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+    find: /{@italic|i\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: italicReplace
   },
   skill: {
