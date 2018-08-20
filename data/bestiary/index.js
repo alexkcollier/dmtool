@@ -1,3 +1,5 @@
+import custom from './custom'
+
 import CoS from './bestiary-cos.json'
 import DMG from './bestiary-dmg.json'
 import HotDQ from './bestiary-hotdq.json'
@@ -24,6 +26,7 @@ import VGM from './bestiary-vgm.json'
 import XGE from './bestiary-xge.json'
 
 const sources = {
+  custom,
   CoS,
   DMG,
   HotDQ,
