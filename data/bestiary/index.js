@@ -7,6 +7,7 @@ import MM from './bestiary-mm.json'
 import MTF from './bestiary-mtf.json'
 import OotA from './bestiary-oota.json'
 import PSA from './bestiary-ps-a.json'
+import PSD from './bestiary-ps-d.json'
 import PSI from './bestiary-ps-i.json'
 import PSK from './bestiary-ps-k.json'
 import PSX from './bestiary-ps-x.json'
@@ -18,6 +19,7 @@ import SKT from './bestiary-skt.json'
 import TTP from './bestiary-ttp.json'
 import TftYP from './bestiary-tftyp.json'
 import ToA from './bestiary-toa.json'
+import UAWGE from './bestiary-uawge.json'
 import VGM from './bestiary-vgm.json'
 import XGE from './bestiary-xge.json'
 
@@ -31,6 +33,7 @@ const sources = {
   MTF,
   OotA,
   PSA,
+  PSD,
   PSI,
   PSK,
   PSX,
@@ -42,6 +45,7 @@ const sources = {
   TTP,
   TftYP,
   ToA,
+  UAWGE,
   VGM,
   XGE
 }
