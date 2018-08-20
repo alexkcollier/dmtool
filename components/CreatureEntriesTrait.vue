@@ -2,7 +2,8 @@
   <div>
     <p>
       <strong><i>{{ model.name }}. </i></strong>
-      <span v-html="$entryHelper.setHtml(model.entries[0])"/>
+      <span v-if="model.entries[0].type === 'inline'" v-html="inlineEntryHack(model.entries[0])"/>
+      <span v-else v-html="$entryHelper.setHtml(model.entries[0])"/>
     </p>
 
     <template v-for="entry in shiftModel">
@@ -52,6 +53,18 @@ export default {
     shiftModel() {
       const r = this.model.entries.slice(1)
       return r.length > 0 ? r : null
+    }
+  },
+
+  methods: {
+    // Super sketchy hack. Definitely won't break in the future.
+    inlineEntryHack(entry) {
+      const toSet =
+        entry.entries[0] +
+        entry.entries[1].text +
+        ' (DMG p.\xa0260) ' +
+        entry.entries[2]
+      return this.$entryHelper.setHtml(toSet)
     }
   }
 }
