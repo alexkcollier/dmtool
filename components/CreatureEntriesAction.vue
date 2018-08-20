@@ -3,7 +3,7 @@
       
     <!-- Paragraphs -->
     <p :key="model.index">
-      <strong><i>{{ model.name }}. </i></strong>
+      <strong><i>{{ model.name | recharge }}. </i></strong>
       <span v-html="$entryHelper.setHtml(model.entries[0])"/>
     </p>
     
@@ -50,6 +50,22 @@
 <script>
 export default {
   name: 'CreatureEntriesAction',
+
+  filters: {
+    recharge(str) {
+      const plain = {
+        find: /{@recharge}/g,
+        html: '(Recharge 6)'
+      }
+
+      const num = {
+        find: /{@recharge\s(\d)}/g,
+        html: '(Recharge $1-6)'
+      }
+
+      return str.replace(num.find, num.html).replace(plain.find, plain.html)
+    }
+  },
 
   props: {
     model: {
