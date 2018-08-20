@@ -67,12 +67,12 @@ export const regExps = {
     html: italicReplace
   },
   bold: {
-    find: /{@bold|b\s(.*?)(\|(.*?))?(\|.*?)?}/g,
-    html: boldReplace
+    find: /{@(bold|b)\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<strong>$2</strong>'
   },
   italic: {
-    find: /{@italic|i\s(.*?)(\|(.*?))?(\|.*?)?}/g,
-    html: italicReplace
+    find: /{@(italic|i)\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+    html: '<em>$2</em>'
   },
   skill: {
     find: /{@skill\s(.*?)(\|(.*?))?(\|.*?)?}/g,
