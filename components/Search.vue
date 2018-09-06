@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Search box -->
-    <b-field>
+    <b-field class="is-fixed-mobile">
 
       <div class="control is-expanded">
         <b-input
@@ -16,7 +16,7 @@
       <div class="control">
         <button
           :disabled="!searchTerm" 
-          class="button is-primary"
+          class="clear-button button is-primary"
           style="margin:0;"
           @click="clearSearch">
           Clear
@@ -123,7 +123,7 @@
           {{ model.length }} {{ searchType }}s.
         </template>
         <template v-else>
-          {{ resultCount }} of  {{ model.length }} {{ searchType }}s match.
+          {{ resultCount }} of {{ model.length }} {{ searchType }}s match.
         </template>
       </div>
     </div>
@@ -363,6 +363,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.is-fixed-mobile {
+  @media screen and (max-width: 1023px) {
+    .button,
+    .input,
+    .control {
+      border-radius: 0 !important;
+    }
+
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+    left: 0;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 30;
+  }
+}
+
+.clear-button {
+  &.is-primary {
+    &:disabled {
+      background-color: rgb(145, 154, 155);
+      opacity: 1;
+    }
+  }
+}
+
 .card {
   border-radius: 2px;
   box-shadow: none;
