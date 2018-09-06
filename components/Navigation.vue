@@ -58,16 +58,17 @@ export default {
   background: hsl(60, 19%, 87%);
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 1px 10px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: -$section-offset;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
 
   @media screen and (max-width: 1023px) {
     bottom: $section-offset;
     box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.05), 0 -1px 10px 0 rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     left: 50%;
-    position: fixed;
     transform: translateX(-50%);
     width: calc(100% + 0.5em);
-    z-index: 10;
   }
 
   .container {

@@ -13,4 +13,7 @@ export default {
 </script>
 
 <style>
+.section {
+  padding: 4.5em 1.5em;
+}
 </style>
