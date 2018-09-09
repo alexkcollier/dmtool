@@ -8,7 +8,7 @@
   "ac": [
     {
       "ac": 18,
-      "from": ["natural armor"]
+      "from": ["chain mail"]
     }
   ],
   "hp": {
@@ -21,17 +21,17 @@
   "str": 11,
   "dex": 16,
   "con": 16,
-  "int": 16,
+  "int": 19,
   "wis": 14,
-  "cha": 19,
+  "cha": 16,
   "save": {
-    "cha": "+9",
     "con": "+8",
-    "wis": "+7"
+    "wis": "+7",
+    "int": "+9"
   },
   "skill": {
-    "arcana": "+7",
-    "intimidation": "+9",
+    "arcana": "+9",
+    "intimidation": "+7",
     "insight": "+7",
     "perception": "+7"
   },
@@ -195,7 +195,7 @@
           "spells": ["{@spell circle of death}"]
         }
       },
-      "ability": "cha"
+      "ability": "int"
     }
   ],
   "isNamedCreature": true,
