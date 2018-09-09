@@ -192,7 +192,11 @@
         },
         "6": {
           "slots": 1,
-          "spells": ["{@spell circle of death}"]
+          "spells": ["{@spell circle of death}", "{@spell globe of invulnerability}"]
+        },
+        "7": {
+          "slots": 1,
+          "spells": ["{@spell finger of death}"]
         }
       },
       "ability": "int"
