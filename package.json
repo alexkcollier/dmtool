@@ -1,6 +1,6 @@
 {
   "name": "dmtool",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Personal DM tools",
   "author": "Alex Collier <alexkcollier@gmail.com>",
   "private": true,
@@ -16,6 +16,7 @@
   "dependencies": {
     "@nuxtjs/pwa": "^2.5.0",
     "buefy": "^0.6.7",
+    "lodash.isequal": "^4.5.0",
     "nuxt": "^2.0.0",
     "vue-scrollto": "^2.13.0",
     "vuex-persist": "^1.5.4"
