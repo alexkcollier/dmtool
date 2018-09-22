@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   mode: 'spa',
   /*
   ** Headers of the page
@@ -60,7 +60,6 @@ module.exports = {
   ** Build configuration
   */
   build: {
-    vendor: ['lodash'],
     /*
     ** Silence PostCSS Bulma error
     */
