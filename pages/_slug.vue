@@ -47,7 +47,7 @@ export default {
         bestiary: ['cr', 'size', 'source', 'type']
       },
       filtersToSort: {
-        'magic-items': ['source', 'type']
+        'magic-items': ['rarity', 'source', 'type']
       }
     }
   },
