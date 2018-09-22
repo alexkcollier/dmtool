@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Navigation/>
+    <Navigation />
 
     <!-- content -->
     <BaseContainer>
-      <nuxt/>
+      <nuxt />
     </BaseContainer>
     
-    <TheTopButton/>
+    <TheTopButton />
 
   </div>
 </template>

@@ -8,67 +8,77 @@
       <p 
         v-if="!entry.type"
         :key="entry.index"
-        v-html="formatEntry(entry)"/>
+        v-html="formatEntry(entry)"
+      />
       
       <!-- Lists -->
       <ul 
         v-else-if="entry.type === 'list'" 
-        :key="entry.index">
+        :key="entry.index"
+      >
         <li 
           v-for="item in entry.items" 
           :key="item.index" 
-          v-html="formatEntry(item)"/>
+          v-html="formatEntry(item)"
+        />
       </ul>
 
       <!-- Tables -->
       <table 
         v-else-if="entry.type === 'table'" 
         :key="entry.index" 
-        class="table">
+        class="table"
+      >
 
         <thead>
           <tr>
             <th 
               v-for="label in entry.colLabels" 
               :key="label.index"
-              v-html="formatEntry(label)"/>
+              v-html="formatEntry(label)"
+            />
           </tr>
         </thead>
 
         <tbody>
           <tr 
             v-for="row in entry.rows" 
-            :key="row.index">
+            :key="row.index"
+          >
             <td 
               v-for="cell in row" 
               :key="cell.index" 
-              v-html="formatEntry(cell)"/>
+              v-html="formatEntry(cell)"
+            />
           </tr>
         </tbody>
       </table>
 
       <!-- Iterate over child entries -->
-      <template v-else-if="entry.type === 'entries'" >
+      <template v-else-if="entry.type === 'entries'">
         <p v-if="entry.name" :key="entry.index">
           <strong><i>{{ entry.name }}. </i></strong>
-          <span v-html="formatEntry(entry.entries[0])"/>
+          <span v-html="formatEntry(entry.entries[0])" />
         </p>
         
         <data-entry 
           v-else
-          :model="entry.entries.slice(0, 1)" 
-          :key="entry.index" />
+          :key="entry.index" 
+          :model="entry.entries.slice(0, 1)"
+        />
         <data-entry
           v-if="entry.entries.slice(1).length"
+          :key="entry.index"
           :model="entry.entries.slice(1)"
-          :key="entry.index" />
+        />
       </template>
 
       <!-- Highlight entries of unexpected type. -->
       <p
         v-else
         :key="entry.index"
-        style="color: red;">
+        style="color: red;"
+      >
         {{ entry }}
       </p>
     </template>

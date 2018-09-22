@@ -8,7 +8,8 @@
       <button
         :disabled="encounter.length === 0"
         class="button is-red"
-        @click="clearEncounter">
+        @click="clearEncounter"
+      >
         Clear encounter
       </button>
       <hr>
@@ -17,9 +18,10 @@
     <template v-if="encounter.length">
       <CreatureEntries
         v-for="creature in encounter"
-        :model="creature"
+        :id="creatureIndex(creature)"
         :key="creature.index"
-        :id="creatureIndex(creature)" />
+        :model="creature"
+      />
     </template>
 
     <div v-else class="ampersand" style="height:60vh;">

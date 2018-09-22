@@ -10,7 +10,8 @@
           :placeholder="placeholder"
           icon="magnify"
           type="text"
-          @input="debounceQuery"/>
+          @input="debounceQuery"
+        />
       </div>
 
       <div class="control">
@@ -18,7 +19,8 @@
           :disabled="!searchTerm" 
           class="clear-button button is-primary"
           style="margin:0;"
-          @click="clearSearch">
+          @click="clearSearch"
+        >
           Clear
         </button>
       </div>
@@ -34,21 +36,24 @@
             icon="filter"
             size="is-small"
             style="margin-right:0.25rem;"
-            type="is-dark"/>
+            type="is-dark"
+          />
           
           Filters
           
           <b-icon
             :class="{'point-up': !collapseFilters}"
             icon="chevron-down"
-            class="icon-point"/>
+            class="icon-point"
+          />
         </a>
 
         <!-- Reset filters -->
         <button
           v-show="hasFilterApplied"
           class="button is-text"
-          @click="resetFilters">
+          @click="resetFilters"
+        >
           Reset filters
         </button>
       </div>
@@ -65,7 +70,8 @@
               :class="{'is-active': filter === visibleFilter}"
               class="card-footer-item is-capitalized"
               href="#"
-              @click="visibleFilter = filter">
+              @click="visibleFilter = filter"
+            >
               {{ filter | formatFilterOptionName }}
             </a>
           </div>
@@ -76,14 +82,16 @@
             v-for="(filterOptions, filter) in filters"
             v-show="visibleFilter === filter"
             :key="filter"
-            class="card-content">
+            class="card-content"
+          >
 
             <b-field grouped>
               <div class="control">
                 <button
                   class="control button"
                   style="margin-left:0;"
-                  @click="setAllOptions(filter, true)">
+                  @click="setAllOptions(filter, true)"
+                >
                   Enable all
                 </button>
               </div>
@@ -91,7 +99,8 @@
               <div class="control">
                 <button
                   class="control button"
-                  @click="setAllOptions(filter, false)">
+                  @click="setAllOptions(filter, false)"
+                >
                   Disable all
                 </button>
               </div>
@@ -101,7 +110,8 @@
               <div
                 v-for="(option, index) in filterOptions"
                 :key="index"
-                class="control">
+                class="control"
+              >
 
                 <b-switch :value="option.allowed" @input="filterResults(filter, index, $event)">
                   {{ option.name | parseNumToFrac }}

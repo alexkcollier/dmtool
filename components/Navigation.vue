@@ -7,7 +7,8 @@
         :key="link.to"
         :to="link.to"
         :label="link.label"
-        :icon="link.icon"/>
+        :icon="link.icon"
+      />
     </div>
   </div>
 

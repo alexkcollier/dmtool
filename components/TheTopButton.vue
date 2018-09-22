@@ -3,8 +3,9 @@
     <div
       v-show="showTopButton"
       class="button is-gold"
-      @click="scrollToTop">
-      <b-icon icon="format-vertical-align-top"/>
+      @click="scrollToTop"
+    >
+      <b-icon icon="format-vertical-align-top" />
     </div>
   </transition>
 </template>

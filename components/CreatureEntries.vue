@@ -3,7 +3,8 @@
     :name="model.name"
     :info="creatureMeta"
     :source="source"
-    class="is-sans-serif">
+    class="is-sans-serif"
+  >
 
     <div slot="col2" class="column is-narrow">
       <div class="is-encounter-buttons">
@@ -12,7 +13,8 @@
           <button
             v-if="encounterIncludesCreature"
             class="button"
-            @click="removeFromEncounter(model)">
+            @click="removeFromEncounter(model)"
+          >
             <b-icon icon="minus" />
           </button>
         </transition>
@@ -21,7 +23,8 @@
           v-if="$route.params.slug === 'bestiary'"
           :disabled="encounterIncludesCreature"
           class="button is-primary"
-          @click="addToEncounter(model)">
+          @click="addToEncounter(model)"
+        >
           <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
         </button>
 
@@ -50,7 +53,8 @@
             <th
               v-for="(stat, val) in stats"
               :key="stat.index"
-              class="is-uppercase has-text-centered has-text-red">
+              class="is-uppercase has-text-centered has-text-red"
+            >
               {{ val }}
             </th>
           </tr>
@@ -61,7 +65,8 @@
             <td 
               v-for="stat in stats" 
               :key="stat.index" 
-              class="has-text-centered has-text-red">
+              class="has-text-centered has-text-red"
+            >
               {{ stat | getStatMod }}
             </td>
           </tr>
@@ -112,30 +117,33 @@
     </div>
         
     <template v-if="model.trait">
-      <Trait v-for="trait in model.trait" :model="trait" :key="trait.index" />
+      <Trait v-for="trait in model.trait" :key="trait.index" :model="trait" />
     </template>
 
     <template v-if="model.spellcasting">
       <Spellcasting
         v-for="entry in model.spellcasting"
+        :key="entry.index"
         :model="entry"
-        :key="entry.index"/>
+      />
     </template>
 
     <template v-if="model.action">
       <h2 class="is-sans-serif">Actions</h2>
       <Action
         v-for="action in model.action"
+        :key="action.index"
         :model="action"
-        :key="action.index" />
+      />
     </template>
 
     <template v-if="model.reaction">
       <h2 class="is-sans-serif">Reactions</h2>
       <Action
         v-for="reaction in model.reaction"
+        :key="reaction.index"
         :model="reaction"
-        :key="reaction.index" />
+      />
     </template>
 
     <!-- TODO: Lair actions -->
@@ -145,8 +153,9 @@
           
       <Action
         v-for="legendary in model.legendary"
+        :key="legendary.index"
         :model="legendary"
-        :key="legendary.index" />
+      />
     </template>
 
   </CollapsePanel>

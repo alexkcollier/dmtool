@@ -6,18 +6,20 @@
       :filter-fields="filterFields[$route.params.slug]"
       :filters-to-sort="filtersToSort[$route.params.slug] || filterFields[$route.params.slug]"
       :search-type="searchType"
-      @update-data="updateData"/>
+      @update-data="updateData"
+    />
         
     <template v-if="results.show">
       <component
-        v-for="result in results.truncated"
         :is="activeComponent"
-        :model="result"
+        v-for="result in results.truncated"
+        :id="setId(result)"
         :key="result.index"
-        :id="setId(result)"/>
+        :model="result"
+      />
     </template>
         
-    <div v-else class="ampersand"/>
+    <div v-else class="ampersand" />
         
   </main>
 </template>
@@ -28,9 +30,11 @@ import Search from '~/components/Search'
 
 export default {
   components: {
+    /* eslint-disable vue/no-unused-components */
     CreatureEntries: () => import('~/components/CreatureEntries'),
     ItemEntries: () => import('~/components/ItemEntries'),
     SpellEntries: () => import('~/components/SpellEntries'),
+    /* eslint-enable */
     Search
   },
 

@@ -2,7 +2,8 @@
   <CollapsePanel
     :name="model.name"
     :info="itemMeta"
-    :source="source">
+    :source="source"
+  >
 
     <DataEntry :model="model.entries" />
   </CollapsePanel>

@@ -18,13 +18,13 @@
         </a>
       </div>
 
-      <slot name="col2"/>
+      <slot name="col2" />
     </div>
 
 
     <transition name="fade-grow">
       <div v-show="isActive" :style="{'transition-duration': `${transitionDuration}ms`}">
-        <slot/>
+        <slot />
       </div>
     </transition>
     <hr>

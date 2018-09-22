@@ -2,23 +2,23 @@
   <div>
     <p>
       <strong><em>{{ model.name }}. </em></strong>
-      <span v-html="$entryHelper.setHtml(model.headerEntries[0])"/>
+      <span v-html="$entryHelper.setHtml(model.headerEntries[0])" />
     </p>
 
-    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="$entryHelper.setHtml(entry)"/>
+    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="$entryHelper.setHtml(entry)" />
 
     <!-- Slot based spells -->
     <template v-if="model.spells">
       <dl>
         <dd v-for="(level, num) in model.spells" :key="'slot-' + num">
-          {{ formatSpellSlots(num) }} <span v-html="formatSpellList(level.spells)"/>
+          {{ formatSpellSlots(num) }} <span v-html="formatSpellList(level.spells)" />
         </dd>
       </dl>
     </template>
 
     <!-- At will spells -->
     <dl v-if="model.will">
-      <dd>At will: <span v-html="formatSpellList(model.will)"/></dd>
+      <dd>At will: <span v-html="formatSpellList(model.will)" /></dd>
     </dl>
 
     <!-- Spells with time-based recharge -->
@@ -27,14 +27,14 @@
         <template v-if="model[time]">
           <dl :key="time">
             <dd v-for="(list, key) in model[time]" :key="`${time}-recharge-${key}`">
-              {{ formatTime(key, time) }} <span v-html="formatSpellList(list)"/>
+              {{ formatTime(key, time) }} <span v-html="formatSpellList(list)" />
             </dd>
           </dl>
         </template>
       </template>
     </template>
 
-    <p v-for="(entry, i) in model.footerEntries" :key="'footer-entry-' + i" v-html="entry"/>
+    <p v-for="(entry, i) in model.footerEntries" :key="'footer-entry-' + i" v-html="entry" />
 
   </div>
 </template>

@@ -2,7 +2,8 @@
   <CollapsePanel
     :name="model.name"
     :info="spellLevelSchool"
-    :source="model.source">
+    :source="model.source"
+  >
         
     <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
     <p><strong>Range:</strong> {{ spellRange }}</p>

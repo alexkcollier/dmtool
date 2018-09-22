@@ -2,12 +2,14 @@
   <nuxt-link
     :to="to"
     :class="{'active': $route.path === to}"
-    class="navigation-link is-sans-serif is-size-7">
+    class="navigation-link is-sans-serif is-size-7"
+  >
     <img
       v-if="icon"
       :src="iconPath"
-      class="image is-32x32">
-    <div v-else class="navigation-link-icon"/>
+      class="image is-32x32"
+    >
+    <div v-else class="navigation-link-icon" />
     {{ label }}
   </nuxt-link>
 </template>
