@@ -31,16 +31,24 @@ export default {
   computed: {
     itemMeta() {
       const { type, subtype, rarity, reqAttune } = this.model
-      const attuneOptions = reqAttune === 'YES' ? '' : ` ${reqAttune}`
+      const attuneOptions = reqAttune === true ? '' : ` ${reqAttune}`
       let stack = type
+
       if (subtype) stack += ` (${subtype})`
+
       stack += `, ${rarity}`
+
       if (reqAttune) stack += ` (requires attunement${attuneOptions})`
+
       return stack.toLowerCase()
     },
 
     source() {
-      return `${this.model.source}, p. ${this.model.page}`
+      let stack = `${this.model.source}`
+
+      if (this.model.page) stack += `, p. ${this.model.page}`
+
+      return stack
     }
   }
 }
