@@ -221,7 +221,7 @@ export default {
     },
 
     cleanSearchTerm() {
-      return this.searchTerm.toLowerCase().trim()
+      return this.searchTerm ? this.searchTerm.toLowerCase().trim() : ''
     },
 
     placeholder() {
@@ -237,6 +237,13 @@ export default {
         truncated: this.queryResult.slice(0, this.count),
         show: this.queryResult.length > 0
       }
+    }
+  },
+
+  watch: {
+    '$route.query.name'() {
+      this.searchTerm = this.$route.query.name
+      this.query()
     }
   },
 
@@ -318,6 +325,7 @@ export default {
 
     clearSearch() {
       this.searchTerm = ''
+      this.$router.push({ query: null })
     },
 
     // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))

@@ -3,7 +3,7 @@
 
     <div class="columns is-mobile" style="margin-bottom:0">
       <div class="column">
-        <a @click="toggleActive">
+        <a href="#" @click.prevent="toggleActive">
           <h3 class="title">
             {{ name }}
           </h3>
@@ -23,7 +23,8 @@
 
 
     <transition name="fade-grow">
-      <div v-show="isActive" :style="{'transition-duration': `${transitionDuration}ms`}">
+      <!-- TODO: fix double flash -->
+      <div v-if="isActive" :style="{'transition-duration': `${transitionDuration}ms`}">
         <slot />
       </div>
     </transition>

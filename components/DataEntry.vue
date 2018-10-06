@@ -96,6 +96,21 @@ export default {
     }
   },
 
+  mounted() {
+    const itemLinks = this.$el.querySelectorAll('a[href*="/magic-items?name="]')
+
+    itemLinks.forEach(link => {
+      link.addEventListener('click', evt => {
+        evt.preventDefault()
+
+        this.$router.push({
+          path: link.pathname,
+          query: { name: new URLSearchParams(link.search).get('name') }
+        })
+      })
+    })
+  },
+
   methods: {
     formatEntry(str) {
       const inlineTitle = /^(([a-zA-Z]*\s*){0,3}\.)(?=.+)/g
