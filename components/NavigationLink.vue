@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="to"
-    :class="{'active': $route.path === to}"
+    :class="{'active': $route.path.includes(to)}"
     class="navigation-link is-sans-serif is-size-7"
   >
     <img
