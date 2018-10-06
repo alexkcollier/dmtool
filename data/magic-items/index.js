@@ -1,27 +1,25 @@
 import custom from './custom'
 import { excludeTypes } from './exclude-types'
-import { item } from './items.json'
-// import { variant } from './magicvariants.json'
-
-/**
- *  Handling `./magicvariants.json` is a nightmare. Lots to merge/dedupe
- *  Many are already handled in `./magic-items.json`. Options are:
- *
- *  - dedupe `magic-items` with `item`
- *  - merge `magicvariants` and dedupe `item`
- *  - ignore `magicvariants`
- */
+import { item, itemGroup } from './items.json'
+import { variant } from './magicvariants.json'
 
 // merge all items
-const itemsToParse = [...item]
+// TODO: should parsedVariants be merged here, then parsed?
+const itemsToParse = [...item, ...itemGroup]
 
-// format data
+// format items
 const parsedItems = itemsToParse.reduce((acc, item) => {
   // exclude mundane items
   if (item.type && excludeTypes.includes(item.type.toLowerCase())) return acc
 
   // remove extra rarity
   if (item.rarity === 'Unknown (Magic)') item.rarity = 'Unknown'
+
+  // armor of resistance should be in `./magicvariants.json` , but isn't
+  if (item.name.toLowerCase() === 'armor of resistance') {
+    item.type = 'Armor'
+    item.subtype = 'light, medium, or heavy'
+  }
 
   // items with no type
   if (!item.type && item.technology) item.type = item.technology
@@ -100,4 +98,132 @@ const parsedItems = itemsToParse.reduce((acc, item) => {
   return acc
 }, [])
 
-export default [...custom, ...parsedItems]
+// format variants
+const parsedVariants = variant
+  // remove nonsense items
+  .filter(v => !v.name.match(/Weapon \(no damage\)/) && v.name !== 'Armblade')
+  .reduce((acc, variant) => {
+    // prepare objects for flattening
+    const { entries: entriesVariant, inherits, ...remainingVariant } = variant
+    const { entries: entriesInherit, ...remainingInherits } = inherits
+
+    // use the same format as `./items.json`
+    // flatten `variant.inherits` with `variant`
+    const variantItem = {
+      ...remainingVariant,
+      ...remainingInherits,
+      entries: entriesVariant || entriesInherit
+    }
+
+    // Parse variant item types
+    variantItem.requires.forEach((obj, idx) => {
+      if (obj.ammunition) {
+        variantItem.type = 'Weapon'
+        variantItem.subtype = 'any ammunition'
+      }
+
+      if (obj.weapon) {
+        variantItem.type = 'Weapon'
+        variantItem.subtype = 'any weapon'
+      }
+
+      if (obj.armor) {
+        variantItem.type = 'Armor'
+        variantItem.subtype = 'light, medium, or heavy'
+      }
+
+      if (obj.type === 'HA') {
+        variantItem.type = 'armor'
+        variantItem.subtype = 'heavy'
+      }
+
+      if (obj.type === 'MA') {
+        variantItem.type = 'armor'
+        variantItem.subtype = 'Medium'
+      }
+
+      if (obj.type === 'LA') {
+        variantItem.type = 'armor'
+        variantItem.subtype = 'light'
+      }
+
+      if (obj.type === 'SCF') variantItem.type = 'Wondrous item'
+      if (obj.type === 'S') variantItem.type = 'Shield'
+
+      // This is where things get really brittle
+      // TODO: make this less specific
+      if (obj.axe) {
+        variantItem.type = 'Weapon'
+        variantItem.subtype = 'any axe'
+      }
+
+      if (obj.sword) {
+        variantItem.type = 'Weapon'
+        variantItem.subtype = 'any sword'
+      }
+
+      if (obj.sword && obj.dmgType) {
+        const parsedDamage = obj.dmgType.replace('S', 'slashing')
+        variantItem.subtype = `any sword that deals ${parsedDamage} damage`
+      }
+
+      // complex item subtypes
+      if (variantItem.requires.length > 1) {
+        const reachedEndOfRequires = idx + 1 === variantItem.requires.length
+
+        if (!Array.isArray(variantItem.subtype)) variantItem.subtype = []
+
+        // Axe or sword
+        // TODO: make this less specific
+        if (obj.sword || obj.axe) {
+          // only add weapon keys
+          variantItem.subtype.push(
+            ...Object.keys(obj).filter(k => k !== 'dmgType')
+          )
+
+          if (reachedEndOfRequires) {
+            variantItem.type = 'Weapon'
+            // TODO: improve join (e.g.: [el1, el2, el3] => el1, el2, or el3)
+            variantItem.subtype = `any ${variantItem.subtype
+              .sort()
+              .join(' or ')}`
+          }
+        }
+
+        // Armor variants
+        // TODO: make this less specific
+        if (obj.type) {
+          variantItem.subtype.push(obj.type)
+
+          if (reachedEndOfRequires) {
+            // make armor types readable
+            const parsed = variantItem.subtype.map(t => {
+              return t
+                .replace(/ha/i, 'heavy')
+                .replace(/ma/i, 'medium')
+                .replace(/la/i, 'light')
+            })
+
+            // TODO: improve join (e.g.: [el1, el2, el3] => el1, el2, or el3)
+            const subtype = `${parsed.join(' or ')}`
+
+            variantItem.subtype = variantItem.excludes
+              ? `${subtype}, but not ${Object.values(variantItem.excludes)
+                  // TODO: improve join (e.g.: [el1, el2, el3] => el1, el2, or el3)
+                  .join(' or ')
+                  .toLowerCase()
+                  .replace(' armor', '')}`
+              : subtype
+
+            variantItem.type = 'Armor'
+          }
+        }
+      }
+    })
+
+    acc.push(variantItem)
+
+    return acc
+  }, [])
+
+export default [...custom, ...parsedItems, ...parsedVariants]
