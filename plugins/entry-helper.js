@@ -85,13 +85,18 @@ export const regExps = {
 }
 
 export function setHtml(str) {
-  try {
-    const format = r => (str = str.replace(regExps[r].find, regExps[r].html))
-    Object.keys(regExps).map(format)
-    return str
-  } catch (e) {
-    console.log(str)
+  if (typeof str === 'object') {
+    console.error(str)
+    throw new Error('Did not expect `Object`')
   }
+
+  let newStr = str
+
+  if (typeof newStr === 'string') {
+    Object.values(regExps).map(v => (newStr = newStr.replace(v.find, v.html)))
+  }
+
+  return newStr
 }
 
 const entryHelper = {
