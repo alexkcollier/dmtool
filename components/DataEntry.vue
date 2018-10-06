@@ -99,7 +99,7 @@ export default {
   mounted() {
     this.$el
       .querySelectorAll('a[href*="/magic-items?name="]')
-      .forEach(link => link.addEventListener('click', this.lookupItemFromHref))
+      .forEach(link => link.addEventListener('click', this.lookupFromHref))
   },
 
   methods: {
@@ -113,11 +113,23 @@ export default {
         .replace(inlineTitle, `<strong><i>$1</i></strong>`)
     },
 
-    lookupItemFromHref(event) {
+    lookupFromHref(event) {
       event.preventDefault()
-      const itemName = new URLSearchParams(event.target.search).get('name')
+      const path = new URLSearchParams(event.target.search).get('name')
+      const filters = this.$store.state['magic-items'].filters
 
-      this.$store.commit('magic-items/UPDATE_SEARCH_STRING', itemName)
+      // reset the filters
+      Object.values(filters).forEach(filter => {
+        filters[filter].forEach((f, optionIndex) => {
+          const payload = { filter, optionIndex, value: true }
+          this.$store.commit('magic-items/UPDATE_FILTER', payload)
+        })
+      })
+
+      // search for the clicked item
+      this.$store.commit('magic-items/UPDATE_SEARCH_STRING', path)
+
+      // go to /magic-items
       this.$router.push({ path: event.target.pathname })
     }
   }
