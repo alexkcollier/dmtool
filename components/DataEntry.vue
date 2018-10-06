@@ -97,18 +97,9 @@ export default {
   },
 
   mounted() {
-    const itemLinks = this.$el.querySelectorAll('a[href*="/magic-items?name="]')
-
-    itemLinks.forEach(link => {
-      link.addEventListener('click', evt => {
-        evt.preventDefault()
-
-        this.$router.push({
-          path: link.pathname,
-          query: { name: new URLSearchParams(link.search).get('name') }
-        })
-      })
-    })
+    this.$el
+      .querySelectorAll('a[href*="/magic-items?name="]')
+      .forEach(link => link.addEventListener('click', this.lookupItemFromHref))
   },
 
   methods: {
@@ -120,6 +111,14 @@ export default {
       return this.$entryHelper
         .setHtml(str)
         .replace(inlineTitle, `<strong><i>$1</i></strong>`)
+    },
+
+    lookupItemFromHref(event) {
+      event.preventDefault()
+      const itemName = new URLSearchParams(event.target.search).get('name')
+
+      this.$store.commit('magic-items/UPDATE_SEARCH_STRING', itemName)
+      this.$router.push({ path: event.target.pathname })
     }
   }
 }
