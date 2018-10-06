@@ -1,13 +1,7 @@
 import custom from './custom'
 import { excludeTypes } from './exclude-types'
 import { item } from './items.json'
-import {
-  lookup,
-  martialMelee,
-  martialRanged,
-  simpleMelee,
-  simpleRanged
-} from './weapon-lookup'
+// import { variant } from './magicvariants.json'
 
 /**
  *  Handling `./magicvariants.json` is a nightmare. Lots to merge/dedupe
@@ -26,70 +20,48 @@ const parsedItems = itemsToParse.reduce((acc, item) => {
   // exclude mundane items
   if (item.type && excludeTypes.includes(item.type.toLowerCase())) return acc
 
-  // dedupe
+  // remove extra rarity
   if (item.rarity === 'Unknown (Magic)') item.rarity = 'Unknown'
 
   // items with no type
-  if (!item.type) {
-    if (item.technology) item.type = item.technology
-    if (item.wondrous) item.type = 'Wondrous item'
+  if (!item.type && item.technology) item.type = item.technology
+  if (!item.type && item.wondrous) item.type = 'Wondrous item'
+
+  // handle weapons (Ammunition, Ranged, Melee)
+  if (['A', 'R', 'M'].includes(item.type)) {
+    item.type = 'Weapon'
+    if (item.baseItem) item.subtype = item.baseItem.split('|').shift()
   }
 
-  // handle weapons
-  if (['A', 'R', 'M'].includes(item.type)) {
+  // handle armor
+  if (item.armor) {
     switch (item.type) {
-      case 'R':
-        if (item.weaponCategory === 'Simple') {
-          simpleRanged.forEach(wp => {
-            item.subtype =
-              lookup(item) === wp.searchString
-                ? wp.subtype
-                : 'simple ranged weapon'
-          })
-        } else if (item.weaponCategory === 'Martial') {
-          martialRanged.forEach(wp => {
-            item.subtype =
-              lookup(item) === wp.searchString
-                ? wp.subtype
-                : 'martial ranged weapon'
-          })
-        } else {
-          item.subtype = 'ranged weapon'
-        }
+      case 'LA':
+        // eslint-disable-next-line eqeqeq
+        if (item.ac === 11 && item.weight == 8) item.subtype = 'Padded'
+        // eslint-disable-next-line eqeqeq
+        if (item.ac === 11 && item.weight == 10) item.subtype = 'Leather'
+        if (item.ac === 12) item.subtype = 'Studded leather'
         break
 
-      case 'M':
-        if (item.weaponCategory === 'Simple') {
-          simpleMelee.forEach(wp => {
-            item.subtype =
-              lookup(item) === wp.searchString
-                ? wp.subtype
-                : 'simple melee weapon'
-          })
-        } else if (item.weaponCategory === 'Martial') {
-          martialMelee.forEach(wp => {
-            item.subtype =
-              lookup(item) === wp.searchString
-                ? wp.subtype
-                : 'martial melee weapon'
-          })
-        } else {
-          item.subtype = 'melee weapon'
-        }
+      case 'MA':
+        if (item.ac === 12) item.subtype = 'Hide'
+        if (item.ac === 13) item.subtype = 'Chain shirt'
+        // eslint-disable-next-line eqeqeq
+        if (item.ac === 14 && item.weight == 45) item.subtype = 'Scale mail'
+        // eslint-disable-next-line eqeqeq
+        if (item.ac === 14 && item.weight == 20) item.subtype = 'Breastplate'
+        if (item.ac === 15) item.subtype = 'Half plate'
         break
 
-      case 'A':
-        item.subtype = 'ammunition'
+      case 'HA':
+        if (item.ac === 14) item.subtype = 'Ring mail'
+        if (item.ac === 16) item.subtype = 'Chain mail'
+        if (item.ac === 17) item.subtype = 'Splint'
+        if (item.ac === 18) item.subtype = 'Plate'
         break
     }
 
-    item.type = 'Weapon'
-  }
-
-  // handle armor naively
-  // TODO: handle completely
-  if (item.armor) {
-    item.subtype = item.type
     item.type = 'Armor'
   }
 
