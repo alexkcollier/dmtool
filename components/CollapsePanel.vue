@@ -99,7 +99,10 @@ export default {
     },
 
     scrollToEl() {
-      const offset = -27
+      const isDesktop = window.innerWidth > 1023
+      const navHeight = document.querySelector('.navigation').clientHeight
+      const searchHeight = document.querySelector('#search-box').clientHeight
+      const offset = -1 * (isDesktop ? navHeight : searchHeight)
       const easing = 'ease-in-out'
       this.$scrollTo(`#${this.activeEl}`, 500, { offset, easing })
     }

@@ -5,7 +5,8 @@
 
       <div class="control is-expanded">
         <b-input
-          v-model="searchTerm" 
+          id="search-box" 
+          v-model="searchTerm"
           :class="{'is-danger': !queryResult.length }"
           :placeholder="placeholder"
           icon="magnify"
