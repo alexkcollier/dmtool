@@ -31,7 +31,7 @@
       <div class="card-header">
 
         <!-- Filter collapse control-->
-        <a class="card-header-title" href="#" @click="toggleFilterView">
+        <a class="card-header-title" href="#" @click.prevent="toggleFilterView">
           <b-icon
             icon="filter"
             size="is-small"
@@ -70,7 +70,7 @@
               :class="{'is-active': filter === visibleFilter}"
               class="card-footer-item is-capitalized"
               href="#"
-              @click="visibleFilter = filter"
+              @click.prevent="visibleFilter = filter"
             >
               {{ filter | formatFilterOptionName }}
             </a>
