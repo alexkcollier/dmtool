@@ -12,9 +12,9 @@
             {{ info }}
           </h6>
 
-          <p v-if="source" class="is-italic">
+          <h6 v-if="source" class="subtitle is-italic">
             {{ source }}
-          </p>
+          </h6>
         </a>
       </div>
 

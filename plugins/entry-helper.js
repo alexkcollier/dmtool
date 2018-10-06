@@ -60,7 +60,7 @@ export const regExps = {
   },
   item: {
     find: /{@item\s(.*?)(\|(.*?))?(\|.*?)?}/g,
-    html: `<a href="/magic-items?name=$1">$1</a>`
+    html: '<a href="/magic-items?name=$1" class="link">$1</a>'
   },
   label: {
     find: /^((\w+\s*){0,3}:)/g,
