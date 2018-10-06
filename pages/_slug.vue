@@ -106,6 +106,7 @@ export default {
       const { default: activeData } = await import(`~/data/${params.slug}`)
       return { activeData }
     } catch (e) {
+      console.error(e)
       error({ statusCode: 404, message: 'This page could not be found' })
     }
   },
