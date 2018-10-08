@@ -119,7 +119,7 @@ export default {
       const filters = this.$store.state['magic-items'].filters
 
       // reset the filters
-      Object.values(filters).forEach(filter => {
+      Object.keys(filters).forEach(filter => {
         filters[filter].forEach((f, optionIndex) => {
           const payload = { filter, optionIndex, value: true }
           this.$store.commit('magic-items/UPDATE_FILTER', payload)
