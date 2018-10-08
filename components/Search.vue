@@ -146,6 +146,7 @@
 <script>
 import { debounce, sortBy, throttle } from 'lodash'
 import { mapActions } from 'vuex'
+import Fuse from 'fuse.js'
 
 export default {
   name: 'Search',
@@ -329,13 +330,9 @@ export default {
       this.$router.push({ query: null })
     },
 
-    // TODO: increase fuzziness of search (i.e.: includes(['search', 'Term']) rather than includes('searchTerm'))
     query() {
       this.clearActiveEl()
-      this.queryResult = sortBy(
-        this.searchAndFilter(this.model),
-        this.searchField
-      )
+      this.queryResult = this.searchAndFilter(this.model)
       this.$emit('update-data', this.updateDataPayload)
     },
 
@@ -344,7 +341,23 @@ export default {
     }, 300),
 
     searchAndFilter(arr) {
-      return arr.filter(el => this.includesTerm(el) && this.passesFilters(el))
+      const options = {
+        shouldSort: true,
+        threshold: 0.3,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 256,
+        minMatchCharLength: 0,
+        keys: [this.searchField]
+      }
+
+      // fuzzy search
+      const fuse = new Fuse(arr, options)
+      const result = this.cleanSearchTerm
+        ? fuse.search(this.cleanSearchTerm)
+        : sortBy(arr, this.searchField)
+
+      return result.filter(el => this.passesFilters(el))
     },
 
     includesTerm(el) {
