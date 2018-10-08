@@ -21,9 +21,7 @@
       <slot name="col2" />
     </div>
 
-
     <transition name="fade-grow">
-      <!-- TODO: fix double flash -->
       <div v-if="isActive" :style="{'transition-duration': `${transitionDuration}ms`}">
         <slot />
       </div>
