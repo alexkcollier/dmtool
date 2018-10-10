@@ -340,24 +340,30 @@ export default {
       this.query()
     }, 300),
 
-    searchAndFilter(arr) {
+    searchAndFilter(arr, pattern = this.cleanSearchTerm) {
+      const { searchField, passesFilters, includesTerm } = this
+
       const options = {
         shouldSort: true,
-        threshold: 0.3,
+        threshold: 0.25,
         location: 0,
         distance: 100,
-        maxPatternLength: 256,
-        minMatchCharLength: 0,
-        keys: [this.searchField]
+        tokenize: true,
+        matchAllTokens: true,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [searchField]
       }
 
-      // fuzzy search
-      const fuse = new Fuse(arr, options)
-      const result = this.cleanSearchTerm
-        ? fuse.search(this.cleanSearchTerm)
-        : sortBy(arr, this.searchField)
+      const idx = new Fuse(arr, options)
 
-      return result.filter(el => this.passesFilters(el))
+      // fuzzy search
+      const res =
+        pattern && pattern.length < options.maxPatternLength
+          ? idx.search(pattern)
+          : sortBy(arr, searchField).filter(includesTerm)
+
+      return res.filter(passesFilters)
     },
 
     includesTerm(el) {
