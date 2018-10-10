@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
+    "corp-release": "corp-semantic-release",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
@@ -16,6 +17,7 @@
   "dependencies": {
     "@nuxtjs/pwa": "^2.5.0",
     "buefy": "^0.6.7",
+    "corp-semantic-release": "^6.4.0",
     "fuse.js": "^3.2.1",
     "lodash.isequal": "^4.5.0",
     "nuxt": "^2.0.0",
