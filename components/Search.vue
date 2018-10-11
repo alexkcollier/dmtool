@@ -7,6 +7,7 @@
         <b-input
           id="search-box" 
           v-model="searchTerm"
+          autocomplete="off"
           :class="{'is-danger': !queryResult.length }"
           :placeholder="placeholder"
           icon="magnify"
