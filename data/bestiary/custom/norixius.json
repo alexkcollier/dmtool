@@ -2,7 +2,7 @@
   "name": "Norixius, the Nightscale",
   "size": "L",
   "type": "dragon",
-  "source": "MM",
+  "source": "Custom",
   "alignment": ["C", "E"],
   "ac": [
     {
@@ -54,21 +54,25 @@
     },
     {
       "name": "Shadow Stealth",
-      "entries": ["While in dim light or darkness, Norixius can take the Hide action as a bonus action."]
+      "entries": [
+        "While in dim light or darkness, Norixius can take the Hide action as a bonus action."
+      ]
     },
     {
       "name": "Shadow Step",
-      "entries": ["While in dim light or darkness, as a bonus action the dragon can teleport up to 60 feet to an unoccupied space it can see that is also in dim light or darkness."]
+      "entries": [
+        "While in dim light or darkness, as a bonus action the dragon can teleport up to 60 feet to an unoccupied space it can see that is also in dim light or darkness."
+      ]
     },
     {
       "name": "Sunlight Sensitivity",
-      "entries": ["While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."]
+      "entries": [
+        "While in sunlight, the dragon has disadvantage on attack rolls, as well as on Wisdom (Perception) checks that rely on sight."
+      ]
     },
     {
       "name": "Legendary Resistance (3/Day)",
-      "entries": [
-        "If Norixius fails a saving throw, it can choose to succeed instead."
-      ]
+      "entries": ["If Norixius fails a saving throw, it can choose to succeed instead."]
     }
   ],
   "action": [
