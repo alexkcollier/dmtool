@@ -1,3 +1,18 @@
+<a name="2.8.0"></a>
+# [2.8.0](https://github.com/alexkcollier/dmtool/compare/v2.7.2...v2.8.0) (2018-10-15)
+
+
+### Bug Fixes
+
+* **bestiary:** fixes Norixius' source ([209e9bf](https://github.com/alexkcollier/dmtool/commit/209e9bf))
+
+
+### Features
+
+* **bestiary:** adds pale orcs ([1eaba20](https://github.com/alexkcollier/dmtool/commit/1eaba20))
+
+
+
 <a name="2.7.2"></a>
 ## [2.7.2](https://github.com/alexkcollier/dmtool/compare/v2.7.1...v2.7.2) (2018-10-12)
 
