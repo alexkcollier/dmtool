@@ -1,3 +1,13 @@
+<a name="2.8.1"></a>
+## [2.8.1](https://github.com/alexkcollier/dmtool/compare/v2.8.0...v2.8.1) (2018-10-16)
+
+
+### Bug Fixes
+
+* **bestiary:** fixes typos ([31d8319](https://github.com/alexkcollier/dmtool/commit/31d8319))
+
+
+
 <a name="2.8.0"></a>
 # [2.8.0](https://github.com/alexkcollier/dmtool/compare/v2.7.2...v2.8.0) (2018-10-15)
 
