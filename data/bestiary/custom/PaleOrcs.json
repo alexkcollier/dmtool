@@ -163,7 +163,7 @@
       {
         "name": "Unarmored Defense",
         "entries": [
-          "While The pale orc is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
+          "While the pale orc is wearing no armor and wielding no shield, its AC includes its Wisdom modifier."
         ]
       }
     ],
@@ -257,7 +257,7 @@
       "medicine": "+4",
       "survival": "+4"
     },
-    "senses": "darkvision 60 ft.",
+    "senses": "blindsight 60 ft.",
     "passive": 12,
     "languages": "Undercommon, Orc",
     "cr": "2",
