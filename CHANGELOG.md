@@ -1,3 +1,13 @@
+<a name="2.9.0"></a>
+# [2.9.0](https://github.com/alexkcollier/dmtool/compare/v2.8.1...v2.9.0) (2018-10-16)
+
+
+### Features
+
+* **spells:** adds _conjure lightning_ ([4a26e37](https://github.com/alexkcollier/dmtool/commit/4a26e37))
+
+
+
 <a name="2.8.1"></a>
 ## [2.8.1](https://github.com/alexkcollier/dmtool/compare/v2.8.0...v2.8.1) (2018-10-16)
 
