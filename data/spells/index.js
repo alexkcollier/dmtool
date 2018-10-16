@@ -1,8 +1,14 @@
 import PHB from './spells-phb.json'
 import SCAG from './spells-scag.json'
 import XGE from './spells-xge.json'
+import custom from './custom'
 
-const sources = { PHB, SCAG, XGE }
+const spellSources = {
+  PHB,
+  SCAG,
+  XGE,
+  custom
+}
 
 const schoolMap = {
   A: 'Abjuration',
@@ -15,16 +21,17 @@ const schoolMap = {
   V: 'Evocation'
 }
 
-const spells = Object.values(sources).reduce(reduceToSpells, [])
+const spells = Object.values(spellSources).reduce(spellReducer, [])
 
-function reduceToSpells(a, c) {
-  return a.concat(c.spell.map(setSpell))
+function spellReducer(accumulatedSpells, { spell }) {
+  return accumulatedSpells.concat(spell.map(parseSpellMeta))
 }
 
-function setSpell(spell) {
-  if (spell.level === 0) spell.level = 'Cantrip'
-  spell.school = schoolMap[spell.school]
-  return spell
+function parseSpellMeta(spellData) {
+  const { school } = spellData
+  if (spellData.level === 0) spellData.level = 'Cantrip'
+  if (schoolMap.hasOwnProperty(school)) spellData.school = schoolMap[school]
+  return spellData
 }
 
 export default spells
