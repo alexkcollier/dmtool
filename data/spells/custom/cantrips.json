@@ -1,0 +1,52 @@
+{
+  "spell": [
+    {
+      "name": "Conjure Lightning",
+      "level": 0,
+      "school": "C",
+      "time": [
+        {
+          "number": 1,
+          "unit": "action"
+        }
+      ],
+      "range": {
+        "type": "point",
+        "distance": {
+          "type": "self"
+        }
+      },
+      "components": {
+        "v": true,
+        "s": true
+      },
+      "duration": [
+        {
+          "type": "timed",
+          "duration": {
+            "type": "minute",
+            "amount": 10
+          }
+        }
+      ],
+      "classes": {
+        "fromClassList": [
+          {
+            "name": "Sorcerer",
+            "source": "Custom"
+          },
+          {
+            "name": "Druid",
+            "source": "Custom"
+          }
+        ]
+      },
+      "source": "Custom",
+      "entries": [
+        "A crackling ball of lightning appears in your hand. The ball of lightning remains there for the duration and harms neither you nor your equipment. The lightning sheds bright light in a 5-foot radius and dim light for an additional 10 feet. The spell ends if you dismiss it as an action or if you cast it again.",
+        "You can also attack with the ball of lightning, although doing so ends the spell. When you cast this spell, or as an action on a later turn, you can hurl the ball of lightning at a creature within 30 feet of you. Make a ranged spell attack. On hit, the target takes 1d6 lightning damage. Each creature within 5 ft. of it must succeed on a Dexterity saving throw or take half damage.",
+        "This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6)."
+      ]
+    }
+  ]
+}
