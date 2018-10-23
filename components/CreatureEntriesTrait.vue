@@ -58,13 +58,9 @@ export default {
 
   methods: {
     // Super sketchy hack. Definitely won't break in the future.
-    inlineEntryHack(entry) {
-      const toSet =
-        entry.entries[0] +
-        entry.entries[1].text +
-        ' (DMG p.\xa0260) ' +
-        entry.entries[2]
-      return this.$entryHelper.setHtml(toSet)
+    inlineEntryHack({ entries }) {
+      const text = `${entries[0]} ${entries[1].text} (DMG p.\xa0260) ${entries[2]}`
+      return this.$entryHelper.setHtml(text)
     }
   }
 }

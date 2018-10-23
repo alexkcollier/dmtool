@@ -74,13 +74,7 @@ export default {
     },
 
     spellDuration() {
-      const {
-        type,
-        concentration,
-        condition,
-        duration,
-        ends
-      } = this.model.duration[0]
+      const { type, concentration, condition, duration, ends } = this.model.duration[0]
 
       switch (type) {
         case 'timed':

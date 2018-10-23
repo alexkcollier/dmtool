@@ -58,8 +58,7 @@ export default {
 
   methods: {
     creatureIndex({ name: n, source: s }) {
-      const i =
-        this.encounter.findIndex(c => c.name === n && c.source === s) + 1
+      const i = this.encounter.findIndex(c => c.name === n && c.source === s) + 1
       return `creature-${i}`
     },
 

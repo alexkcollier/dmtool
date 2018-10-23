@@ -82,16 +82,12 @@ const transformedVariants = variant
         // TODO: make this less specific
         if (obj.sword || obj.axe) {
           // only add weapon keys
-          variantItem.subtype.push(
-            ...Object.keys(obj).filter(k => k !== 'dmgType')
-          )
+          variantItem.subtype.push(...Object.keys(obj).filter(k => k !== 'dmgType'))
 
           if (reachedEndOfRequires) {
             variantItem.type = 'Weapon'
             // TODO: improve join (e.g.: [el1, el2, el3] => el1, el2, or el3)
-            variantItem.subtype = `any ${variantItem.subtype
-              .sort()
-              .join(' or ')}`
+            variantItem.subtype = `any ${variantItem.subtype.sort().join(' or ')}`
           }
         }
 

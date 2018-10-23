@@ -22,7 +22,8 @@ module.exports = {
       'error',
       {
         semi: false,
-        singleQuote: true
+        singleQuote: true,
+        printWidth: 100
       }
     ],
     'vue/max-attributes-per-line': [
