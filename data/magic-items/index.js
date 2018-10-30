@@ -38,17 +38,17 @@ const transformedVariants = variant
       }
 
       if (obj.type === 'HA') {
-        variantItem.type = 'armor'
+        variantItem.type = 'Armor'
         variantItem.subtype = 'heavy'
       }
 
       if (obj.type === 'MA') {
-        variantItem.type = 'armor'
+        variantItem.type = 'Armor'
         variantItem.subtype = 'Medium'
       }
 
       if (obj.type === 'LA') {
-        variantItem.type = 'armor'
+        variantItem.type = 'Armor'
         variantItem.subtype = 'light'
       }
 
@@ -196,7 +196,7 @@ const parsedItems = itemsToParse.reduce((acc, item) => {
       item.type = 'Eldritch machine'
       break
     case 'OTH':
-      item.type = 'Other'
+      item.type = 'Wondrous item'
       break
     case 'P':
       item.type = 'Potion'
