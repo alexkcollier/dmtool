@@ -108,9 +108,7 @@ export default {
 
       if (str.roll) str = str.exact || `${str.roll.min}-${str.roll.max}`
 
-      return this.$entryHelper
-        .setHtml(str)
-        .replace(inlineTitle, `<strong><i>$1</i></strong>`)
+      return this.$entryHelper.setHtml(str).replace(inlineTitle, `<strong><i>$1</i></strong>`)
     },
 
     lookupFromHref(event) {
@@ -144,9 +142,8 @@ div:not(:last-child) {
 li /deep/ .link {
   color: darken(#337ab7, 5%);
   display: block;
-  font-family: 'ff-scala-sans-pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-    Arial, sans-serif;
+  font-family: 'ff-scala-sans-pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   padding: 0.25em 0;
 
   &:hover {

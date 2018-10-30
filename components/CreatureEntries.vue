@@ -277,9 +277,7 @@ export default {
     },
 
     encounterIncludesCreature() {
-      return this.encounterCreatures.includes(
-        `${this.model.name} - ${this.model.source}`
-      )
+      return this.encounterCreatures.includes(`${this.model.name} - ${this.model.source}`)
     },
 
     hp() {
@@ -364,9 +362,7 @@ export default {
 
           const toJoin = it[type].map(item => flatten(item, true))
 
-          stack += depth
-            ? toJoin.join(depth ? '; ' : ', ')
-            : this.conjunctWith(toJoin, 'and')
+          stack += depth ? toJoin.join(depth ? '; ' : ', ') : this.conjunctWith(toJoin, 'and')
 
           stack += it.note ? ` ${it.note}` : ''
 
