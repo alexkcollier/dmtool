@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Dluur",
+    "size": "M",
+    "type": "aberration",
+    "source": "3P-BBH",
+    "alignment": ["N", "E"],
+    "ac": "13",
+    "hp": {
+      "average": 49,
+      "formula": "9d8 + 9"
+    },
+    "speed": {
+      "walk": 30,
+      "swim": 30
+    },
+    "str": 12,
+    "dex": 17,
+    "con": 13,
+    "int": 5,
+    "wis": 10,
+    "cha": 6,
+    "skill": {
+      "perception": "+2",
+      "stealth": "+5"
+    },
+    "vulnerable": ["lightning"],
+    "immune": ["acid"],
+    "senses": "darkvision 60 ft.",
+    "passive": 12,
+    "languages": "understands Deep Speech but can't speek",
+    "cr": "2",
+    "trait": [
+      {
+        "name": "Amphibious",
+        "entries": ["The dluur can breathe air and water."]
+      },
+      {
+        "name": "False Appearance",
+        "entries": [
+          "While the dluur remains motionless in water under the surface, it is indistinguishable from a normal patch of lure weed."
+        ]
+      },
+      {
+        "name": "Lure",
+        "entries": [
+          "If a creature starts its turn within 60 feet of the dluur and can see the dluur’s illicium, the dluur can force the creature to make a DC 13 Wisdom saving throw if the dluur isn't incapacitated. On a failed save, the creature becomes charmed until the end of its next turn. While charmed, the creature must immediately use its reaction, if available, to move as close as its speed allows toward the dluur. The effect ends for an affected creature if it takes any damage or if someone else uses an action to shake the creature out of its stupor."
+        ]
+      }
+    ],
+    "action": [
+      {
+        "name": "Multiattack",
+        "entries": [
+          "The dluur makes two claws attacks. It can use Acid Spit in place of any melee attack."
+        ]
+      },
+      {
+        "name": "Claws",
+        "entries": [
+          "{@atk mw} {@hit 5} to hit, reach 5 ft., one target. Hit: 6 ({@dice 1d6+3}) slashing damage."
+        ]
+      },
+      {
+        "name": "Dart",
+        "entries": [
+          "{@atk rw} {@hit 5} to hit, range 90 ft., one target. Hit: 10 ({@dice 3d6}) acid damage. At the end of each of its turns, the target must make a DC 10 Constitution saving throw, taking 3 (1d6) acid damage on a failure or ending the recurring acid damage on a success. A lesser restoration spell cast on the target also ends the recurring acid damage."
+        ]
+      }
+    ],
+    "reactions": [
+      {
+        "name": "Psychic Assault",
+        "entries": [
+          "When a creature the dluur can see starts its turn charmed within 60 feet of the aberration, the dluur can attack its mind with psychic powers. The target must succeed on a DC 13 Wisdom saving throw or take 7 ({@dice 2d6}) psychic damage and be stunned until the end of its turn."
+        ]
+      }
+    ],
+    "actionTags": ["Multiattack"]
+  }
+]
