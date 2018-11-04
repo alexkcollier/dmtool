@@ -1,3 +1,19 @@
+<a name="2.10.0"></a>
+# [2.10.0](https://github.com/alexkcollier/dmtool/compare/v2.9.1...v2.10.0) (2018-11-04)
+
+
+### Bug Fixes
+
+* improves centering of button text ([362e9a5](https://github.com/alexkcollier/dmtool/commit/362e9a5))
+* **bestiary:** updates norixius' breath weapon ([068479b](https://github.com/alexkcollier/dmtool/commit/068479b))
+
+
+### Features
+
+* **bestiary:** adds dluur ([a356baf](https://github.com/alexkcollier/dmtool/commit/a356baf))
+
+
+
 <a name="2.9.1"></a>
 ## [2.9.1](https://github.com/alexkcollier/dmtool/compare/v2.9.0...v2.9.1) (2018-10-30)
 
