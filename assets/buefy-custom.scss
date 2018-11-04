@@ -84,12 +84,7 @@ h5,
   font-feature-settings: 'lnum';
 }
 
-// Fix button margins
-.button {
-  margin: 0.25em;
-  font-family: $family-sans-serif;
-  font-variant-caps: normal;
-}
+
 
 // Links
 $link: $primary;
@@ -163,4 +158,13 @@ $fade-time: 500ms;
 hr {
   background-color: darken($body-background-color, 5%);
   height: 1px;
+}
+
+.button {
+  font-family: $family-sans-serif;
+  font-variant-caps: normal;
+  // Fix button margins
+  margin: 0.25em;
+  // fix centering
+  padding-top: 0.4em;
 }
