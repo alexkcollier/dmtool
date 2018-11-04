@@ -1,3 +1,13 @@
+<a name="2.9.1"></a>
+## [2.9.1](https://github.com/alexkcollier/dmtool/compare/v2.9.0...v2.9.1) (2018-10-30)
+
+
+### Bug Fixes
+
+* fixes item filter labels ([f008986](https://github.com/alexkcollier/dmtool/commit/f008986))
+
+
+
 <a name="2.9.0"></a>
 # [2.9.0](https://github.com/alexkcollier/dmtool/compare/v2.8.1...v2.9.0) (2018-10-16)
 
