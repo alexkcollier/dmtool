@@ -109,7 +109,7 @@
     {
       "name": "Acid Breath {@recharge 5}",
       "entries": [
-        "Norixius exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw, taking 22 ({@dice 5d8}) acid damage and 22 ({@dice 5d8}) necrotic damage on a failed save, or half as much damage on a successful one."
+        "Norixius exhales acid in a 60-foot line that is 5 feet wide. Each creature in that line must make a DC 16 Dexterity saving throw, taking 44 ({@dice 10d8}) necrotic damage on a failed save, or half as much damage on a successful one. A humanoid reduced to 0 hit points by this damage dies, and an undead shadow rises from its corpse and acts immediately after the dragon in the initiative count. The shadow is under the dragon 's control."
       ]
     }
   ],
