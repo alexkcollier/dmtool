@@ -1,3 +1,13 @@
+<a name="2.12.0"></a>
+# [2.12.0](https://github.com/alexkcollier/dmtool/compare/v2.11.0...v2.12.0) (2018-11-07)
+
+
+### Features
+
+* **spells:** adds class lists to spells filter ([afaa7f0](https://github.com/alexkcollier/dmtool/commit/afaa7f0))
+
+
+
 <a name="2.11.0"></a>
 # [2.11.0](https://github.com/alexkcollier/dmtool/compare/v2.10.0...v2.11.0) (2018-11-07)
 
