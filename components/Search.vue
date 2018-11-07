@@ -5,7 +5,7 @@
 
       <div class="control is-expanded">
         <b-input
-          id="search-box" 
+          id="search-box"
           v-model="searchTerm"
           autocomplete="off"
           :class="{'is-danger': !queryResult.length }"
@@ -18,7 +18,7 @@
 
       <div class="control">
         <button
-          :disabled="!searchTerm" 
+          :disabled="!searchTerm"
           class="clear-button button is-primary"
           style="margin:0;"
           @click="clearSearch"
@@ -40,9 +40,9 @@
             style="margin-right:0.25rem;"
             type="is-dark"
           />
-          
+
           Filters
-          
+
           <b-icon
             :class="{'point-up': !collapseFilters}"
             icon="chevron-down"
@@ -63,7 +63,7 @@
       <!-- Filter options display -->
       <transition name="fade-grow">
         <div v-show="!collapseFilters">
-          
+
           <!-- Filter options select -->
           <div class="card-header">
             <a
@@ -80,7 +80,7 @@
 
           <!-- Filter options -->
           <!-- TODO: improve display -->
-          <div 
+          <div
             v-for="(filterOptions, filter) in filters"
             v-show="visibleFilter === filter"
             :key="filter"
@@ -107,7 +107,7 @@
                 </button>
               </div>
             </b-field>
-            
+
             <b-field grouped group-multiline>
               <div
                 v-for="(option, index) in filterOptions"
@@ -118,7 +118,7 @@
                 <b-switch :value="option.allowed" @input="filterResults(filter, index, $event)">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
-                
+
               </div>
             </b-field>
 
@@ -294,7 +294,15 @@ export default {
     },
 
     getUniqueValues(key) {
-      return [...new Set(this.model.map(el => el[key][key] || el[key]))]
+      // exception for classes
+      const isClass = key === 'class'
+      const values = this.model.reduce((acc, el) => {
+        if (isClass) return acc.concat(el.classes.fromClassList.map(cl => cl.name))
+
+        return acc.concat(el[key][key] || el[key])
+      }, [])
+
+      return [...new Set(values)]
     },
 
     sortFilterOptions(f, o) {
@@ -373,12 +381,12 @@ export default {
     },
 
     passesFilters(el) {
-      return Object.keys(this.filters).every(f =>
-        this.filters[f]
-          .filter(({ allowed }) => allowed)
-          .map(({ name }) => name)
-          .includes(el[f][f] || el[f])
-      )
+      return Object.keys(this.filters).every(f => {
+        const testArr = this.filters[f].reduce((a, o) => (o.allowed ? a.concat(o.name) : a), [])
+        // exception for classes
+        if (f === 'class') return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
+        return testArr.includes(el[f][f] || el[f])
+      })
     },
 
     handleScroll: throttle(function(event) {

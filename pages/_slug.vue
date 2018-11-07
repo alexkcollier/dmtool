@@ -8,7 +8,7 @@
       :search-type="searchType"
       @update-data="updateData"
     />
-        
+
     <template v-if="results.show">
       <component
         :is="activeComponent"
@@ -18,9 +18,9 @@
         :model="result"
       />
     </template>
-        
+
     <div v-else class="ampersand" />
-        
+
   </main>
 </template>
 
@@ -42,7 +42,7 @@ export default {
     return {
       results: {},
       filterFields: {
-        spells: ['level', 'school', 'source'],
+        spells: ['level', 'school', 'source', 'class'],
         'magic-items': ['rarity', 'type', 'source'],
         bestiary: ['cr', 'size', 'source', 'type']
       },
