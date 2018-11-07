@@ -1,3 +1,16 @@
+<a name="2.11.0"></a>
+# [2.11.0](https://github.com/alexkcollier/dmtool/compare/v2.10.0...v2.11.0) (2018-11-07)
+
+
+### Features
+
+* adds new regexps ([a9b435a](https://github.com/alexkcollier/dmtool/commit/a9b435a))
+* **bestiary:** updates data ([d62db5d](https://github.com/alexkcollier/dmtool/commit/d62db5d))
+* **magic-items:** updates magic items ([39caba7](https://github.com/alexkcollier/dmtool/commit/39caba7))
+* **spells:** updates spells ([a2766e1](https://github.com/alexkcollier/dmtool/commit/a2766e1))
+
+
+
 <a name="2.10.0"></a>
 # [2.10.0](https://github.com/alexkcollier/dmtool/compare/v2.9.1...v2.10.0) (2018-11-04)
 
