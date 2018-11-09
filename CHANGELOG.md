@@ -1,3 +1,13 @@
+<a name="2.12.1"></a>
+## [2.12.1](https://github.com/alexkcollier/dmtool/compare/v2.12.0...v2.12.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **entries:** displays exact rolls correctly ([80fb341](https://github.com/alexkcollier/dmtool/commit/80fb341))
+
+
+
 <a name="2.12.0"></a>
 # [2.12.0](https://github.com/alexkcollier/dmtool/compare/v2.11.0...v2.12.0) (2018-11-07)
 
