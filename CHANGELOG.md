@@ -1,3 +1,13 @@
+<a name="2.12.2"></a>
+## [2.12.2](https://github.com/alexkcollier/dmtool/compare/v2.12.1...v2.12.2) (2018-11-09)
+
+
+### Bug Fixes
+
+* **magic-items:** improves item exclusion ([9de7ea7](https://github.com/alexkcollier/dmtool/commit/9de7ea7))
+
+
+
 <a name="2.12.1"></a>
 ## [2.12.1](https://github.com/alexkcollier/dmtool/compare/v2.12.0...v2.12.1) (2018-11-09)
 
