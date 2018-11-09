@@ -133,7 +133,7 @@ const itemsToParse = [...item, ...itemGroup, ...transformedVariants]
 // format items
 const parsedItems = itemsToParse.reduce((acc, item) => {
   // exclude mundane items
-  if (item.type && excludeTypes.includes(item.type.toLowerCase())) return acc
+  if (item.type && excludeTypes.includes(item.type.toLowerCase()) && !item.wondrous) return acc
 
   // remove extra rarity
   if (item.rarity === 'Unknown (Magic)') item.rarity = 'Unknown'
