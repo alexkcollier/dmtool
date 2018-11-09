@@ -1,3 +1,13 @@
+<a name="2.12.3"></a>
+## [2.12.3](https://github.com/alexkcollier/dmtool/compare/v2.12.2...v2.12.3) (2018-11-09)
+
+
+### Bug Fixes
+
+* catches things i missed ([eb7eeba](https://github.com/alexkcollier/dmtool/commit/eb7eeba))
+
+
+
 <a name="2.12.2"></a>
 ## [2.12.2](https://github.com/alexkcollier/dmtool/compare/v2.12.1...v2.12.2) (2018-11-09)
 
