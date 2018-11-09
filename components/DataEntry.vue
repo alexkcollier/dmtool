@@ -106,7 +106,7 @@ export default {
     formatEntry(str) {
       const inlineTitle = /^(([a-zA-Z]*\s*){0,3}\.)(?=.+)/g
 
-      if (str.roll) str = str.exact || `${str.roll.min}-${str.roll.max}`
+      if (str.roll) str = str.roll.exact || `${str.roll.min}-${str.roll.max}`
 
       return this.$entryHelper.setHtml(str).replace(inlineTitle, `<strong><i>$1</i></strong>`)
     },
