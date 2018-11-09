@@ -146,7 +146,8 @@ const parsedItems = itemsToParse.reduce((acc, item) => {
 
   // items with no type
   if (!item.type && item.technology) item.type = item.technology
-  if (!item.type && item.wondrous) item.type = 'Wondrous item'
+
+  if (item.wondrous) item.type = 'Wondrous item'
 
   // handle weapons (Ammunition, Ranged, Melee)
   if (['A', 'R', 'M'].includes(item.type)) {

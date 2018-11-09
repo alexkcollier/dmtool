@@ -3,37 +3,37 @@
 
     <!-- Iterate item entries and set up entry types -->
     <template v-for="entry in model">
-      
+
       <!-- Paragraphs -->
-      <p 
+      <p
         v-if="!entry.type"
         :key="entry.index"
         v-html="formatEntry(entry)"
       />
-      
+
       <!-- Lists -->
-      <ul 
-        v-else-if="entry.type === 'list'" 
+      <ul
+        v-else-if="entry.type === 'list'"
         :key="entry.index"
       >
-        <li 
-          v-for="item in entry.items" 
-          :key="item.index" 
+        <li
+          v-for="item in entry.items"
+          :key="item.index"
           v-html="formatEntry(item)"
         />
       </ul>
 
       <!-- Tables -->
-      <table 
-        v-else-if="entry.type === 'table'" 
-        :key="entry.index" 
+      <table
+        v-else-if="entry.type === 'table'"
+        :key="entry.index"
         class="table"
       >
 
         <thead>
           <tr>
-            <th 
-              v-for="label in entry.colLabels" 
+            <th
+              v-for="label in entry.colLabels"
               :key="label.index"
               v-html="formatEntry(label)"
             />
@@ -41,13 +41,13 @@
         </thead>
 
         <tbody>
-          <tr 
-            v-for="row in entry.rows" 
+          <tr
+            v-for="row in entry.rows"
             :key="row.index"
           >
-            <td 
-              v-for="cell in row" 
-              :key="cell.index" 
+            <td
+              v-for="cell in row"
+              :key="cell.index"
               v-html="formatEntry(cell)"
             />
           </tr>
@@ -60,10 +60,10 @@
           <strong><i>{{ entry.name }}. </i></strong>
           <span v-html="formatEntry(entry.entries[0])" />
         </p>
-        
-        <data-entry 
+
+        <data-entry
           v-else
-          :key="entry.index" 
+          :key="entry.index"
           :model="entry.entries.slice(0, 1)"
         />
         <data-entry
@@ -97,16 +97,16 @@ export default {
   },
 
   mounted() {
-    this.$el
-      .querySelectorAll('a[href*="/magic-items?name="]')
-      .forEach(link => link.addEventListener('click', this.lookupFromHref))
+    // this.$el
+    //   .querySelectorAll('a[href*="/magic-items?name="]')
+    //   .forEach(link => link.addEventListener('click', this.lookupFromHref))
   },
 
   methods: {
     formatEntry(str) {
       const inlineTitle = /^(([a-zA-Z]*\s*){0,3}\.)(?=.+)/g
 
-      if (str.roll) str = str.roll.exact || `${str.roll.min}-${str.roll.max}`
+      if (str.roll) str = String(str.roll.exact) || `${str.roll.min}-${str.roll.max}`
 
       return this.$entryHelper.setHtml(str).replace(inlineTitle, `<strong><i>$1</i></strong>`)
     },
