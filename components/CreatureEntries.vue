@@ -228,7 +228,7 @@ export default {
 
     concatType() {
       const { type, tags, swarmSize } = this.model.type
-      if (tags) return `${type} (${tags.join(', ')})`
+      if (tags) return `${type} (${this.model.parsedTags.join(', ')})`
       if (swarmSize) return `swarm of ${this.parseSize(swarmSize)} ${type}s`
       return this.model.type
     },

@@ -44,7 +44,7 @@ export default {
       filterFields: {
         spells: ['level', 'school', 'source', 'class'],
         'magic-items': ['rarity', 'type', 'source'],
-        bestiary: ['cr', 'size', 'source', 'type']
+        bestiary: ['cr', 'size', 'source', 'type', 'tags']
       },
       filtersToSort: {
         'magic-items': ['rarity', 'source', 'type']

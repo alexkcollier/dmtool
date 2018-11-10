@@ -297,6 +297,7 @@ export default {
       // exception for classes
       const isClass = key === 'class'
       const values = this.model.reduce((acc, el) => {
+        if (!el.hasOwnProperty(key)) return acc
         if (isClass) return acc.concat(el.classes.fromClassList.map(cl => cl.name))
 
         return acc.concat(el[key][key] || el[key])
@@ -382,9 +383,13 @@ export default {
 
     passesFilters(el) {
       return Object.keys(this.filters).every(f => {
+        if (this.filters[f].every(o => o.allowed)) return true
+        if (!el.hasOwnProperty(f)) return false
+
         const testArr = this.filters[f].reduce((a, o) => (o.allowed ? a.concat(o.name) : a), [])
         // exception for classes
         if (f === 'class') return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
+        if (Array.isArray(el[f])) return el[f].every(val => testArr.includes(val))
         return testArr.includes(el[f][f] || el[f])
       })
     },
