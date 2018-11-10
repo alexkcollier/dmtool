@@ -23,6 +23,8 @@ import TftYP from './bestiary-tftyp.json'
 import ToA from './bestiary-toa.json'
 import UAWGE from './bestiary-uawge.json'
 import VGM from './bestiary-vgm.json'
+import WDH from './bestiary-wdh.json'
+import WDMM from './bestiary-wdmm.json'
 import XGE from './bestiary-xge.json'
 
 const sources = {
@@ -50,6 +52,8 @@ const sources = {
   ToA,
   UAWGE,
   VGM,
+  WDH,
+  WDMM,
   XGE
 }
 
@@ -80,7 +84,8 @@ const alignmentMap = {
   'lawful good': ['L', 'G']
 }
 
-const reduceToMonsters = (mstrs, src) => mstrs.concat(src.monster)
+// removes creatures with '_copy' and concat
+const reduceToMonsters = (mstrs, src) => mstrs.concat(src.monster.filter(m => !m['_copy']))
 let monsters = Object.values(sources).reduce(reduceToMonsters, [])
 
 function parseSizes() {
@@ -117,8 +122,28 @@ function setCleanAlignment(target) {
   return Object.keys(alignmentMap)[idx]
 }
 
+function parseTags() {
+  for (let creature of monsters) {
+    if (creature.type.tags) {
+      const tags = creature.type.tags
+      creature.tags = tags.map(t => {
+        if (t.tag) return t.tag
+
+        let tag = t.split(' ').pop()
+        if (creature.type.type.toLowerCase() !== tag.toLowerCase()) return tag
+
+        return 'None'
+      })
+      creature.parsedTags = tags.map(t => (typeof t === 'string' ? t : `${t.prefix} ${t.tag}`))
+    } else {
+      creature.tags = 'None'
+    }
+  }
+}
+
 parseSizes()
 parseAlignment()
+parseTags()
 
 export const bestiary = monsters
 
