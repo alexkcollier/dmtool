@@ -1,3 +1,15 @@
+<a name="2.13.0"></a>
+# [2.13.0](https://github.com/alexkcollier/dmtool/compare/v2.12.3...v2.13.0) (2018-11-10)
+
+
+### Features
+
+* **bestiary:** improves tag handling, and adds them to filtering ([1582166](https://github.com/alexkcollier/dmtool/commit/1582166))
+* **bestiary:** updates bestiary ([fa5e11e](https://github.com/alexkcollier/dmtool/commit/fa5e11e))
+* **magic-items:** updates items ([ce6d8b7](https://github.com/alexkcollier/dmtool/commit/ce6d8b7))
+
+
+
 <a name="2.12.3"></a>
 ## [2.12.3](https://github.com/alexkcollier/dmtool/compare/v2.12.2...v2.12.3) (2018-11-09)
 
