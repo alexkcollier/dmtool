@@ -1,3 +1,13 @@
+<a name="2.18.0"></a>
+# [2.18.0](https://github.com/alexkcollier/dmtool/compare/v2.17.0...v2.18.0) (2018-11-12)
+
+
+### Features
+
+* **bestiary:** adds recharge parsing ([acfc7a5](https://github.com/alexkcollier/dmtool/commit/acfc7a5))
+
+
+
 <a name="2.17.0"></a>
 # [2.17.0](https://github.com/alexkcollier/dmtool/compare/v2.16.0...v2.17.0) (2018-11-12)
 
