@@ -1,9 +1,11 @@
+import custom from './custom'
+import GGR from './spells-ggr.json'
 import PHB from './spells-phb.json'
 import SCAG from './spells-scag.json'
 import XGE from './spells-xge.json'
-import custom from './custom'
 
 const spellSources = {
+  GGR,
   PHB,
   SCAG,
   XGE,
