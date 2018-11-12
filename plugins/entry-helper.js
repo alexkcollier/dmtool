@@ -34,6 +34,11 @@ export const regExps = {
     find: /{@hazard\s(.*?)(\|(.*?))?(\|(.*?))?}/g,
     html: plainReplace
   },
+  // must come before hit
+  hitUnsigned: {
+    find: /{@hit\s(\d*?)(\|(.*?))?(\|.*?)?}/g,
+    html: `+${plainReplace}`
+  },
   hit: {
     find: /{@hit\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: plainReplace
@@ -45,10 +50,6 @@ export const regExps = {
   hitTag: {
     find: /{@h}/g,
     html: '<em>Hit: </em>'
-  },
-  hitUnsigned: {
-    find: /{@hit\s(\d*?)(\|(.*?))?(\|.*?)?}/g,
-    html: `+${plainReplace}`
   },
   italic: {
     find: /{@(italic|i)\s(.*?)(\|(.*?))?(\|.*?)?}/g,
