@@ -280,12 +280,10 @@ export default {
     },
 
     initFilters() {
-      return new Promise(() => {
-        this.filterFields.map(filter => {
-          const initOptions = this.initFilterOptions(filter)
-          const options = this.sortFilterOptions(filter, initOptions)
-          this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
-        })
+      this.filterFields.map(filter => {
+        const initOptions = this.initFilterOptions(filter)
+        const options = this.sortFilterOptions(filter, initOptions)
+        this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
       })
     },
 
@@ -297,8 +295,10 @@ export default {
       // exception for classes
       const isClass = key === 'class'
       const values = this.model.reduce((acc, el) => {
-        if (!el.hasOwnProperty(key)) return acc
+        // `el.class` never exists, but we want a pretty filter name
         if (isClass) return acc.concat(el.classes.fromClassList.map(cl => cl.name))
+        // Allows key to not exist on every element in model
+        if (!el.hasOwnProperty(key)) return acc
 
         return acc.concat(el[key][key] || el[key])
       }, [])
@@ -388,7 +388,10 @@ export default {
 
         const testArr = this.filters[f].reduce((a, o) => (o.allowed ? a.concat(o.name) : a), [])
         // exception for classes
-        if (f === 'class') return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
+        if (f === 'class') {
+          console.log(this.filters[f])
+          return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
+        }
         if (Array.isArray(el[f])) return el[f].every(val => testArr.includes(val))
         return testArr.includes(el[f][f] || el[f])
       })
