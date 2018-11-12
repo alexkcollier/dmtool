@@ -67,7 +67,7 @@ h5,
   h2 {
     border-bottom: 2px solid $gold;
   }
-  
+
   h6 {
     color: $grey-dark !important;
     font-variant: unset;
@@ -84,7 +84,9 @@ h5,
   font-feature-settings: 'lnum';
 }
 
-
+.is-small-caps {
+  font-variant: small-caps;
+}
 
 // Links
 $link: $primary;

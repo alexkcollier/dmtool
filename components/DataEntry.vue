@@ -29,6 +29,12 @@
         :key="entry.index"
         class="table"
       >
+        <caption
+          v-if="entry.caption"
+          class="is-small-caps is-size-5 has-text-weight-bold has-text-left"
+        >
+          {{ entry.caption }}
+        </caption>
 
         <thead>
           <tr>
