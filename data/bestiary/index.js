@@ -1,37 +1,40 @@
-import custom from './custom'
-
 import CoS from './bestiary-cos.json'
 import DMG from './bestiary-dmg.json'
+import GGR from './bestiary-ggr.json'
 import HotDQ from './bestiary-hotdq.json'
+import KKW from './bestiary-kkw.json'
 import LMoP from './bestiary-lmop.json'
 import Mag from './bestiary-mag.json'
 import MM from './bestiary-mm.json'
 import MTF from './bestiary-mtf.json'
 import OotA from './bestiary-oota.json'
+import PHB from './bestiary-phb.json'
+import PotA from './bestiary-pota.json'
 import PSA from './bestiary-ps-a.json'
 import PSD from './bestiary-ps-d.json'
 import PSI from './bestiary-ps-i.json'
 import PSK from './bestiary-ps-k.json'
 import PSX from './bestiary-ps-x.json'
 import PSZ from './bestiary-ps-z.json'
-import PHB from './bestiary-phb.json'
-import PotA from './bestiary-pota.json'
 import RoT from './bestiary-rot.json'
 import SKT from './bestiary-skt.json'
-import TTP from './bestiary-ttp.json'
 import TftYP from './bestiary-tftyp.json'
 import ToA from './bestiary-toa.json'
+import TTP from './bestiary-ttp.json'
 import UAWGE from './bestiary-uawge.json'
 import VGM from './bestiary-vgm.json'
 import WDH from './bestiary-wdh.json'
 import WDMM from './bestiary-wdmm.json'
 import XGE from './bestiary-xge.json'
+import custom from './custom'
 
 const sources = {
   custom,
   CoS,
   DMG,
+  GGR,
   HotDQ,
+  KKW,
   LMoP,
   Mag,
   MM,
