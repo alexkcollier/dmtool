@@ -1,3 +1,13 @@
+<a name="2.14.0"></a>
+# [2.14.0](https://github.com/alexkcollier/dmtool/compare/v2.13.0...v2.14.0) (2018-11-12)
+
+
+### Features
+
+* **bestiary:** adds banshee queen ([47d9e69](https://github.com/alexkcollier/dmtool/commit/47d9e69))
+
+
+
 <a name="2.13.0"></a>
 # [2.13.0](https://github.com/alexkcollier/dmtool/compare/v2.12.3...v2.13.0) (2018-11-10)
 
