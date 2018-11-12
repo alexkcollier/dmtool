@@ -1,3 +1,19 @@
+<a name="2.16.0"></a>
+# [2.16.0](https://github.com/alexkcollier/dmtool/compare/v2.15.0...v2.16.0) (2018-11-12)
+
+
+### Bug Fixes
+
+* **entry-helper:** fixes unsigned hits ([01c3cb6](https://github.com/alexkcollier/dmtool/commit/01c3cb6))
+* **spells:** ensures class filter displays ([ca5cab7](https://github.com/alexkcollier/dmtool/commit/ca5cab7))
+
+
+### Features
+
+* **bestiary:** adds additional BBH creatures ([bc6a03e](https://github.com/alexkcollier/dmtool/commit/bc6a03e))
+
+
+
 <a name="2.15.0"></a>
 # [2.15.0](https://github.com/alexkcollier/dmtool/compare/v2.14.0...v2.15.0) (2018-11-12)
 
