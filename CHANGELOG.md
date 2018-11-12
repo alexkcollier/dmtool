@@ -1,3 +1,19 @@
+<a name="2.17.0"></a>
+# [2.17.0](https://github.com/alexkcollier/dmtool/compare/v2.16.0...v2.17.0) (2018-11-12)
+
+
+### Bug Fixes
+
+* **entries:** displays table captions ([30a835e](https://github.com/alexkcollier/dmtool/commit/30a835e))
+* **magic-items:** re-enables [@click](https://github.com/click) listener ([2c52890](https://github.com/alexkcollier/dmtool/commit/2c52890))
+
+
+### Features
+
+* **magic-items:** adds endless walk set ([8a9fc99](https://github.com/alexkcollier/dmtool/commit/8a9fc99))
+
+
+
 <a name="2.16.0"></a>
 # [2.16.0](https://github.com/alexkcollier/dmtool/compare/v2.15.0...v2.16.0) (2018-11-12)
 
