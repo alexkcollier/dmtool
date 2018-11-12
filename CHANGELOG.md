@@ -1,3 +1,15 @@
+<a name="2.15.0"></a>
+# [2.15.0](https://github.com/alexkcollier/dmtool/compare/v2.14.0...v2.15.0) (2018-11-12)
+
+
+### Features
+
+* **bestiary:** adds additional sources ([a64d971](https://github.com/alexkcollier/dmtool/commit/a64d971))
+* **magic-items:** adds source ([6f40dc4](https://github.com/alexkcollier/dmtool/commit/6f40dc4))
+* **spells:** adds source ([5b5ee5b](https://github.com/alexkcollier/dmtool/commit/5b5ee5b))
+
+
+
 <a name="2.14.0"></a>
 # [2.14.0](https://github.com/alexkcollier/dmtool/compare/v2.13.0...v2.14.0) (2018-11-12)
 
