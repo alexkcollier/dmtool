@@ -103,9 +103,9 @@ export default {
   },
 
   mounted() {
-    // this.$el
-    //   .querySelectorAll('a[href*="/magic-items?name="]')
-    //   .forEach(link => link.addEventListener('click', this.lookupFromHref))
+    this.$el
+      .querySelectorAll('a[href*="/magic-items?name="]')
+      .forEach(link => link.addEventListener('click', event => this.lookupFromHref(event)))
   },
 
   methods: {
@@ -130,11 +130,11 @@ export default {
         })
       })
 
+      // go to /magic-items
+      if (this.$route.path !== '/magic-items') this.$router.push({ path: event.target.pathname })
+      if (this.$route.query.name) this.$router.push({ query: { name: path } })
       // search for the clicked item
       this.$store.commit('magic-items/UPDATE_SEARCH_STRING', path)
-
-      // go to /magic-items
-      this.$router.push({ path: event.target.pathname })
     }
   }
 }
@@ -145,9 +145,8 @@ div:not(:last-child) {
   margin-bottom: 1em !important;
 }
 
-li /deep/ .link {
+@mixin item-link() {
   color: darken(#337ab7, 5%);
-  display: block;
   font-family: 'ff-scala-sans-pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   padding: 0.25em 0;
@@ -156,5 +155,9 @@ li /deep/ .link {
     color: darken(#337ab7, 25%);
     text-decoration: underline !important;
   }
+}
+
+/deep/ .link {
+  @include item-link();
 }
 </style>
