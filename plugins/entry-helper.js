@@ -83,6 +83,10 @@ export const regExps = {
     find: /{@atk\s(rw?)(\|(.*?))?(\|.*?)?}/g,
     html: '<em>Ranged Weapon Attack: </em>'
   },
+  recharge: {
+    find: /{@recharge\s?(\d*?)}/g,
+    html: Number('$1') ? '(Recharge 6)' : '(Recharge $1-6)'
+  },
   meleeOrRangedSpellAttack: {
     find: /{@atk\s(ms,rs?)(\|(.*?))?(\|.*?)?}/g,
     html: '<em>Melee or Ranged Spell Attack: </em>'

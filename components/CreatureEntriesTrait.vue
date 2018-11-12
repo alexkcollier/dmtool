@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      <strong><i>{{ model.name }}. </i></strong>
+      <strong><i>{{ $entryHelper.setHtml(model.name) }}. </i></strong>
       <span v-if="model.entries[0].type === 'inline'" v-html="inlineEntryHack(model.entries[0])" />
       <span v-else v-html="$entryHelper.setHtml(model.entries[0])" />
     </p>
@@ -18,7 +18,7 @@
           <li v-else :key="item.index" v-html="$entryHelper.setHtml(item)" />
         </template>
       </ul>
-    
+
       <!-- Tables -->
       <table v-else-if="entry.type === 'table'" :key="entry.index" class="table">
         <thead>
