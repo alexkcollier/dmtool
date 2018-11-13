@@ -384,14 +384,12 @@ export default {
     passesFilters(el) {
       return Object.keys(this.filters).every(f => {
         if (this.filters[f].every(o => o.allowed)) return true
-        if (!el.hasOwnProperty(f)) return false
-
+        // exception for classes
+        const isClass = f === 'class'
+        if (!el.hasOwnProperty(f) && !isClass) return false
         const testArr = this.filters[f].reduce((a, o) => (o.allowed ? a.concat(o.name) : a), [])
         // exception for classes
-        if (f === 'class') {
-          console.log(this.filters[f])
-          return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
-        }
+        if (isClass) return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
         if (Array.isArray(el[f])) return el[f].every(val => testArr.includes(val))
         return testArr.includes(el[f][f] || el[f])
       })
