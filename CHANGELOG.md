@@ -1,3 +1,13 @@
+<a name="2.18.1"></a>
+## [2.18.1](https://github.com/alexkcollier/dmtool/compare/v2.18.0...v2.18.1) (2018-11-13)
+
+
+### Bug Fixes
+
+* **magic-items:** fixes class filtering ([e776c81](https://github.com/alexkcollier/dmtool/commit/e776c81))
+
+
+
 <a name="2.18.0"></a>
 # [2.18.0](https://github.com/alexkcollier/dmtool/compare/v2.17.0...v2.18.0) (2018-11-12)
 
