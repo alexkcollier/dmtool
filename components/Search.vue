@@ -153,15 +153,9 @@ export default {
   name: 'Search',
 
   filters: {
-    parseNumToFrac(num) {
-      return typeof num === 'number' && num > 0 && num < 1
-        ? `1/${1 / num}` // converts decimal to denominator
-        : num
-    },
-
-    formatFilterOptionName(str) {
-      return str.length <= 2 ? str.toUpperCase() : str
-    }
+    // converts decimal to denominator
+    parseNumToFrac: num => (typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num),
+    formatFilterOptionName: str => (str.length <= 2 ? str.toUpperCase() : str)
   },
 
   props: {
@@ -197,7 +191,18 @@ export default {
       collapseFilters: true,
       visibleFilter: '',
       prevScroll: 0,
-      count: 10
+      count: 10,
+      fuseConfig: {
+        shouldSort: true,
+        threshold: 0.25,
+        location: 0,
+        distance: 100,
+        tokenize: true,
+        matchAllTokens: true,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [this.searchField]
+      }
     }
   },
 
@@ -207,8 +212,12 @@ export default {
         return this.$store.state[this.slug].searchString
       },
       set(value) {
-        this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, value)
+        this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, this.cleanSearchTerm(value))
       }
+    },
+
+    FuseIndex() {
+      return new Fuse(this.model, this.fuseConfig)
     },
 
     hasFilterApplied() {
@@ -219,12 +228,12 @@ export default {
       return this.$store.state[this.slug].filters
     },
 
-    slug() {
-      return this.$route.params.slug
+    filterNames() {
+      return Object.keys(this.filters)
     },
 
-    cleanSearchTerm() {
-      return this.searchTerm ? this.searchTerm.toLowerCase().trim() : ''
+    slug() {
+      return this.$route.params.slug
     },
 
     placeholder() {
@@ -236,10 +245,7 @@ export default {
     },
 
     updateDataPayload() {
-      return {
-        truncated: this.queryResult.slice(0, this.count),
-        show: this.queryResult.length > 0
-      }
+      return this.queryResult.slice(0, this.count)
     }
   },
 
@@ -259,11 +265,11 @@ export default {
 
     this.query()
 
-    const noFilters = !Object.keys(this.filters).length
+    const noFilters = !this.filterNames.length
 
     if (noFilters) this.initFilters()
 
-    this.visibleFilter = Object.keys(this.filters)[0]
+    this.visibleFilter = this.filterNames[0]
   },
 
   destroyed() {
@@ -275,58 +281,55 @@ export default {
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
 
+    cleanSearchTerm(value) {
+      return value.toLowerCase().trim() || ''
+    },
+
     toggleFilterView() {
       this.collapseFilters = !this.collapseFilters
     },
 
     initFilters() {
       this.filterFields.map(filter => {
-        const initOptions = this.initFilterOptions(filter)
+        const initOptions = this.getUniqueValues(filter).map(name => ({ name, allowed: true }))
         const options = this.sortFilterOptions(filter, initOptions)
         this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
       })
     },
 
-    initFilterOptions(filter, allowed = true) {
-      return this.getUniqueValues(filter).map(name => ({ name, allowed }))
-    },
-
-    getUniqueValues(key) {
-      // exception for classes
-      const isClass = key === 'class'
+    getUniqueValues(filterName) {
+      const isClass = filterName === 'class'
       const values = this.model.reduce((acc, el) => {
         // `el.class` never exists, but we want a pretty filter name
         if (isClass) return acc.concat(el.classes.fromClassList.map(cl => cl.name))
         // Allows key to not exist on every element in model
-        if (!el.hasOwnProperty(key)) return acc
-
-        return acc.concat(el[key][key] || el[key])
+        if (!el.hasOwnProperty(filterName)) return acc
+        return acc.concat(el[filterName][filterName] || el[filterName])
       }, [])
 
       return [...new Set(values)]
     },
 
-    sortFilterOptions(f, o) {
-      const sortFn = ({ name }) => {
-        if (isNaN(name)) {
-          if (name.match(/\d\/\d/)) return name[0] / name[2]
-          if (name === 'Unknown') return Number(name)
+    sortFilterOptions(filterName, options) {
+      return this.filtersToSort.includes(filterName) ? sortBy(options, this.filterSortFn) : options
+    },
 
-          return name
-        }
-
-        return Number(name)
+    filterSortFn({ name }) {
+      if (isNaN(name)) {
+        if (name.match(/\d\/\d/)) return name[0] / name[2]
+        if (name === 'Unknown') return Number(name)
+        return name
       }
 
-      return this.filtersToSort.includes(f) ? sortBy(o, sortFn) : o
+      return Number(name)
     },
 
     resetFilters() {
-      Object.keys(this.filters).map(filter => this.setAllOptions(filter, true))
+      this.filterNames.map(filterName => this.setAllOptions(filterName, true))
     },
 
-    setAllOptions(filter, allowed) {
-      this.filters[filter].map((o, i) => this.filterResults(filter, i, allowed))
+    setAllOptions(filterName, value) {
+      this.filters[filterName].map((o, index) => this.filterResults(filterName, index, value))
     },
 
     filterResults(filter, optionIndex, value) {
@@ -342,7 +345,7 @@ export default {
 
     query() {
       this.clearActiveEl()
-      this.queryResult = this.searchAndFilter(this.model)
+      this.queryResult = this.searchAndFilter()
       this.$emit('update-data', this.updateDataPayload)
     },
 
@@ -350,48 +353,32 @@ export default {
       this.query()
     }, 300),
 
-    searchAndFilter(arr, pattern = this.cleanSearchTerm) {
-      const { searchField, passesFilters, includesTerm } = this
-
-      const options = {
-        shouldSort: true,
-        threshold: 0.25,
-        location: 0,
-        distance: 100,
-        tokenize: true,
-        matchAllTokens: true,
-        maxPatternLength: 32,
-        minMatchCharLength: 1,
-        keys: [searchField]
-      }
-
-      const idx = new Fuse(arr, options)
-
-      // fuzzy search
-      const res =
-        pattern && pattern.length < options.maxPatternLength
-          ? idx.search(pattern)
-          : sortBy(arr, searchField).filter(includesTerm)
+    searchAndFilter(str = this.searchTerm) {
+      // fuzzy search; fall back to explicit search if pattern > 32
+      const { fuseConfig, FuseIndex, model, searchField, passesFilters, includesTerm } = this
+      const validStr = str && str.length < fuseConfig.maxPatternLength
+      const res = validStr ? FuseIndex.search(str) : sortBy(model, searchField).filter(includesTerm)
 
       return res.filter(passesFilters)
     },
 
     includesTerm(el) {
       const testVal = el[this.searchField].toLowerCase().trim()
-      return testVal.includes(this.cleanSearchTerm)
+      return testVal.includes(this.searchTerm)
     },
 
     passesFilters(el) {
-      return Object.keys(this.filters).every(f => {
-        if (this.filters[f].every(o => o.allowed)) return true
-        // exception for classes
-        const isClass = f === 'class'
-        if (!el.hasOwnProperty(f) && !isClass) return false
-        const testArr = this.filters[f].reduce((a, o) => (o.allowed ? a.concat(o.name) : a), [])
-        // exception for classes
+      return this.filterNames.every(filterName => {
+        if (this.filters[filterName].every(option => option.allowed)) return true
+        const getTestValues = (test, option) => (option.allowed ? test.concat(option.name) : test)
+        const isClass = filterName === 'class'
+        // spells use 'classes' rather than 'class' as the key; `el.class` never exists
+        if (!el.hasOwnProperty(filterName) && !isClass) return false
+        const testArr = this.filters[filterName].reduce(getTestValues, [])
+        // exception for character classes; they have a different structure
         if (isClass) return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
-        if (Array.isArray(el[f])) return el[f].every(val => testArr.includes(val))
-        return testArr.includes(el[f][f] || el[f])
+        if (Array.isArray(el[filterName])) return el[filterName].every(val => testArr.includes(val))
+        return testArr.includes(el[filterName][filterName] || el[filterName])
       })
     },
 
@@ -399,7 +386,7 @@ export default {
       const { offsetHeight, scrollTop } = document.documentElement
       const scrollDistance = scrollTop + window.innerHeight
       const atBottom = scrollDistance >= offsetHeight - 300
-      const showingCount = this.updateDataPayload.truncated.length
+      const showingCount = this.updateDataPayload.length
       const hiddenResults = showingCount < this.resultCount
 
       if (atBottom && hiddenResults) this.loadMore()

@@ -9,10 +9,10 @@
       @update-data="updateData"
     />
 
-    <template v-if="results.show">
+    <template v-if="results.length > 0">
       <component
         :is="activeComponent"
-        v-for="result in results.truncated"
+        v-for="result in results"
         :id="setId(result)"
         :key="result.index"
         :model="result"
@@ -118,15 +118,13 @@ export default {
 
     updateData(value) {
       this.results = value // Use results from Search.vue
-      if (this.results.truncated.length === 1) {
-        const el = `${this.slug}-${this.results.truncated[0].source}-1`
-        this.setActiveEl({ el, delay: 300 })
+      if (this.results.length === 1) {
+        this.setActiveEl({ el: `${this.slug}-${this.results[0].source}-1`, delay: 300 })
       }
     },
 
     setId({ name, source }) {
-      const { truncated: t } = this.results
-      const index = t.findIndex(r => r.name === name && r.source === source) + 1
+      const index = this.results.findIndex(r => r.name === name && r.source === source) + 1
       return `${this.slug}-${source}-${index}`
     }
   }
