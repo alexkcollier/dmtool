@@ -145,8 +145,7 @@
 </template>
 
 <script>
-import { debounce, sortBy, throttle } from 'lodash'
-import { mapActions } from 'vuex'
+import { debounce, sortBy } from 'lodash'
 import Fuse from 'fuse.js'
 
 export default {
@@ -190,8 +189,6 @@ export default {
       queryResult: sortBy(this.model, this.searchField),
       collapseFilters: true,
       visibleFilter: '',
-      prevScroll: 0,
-      count: 10,
       fuseConfig: {
         shouldSort: true,
         threshold: 0.25,
@@ -242,10 +239,6 @@ export default {
 
     resultCount() {
       return this.queryResult.length
-    },
-
-    updateDataPayload() {
-      return this.queryResult.slice(0, this.count)
     }
   },
 
@@ -256,31 +249,14 @@ export default {
     }
   },
 
-  created() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', this.handleScroll)
-    }
-
+  mounted() {
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
-
+    if (!this.filterNames.length) this.initFilters()
     this.query()
-
-    const noFilters = !this.filterNames.length
-
-    if (noFilters) this.initFilters()
-
     this.visibleFilter = this.filterNames[0]
   },
 
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-
   methods: {
-    ...mapActions('toggle-active-el', {
-      clearActiveEl: 'CLEAR_ACTIVE_EL'
-    }),
-
     cleanSearchTerm(value) {
       return value.toLowerCase().trim() || ''
     },
@@ -340,13 +316,12 @@ export default {
 
     clearSearch() {
       this.searchTerm = ''
-      this.$router.push({ query: null })
+      if (this.$router.query.name) this.$router.push({ query: null })
     },
 
     query() {
-      this.clearActiveEl()
-      this.queryResult = this.searchAndFilter()
-      this.$emit('update-data', this.updateDataPayload)
+      this.searchAndFilter()
+      this.$emit('update-data', this.queryResult)
     },
 
     debounceQuery: debounce(function() {
@@ -358,8 +333,7 @@ export default {
       const { fuseConfig, FuseIndex, model, searchField, passesFilters, includesTerm } = this
       const validStr = str && str.length < fuseConfig.maxPatternLength
       const res = validStr ? FuseIndex.search(str) : sortBy(model, searchField).filter(includesTerm)
-
-      return res.filter(passesFilters)
+      this.queryResult = res.filter(passesFilters)
     },
 
     includesTerm(el) {
@@ -380,23 +354,6 @@ export default {
         if (Array.isArray(el[filterName])) return el[filterName].every(val => testArr.includes(val))
         return testArr.includes(el[filterName][filterName] || el[filterName])
       })
-    },
-
-    handleScroll: throttle(function(event) {
-      const { offsetHeight, scrollTop } = document.documentElement
-      const scrollDistance = scrollTop + window.innerHeight
-      const atBottom = scrollDistance >= offsetHeight - 300
-      const showingCount = this.updateDataPayload.length
-      const hiddenResults = showingCount < this.resultCount
-
-      if (atBottom && hiddenResults) this.loadMore()
-
-      this.prevScroll = scrollTop
-    }, 50),
-
-    loadMore() {
-      this.count += 1
-      this.$emit('update-data', this.updateDataPayload)
     }
   }
 }

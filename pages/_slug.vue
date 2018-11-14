@@ -12,7 +12,7 @@
     <template v-if="results.length > 0">
       <component
         :is="activeComponent"
-        v-for="result in results"
+        v-for="result in truncatedResults"
         :id="setId(result)"
         :key="result.index"
         :model="result"
@@ -26,6 +26,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { throttle } from 'lodash'
 import Search from '~/components/Search'
 
 export default {
@@ -40,7 +41,7 @@ export default {
 
   data() {
     return {
-      results: {},
+      results: [],
       filterFields: {
         spells: ['level', 'school', 'source', 'class'],
         'magic-items': ['rarity', 'type', 'source'],
@@ -48,7 +49,9 @@ export default {
       },
       filtersToSort: {
         'magic-items': ['rarity', 'source', 'type']
-      }
+      },
+      prevScroll: 0,
+      count: 10
     }
   },
 
@@ -98,6 +101,10 @@ export default {
 
     slug() {
       return this.$route.params.slug
+    },
+
+    truncatedResults() {
+      return this.results.slice(0, this.count)
     }
   },
 
@@ -111,25 +118,46 @@ export default {
     }
   },
 
-  methods: {
-    ...mapActions('toggle-active-el', {
-      setActiveEl: 'SET_ACTIVE_EL'
-    }),
-
-    updateData(value) {
-      this.results = value // Use results from Search.vue
+  watch: {
+    results() {
       if (this.results.length === 1) {
         this.setActiveEl({ el: `${this.slug}-${this.results[0].source}-1`, delay: 300 })
       }
+    }
+  },
+
+  mounted() {
+    window.addEventListener('scroll', this.loadMoreOnScroll)
+  },
+
+  destroyed() {
+    window.removeEventListener('scroll', this.loadMoreOnScroll)
+  },
+
+  methods: {
+    ...mapActions('toggle-active-el', {
+      setActiveEl: 'SET_ACTIVE_EL',
+      clearActiveEl: 'CLEAR_ACTIVE_EL'
+    }),
+
+    updateData(value) {
+      this.clearActiveEl()
+      this.results = value // Use results from Search.vue
     },
 
     setId({ name, source }) {
       const index = this.results.findIndex(r => r.name === name && r.source === source) + 1
       return `${this.slug}-${source}-${index}`
-    }
+    },
+
+    loadMoreOnScroll: throttle(function(event) {
+      const { offsetHeight, scrollTop } = document.documentElement
+      const scrollDistance = scrollTop + window.innerHeight
+      const atBottom = scrollDistance >= offsetHeight - 300
+      const hiddenResults = this.truncatedResults.length < this.results.length
+      if (atBottom && hiddenResults) this.count += 1
+      this.prevScroll = scrollTop
+    }, 50)
   }
 }
 </script>
-
-<style>
-</style>
