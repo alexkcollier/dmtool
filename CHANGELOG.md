@@ -1,3 +1,14 @@
+<a name="2.18.2"></a>
+## [2.18.2](https://github.com/alexkcollier/dmtool/compare/v2.18.1...v2.18.2) (2018-11-14)
+
+
+### Bug Fixes
+
+* **bestiary:** allows string or array for ac.from parsing ([b66f738](https://github.com/alexkcollier/dmtool/commit/b66f738))
+* **search:** only shows 'enable all' if a filter is applied ([0889ddf](https://github.com/alexkcollier/dmtool/commit/0889ddf))
+
+
+
 <a name="2.18.1"></a>
 ## [2.18.1](https://github.com/alexkcollier/dmtool/compare/v2.18.0...v2.18.1) (2018-11-13)
 
