@@ -12,7 +12,6 @@
           :placeholder="placeholder"
           icon="magnify"
           type="text"
-          @input="debounceQuery"
         />
       </div>
 
@@ -91,16 +90,16 @@
               <div class="control">
                 <button
                   class="control button"
+                  style="margin-left:0;"
                   @click="setAllOptions(filter, false)"
                 >
                   Disable all
                 </button>
               </div>
 
-              <div v-show="hasFilterApplied" class="control">
+              <div v-show="filterOptions.some(o => !o.allowed)" class="control">
                 <button
                   class="control button"
-                  style="margin-left:0;"
                   @click="setAllOptions(filter, true)"
                 >
                   Enable all
@@ -116,7 +115,7 @@
                 class="control"
               >
 
-                <b-switch :value="option.allowed" @input="filterResults(filter, index, $event)">
+                <b-switch :value="option.allowed" @input="applyFilter(filter, index, $event)">
                   {{ option.name | parseNumToFrac }}
                 </b-switch>
 
@@ -146,8 +145,7 @@
 </template>
 
 <script>
-import { debounce, sortBy } from 'lodash'
-import Fuse from 'fuse.js'
+import { debounce } from 'lodash'
 
 export default {
   name: 'Search',
@@ -187,20 +185,8 @@ export default {
 
   data() {
     return {
-      queryResult: sortBy(this.model, this.searchField),
       collapseFilters: true,
-      visibleFilter: '',
-      fuseConfig: {
-        shouldSort: true,
-        threshold: 0.25,
-        location: 0,
-        distance: 100,
-        tokenize: true,
-        matchAllTokens: true,
-        maxPatternLength: 32,
-        minMatchCharLength: 1,
-        keys: [this.searchField]
-      }
+      visibleFilter: ''
     }
   },
 
@@ -209,13 +195,10 @@ export default {
       get() {
         return this.$store.state[this.slug].searchString
       },
-      set(value) {
+      set: debounce(function(value) {
+        this.$emit('update-data')
         this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, this.cleanSearchTerm(value))
-      }
-    },
-
-    FuseIndex() {
-      return new Fuse(this.model, this.fuseConfig)
+      }, 300)
     },
 
     hasFilterApplied() {
@@ -236,121 +219,60 @@ export default {
 
     placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
+    },
+
+    queryResult() {
+      return this.$store.getters[`${this.slug}/queryResult`]
     }
   },
 
   watch: {
     '$route.query.name'() {
       this.searchTerm = this.$route.query.name
-      this.query()
     }
   },
 
   mounted() {
     if (this.$route.query.name) this.searchTerm = this.$route.query.name
-    if (!this.filterNames.length) this.initFilters()
-    this.query()
+
+    if (!this.$store.state[this.slug].data.length) {
+      this.$store.dispatch(`${this.slug}/initStore`, {
+        data: this.model,
+        filterFields: this.filterFields
+      })
+    }
+
     this.visibleFilter = this.filterNames[0]
   },
 
   methods: {
     cleanSearchTerm(value) {
-      return value.toLowerCase().trim() || ''
+      return value ? value.toLowerCase().trim() : ''
     },
 
     toggleFilterView() {
       this.collapseFilters = !this.collapseFilters
     },
 
-    initFilters() {
-      this.filterFields.map(filter => {
-        const initOptions = this.getUniqueValues(filter).map(name => ({ name, allowed: true }))
-        const options = this.sortFilterOptions(filter, initOptions)
-        this.$store.commit(`${this.slug}/INIT_FILTER`, { filter, options })
-      })
-    },
-
-    getUniqueValues(filterName) {
-      const isClass = filterName === 'class'
-      const values = this.model.reduce((acc, el) => {
-        // `el.class` never exists, but we want a pretty filter name
-        if (isClass) return acc.concat(el.classes.fromClassList.map(cl => cl.name))
-        // Allows key to not exist on every element in model
-        if (!el.hasOwnProperty(filterName)) return acc
-        return acc.concat(el[filterName][filterName] || el[filterName])
-      }, [])
-
-      return [...new Set(values)]
-    },
-
-    sortFilterOptions(filterName, options) {
-      return this.filtersToSort.includes(filterName) ? sortBy(options, this.filterSortFn) : options
-    },
-
-    filterSortFn({ name }) {
-      if (isNaN(name)) {
-        if (name.match(/\d\/\d/)) return name[0] / name[2]
-        if (name === 'Unknown') return Number(name)
-        return name
-      }
-
-      return Number(name)
-    },
-
     resetFilters() {
-      this.filterNames.map(filterName => this.setAllOptions(filterName, true))
+      this.$emit('update-data')
+      this.$store.dispatch(`${this.slug}/resetFilters`)
     },
 
-    setAllOptions(filterName, value) {
-      this.filters[filterName].map((o, index) => this.filterResults(filterName, index, value))
+    setAllOptions(filter, value) {
+      this.$emit('update-data')
+      this.$store.dispatch(`${this.slug}/setAllOptions`, { filter, value })
     },
 
-    filterResults(filter, optionIndex, value) {
+    applyFilter: function(filter, optionIndex, value) {
+      this.$emit('update-data')
       const payload = { filter, optionIndex, value }
       this.$store.commit(`${this.slug}/UPDATE_FILTER`, payload)
-      this.debounceQuery()
     },
 
     clearSearch() {
       this.searchTerm = ''
-      if (this.$router.query.name) this.$router.push({ query: null })
-    },
-
-    query() {
-      this.searchAndFilter()
-      this.$emit('update-data', this.queryResult)
-    },
-
-    debounceQuery: debounce(function() {
-      this.query()
-    }, 300),
-
-    searchAndFilter(str = this.searchTerm) {
-      // fuzzy search; fall back to explicit search if pattern > 32
-      const { fuseConfig, FuseIndex, model, searchField, passesFilters, includesTerm } = this
-      const validStr = str && str.length < fuseConfig.maxPatternLength
-      const res = validStr ? FuseIndex.search(str) : sortBy(model, searchField).filter(includesTerm)
-      this.queryResult = res.filter(passesFilters)
-    },
-
-    includesTerm(el) {
-      const testVal = el[this.searchField].toLowerCase().trim()
-      return testVal.includes(this.searchTerm)
-    },
-
-    passesFilters(el) {
-      return this.filterNames.every(filterName => {
-        if (this.filters[filterName].every(option => option.allowed)) return true
-        const getTestValues = (test, option) => (option.allowed ? test.concat(option.name) : test)
-        const isClass = filterName === 'class'
-        // spells use 'classes' rather than 'class' as the key; `el.class` never exists
-        if (!el.hasOwnProperty(filterName) && !isClass) return false
-        const testArr = this.filters[filterName].reduce(getTestValues, [])
-        // exception for character classes; they have a different structure
-        if (isClass) return el.classes.fromClassList.some(cl => testArr.includes(cl.name))
-        if (Array.isArray(el[filterName])) return el[filterName].every(val => testArr.includes(val))
-        return testArr.includes(el[filterName][filterName] || el[filterName])
-      })
+      if (this.$route.query.name) this.$router.push({ query: null })
     }
   }
 }

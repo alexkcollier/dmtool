@@ -1,1 +1,1 @@
-export { getters, mutations, state } from './store'
+export { default } from '~/conf/base-store'

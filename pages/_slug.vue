@@ -6,7 +6,7 @@
       :filter-fields="filterFields[$route.params.slug]"
       :filters-to-sort="filtersToSort[$route.params.slug] || filterFields[$route.params.slug]"
       :search-type="searchType"
-      @update-data="updateData"
+      @update-data="clearActiveEl"
     />
 
     <template v-if="results.length > 0">
@@ -41,7 +41,6 @@ export default {
 
   data() {
     return {
-      results: [],
       filterFields: {
         spells: ['level', 'school', 'source', 'class'],
         'magic-items': ['rarity', 'type', 'source'],
@@ -103,6 +102,10 @@ export default {
       return this.$route.params.slug
     },
 
+    results() {
+      return this.$store.getters[`${this.slug}/queryResult`]
+    },
+
     truncatedResults() {
       return this.results.slice(0, this.count)
     }
@@ -139,11 +142,6 @@ export default {
       setActiveEl: 'SET_ACTIVE_EL',
       clearActiveEl: 'CLEAR_ACTIVE_EL'
     }),
-
-    updateData(value) {
-      this.clearActiveEl()
-      this.results = value // Use results from Search.vue
-    },
 
     setId({ name, source }) {
       const index = this.results.findIndex(r => r.name === name && r.source === source) + 1
