@@ -91,6 +91,15 @@
               <div class="control">
                 <button
                   class="control button"
+                  @click="setAllOptions(filter, false)"
+                >
+                  Disable all
+                </button>
+              </div>
+
+              <div v-show="hasFilterApplied" class="control">
+                <button
+                  class="control button"
                   style="margin-left:0;"
                   @click="setAllOptions(filter, true)"
                 >
@@ -98,14 +107,6 @@
                 </button>
               </div>
 
-              <div class="control">
-                <button
-                  class="control button"
-                  @click="setAllOptions(filter, false)"
-                >
-                  Disable all
-                </button>
-              </div>
             </b-field>
 
             <b-field grouped group-multiline>
@@ -130,12 +131,12 @@
 
     <!-- Result count -->
     <div class="control">
-      <div :class="{'is-danger': !resultCount}" class="help has-text-right">
-        <template v-if="resultCount === model.length">
+      <div :class="{'is-danger': !queryResult.length}" class="help has-text-right">
+        <template v-if="queryResult.length === model.length">
           {{ model.length }} {{ searchType }}s.
         </template>
         <template v-else>
-          {{ resultCount }} of {{ model.length }} {{ searchType }}s match.
+          {{ queryResult.length }} of {{ model.length }} {{ searchType }}s match.
         </template>
       </div>
     </div>
@@ -235,10 +236,6 @@ export default {
 
     placeholder() {
       return this.searchType ? `Search for ${this.searchType}s` : 'Search'
-    },
-
-    resultCount() {
-      return this.queryResult.length
     }
   },
 
