@@ -19,7 +19,7 @@
           </button>
         </transition>
 
-        <button 
+        <button
           v-if="$route.params.slug === 'bestiary'"
           :disabled="encounterIncludesCreature"
           class="button is-primary"
@@ -62,9 +62,9 @@
 
         <tbody>
           <tr>
-            <td 
-              v-for="stat in stats" 
-              :key="stat.index" 
+            <td
+              v-for="stat in stats"
+              :key="stat.index"
               class="has-text-centered has-text-red"
             >
               {{ stat | getStatMod }}
@@ -115,7 +115,7 @@
         <hr>
       </div>
     </div>
-        
+
     <template v-if="model.trait">
       <Trait v-for="trait in model.trait" :key="trait.index" :model="trait" />
     </template>
@@ -150,7 +150,7 @@
     <template v-if="model.legendaryGroup && model.legendary">
       <h2 class="is-sans-serif">Legendary Actions</h2>
       <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
-          
+
       <Action
         v-for="legendary in model.legendary"
         :key="legendary.index"
@@ -382,7 +382,7 @@ export default {
     acToString(stack, cur, idx, arr) {
       if (cur.ac) {
         stack += cur.ac
-        if (cur.from) stack += ` (${cur.from.join(', ')})`
+        if (cur.from) stack += ` (${Array.isArray(cur.from) ? cur.from.join(', ') : cur.from})`
         if (cur.condition) stack += ` ${cur.condition}`
         if (cur.braces) stack += ')'
       } else {
