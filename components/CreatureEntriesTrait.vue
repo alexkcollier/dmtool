@@ -1,21 +1,21 @@
 <template>
   <div>
     <p>
-      <strong><i>{{ $entryHelper.setHtml(model.name) }}. </i></strong>
+      <strong><i>{{ model.name }}. </i></strong>
       <span v-if="model.entries[0].type === 'inline'" v-html="inlineEntryHack(model.entries[0])" />
-      <span v-else v-html="$entryHelper.setHtml(model.entries[0])" />
+      <span v-else v-html="model.entries[0]" />
     </p>
 
     <template v-for="entry in shiftModel">
-      <p v-if="!entry.type" :key="entry.index" v-html="$entryHelper.setHtml(entry)" />
+      <p v-if="!entry.type" :key="entry.index" v-html="entry" />
 
       <ul v-else-if="entry.type === 'list'" :key="entry.index">
         <template v-for="item in entry.items">
           <li v-if="item.entry" :key="item.index">
             <strong>{{ item.name }} </strong>
-            <span v-html="$entryHelper.setHtml(item.entry)" />
+            <span v-html="item.entry" />
           </li>
-          <li v-else :key="item.index" v-html="$entryHelper.setHtml(item)" />
+          <li v-else :key="item.index" v-html="item" />
         </template>
       </ul>
 
@@ -28,7 +28,7 @@
         </thead>
         <tbody>
           <tr v-for="row in entry.rows" :key="row.index">
-            <td v-for="cell in row" :key="cell.index" v-html="$entryHelper.setHtml(cell)" />
+            <td v-for="cell in row" :key="cell.index" v-html="cell" />
           </tr>
         </tbody>
       </table>
@@ -60,7 +60,7 @@ export default {
     // Super sketchy hack. Definitely won't break in the future.
     inlineEntryHack({ entries }) {
       const text = `${entries[0]} ${entries[1].text} (DMG p.\xa0260) ${entries[2]}`
-      return this.$entryHelper.setHtml(text)
+      return text
     }
   }
 }

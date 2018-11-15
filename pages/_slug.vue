@@ -117,7 +117,7 @@ export default {
 
       return { activeData: await response.json() }
     } catch (e) {
-      console.error(e, params.slug)
+      console.error(e)
       error({ statusCode: 404, message: 'This page could not be found' })
     }
   },

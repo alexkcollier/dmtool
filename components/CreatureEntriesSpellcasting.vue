@@ -2,10 +2,10 @@
   <div>
     <p>
       <strong><em>{{ model.name }}. </em></strong>
-      <span v-html="$entryHelper.setHtml(model.headerEntries[0])" />
+      <span v-html="model.headerEntries[0]" />
     </p>
 
-    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="$entryHelper.setHtml(entry)" />
+    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="entry" />
 
     <!-- Slot based spells -->
     <template v-if="model.spells">
@@ -40,8 +40,6 @@
 </template>
 
 <script>
-import { regExps } from '~/plugins/entry-helper'
-
 export default {
   name: 'CreatureEntriesSpellcasting',
 
@@ -126,7 +124,11 @@ export default {
     },
 
     formatSpellList(spellList) {
-      const { spell } = regExps
+      const spell = {
+        find: /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g,
+        html: '<em>$1</em>'
+      }
+
       return spellList.map(el => el.replace(spell.find, spell.html)).join(', ')
     }
   }

@@ -1,10 +1,8 @@
-import Vue from 'vue'
-
 const boldReplace = '<strong>$1</strong>'
 const italicReplace = '<em>$1</em>'
 const plainReplace = '$1'
 
-export const regExps = {
+const regExps = {
   bold: {
     find: /{@(bold|b)\s(.*?)(\|(.*?))?(\|.*?)?}/g,
     html: '<strong>$2</strong>'
@@ -57,7 +55,7 @@ export const regExps = {
   },
   item: {
     find: /{@item\s(.*?)(\|(.*?))?(\|.*?)?}/g,
-    html: '<a href="/magic-items?name=$1" class="link">$1</a>'
+    html: italicReplace // '<a href=\"/magic-items?name=$1\" class=\"link\">$1</a>'
   },
   label: {
     find: /^((\w+\s*){0,3}:)/g,
@@ -109,7 +107,7 @@ export const regExps = {
   }
 }
 
-export function setHtml(str) {
+module.exports = function setHtml(str) {
   if (typeof str === 'object') {
     console.error(str)
     throw new Error('Did not expect `Object`')
@@ -123,16 +121,3 @@ export function setHtml(str) {
 
   return newStr
 }
-
-const entryHelper = {
-  install(Vue, options) {
-    Vue.prototype.$entryHelper = { setHtml }
-  }
-}
-
-export default {
-  regExps,
-  setHtml
-}
-
-Vue.use(entryHelper)
