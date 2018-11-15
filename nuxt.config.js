@@ -19,7 +19,7 @@ export default {
     ]
   },
   css: [{ src: '@assets/buefy-custom.scss', lang: 'sass' }],
-  plugins: ['@plugins/buefy', '@plugins/vue-scrollto', '@plugins/entry-helper'],
+  plugins: ['@plugins/buefy', '@plugins/vue-scrollto'],
   modules: ['@nuxtjs/pwa'],
   manifest: {
     name: 'DM Tool',

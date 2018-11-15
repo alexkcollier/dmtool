@@ -1,5 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
+const parseStyles = require('./parse-styles')
 
 const excludeTypes = [
   'g',
@@ -326,6 +327,7 @@ exports.build = async function build() {
     )
 
     data = data.reduce((acc, data) => [...acc, ...data], [])
+    data = JSON.parse(parseStyles(JSON.stringify(data)))
 
     fs.writeJSON(path.resolve(__dirname, '../../static/data/magic-items.json'), data)
   } catch (err) {
