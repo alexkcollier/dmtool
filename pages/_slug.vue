@@ -113,10 +113,11 @@ export default {
 
   async asyncData({ params, error }) {
     try {
-      const { default: activeData } = await import(`~/data/${params.slug}`)
-      return { activeData }
+      const response = await fetch(`data/${params.slug}.json`)
+
+      return { activeData: await response.json() }
     } catch (e) {
-      console.error(e)
+      console.error(e, params.slug)
       error({ statusCode: 404, message: 'This page could not be found' })
     }
   },
