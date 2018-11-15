@@ -1,3 +1,14 @@
+<a name="2.19.0"></a>
+# [2.19.0](https://github.com/alexkcollier/dmtool/compare/v2.18.2...v2.19.0) (2018-11-15)
+
+
+### Features
+
+* introduces data build step ([a78670b](https://github.com/alexkcollier/dmtool/commit/a78670b))
+* moves html parsing to build ([dd7ffed](https://github.com/alexkcollier/dmtool/commit/dd7ffed))
+
+
+
 <a name="2.18.2"></a>
 ## [2.18.2](https://github.com/alexkcollier/dmtool/compare/v2.18.1...v2.18.2) (2018-11-14)
 
