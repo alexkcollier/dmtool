@@ -1,13 +1,13 @@
 <template>
   <main class="content">
 
-    <Search
-      :model="activeData"
-      :filter-fields="filterFields[$route.params.slug]"
-      :filters-to-sort="filtersToSort[$route.params.slug] || filterFields[$route.params.slug]"
-      :search-type="searchType"
-      @update-data="clearActiveEl"
-    />
+    <SearchBox :search-type="searchType" @update-data="clearActiveEl" />
+
+    <FilterPanel v-if="filterFields[slug].length" :filter-fields="filterFields[slug]" @update-data="clearActiveEl" />
+
+    <ResultCount :search-type="searchType" />
+
+    <hr>
 
     <template v-if="results.length > 0">
       <component
@@ -27,7 +27,9 @@
 <script>
 import { mapActions } from 'vuex'
 import { throttle } from 'lodash'
-import Search from '~/components/Search'
+import FilterPanel from '~/components/FilterPanel'
+import ResultCount from '~/components/ResultCount'
+import SearchBox from '~/components/SearchBox'
 
 export default {
   components: {
@@ -36,7 +38,9 @@ export default {
     ItemEntries: () => import('~/components/ItemEntries'),
     SpellEntries: () => import('~/components/SpellEntries'),
     /* eslint-enable */
-    Search
+    ResultCount,
+    SearchBox,
+    FilterPanel
   },
 
   data() {
@@ -132,6 +136,10 @@ export default {
 
   mounted() {
     window.addEventListener('scroll', this.loadMoreOnScroll)
+
+    if (!this.$store.state[this.slug].data.length) {
+      this.$store.dispatch(`${this.slug}/initStore`, { data: this.activeData })
+    }
   },
 
   destroyed() {
@@ -160,3 +168,9 @@ export default {
   }
 }
 </script>
+
+<style>
+hr {
+  margin-top: 0.25em;
+}
+</style>

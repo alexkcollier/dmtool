@@ -119,8 +119,17 @@ hr {
 
 .subtitle {
   padding-top: 0.3em;
+
   &::first-letter {
     text-transform: capitalize;
+  }
+
+  .title:not(.is-spaced) + & {
+    margin-top: -1.5rem;
+  }
+
+  & ~ & {
+    margin-top: -0.25em;
   }
 }
 </style>
