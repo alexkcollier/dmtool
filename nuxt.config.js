@@ -27,12 +27,38 @@ export default {
     background_color: '#3d4f5d',
     theme_color: '#3d4f5d'
   },
+  workbox: {
+    offlineAssets: ['/data/bestiary.json', '/data/magic-items.json', '/data/spells.json'],
+    runtimeCaching: [
+      {
+        urlPattern:
+          process.env.NODE_ENV === 'production'
+            ? 'https://dmtool.acollier.ca/data/.*'
+            : '.*//localhost:3000/data/.*',
+        strategyOptions: {
+          cacheName: 'dmtool-cache',
+          cacheExpiration: {
+            maxEntries: 10,
+            maxAgeSeconds: 300
+          }
+        }
+      },
+      {
+        urlPattern: '.*//cdn.materialdesignicons.com/.*',
+        handler: 'cacheFirst'
+      },
+      {
+        urlPattern: '.*//*.typekit.net/.*'
+      }
+    ]
+  },
   loading: { color: '#3B8070' },
   router: {
     middleware: 'clear-active-el'
   },
   generate: {
-    routes: ['/bestiary', '/magic-items', '/spells']
+    routes: ['/bestiary', '/magic-items', '/spells'],
+    fallback: true
   },
   build: {
     postcss: {
@@ -44,6 +70,8 @@ export default {
     },
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
+        config.devtool = '#eval-source-map'
+
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
