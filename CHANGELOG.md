@@ -1,3 +1,13 @@
+<a name="2.21.2"></a>
+## [2.21.2](https://github.com/alexkcollier/dmtool/compare/v2.21.1...v2.21.2) (2018-11-16)
+
+
+### Bug Fixes
+
+* adds accessibility features ([6d07d0e](https://github.com/alexkcollier/dmtool/commit/6d07d0e))
+
+
+
 <a name="2.21.1"></a>
 ## [2.21.1](https://github.com/alexkcollier/dmtool/compare/v2.21.0...v2.21.1) (2018-11-16)
 
