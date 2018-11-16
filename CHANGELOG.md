@@ -1,3 +1,16 @@
+<a name="2.20.0"></a>
+# [2.20.0](https://github.com/alexkcollier/dmtool/compare/v2.18.2...v2.20.0) (2018-11-16)
+
+
+### Features
+
+* introduces data build step ([a78670b](https://github.com/alexkcollier/dmtool/commit/a78670b))
+* moves html parsing to build ([7f0be67](https://github.com/alexkcollier/dmtool/commit/7f0be67))
+* **pwa:** adds precaching and improves runtime caching ([2013b92](https://github.com/alexkcollier/dmtool/commit/2013b92))
+* separates search, filter, and result count ([f577ef5](https://github.com/alexkcollier/dmtool/commit/f577ef5))
+
+
+
 <a name="2.19.0"></a>
 # [2.19.0](https://github.com/alexkcollier/dmtool/compare/v2.18.2...v2.19.0) (2018-11-15)
 
