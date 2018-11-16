@@ -1,3 +1,13 @@
+<a name="2.21.0"></a>
+# [2.21.0](https://github.com/alexkcollier/dmtool/compare/v2.20.0...v2.21.0) (2018-11-16)
+
+
+### Features
+
+* updates nuxt ([e1263cd](https://github.com/alexkcollier/dmtool/commit/e1263cd))
+
+
+
 <a name="2.20.0"></a>
 # [2.20.0](https://github.com/alexkcollier/dmtool/compare/v2.18.2...v2.20.0) (2018-11-16)
 
