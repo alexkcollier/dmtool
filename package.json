@@ -8,7 +8,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "build:data": "node build/data",
-    "corp-release": "corp-semantic-release --post-success \"git add package-lock.json && git commit --message 'chore: updates package-lock [skip ci] && git push\"",
+    "corp-release": "corp-semantic-release",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
