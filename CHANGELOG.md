@@ -1,3 +1,13 @@
+<a name="2.21.1"></a>
+## [2.21.1](https://github.com/alexkcollier/dmtool/compare/v2.21.0...v2.21.1) (2018-11-16)
+
+
+### Bug Fixes
+
+* prefetch icons ([08c1d56](https://github.com/alexkcollier/dmtool/commit/08c1d56))
+
+
+
 <a name="2.21.0"></a>
 # [2.21.0](https://github.com/alexkcollier/dmtool/compare/v2.20.0...v2.21.0) (2018-11-16)
 
