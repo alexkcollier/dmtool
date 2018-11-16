@@ -7,11 +7,13 @@
         id="search-box"
         v-model="searchTerm"
         autocomplete="off"
+        name="search box"
         :class="{'is-danger': !queryResult.length }"
         :placeholder="placeholder"
         icon="magnify"
         type="text"
       />
+      <label class="label sr-only" for="search-box">Search</label>
     </div>
 
     <div class="control">

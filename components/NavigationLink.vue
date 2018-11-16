@@ -7,6 +7,7 @@
     <img
       v-if="icon"
       :src="iconPath"
+      :alt="alt"
       class="image is-32x32"
     >
     <div v-else class="navigation-link-icon" />
@@ -29,6 +30,10 @@ export default {
       type: String
     },
     to: {
+      required: true,
+      type: String
+    },
+    alt: {
       required: true,
       type: String
     }

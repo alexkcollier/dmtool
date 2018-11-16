@@ -8,6 +8,7 @@
         :to="link.to"
         :label="link.label"
         :icon="link.icon"
+        :alt="link.alt"
       />
     </div>
   </div>
@@ -30,22 +31,26 @@ export default {
         {
           icon: 'spell-book.svg',
           label: 'Spells',
-          to: '/spells'
+          to: '/spells',
+          alt: 'Spellbook Icon'
         },
         {
           icon: 'chest.svg',
           label: 'Magic Items',
-          to: '/magic-items'
+          to: '/magic-items',
+          alt: 'Chest Icon'
         },
         {
           icon: 'bestiary.svg',
           label: 'Bestiary',
-          to: '/bestiary'
+          to: '/bestiary',
+          alt: 'Bestiary Icon'
         },
         {
           icon: 'sword.svg',
           label: 'Encounter',
-          to: '/encounter'
+          to: '/encounter',
+          alt: 'Sword Icon'
         }
       ]
     }

@@ -15,7 +15,8 @@
             class="button"
             @click="removeFromEncounter(model)"
           >
-            <b-icon icon="minus" />
+            <span class="sr-only">add to encounter</span>
+            <b-icon style="margin-left: calc(-0.375em - 1px);" icon="minus" />
           </button>
         </transition>
 
@@ -25,7 +26,8 @@
           class="button is-primary"
           @click="addToEncounter(model)"
         >
-          <b-icon :icon="encounterIncludesCreature ? 'check' : 'plus'" />
+          <span class="sr-only">remove from encounter</span>
+          <b-icon style="margin-left: calc(-0.375em - 1px);" :icon="encounterIncludesCreature ? 'check' : 'plus'" />
         </button>
 
       </div>
