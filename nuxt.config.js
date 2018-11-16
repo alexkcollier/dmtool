@@ -15,6 +15,10 @@ export default {
         rel: 'stylesheet',
         type: 'text/css',
         href: '//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css'
+      },
+      {
+        rel: 'prefetch',
+        href: '//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css'
       }
     ]
   },
