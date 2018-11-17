@@ -101,6 +101,8 @@
 </template>
 
 <script>
+import { debounce } from 'lodash'
+
 export default {
   name: 'FilterPanel',
 
@@ -173,10 +175,11 @@ export default {
       this.$store.dispatch(`${this.slug}/setAllOptions`, { filter, value })
     },
 
-    applyFilter: function(filter, optionIndex, value) {
+    applyFilter(filter, optionIndex, value) {
       this.$emit('update-data')
-      const payload = { filter, optionIndex, value }
-      this.$store.commit(`${this.slug}/UPDATE_FILTER`, payload)
+      this.$store
+        .dispatch(`${this.slug}/applyFilter`, { filter, optionIndex, value })
+        .then(debounce(() => this.$store.dispatch(`${this.slug}/query`), 300))
     }
   }
 }

@@ -107,7 +107,7 @@ export default {
     },
 
     results() {
-      return this.$store.getters[`${this.slug}/queryResult`]
+      return this.$store.state[this.slug].queryResult
     },
 
     truncatedResults() {

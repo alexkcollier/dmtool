@@ -20,11 +20,15 @@ export const state = () => ({
   searchString: '',
   searchFields: ['name'],
   filters: {},
-  searchIndex: null
+  searchIndex: null,
+  queryResult: []
 })
 
 export const mutations = {
-  INIT_DATA: (state, { data }) => (state.data = [...data]),
+  INIT_DATA: (state, { data }) => {
+    state.data = data
+    state.queryResult = data
+  },
   INIT_FILTER: (state, { filter, options }) => Vue.set(state.filters, filter, options),
   INIT_SEARCH_INDEX: (state, { data }) => {
     state.searchIndex = new Fuse(data, configureFuse(state.searchFields))
@@ -32,7 +36,8 @@ export const mutations = {
   UPDATE_FILTER: (state, { filter, optionIndex, value }) => {
     state.filters[filter][optionIndex].allowed = value
   },
-  UPDATE_SEARCH_STRING: (state, searchTerm) => (state.searchString = searchTerm)
+  UPDATE_SEARCH_STRING: (state, searchTerm) => (state.searchString = searchTerm),
+  UPDATE_RESULT: (state, { queryResult }) => (state.queryResult = queryResult)
 }
 
 export const getters = {
@@ -40,11 +45,6 @@ export const getters = {
     return Object.keys(filters)
       .reduce((acc, filterName) => acc.concat(filters[filterName]), [])
       .some(o => !o.allowed)
-  },
-
-  queryResult: ({ searchIndex, searchString, data, filters }) => {
-    const searchResult = searchIndex && searchString ? searchIndex.search(searchString) : data
-    return searchResult.filter(el => passesFilters(filters, el))
   }
 }
 
@@ -77,6 +77,25 @@ export const actions = {
 
   resetFilters: ({ dispatch, state }) => {
     Object.keys(state.filters).forEach(filter => dispatch('setAllOptions', { filter, value: true }))
+  },
+
+  applyFilter: ({ commit }, { filter, optionIndex, value }) => {
+    return new Promise(resolve => {
+      commit('UPDATE_FILTER', { filter, optionIndex, value })
+      resolve()
+    })
+  },
+
+  query: ({ commit, state }) => {
+    return new Promise(resolve => {
+      const { searchIndex, searchString, data, filters } = state
+      const shouldSeach = searchIndex && searchString
+      const searchResult = shouldSeach ? searchIndex.search(searchString.trim()) : data
+      const queryResult = searchResult.filter(el => passesFilters(filters, el))
+
+      commit('UPDATE_RESULT', { queryResult })
+      resolve()
+    })
   }
 }
 

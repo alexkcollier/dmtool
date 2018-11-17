@@ -62,7 +62,8 @@ export default {
       },
       set: debounce(function(value) {
         this.$emit('update-data')
-        this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, this.cleanSearchTerm(value))
+        this.$store.commit(`${this.slug}/UPDATE_SEARCH_STRING`, value)
+        this.$store.dispatch(`${this.slug}/query`)
       }, 300)
     },
 
@@ -75,7 +76,7 @@ export default {
     },
 
     queryResult() {
-      return this.$store.getters[`${this.slug}/queryResult`]
+      return this.$store.state[this.slug].queryResult
     }
   },
 
@@ -90,10 +91,6 @@ export default {
   },
 
   methods: {
-    cleanSearchTerm(value) {
-      return value ? value.toLowerCase().trim() : ''
-    },
-
     clearSearch() {
       this.searchTerm = ''
       if (this.$route.query.name) this.$router.push({ query: null })
