@@ -1,3 +1,13 @@
+<a name="2.21.3"></a>
+## [2.21.3](https://github.com/alexkcollier/dmtool/compare/v2.21.2...v2.21.3) (2018-11-17)
+
+
+### Bug Fixes
+
+* **filter-panel:** fixes filters resetting on collapse ([2d9131d](https://github.com/alexkcollier/dmtool/commit/2d9131d))
+
+
+
 <a name="2.21.2"></a>
 ## [2.21.2](https://github.com/alexkcollier/dmtool/compare/v2.21.1...v2.21.2) (2018-11-16)
 
