@@ -19,6 +19,7 @@ export const state = () => ({
   data: [],
   searchString: '',
   searchFields: ['name'],
+  hasFilters: false,
   filters: {},
   searchIndex: null,
   queryResult: []
@@ -30,6 +31,7 @@ export const mutations = {
     state.queryResult = data
   },
   INIT_FILTER: (state, { filter, options }) => Vue.set(state.filters, filter, options),
+  INIT_FILTER_STATUS: (state, { status }) => (state.hasFilters = status),
   INIT_SEARCH_INDEX: (state, { data }) => {
     state.searchIndex = new Fuse(data, configureFuse(state.searchFields))
   },
@@ -65,7 +67,7 @@ export const actions = {
     )
 
     filters.forEach(filter => commit('INIT_FILTER', filter))
-
+    commit('INIT_FILTER_STATUS', { status: true })
     return Promise.resolve()
   },
 
