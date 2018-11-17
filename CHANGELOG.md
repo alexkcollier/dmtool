@@ -14,11 +14,8 @@
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 * **search:** moves query from getter to state ([46af37b](https://github.com/alexkcollier/dmtool/commit/46af37b))
-=======
 * **filter-panel:** fixes filters resetting on collapse ([2d9131d](https://github.com/alexkcollier/dmtool/commit/2d9131d))
->>>>>>> f4a4b12b3f7cce8140b563f56df016837fedd1e3
 
 
 
