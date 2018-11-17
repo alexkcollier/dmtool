@@ -1,3 +1,13 @@
+<a name="2.21.3"></a>
+## [2.21.3](https://github.com/alexkcollier/dmtool/compare/v2.21.2...v2.21.3) (2018-11-17)
+
+
+### Bug Fixes
+
+* **search:** moves query from getter to state ([46af37b](https://github.com/alexkcollier/dmtool/commit/46af37b))
+
+
+
 <a name="2.21.2"></a>
 ## [2.21.2](https://github.com/alexkcollier/dmtool/compare/v2.21.1...v2.21.2) (2018-11-16)
 
