@@ -2,19 +2,6 @@ import { sortBy } from 'lodash'
 import Vue from 'vue'
 import Fuse from 'fuse.js'
 
-function configureFuse(searchFields) {
-  return {
-    shouldSort: true,
-    threshold: 0.25,
-    location: 0,
-    distance: 100,
-    tokenize: true,
-    matchAllTokens: true,
-    maxPatternLength: 32,
-    minMatchCharLength: 1,
-    keys: searchFields
-  }
-}
 export const state = () => ({
   data: [],
   searchString: '',
@@ -98,6 +85,20 @@ export const actions = {
       commit('UPDATE_RESULT', { queryResult })
       resolve()
     })
+  }
+}
+
+function configureFuse(searchFields) {
+  return {
+    shouldSort: true,
+    threshold: 0.25,
+    location: 0,
+    distance: 100,
+    tokenize: true,
+    matchAllTokens: true,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: searchFields
   }
 }
 
