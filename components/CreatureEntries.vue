@@ -376,10 +376,7 @@ export default {
     },
 
     dmgCon(arr, type) {
-      let nested = false
-
       const flatten = (it, depth = false) => {
-        nested = depth
         if (typeof it === 'string') return it
 
         if (it.special) return it.special
@@ -397,13 +394,30 @@ export default {
         }
       }
 
-      return arr.map(it => flatten(it)).join(nested ? '; ' : ', ')
+      return this.joinDmgCon(arr.map(it => flatten(it)))
     },
 
     conjunctWith(arr, conjunction) {
       if (arr.length === 1) return String(arr[0])
       if (arr.length === 2) return arr.join(` ${conjunction} `)
       return `${arr.slice(0, -1).join(', ')} ${conjunction} ${arr.slice(-1)}`
+    },
+
+    joinDmgCon(arr) {
+      if (arr.length <= 1) return arr.join('')
+
+      let stack = ''
+
+      for (let i = 0; i < arr.length - 1; ++i) {
+        const it = arr[i]
+        const nxt = arr[i + 1]
+        stack += it
+        stack += it.includes(',') || nxt.includes(',') ? '; ' : ', '
+      }
+
+      stack += arr[arr.length - 1]
+
+      return stack
     },
 
     acToString(stack, cur, idx, arr) {
