@@ -1,4 +1,5 @@
 <template>
+  <!-- Creature name, etc. -->
   <CollapsePanel
     :name="model.name"
     :info="creatureMeta"
@@ -6,9 +7,11 @@
     class="is-sans-serif"
   >
 
+    <!-- Encounter buttons -->
     <div slot="col2" class="column is-narrow">
       <div class="is-encounter-buttons">
 
+        <!-- Remove from encounter -->
         <transition name="fade">
           <button
             v-if="encounterIncludesCreature"
@@ -20,6 +23,7 @@
           </button>
         </transition>
 
+        <!-- Add to encounter -->
         <button
           v-if="$route.params.slug === 'bestiary'"
           :disabled="encounterIncludesCreature"
@@ -34,10 +38,11 @@
     </div>
 
 
+    <!-- Panel body -->
     <div class="is-sans-serif has-text-red">
       <!-- AC/HP/Speed -->
       <div>
-        <strong>Armor Class</strong> {{ armorClass }}
+        <strong>Armor Class</strong> <span v-html="armorClass" />
       </div>
       <div>
         <strong>Hit Points</strong> {{ hp }}
@@ -132,6 +137,7 @@
 
     <template v-if="model.action">
       <h2 class="is-sans-serif">Actions</h2>
+
       <Action
         v-for="action in model.action"
         :key="action.index"
@@ -141,6 +147,7 @@
 
     <template v-if="model.reaction">
       <h2 class="is-sans-serif">Reactions</h2>
+
       <Action
         v-for="reaction in model.reaction"
         :key="reaction.index"
@@ -149,12 +156,21 @@
     </template>
 
     <!-- TODO: Lair actions -->
-    <template v-if="model.legendaryGroup && model.legendary">
+    <template v-if="model.legendary">
       <h2 class="is-sans-serif">Legendary Actions</h2>
-      <p>{{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.</p>
+
+      <template v-if="model.legendary[0].name === 'Options'">
+        <p v-for="(entry, index) in model.legendary[0].entries" :key="index">
+          {{ entry }}
+        </p>
+      </template>
+
+      <p v-else>
+        {{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.
+      </p>
 
       <Action
-        v-for="legendary in model.legendary"
+        v-for="legendary in legendaryActions"
         :key="legendary.index"
         :model="legendary"
       />
@@ -295,6 +311,12 @@ export default {
       return this.model.legendaryActions || 3
     },
 
+    legendaryActions() {
+      if (this.model.legendary[0].name === 'Options') return this.model.legendary.slice(1)
+
+      return this.model.legendary
+    },
+
     senses() {
       const { senses, passive } = this.model
       const passiveStr = `passive Perception ${passive}`
@@ -310,19 +332,23 @@ export default {
     speed() {
       let { walk, canHover, ...speeds } = this.model.speed
 
-      walk =
-        walk && !!walk
-          ? typeof walk === 'object' && walk.condition
-            ? `${walk.number} ft. ${walk.condition}`
-            : `${walk} ft.`
-          : ''
+      if (walk) {
+        if (typeof walk === 'object' && walk.condition) {
+          walk = `${walk.number} ft. ${walk.condition}`
+        } else {
+          walk = `${walk} ft.`
+        }
+      } else {
+        walk = ''
+      }
 
-      speeds = Object.keys(speeds).map(
-        k =>
-          typeof speeds[k] === 'object' && speeds[k].condition
-            ? `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
-            : `${k} ${speeds[k]} ft.`
-      )
+      speeds = Object.keys(speeds).map(k => {
+        if (typeof speeds[k] === 'object' && speeds[k].condition) {
+          return `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
+        }
+
+        return `${k} ${speeds[k]} ft.`
+      })
 
       return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
@@ -354,7 +380,6 @@ export default {
 
       const flatten = (it, depth = false) => {
         nested = depth
-
         if (typeof it === 'string') return it
 
         if (it.special) return it.special
