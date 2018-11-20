@@ -1,3 +1,14 @@
+<a name="2.21.5"></a>
+## [2.21.5](https://github.com/alexkcollier/dmtool/compare/v2.21.4...v2.21.5) (2018-11-20)
+
+
+### Bug Fixes
+
+* **bestiary:** properly displays legendary actions ([538270d](https://github.com/alexkcollier/dmtool/commit/538270d))
+* **bestiary:** uses correct punctuation mark to join dmgCon ([1da3bf2](https://github.com/alexkcollier/dmtool/commit/1da3bf2))
+
+
+
 <a name="2.21.4"></a>
 ## [2.21.4](https://github.com/alexkcollier/dmtool/compare/v2.21.3...v2.21.4) (2018-11-17)
 
