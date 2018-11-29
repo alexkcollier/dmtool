@@ -53,6 +53,7 @@ class BestiaryData {
 
           creature.tags = tags.map(t => {
             if (t.tag) return t.tag
+            if (t === 'any race') return t
 
             let tag = t.split(' ').pop()
 
