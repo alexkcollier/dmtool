@@ -1,3 +1,13 @@
+<a name="2.21.6"></a>
+## [2.21.6](https://github.com/alexkcollier/dmtool/compare/v2.21.5...v2.21.6) (2018-11-29)
+
+
+### Bug Fixes
+
+* **bestiary:** allows 'any race' to be a valid tag ([d2e6be7](https://github.com/alexkcollier/dmtool/commit/d2e6be7))
+
+
+
 <a name="2.21.5"></a>
 ## [2.21.5](https://github.com/alexkcollier/dmtool/compare/v2.21.4...v2.21.5) (2018-11-20)
 
