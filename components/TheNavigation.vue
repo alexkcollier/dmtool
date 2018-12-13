@@ -50,6 +50,12 @@ export default {
           label: 'Encounter',
           to: '/encounter',
           alt: 'Sword Icon'
+        },
+        {
+          icon: 'd20.svg',
+          label: 'Roll Dice',
+          to: '/dice',
+          alt: 'Die Icon'
         }
       ]
     }
