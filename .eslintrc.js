@@ -18,24 +18,7 @@ module.exports = {
   rules: {
     semi: [2, 'never'],
     'no-console': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        semi: false,
-        singleQuote: true,
-        printWidth: 100
-      }
-    ],
-    'vue/max-attributes-per-line': [
-      2,
-      {
-        singleline: 3,
-        multiline: {
-          max: 1,
-          allowFirstLine: false
-        }
-      }
-    ],
+    'prettier/prettier': ['error'],
     'vue/no-v-html': 'off'
   }
 }

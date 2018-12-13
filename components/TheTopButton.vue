@@ -1,13 +1,13 @@
 <template>
-  <transition name="fade">
+  <Transition name="fade">
     <div
       v-show="showTopButton"
       class="button is-gold"
       @click="scrollToTop"
     >
-      <b-icon icon="format-vertical-align-top" />
+      <BIcon icon="format-vertical-align-top" />
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <script>

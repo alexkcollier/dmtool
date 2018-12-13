@@ -4,11 +4,10 @@
 
     <!-- content -->
     <BaseContainer>
-      <nuxt />
+      <Nuxt />
     </BaseContainer>
     
     <TheTopButton />
-
   </div>
 </template>
 

@@ -1,9 +1,7 @@
 <template>
   <div>
-
     <!-- Iterate item entries and set up entry types -->
     <template v-for="entry in model">
-
       <!-- Paragraphs -->
       <p
         v-if="!entry.type"
@@ -62,17 +60,20 @@
 
       <!-- Iterate over child entries -->
       <template v-else-if="entry.type === 'entries'">
-        <p v-if="entry.name" :key="entry.index">
+        <p
+          v-if="entry.name"
+          :key="entry.index"
+        >
           <strong><i>{{ entry.name }}. </i></strong>
           <span v-html="formatEntry(entry.entries[0])" />
         </p>
 
-        <data-entry
+        <DataEntry
           v-else
           :key="entry.index"
           :model="entry.entries.slice(0, 1)"
         />
-        <data-entry
+        <DataEntry
           v-if="entry.entries.slice(1).length"
           :key="entry.index"
           :model="entry.entries.slice(1)"

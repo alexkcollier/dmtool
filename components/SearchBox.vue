@@ -1,9 +1,8 @@
 <template>
   <!-- Search box -->
-  <b-field class="is-fixed-mobile">
-
+  <BField class="is-fixed-mobile">
     <div class="control is-expanded">
-      <b-input
+      <BInput
         id="search-box"
         v-model="searchTerm"
         autocomplete="off"
@@ -13,7 +12,12 @@
         icon="magnify"
         type="text"
       />
-      <label class="label sr-only" for="search-box">Search</label>
+      <label
+        class="label sr-only"
+        for="search-box"
+      >
+        Search
+      </label>
     </div>
 
     <div class="control">
@@ -26,8 +30,7 @@
         Clear
       </button>
     </div>
-  </b-field>
-
+  </BField>
 </template>
 
 <script>
