@@ -18,7 +18,7 @@
 import NavigationLink from '~/components/NavigationLink'
 
 export default {
-  name: 'Navigation',
+  name: 'TheNavigation',
 
   components: {
     NavigationLink
