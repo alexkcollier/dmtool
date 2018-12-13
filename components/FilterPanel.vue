@@ -1,7 +1,6 @@
 <template>
   <div class="card">
     <div class="card-header">
-
       <!-- Filter collapse control-->
       <a class="card-header-title" href="#" @click.prevent="toggleFilterView">
         <b-icon
@@ -33,7 +32,6 @@
     <!-- Filter options display -->
     <transition name="fade-grow">
       <div v-if="!collapseFilters">
-
         <!-- Filter options select -->
         <div class="card-header">
           <a
@@ -56,7 +54,6 @@
           :key="filter"
           class="card-content"
         >
-
           <b-field grouped>
             <div class="control">
               <button
@@ -76,7 +73,6 @@
                 Enable all
               </button>
             </div>
-
           </b-field>
 
           <b-field grouped group-multiline>
@@ -85,16 +81,12 @@
               :key="index"
               class="control"
             >
-
               <b-switch :value="option.allowed" @input="applyFilter(filter, index, $event)">
                 {{ option.name | parseNumToFrac }}
               </b-switch>
-
             </div>
           </b-field>
-
         </div>
-
       </div>
     </transition>
   </div>
@@ -137,10 +129,12 @@ export default {
 
     filters() {
       if (this.$store.state[this.slug]) return this.$store.state[this.slug].filters
+      return {}
     },
 
     filterNames() {
       if (this.$store.state[this.slug]) return Object.keys(this.filters)
+      return []
     }
   },
 

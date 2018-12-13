@@ -1,9 +1,7 @@
 <template>
   <div>
-
     <!-- Iterate item entries and set up entry types -->
     <template v-for="entry in model">
-
       <!-- Paragraphs -->
       <p
         v-if="!entry.type"

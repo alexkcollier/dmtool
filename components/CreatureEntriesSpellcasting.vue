@@ -35,7 +35,6 @@
     </template>
 
     <p v-for="(entry, i) in model.footerEntries" :key="'footer-entry-' + i" v-html="entry" />
-
   </div>
 </template>
 

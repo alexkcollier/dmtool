@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <!-- Paragraphs -->
     <p :key="model.index">
       <strong><i>{{ model.name | recharge }}. </i></strong>
@@ -25,7 +24,9 @@
       <table v-else-if="entry.type === 'table'" :key="entry.index" class="table">
         <thead>
           <tr>
-            <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
+            <th v-for="label in entry.colLabels" :key="label.index">
+              {{ label }}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -44,7 +45,6 @@
         {{ entry }}
       </p>
     </template>
-
   </div>
 </template>
 

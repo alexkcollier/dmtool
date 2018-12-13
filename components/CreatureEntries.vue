@@ -6,11 +6,9 @@
     :source="source"
     class="is-sans-serif"
   >
-
     <!-- Encounter buttons -->
     <div slot="col2" class="column is-narrow">
       <div class="is-encounter-buttons">
-
         <!-- Remove from encounter -->
         <transition name="fade">
           <button
@@ -18,7 +16,9 @@
             class="button"
             @click="removeFromEncounter(model)"
           >
-            <span class="sr-only">add to encounter</span>
+            <span class="sr-only">
+              add to encounter
+            </span>
             <b-icon style="margin-left: calc(-0.375em - 1px);" icon="minus" />
           </button>
         </transition>
@@ -30,10 +30,11 @@
           class="button is-primary"
           @click="addToEncounter(model)"
         >
-          <span class="sr-only">remove from encounter</span>
+          <span class="sr-only">
+            remove from encounter
+          </span>
           <b-icon style="margin-left: calc(-0.375em - 1px);" :icon="encounterIncludesCreature ? 'check' : 'plus'" />
         </button>
-
       </div>
     </div>
 
@@ -54,7 +55,6 @@
 
       <!-- Stats -->
       <table>
-
         <thead>
           <tr>
             <th
@@ -78,7 +78,6 @@
             </td>
           </tr>
         </tbody>
-
       </table>
       <hr>
 
@@ -136,7 +135,9 @@
     </template>
 
     <template v-if="model.action">
-      <h2 class="is-sans-serif">Actions</h2>
+      <h2 class="is-sans-serif">
+        Actions
+      </h2>
 
       <Action
         v-for="action in model.action"
@@ -146,7 +147,9 @@
     </template>
 
     <template v-if="model.reaction">
-      <h2 class="is-sans-serif">Reactions</h2>
+      <h2 class="is-sans-serif">
+        Reactions
+      </h2>
 
       <Action
         v-for="reaction in model.reaction"
@@ -157,7 +160,9 @@
 
     <!-- TODO: Lair actions -->
     <template v-if="model.legendary">
-      <h2 class="is-sans-serif">Legendary Actions</h2>
+      <h2 class="is-sans-serif">
+        Legendary Actions
+      </h2>
 
       <template v-if="model.legendary[0].name === 'Options'">
         <p v-for="(entry, index) in model.legendary[0].entries" :key="index">
@@ -175,7 +180,6 @@
         :model="legendary"
       />
     </template>
-
   </CollapsePanel>
 </template>
 

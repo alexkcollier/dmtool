@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <div class="columns is-mobile" style="margin-bottom:0">
       <div class="column">
         <a href="#" @click.prevent="toggleActive">
@@ -27,7 +26,6 @@
       </div>
     </transition>
     <hr>
-    
   </div>
 </template>
 

@@ -1,6 +1,5 @@
 <template>
   <main class="content">
-
     <SearchBox :search-type="searchType" @update-data="clearActiveEl" />
 
     <FilterPanel v-if="filterFields[slug].length" :filter-fields="filterFields[slug]" @update-data="clearActiveEl" />
@@ -20,7 +19,6 @@
     </template>
 
     <div v-else class="ampersand" />
-
   </main>
 </template>
 

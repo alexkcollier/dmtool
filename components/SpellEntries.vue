@@ -4,7 +4,6 @@
     :info="spellLevelSchool"
     :source="model.source"
   >
-        
     <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
     <p><strong>Range:</strong> {{ spellRange }}</p>
     <p><strong>Components:</strong> {{ spellComponents }}</p>
@@ -94,6 +93,9 @@ export default {
               ? `Until ${ends[0]}ed or ${ends[1]}ed`
               : `Until ${ends[0]}ed`
             : 'Permanent'
+
+        default:
+          return ''
       }
     },
 

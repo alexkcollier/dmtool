@@ -23,7 +23,9 @@
       <table v-else-if="entry.type === 'table'" :key="entry.index" class="table">
         <thead>
           <tr>
-            <th v-for="label in entry.colLabels" :key="label.index">{{ label }}</th>
+            <th v-for="label in entry.colLabels" :key="label.index">
+              {{ label }}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -32,9 +34,7 @@
           </tr>
         </tbody>
       </table>
-
     </template>
-
   </div>
 </template>
 

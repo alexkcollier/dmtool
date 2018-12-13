@@ -1,7 +1,6 @@
 <template>
   <!-- Search box -->
   <b-field class="is-fixed-mobile">
-
     <div class="control is-expanded">
       <b-input
         id="search-box"
@@ -13,7 +12,9 @@
         icon="magnify"
         type="text"
       />
-      <label class="label sr-only" for="search-box">Search</label>
+      <label class="label sr-only" for="search-box">
+        Search
+      </label>
     </div>
 
     <div class="control">
@@ -27,7 +28,6 @@
       </button>
     </div>
   </b-field>
-
 </template>
 
 <script>
