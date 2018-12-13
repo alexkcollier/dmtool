@@ -8,7 +8,7 @@
         <h2 class="subtitle is-size-3">
           Personal DM tools
         </h2>
-        
+
         <nuxt-link to="/magic-items" class="button is-medium">
           Magic Items
         </nuxt-link>
@@ -20,6 +20,9 @@
         </nuxt-link>
         <nuxt-link to="/encounter" class="button is-medium">
           Encounter
+        </nuxt-link>
+        <nuxt-link to="/dice" class="button is-medium">
+          Roll Dice
         </nuxt-link>
       </div>
     </div>
@@ -49,5 +52,9 @@ export default {
     position: absolute;
     width: 100%;
   }
+}
+
+.button {
+  margin: 0.25em;
 }
 </style>

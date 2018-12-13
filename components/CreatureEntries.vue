@@ -8,7 +8,7 @@
   >
     <!-- Encounter buttons -->
     <div slot="col2" class="column is-narrow">
-      <div class="is-encounter-buttons">
+      <div class="buttons is-encounter-buttons">
         <!-- Remove from encounter -->
         <transition name="fade">
           <button
