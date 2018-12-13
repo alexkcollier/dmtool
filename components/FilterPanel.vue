@@ -1,13 +1,10 @@
 <template>
   <div class="card">
     <div class="card-header">
+
       <!-- Filter collapse control-->
-      <a
-        class="card-header-title"
-        href="#"
-        @click.prevent="toggleFilterView"
-      >
-        <BIcon
+      <a class="card-header-title" href="#" @click.prevent="toggleFilterView">
+        <b-icon
           icon="filter"
           size="is-small"
           style="margin-right:0.25rem;"
@@ -16,7 +13,7 @@
 
         Filters
 
-        <BIcon
+        <b-icon
           :class="{'point-up': !collapseFilters}"
           icon="chevron-down"
           class="icon-point"
@@ -34,8 +31,9 @@
     </div>
 
     <!-- Filter options display -->
-    <Transition name="fade-grow">
+    <transition name="fade-grow">
       <div v-if="!collapseFilters">
+
         <!-- Filter options select -->
         <div class="card-header">
           <a
@@ -58,7 +56,8 @@
           :key="filter"
           class="card-content"
         >
-          <BField grouped>
+
+          <b-field grouped>
             <div class="control">
               <button
                 class="control button"
@@ -69,10 +68,7 @@
               </button>
             </div>
 
-            <div
-              v-show="filterOptions.some(o => !o.allowed)"
-              class="control"
-            >
+            <div v-show="filterOptions.some(o => !o.allowed)" class="control">
               <button
                 class="control button"
                 @click="setAllOptions(filter, true)"
@@ -80,28 +76,27 @@
                 Enable all
               </button>
             </div>
-          </BField>
 
-          <BField
-            grouped
-            group-multiline
-          >
+          </b-field>
+
+          <b-field grouped group-multiline>
             <div
               v-for="(option, index) in filterOptions"
               :key="index"
               class="control"
             >
-              <BSwitch
-                :value="option.allowed"
-                @input="applyFilter(filter, index, $event)"
-              >
+
+              <b-switch :value="option.allowed" @input="applyFilter(filter, index, $event)">
                 {{ option.name | parseNumToFrac }}
-              </BSwitch>
+              </b-switch>
+
             </div>
-          </BField>
+          </b-field>
+
         </div>
+
       </div>
-    </Transition>
+    </transition>
   </div>
 </template>
 
@@ -142,12 +137,10 @@ export default {
 
     filters() {
       if (this.$store.state[this.slug]) return this.$store.state[this.slug].filters
-      return {}
     },
 
     filterNames() {
       if (this.$store.state[this.slug]) return Object.keys(this.filters)
-      return []
     }
   },
 

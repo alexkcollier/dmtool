@@ -1,15 +1,7 @@
 <template>
-  <main
-    class="ampersand"
-    style="height:60vh;"
-  >
-    <div
-      class="has-text-centered"
-      style="position:relative; top:40%;"
-    >
-      <h1 class="title is-size-1">
-        {{ message }}
-      </h1>
+  <main class="ampersand" style="height:60vh;">
+    <div class="has-text-centered" style="position:relative; top:40%;">
+      <h1 class="title is-size-1">{{ message }}</h1>
     </div>
   </main>
 </template>

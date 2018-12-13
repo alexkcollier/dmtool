@@ -5,19 +5,12 @@
       <span v-html="model.headerEntries[0]" />
     </p>
 
-    <p
-      v-for="(entry, i) in sliceHeaderEntries"
-      :key="'header-entry-' + i"
-      v-html="entry"
-    />
+    <p v-for="(entry, i) in sliceHeaderEntries" :key="'header-entry-' + i" v-html="entry" />
 
     <!-- Slot based spells -->
     <template v-if="model.spells">
       <dl>
-        <dd
-          v-for="(level, num) in model.spells"
-          :key="'slot-' + num"
-        >
+        <dd v-for="(level, num) in model.spells" :key="'slot-' + num">
           {{ formatSpellSlots(num) }} <span v-html="formatSpellList(level.spells)" />
         </dd>
       </dl>
@@ -33,10 +26,7 @@
       <template v-for="time in rechargeTimes">
         <template v-if="model[time]">
           <dl :key="time">
-            <dd
-              v-for="(list, key) in model[time]"
-              :key="`${time}-recharge-${key}`"
-            >
+            <dd v-for="(list, key) in model[time]" :key="`${time}-recharge-${key}`">
               {{ formatTime(key, time) }} <span v-html="formatSpellList(list)" />
             </dd>
           </dl>
@@ -44,11 +34,8 @@
       </template>
     </template>
 
-    <p
-      v-for="(entry, i) in model.footerEntries"
-      :key="'footer-entry-' + i"
-      v-html="entry"
-    />
+    <p v-for="(entry, i) in model.footerEntries" :key="'footer-entry-' + i" v-html="entry" />
+
   </div>
 </template>
 

@@ -6,28 +6,22 @@
     :source="source"
     class="is-sans-serif"
   >
+
     <!-- Encounter buttons -->
-    <div
-      slot="col2"
-      class="column is-narrow"
-    >
+    <div slot="col2" class="column is-narrow">
       <div class="is-encounter-buttons">
+
         <!-- Remove from encounter -->
-        <Transition name="fade">
+        <transition name="fade">
           <button
             v-if="encounterIncludesCreature"
             class="button"
             @click="removeFromEncounter(model)"
           >
-            <span class="sr-only">
-              add to encounter
-            </span>
-            <BIcon
-              style="margin-left: calc(-0.375em - 1px);"
-              icon="minus"
-            />
+            <span class="sr-only">add to encounter</span>
+            <b-icon style="margin-left: calc(-0.375em - 1px);" icon="minus" />
           </button>
-        </Transition>
+        </transition>
 
         <!-- Add to encounter -->
         <button
@@ -36,14 +30,10 @@
           class="button is-primary"
           @click="addToEncounter(model)"
         >
-          <span class="sr-only">
-            remove from encounter
-          </span>
-          <BIcon
-            style="margin-left: calc(-0.375em - 1px);"
-            :icon="encounterIncludesCreature ? 'check' : 'plus'"
-          />
+          <span class="sr-only">remove from encounter</span>
+          <b-icon style="margin-left: calc(-0.375em - 1px);" :icon="encounterIncludesCreature ? 'check' : 'plus'" />
         </button>
+
       </div>
     </div>
 
@@ -64,6 +54,7 @@
 
       <!-- Stats -->
       <table>
+
         <thead>
           <tr>
             <th
@@ -87,22 +78,17 @@
             </td>
           </tr>
         </tbody>
+
       </table>
       <hr>
 
       <!-- Other stats -->
       <div class="has-text-red">
-        <div
-          v-if="model.save"
-          class="is-capitalized"
-        >
+        <div v-if="model.save" class="is-capitalized">
           <strong>Saving Throws</strong> {{ concatSave }}
         </div>
 
-        <div
-          v-if="model.skill"
-          class="is-capitalized"
-        >
+        <div v-if="model.skill" class="is-capitalized">
           <strong>Skills</strong> {{ concatSkill }}
         </div>
 
@@ -138,11 +124,7 @@
     </div>
 
     <template v-if="model.trait">
-      <Trait
-        v-for="trait in model.trait"
-        :key="trait.index"
-        :model="trait"
-      />
+      <Trait v-for="trait in model.trait" :key="trait.index" :model="trait" />
     </template>
 
     <template v-if="model.spellcasting">
@@ -154,9 +136,7 @@
     </template>
 
     <template v-if="model.action">
-      <h2 class="is-sans-serif">
-        Actions
-      </h2>
+      <h2 class="is-sans-serif">Actions</h2>
 
       <Action
         v-for="action in model.action"
@@ -166,9 +146,7 @@
     </template>
 
     <template v-if="model.reaction">
-      <h2 class="is-sans-serif">
-        Reactions
-      </h2>
+      <h2 class="is-sans-serif">Reactions</h2>
 
       <Action
         v-for="reaction in model.reaction"
@@ -179,15 +157,10 @@
 
     <!-- TODO: Lair actions -->
     <template v-if="model.legendary">
-      <h2 class="is-sans-serif">
-        Legendary Actions
-      </h2>
+      <h2 class="is-sans-serif">Legendary Actions</h2>
 
       <template v-if="model.legendary[0].name === 'Options'">
-        <p
-          v-for="(entry, index) in model.legendary[0].entries"
-          :key="index"
-        >
+        <p v-for="(entry, index) in model.legendary[0].entries" :key="index">
           {{ entry }}
         </p>
       </template>
@@ -202,6 +175,7 @@
         :model="legendary"
       />
     </template>
+
   </CollapsePanel>
 </template>
 

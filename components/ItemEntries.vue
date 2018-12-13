@@ -4,6 +4,7 @@
     :info="itemMeta"
     :source="source"
   >
+
     <DataEntry :model="model.entries" />
   </CollapsePanel>
 </template>

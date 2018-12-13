@@ -1,15 +1,10 @@
 <template>
   <main class="content">
-    <div
-      v-if="encounter.length"
-      class="buttons"
-    >
-      <NuxtLink
-        to="/bestiary"
-        class="button is-primary"
-      >
+
+    <div v-if="encounter.length" class="buttons">
+      <nuxt-link to="/bestiary" class="button is-primary">
         Add a creature
-      </NuxtLink>
+      </nuxt-link>
       <button
         :disabled="encounter.length === 0"
         class="button is-red"
@@ -29,24 +24,16 @@
       />
     </template>
 
-    <div
-      v-else
-      class="ampersand"
-      style="height:60vh;"
-    >
-      <div
-        class="is-sans-serif has-text-centered is-size-2"
-        style="position:relative; top:40%;"
-      >
+    <div v-else class="ampersand" style="height:60vh;">
+          
+      <div class="is-sans-serif has-text-centered is-size-2" style="position:relative; top:40%;">
         <div><strong>There's nothing here.</strong></div>
-        <NuxtLink
-          to="/bestiary"
-          class="button is-primary is-large"
-        >
+        <nuxt-link to="/bestiary" class="button is-primary is-large">
           Add a Creature
-        </NuxtLink>
+        </nuxt-link>
       </div>
     </div>
+
   </main>
 </template>
 
