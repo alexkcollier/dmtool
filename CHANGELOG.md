@@ -1,3 +1,27 @@
+<a name="2.22.0"></a>
+# [2.22.0](https://github.com/alexkcollier/dmtool/compare/v2.21.6...v2.22.0) (2018-12-14)
+
+
+### Bug Fixes
+
+* centers reset filters button ([61e2380](https://github.com/alexkcollier/dmtool/commit/61e2380))
+* fixes button margins ([b62f633](https://github.com/alexkcollier/dmtool/commit/b62f633))
+* improves mobile styles ([ac449cf](https://github.com/alexkcollier/dmtool/commit/ac449cf))
+
+
+### Features
+
+* adds simple dice roller ([643121d](https://github.com/alexkcollier/dmtool/commit/643121d))
+* **roll-dice:** adds simple common rolls ([b096be7](https://github.com/alexkcollier/dmtool/commit/b096be7))
+* improves die rolling experience ([675baf9](https://github.com/alexkcollier/dmtool/commit/675baf9))
+
+
+### Reverts
+
+* Revert "chore: updates eslint [skip ci]" ([ec72abc](https://github.com/alexkcollier/dmtool/commit/ec72abc))
+
+
+
 <a name="2.21.6"></a>
 ## [2.21.6](https://github.com/alexkcollier/dmtool/compare/v2.21.5...v2.21.6) (2018-11-29)
 
