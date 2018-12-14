@@ -103,7 +103,10 @@ $link-focus-border: $primary;
   background: $input-background-color;
 }
 
+form,
 table,
+.label,
+.control-label,
 .input,
 .control {
   font-family: $family-sans-serif;
@@ -169,7 +172,6 @@ hr {
   padding-top: 0.4em;
 }
 
-
 .sr-only {
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
@@ -181,4 +183,8 @@ hr {
   position: absolute !important;
   width: 1px;
   word-wrap: normal !important;
+}
+
+.control-label {
+  padding-top: 0.4em;
 }

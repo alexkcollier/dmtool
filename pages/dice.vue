@@ -1,18 +1,14 @@
 <template>
   <main class="content">
-    <h1>
-      Roll Dice
-    </h1>
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 v-if="showHeader">
+          Roll Dice
+        </h1>
 
-    <div class="columns">
-      <div class="column">
         <h2>
           Custom Dice
         </h2>
-
-        <p>
-          Enter a die size to get started.
-        </p>
 
         <div class="columns">
           <form
@@ -22,7 +18,8 @@
             <div class="columns is-mobile">
               <b-field
                 label="n"
-                class="column has-text-centerd"
+                class="column"
+                style="margin-bottom: 0;"
               >
                 <b-input
                   v-model.number="numberOfDice"
@@ -31,7 +28,8 @@
               </b-field>
               <b-field
                 label="d"
-                class="column has-text-centerd"
+                class="column"
+                style="margin-bottom: 0;"
               >
                 <b-input
                   v-model.number="dieSize"
@@ -40,7 +38,8 @@
               </b-field>
               <b-field
                 label="Modifier"
-                class="column has-text-centerd"
+                class="column"
+                style="margin-bottom: 0;"
               >
                 <b-input
                   v-model.number="rollModifier"
@@ -57,50 +56,63 @@
                 <b-field>
                   <button
                     class="button is-primary is-fullwidth"
-                    style="margin: 0"
                     :disabled="formIsDisabled"
                   >
-                    Roll
+                    Roll&nbsp;
+                    <span
+                      v-show="dieSize"
+                      style="font-feature-settings: 'lnum';"
+                    >
+                      {{ numberOfDice || 1 }}d{{ dieSize }} {{ modifierText }}
+                    </span>
                   </button>
                 </b-field>
               </div>
             </div>
 
-            <div
-              v-if="result"
-              class="columns is-mobile"
-            >
-              <b-field
-                label="Result"
-                class="column has-text-centerd"
+            <transition name="fade">
+              <div
+                v-show="result"
+                class="columns is-mobile"
               >
-                <output name="result">
-                  {{ result }}
-                </output>
-              </b-field>
-              <b-field
-                label="Rolls"
-                class="column has-text-centerd"
-              >
-                <output name="rolls">
-                  {{ rolls }}
-                </output>
-              </b-field>
-            </div>
+                <b-field
+                  label="Result"
+                  class="column has-text-centerd"
+                >
+                  <output name="result">
+                    {{ result }}
+                  </output>
+                </b-field>
+                <b-field
+                  label="Rolls"
+                  class="column has-text-centerd"
+                >
+                  <output name="rolls">
+                    {{ rolls }}
+                  </output>
+                </b-field>
+              </div>
+            </transition>
           </form>
         </div>
       </div>
+    </div>
 
-      <div class="column">
+    <div class="columns is-centered">
+      <div class="column is-half">
         <h2>
           Common Rolls
         </h2>
 
-        <div class="columns">
-          <AdvantageRoller class="column is-narrow" />
-          <AdvantageRoller method="disadvantage" class="column is-narrow" />
-          <CharacterRoller class="column" />
-        </div>
+        <b-tabs>
+          <b-tab-item label="d20 Advantage">
+            <AdvantageRoller />
+          </b-tab-item>
+
+          <b-tab-item label="Character">
+            <CharacterRoller />
+          </b-tab-item>
+        </b-tabs>
       </div>
     </div>
   </main>
@@ -123,10 +135,10 @@ export default {
     return {
       result: null,
       rolls: [],
-      numberOfDice: null,
-      dieSize: null,
+      numberOfDice: 1,
+      dieSize: 20,
       rollModifier: null,
-      char: []
+      showHeader: true
     }
   },
 
@@ -139,7 +151,21 @@ export default {
   computed: {
     formIsDisabled() {
       return !this.dieSize
+    },
+
+    modifierText() {
+      if (!this.rollModifier) return
+
+      const modText = String(this.rollModifier)
+
+      return this.rollModifier >= 0 ? `+ ${this.rollModifier}` : `- ${modText.substr(1)}`
     }
+  },
+
+  mounted() {
+    const hideOrShowHeader = () => (this.showHeader = window.innerWidth > 1023)
+    hideOrShowHeader()
+    window.addEventListener('resize', () => hideOrShowHeader())
   },
 
   methods: {
@@ -151,3 +177,14 @@ export default {
   }
 }
 </script>
+
+<style>
+/* fixes collisions between buefy components and bulma */
+.tabs ul {
+  margin: 0;
+}
+
+.tabs li + li {
+  margin: 0;
+}
+</style>
