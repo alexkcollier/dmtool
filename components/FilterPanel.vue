@@ -23,6 +23,7 @@
       <button
         v-show="hasFilterApplied"
         class="button is-text"
+        style="margin: 0.35em 0"
         @click="resetFilters"
       >
         Reset filters
