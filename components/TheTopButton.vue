@@ -48,6 +48,7 @@ export default {
   opacity: 0.5;
   transition: opacity 100ms;
   box-shadow: 0px 5px 100px rgba($color: #000000, $alpha: 0.25);
+  z-index: 1000;
 
   @media screen and (min-width: 1024px) {
     bottom: 5%;
