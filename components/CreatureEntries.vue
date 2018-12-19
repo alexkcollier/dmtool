@@ -47,7 +47,6 @@
       </div>
     </div>
 
-
     <!-- Panel body -->
     <div class="is-sans-serif has-text-red">
       <!-- AC/HP/Speed -->
@@ -481,20 +480,21 @@ export default {
     overflow-x: scroll;
   }
 
+  & td,
+  & tr {
+    @media screen and (max-width: 768px) {
+      padding: 0.5em !important;
+    }
+  }
+
   thead th,
   td,
   tr {
     border: none;
     padding: 0;
+
     &:hover {
       background-color: inherit;
-    }
-  }
-
-  & td,
-  & tr {
-    @media screen and (max-width: 768px) {
-      padding: 0.5em !important;
     }
   }
 }
@@ -521,6 +521,7 @@ $fade-time: 200ms;
   &-leave-active {
     transition: all $fade-time ease-in-out;
   }
+
   &-enter,
   &-leave-to {
     opacity: 0;

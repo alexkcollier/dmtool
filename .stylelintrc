@@ -1,0 +1,3 @@
+{
+  "extends": ["@acollier/stylelint-config-scss"]
+}

@@ -66,6 +66,7 @@ $fade-time: 150ms;
   &-leave-active {
     transition: all $fade-time ease-in-out;
   }
+
   &-enter,
   &-leave-to {
     opacity: 0;

@@ -17,6 +17,7 @@ export default {
   padding: 4.5em 1.5em 1.5em;
 
   // accounts for navbar moving
+
   @media screen and (max-width: 1023px) {
     padding: 3em 1.5em 4.5em;
   }

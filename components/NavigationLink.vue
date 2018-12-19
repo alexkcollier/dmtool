@@ -52,6 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 $navigation-background-color: hsl(60, 19%, 87%);
+
 .navigation-link {
   width: 8em;
   padding: 0.25em;

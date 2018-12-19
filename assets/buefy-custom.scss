@@ -1,4 +1,5 @@
 // Import Bulma's core
+
 @import '~bulma/sass/utilities/initial-variables';
 
 // bulma 0.7.1 import fix
@@ -7,6 +8,7 @@ $border: $grey-lighter;
 @import '~bulma/sass/utilities/functions';
 @import '~bulma/sass/utilities/mixins';
 // Import typekit
+
 @import url('https://use.typekit.net/fnw1iwa.css');
 
 // Custom colors
@@ -39,16 +41,14 @@ $addColors: (
     $navbtn-invert
   )
 );
-
 $colors: map-merge($colors, $addColors);
-
 // Typography
 $body-size: 18px;
 $family-serif: 'bookmania', Georgia, 'Times New Roman', Times, serif;
 $family-primary: $family-serif;
-$family-sans-serif: 'ff-scala-sans-pro', -apple-system, BlinkMacSystemFont,
-  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-  Arial, sans-serif;
+$family-eaves: 'mrs-eaves-roman-small-caps', $family-serif;
+$family-sans-serif: 'ff-scala-sans-pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 $content-heading-color: $red;
 $content-heading-weight: $weight-normal;
 
@@ -59,7 +59,7 @@ h4,
 h5,
 .title,
 .button {
-  font-family: 'mrs-eaves-roman-small-caps', $family-primary;
+  font-family: $family-eaves;
   font-variant: small-caps;
 }
 
@@ -73,7 +73,6 @@ h5,
     font-variant: unset;
   }
 }
-
 // Typography helper
 .is-italic {
   font-style: italic;
@@ -92,7 +91,6 @@ h5,
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
-
 // Card
 .card {
   font-family: $family-sans-serif;
@@ -112,14 +110,15 @@ table,
   font-family: $family-sans-serif;
   font-feature-settings: 'lnum';
 }
-
 // Global transitions
 $fade-time: 500ms;
+
 .fade {
   &-enter-active,
   &-leave-active {
     transition: all 2s ease-in-out;
   }
+
   &-enter,
   &-leave-to {
     opacity: 0;
@@ -133,13 +132,13 @@ $fade-time: 500ms;
     max-height: 300vh;
     overflow: hidden;
   }
+
   &-enter,
   &-leave-to {
     max-height: 0;
     opacity: 0;
   }
 }
-
 // Custom
 .ampersand {
   height: 40vh;
@@ -155,8 +154,8 @@ $fade-time: 500ms;
     width: 100%;
   }
 }
-
 // Import Bulma and Buefy styles
+
 @import '~bulma';
 @import '~buefy/src/scss/buefy';
 
