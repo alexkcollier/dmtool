@@ -22,8 +22,9 @@
   "dependencies": {
     "@nuxtjs/pwa": "^2.5.0",
     "buefy": "^0.7.1",
-    "dice-roller-dnd": "^1.0.2",
+    "dice-roller-dnd": "^1.0.4",
     "fuse.js": "^3.3.0",
+    "hyperid": "^2.0.1",
     "nuxt": "^2.3.4",
     "vue-scrollto": "^2.13.0",
     "vuex-persist": "^2.0.0"

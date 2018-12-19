@@ -71,6 +71,14 @@ h5,
   h6 {
     color: $grey-dark !important;
     font-variant: unset;
+  } // fixes collisions between buefy components and bulma
+
+  .tabs ul {
+    margin: 0;
+  }
+
+  .tabs li + li {
+    margin: 0;
   }
 }
 // Typography helper
@@ -91,11 +99,6 @@ h5,
 $link: $primary;
 $link-invert: $primary-invert;
 $link-focus-border: $primary;
-// Card
-.card {
-  font-family: $family-sans-serif;
-}
-
 // Controls
 .switch input[type='checkbox'] + .check:before {
   background: $input-background-color;
@@ -163,6 +166,26 @@ hr {
   background-color: darken($body-background-color, 5%);
   height: 1px;
 }
+// Card
+.card {
+  border-radius: 2px;
+  box-shadow: none;
+  font-family: $family-sans-serif;
+
+  &-header {
+    .is-active {
+      font-weight: 600;
+    }
+  }
+
+  &-footer-item {
+    padding: 0.75em;
+  }
+
+  &-content {
+    padding-bottom: 1.25em;
+  }
+}
 
 .button {
   font-family: $family-sans-serif;
@@ -186,4 +209,14 @@ hr {
 
 .control-label {
   padding-top: 0.4em;
+}
+$icon-transition: transform 200ms ease-in-out;
+
+.icon-point {
+  transition: $icon-transition;
+}
+
+.point-up {
+  transform: rotateZ(-180deg);
+  transition: $icon-transition;
 }

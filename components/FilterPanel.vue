@@ -194,41 +194,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
-  border-radius: 2px;
-  box-shadow: none;
-
-  &-header {
-    .is-active {
-      font-weight: 600;
-    }
-  }
-
-  &-footer-item {
-    padding: 0.75em;
-  }
-
-  &-content {
-    padding-bottom: 1.25em;
-  }
-}
-
 .button {
   &.is-text {
     &:hover {
       background: 0;
     }
   }
-}
-
-$icon-transition: transform 200ms ease-in-out;
-
-.icon-point {
-  transition: $icon-transition;
-}
-
-.point-up {
-  transform: rotateZ(-180deg);
-  transition: $icon-transition;
 }
 </style>
