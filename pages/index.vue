@@ -9,19 +9,34 @@
           Personal DM tools
         </h2>
 
-        <nuxt-link to="/magic-items" class="button is-medium">
+        <nuxt-link
+          to="/magic-items"
+          class="button is-medium"
+        >
           Magic Items
         </nuxt-link>
-        <nuxt-link to="/spells" class="button is-medium">
+        <nuxt-link
+          to="/spells"
+          class="button is-medium"
+        >
           Spells
         </nuxt-link>
-        <nuxt-link to="/bestiary" class="button is-medium">
+        <nuxt-link
+          to="/bestiary"
+          class="button is-medium"
+        >
           Bestiary
         </nuxt-link>
-        <nuxt-link to="/encounter" class="button is-medium">
+        <nuxt-link
+          to="/encounter"
+          class="button is-medium"
+        >
           Encounter
         </nuxt-link>
-        <nuxt-link to="/dice" class="button is-medium">
+        <nuxt-link
+          to="/dice"
+          class="button is-medium"
+        >
           Roll Dice
         </nuxt-link>
       </div>

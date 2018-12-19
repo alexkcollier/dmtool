@@ -7,24 +7,12 @@ module.exports = {
     browser: true,
     node: true
   },
-  extends: ['standard', 'plugin:prettier/recommended', 'plugin:vue/recommended'],
-  // required to lint *.vue files
-  plugins: ['prettier', 'vue'],
-  // add your custom rules here
+  extends: ['standard', 'plugin:prettier/recommended', 'prettier', 'plugin:vue/recommended'],
+  plugins: ['standard', 'vue', 'prettier'],
   rules: {
     semi: [2, 'never'],
     'no-console': 'off',
     'prettier/prettier': ['error'],
-    'vue/max-attributes-per-line': [
-      2,
-      {
-        singleline: 3,
-        multiline: {
-          max: 1,
-          allowFirstLine: false
-        }
-      }
-    ],
     'vue/no-v-html': 'off',
     'vue/component-name-in-template-casing': 'off'
   }

@@ -7,7 +7,10 @@
     class="is-sans-serif"
   >
     <!-- Encounter buttons -->
-    <div slot="col2" class="column is-narrow">
+    <div
+      slot="col2"
+      class="column is-narrow"
+    >
       <div class="buttons is-encounter-buttons">
         <!-- Remove from encounter -->
         <transition name="fade">
@@ -19,7 +22,10 @@
             <span class="sr-only">
               add to encounter
             </span>
-            <b-icon style="margin-left: calc(-0.375em - 1px);" icon="minus" />
+            <b-icon
+              style="margin-left: calc(-0.375em - 1px);"
+              icon="minus"
+            />
           </button>
         </transition>
 
@@ -33,7 +39,10 @@
           <span class="sr-only">
             remove from encounter
           </span>
-          <b-icon style="margin-left: calc(-0.375em - 1px);" :icon="encounterIncludesCreature ? 'check' : 'plus'" />
+          <b-icon
+            style="margin-left: calc(-0.375em - 1px);"
+            :icon="encounterIncludesCreature ? 'check' : 'plus'"
+          />
         </button>
       </div>
     </div>
@@ -83,11 +92,17 @@
 
       <!-- Other stats -->
       <div class="has-text-red">
-        <div v-if="model.save" class="is-capitalized">
+        <div
+          v-if="model.save"
+          class="is-capitalized"
+        >
           <strong>Saving Throws</strong> {{ concatSave }}
         </div>
 
-        <div v-if="model.skill" class="is-capitalized">
+        <div
+          v-if="model.skill"
+          class="is-capitalized"
+        >
           <strong>Skills</strong> {{ concatSkill }}
         </div>
 
@@ -123,7 +138,11 @@
     </div>
 
     <template v-if="model.trait">
-      <Trait v-for="trait in model.trait" :key="trait.index" :model="trait" />
+      <Trait
+        v-for="trait in model.trait"
+        :key="trait.index"
+        :model="trait"
+      />
     </template>
 
     <template v-if="model.spellcasting">
@@ -165,7 +184,10 @@
       </h2>
 
       <template v-if="model.legendary[0].name === 'Options'">
-        <p v-for="(entry, index) in model.legendary[0].entries" :key="index">
+        <p
+          v-for="(entry, index) in model.legendary[0].entries"
+          :key="index"
+        >
           {{ entry }}
         </p>
       </template>

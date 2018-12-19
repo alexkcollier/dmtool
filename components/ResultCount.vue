@@ -1,7 +1,10 @@
 <template>
   <!-- Result count -->
   <div class="control">
-    <div :class="{'is-danger': !queryResult.length}" class="help has-text-right">
+    <div
+      :class="{ 'is-danger': !queryResult.length }"
+      class="help has-text-right"
+    >
       <template v-if="queryResult.length === activeData.length">
         {{ activeData.length }} {{ searchType }}s.
       </template>

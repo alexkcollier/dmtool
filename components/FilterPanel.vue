@@ -2,7 +2,11 @@
   <div class="card">
     <div class="card-header">
       <!-- Filter collapse control-->
-      <a class="card-header-title" href="#" @click.prevent="toggleFilterView">
+      <a
+        class="card-header-title"
+        href="#"
+        @click.prevent="toggleFilterView"
+      >
         <b-icon
           icon="filter"
           size="is-small"
@@ -13,7 +17,7 @@
         Filters
 
         <b-icon
-          :class="{'point-up': !collapseFilters}"
+          :class="{ 'point-up': !collapseFilters }"
           icon="chevron-down"
           class="icon-point"
         />
@@ -38,7 +42,7 @@
           <a
             v-for="(data, filter) in filters"
             :key="filter"
-            :class="{'is-active': filter === visibleFilter}"
+            :class="{ 'is-active': filter === visibleFilter }"
             class="card-footer-item is-capitalized"
             href="#"
             @click.prevent="visibleFilter = filter"
@@ -66,7 +70,10 @@
               </button>
             </div>
 
-            <div v-show="filterOptions.some(o => !o.allowed)" class="control">
+            <div
+              v-show="filterOptions.some(o => !o.allowed)"
+              class="control"
+            >
               <button
                 class="control button"
                 @click="setAllOptions(filter, true)"
@@ -76,13 +83,19 @@
             </div>
           </b-field>
 
-          <b-field grouped group-multiline>
+          <b-field
+            grouped
+            group-multiline
+          >
             <div
               v-for="(option, index) in filterOptions"
               :key="index"
               class="control"
             >
-              <b-switch :value="option.allowed" @input="applyFilter(filter, index, $event)">
+              <b-switch
+                :value="option.allowed"
+                @input="applyFilter(filter, index, $event)"
+              >
                 {{ option.name | parseNumToFrac }}
               </b-switch>
             </div>

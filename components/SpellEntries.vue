@@ -11,7 +11,10 @@
 
     <DataEntry :model="model.entries" />
 
-    <DataEntry v-if="model.entriesHigherLevel" :model="model.entriesHigherLevel" />
+    <DataEntry
+      v-if="model.entriesHigherLevel"
+      :model="model.entriesHigherLevel"
+    />
   </CollapsePanel>
 </template>
 

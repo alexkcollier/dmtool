@@ -1,8 +1,14 @@
 <template>
   <div>
-    <div class="columns is-mobile" style="margin-bottom:0">
+    <div
+      class="columns is-mobile"
+      style="margin-bottom:0"
+    >
       <div class="column">
-        <a href="#" @click.prevent="toggleActive">
+        <a
+          href="#"
+          @click.prevent="toggleActive"
+        >
           <h3 class="title">
             {{ name }}
           </h3>
@@ -11,7 +17,10 @@
             {{ info }}
           </h6>
 
-          <h6 v-if="source" class="subtitle is-italic">
+          <h6
+            v-if="source"
+            class="subtitle is-italic"
+          >
             {{ source }}
           </h6>
         </a>
@@ -21,7 +30,10 @@
     </div>
 
     <transition name="fade-grow">
-      <div v-if="isActive" :style="{'transition-duration': `${transitionDuration}ms`}">
+      <div
+        v-if="isActive"
+        :style="{'transition-duration': `${transitionDuration}ms`}"
+      >
         <slot />
       </div>
     </transition>

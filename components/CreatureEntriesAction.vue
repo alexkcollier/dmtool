@@ -7,31 +7,59 @@
     </p>
 
     <template v-for="entry in model.entries.slice(1)">
-      <p v-if="!entry.type" :key="entry.index" v-html="entry" />
+      <p
+        v-if="!entry.type"
+        :key="entry.index"
+        v-html="entry"
+      />
 
       <!-- Lists -->
-      <dl v-else-if="entry.type === 'list'" :key="entry.index">
+      <dl
+        v-else-if="entry.type === 'list'"
+        :key="entry.index"
+      >
         <template v-for="item in entry.items">
-          <dd v-if="item.entry" :key="item.index">
+          <dd
+            v-if="item.entry"
+            :key="item.index"
+          >
             <strong>{{ item.name }} </strong>
             <span v-html="item.entry" />
           </dd>
-          <dd v-else :key="item.index" v-html="item" />
+          <dd
+            v-else
+            :key="item.index"
+            v-html="item"
+          />
         </template>
       </dl>
 
       <!-- Tables -->
-      <table v-else-if="entry.type === 'table'" :key="entry.index" class="table">
+      <table
+        v-else-if="entry.type === 'table'"
+        :key="entry.index"
+        class="table"
+      >
         <thead>
           <tr>
-            <th v-for="label in entry.colLabels" :key="label.index">
+            <th
+              v-for="label in entry.colLabels"
+              :key="label.index"
+            >
               {{ label }}
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="row in entry.rows" :key="row.index">
-            <td v-for="cell in row" :key="cell.index" v-html="cell" />
+          <tr
+            v-for="row in entry.rows"
+            :key="row.index"
+          >
+            <td
+              v-for="cell in row"
+              :key="cell.index"
+              v-html="cell"
+            />
           </tr>
         </tbody>
       </table>

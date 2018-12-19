@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="to"
-    :class="{'active': $route.path.includes(to)}"
+    :class="{ 'active': $route.path.includes(to) }"
     class="navigation-link is-sans-serif is-size-7"
   >
     <img
@@ -10,7 +10,10 @@
       :alt="alt"
       class="image is-32x32"
     >
-    <div v-else class="navigation-link-icon" />
+    <div
+      v-else
+      class="navigation-link-icon"
+    />
     {{ label }}
   </nuxt-link>
 </template>

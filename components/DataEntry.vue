@@ -60,7 +60,10 @@
 
       <!-- Iterate over child entries -->
       <template v-else-if="entry.type === 'entries'">
-        <p v-if="entry.name" :key="entry.index">
+        <p
+          v-if="entry.name"
+          :key="entry.index"
+        >
           <strong><i>{{ entry.name }}. </i></strong>
           <span v-html="formatEntry(entry.entries[0])" />
         </p>
