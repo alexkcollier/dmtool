@@ -7,5 +7,6 @@ export const mutations = {
   deleteDiceConfig: (state, { uuid }) => {
     const index = state.diceConfigs.findIndex(el => el.uuid === uuid)
     state.diceConfigs.splice(index, 1)
-  }
+  },
+  clearDice: state => (state.diceConfigs = [])
 }

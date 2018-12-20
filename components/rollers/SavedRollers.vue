@@ -1,53 +1,74 @@
 <template>
-  <!-- Saved rolls -->
   <div class="columns is-sans-serif">
-    <div
-      v-if="sortedRollers.length"
-      class="column"
-    >
-      <transition-group
-        name="fade"
-        tag="ul"
-        style="margin-left: 0;"
+    <transition name="fade">
+      <!-- Saved rolls -->
+      <div
+        v-if="sortedRollers.length"
+        class="column"
       >
-        <li
-          v-for="(roller, index) in sortedRollers"
-          :key="`roller-${index}`"
-          class="columns is-mobile"
-        >
-          <!-- Dice description -->
-          <span class="column">
-            {{ roller.options.name }}
-          </span>
-
-          <!-- Custom Roll/Delete Buttons -->
-          <div class="column is-narrow">
-            <div class="buttons">
-              <button
-                class="button is-text"
-                type="submit"
-                @click.prevent="deleteRoller(index)"
-              >
-                <span class="is-sr-only">
-                  Delete this roller
-                </span>
-                <b-icon
-                  icon="delete"
-                  style="margin-top: -1px; margin-left: calc(-0.375em - 1px);"
-                />
-              </button>
-
-              <button
-                class="button"
-                @click.prevent="rollSavedDice(roller)"
-              >
-                Roll
-              </button>
-            </div>
+        <div class="columns">
+          <div class="column">
+            <button
+              class="button is-danger"
+              @click="clearDice"
+            >
+              Delete all saved dice
+            </button>
           </div>
-        </li>
-      </transition-group>
-    </div>
+        </div>
+
+        <transition-group
+          name="fade"
+          tag="ul"
+          style="margin-left: 0;"
+        >
+          <li
+            v-for="(roller, index) in sortedRollers"
+            :key="`roller-${index}`"
+            class="columns is-mobile"
+          >
+            <!-- Dice description -->
+            <span class="column">
+              {{ roller.options.name }}
+            </span>
+
+            <!-- Custom Roll/Delete Buttons -->
+            <div class="column is-narrow">
+              <div class="buttons">
+                <button
+                  class="button is-text"
+                  type="submit"
+                  @click.prevent="deleteRoller(index)"
+                >
+                  <span class="is-sr-only">
+                    Delete this roller
+                  </span>
+                  <b-icon
+                    icon="delete"
+                    style="margin-top: -1px; margin-left: calc(-0.375em - 1px);"
+                  />
+                </button>
+
+                <button
+                  class="button"
+                  @click.prevent="rollSavedDice(roller)"
+                >
+                  Roll
+                </button>
+              </div>
+            </div>
+          </li>
+        </transition-group>
+      </div>
+
+      <!-- Empty -->
+      <div
+        v-else
+        class="column"
+      >
+        Add some dice in <em>Custom Dice</em> first!
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -82,7 +103,7 @@ export default {
     rollDice,
     makeModifierText,
 
-    ...mapMutations('roll-dice', ['deleteDiceConfig']),
+    ...mapMutations('roll-dice', ['clearDice', 'deleteDiceConfig']),
 
     deleteRoller(uuid) {
       const index = this.rollers.findIndex(el => el.uuid === uuid)
