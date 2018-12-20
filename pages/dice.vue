@@ -13,31 +13,21 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <h2>
-          Common Rolls
+          Roll a Character
         </h2>
 
-        <b-tabs>
-          <b-tab-item label="d20 Advantage">
-            <AdvantageRoller />
-          </b-tab-item>
-
-          <b-tab-item label="Character">
-            <CharacterRoller />
-          </b-tab-item>
-        </b-tabs>
+        <CharacterRoller />
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import AdvantageRoller from '~/components/rollers/AdvantageRoller'
 import CharacterRoller from '~/components/rollers/CharacterRoller'
 import CustomRoller from '~/components/rollers/CustomRoller'
 
 export default {
   components: {
-    AdvantageRoller,
     CharacterRoller,
     CustomRoller
   },
