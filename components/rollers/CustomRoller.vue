@@ -1,5 +1,6 @@
 <template>
   <div class="columns">
+    <!-- Custom Roller form -->
     <form
       class="column"
       @submit.prevent="rollFormDice"

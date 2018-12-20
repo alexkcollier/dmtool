@@ -1,5 +1,6 @@
 <template>
   <div class="columns">
+    <!-- Character roller form -->
     <form
       class="column"
       @submit.prevent="rollCharacter(`roll${method}`)"
