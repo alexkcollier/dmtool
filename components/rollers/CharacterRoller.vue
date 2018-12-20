@@ -1,86 +1,91 @@
 <template>
-  <form @submit.prevent="rollCharacter(`roll${method}`)">
-    <b-field>
-      <b-radio
-        v-model="method"
-        native-value="4d6"
-      >
-        4d6
-      </b-radio>
-    </b-field>
-
-    <b-field>
-      <b-radio
-        v-model="method"
-        native-value="3d6"
-      >
-        3d6
-      </b-radio>
-    </b-field>
-
-    <b-field>
-      <button class="button is-primary is-fullwidth">
-        Roll&nbsp;
-        <span style="font-feature-settings: 'lnum';">
-          {{ method }}
-        </span>
-      </button>
-    </b-field>
-
-    <transition
-      name="fade"
-      mode="out-in"
+  <div class="columns">
+    <form
+      class="column"
+      @submit.prevent="rollCharacter(`roll${method}`)"
     >
-      <b-field
-        v-if="characterStats.length"
-        key="results"
-        class="columns"
-      >
-        <div class="column">
-          <p class="has-text-centered">
-            <strong>Method Used:</strong> {{ methodUsed }}
-          </p>
-
-          <div class="columns is-mobile">
-            <ul class="column stats has-text-centered">
-              <li>
-                <strong>Stats</strong>
-              </li>
-              <li
-                v-for="({ stat, d6Rolls }, index) in characterStats"
-                :key="index"
-              >
-                {{ stat }}
-              </li>
-            </ul>
-
-            <ul class="column stats has-text-centered">
-              <li>
-                <strong>Rolls</strong>
-              </li>
-              <li
-                v-for="({ stat, d6Rolls }, index) in characterStats"
-                :key="index"
-              >
-                {{ d6Rolls }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </b-field>
-
-      <b-field
-        v-else
-        key="placeholder"
-      >
-        <img
-          width="200"
-          style="display: block; margin: 0 auto;"
-          src="~/assets/d20.svg"
+      <b-field>
+        <b-radio
+          v-model="method"
+          native-value="4d6"
         >
+          4d6
+        </b-radio>
       </b-field>
-    </transition>
-  </form>
+
+      <b-field>
+        <b-radio
+          v-model="method"
+          native-value="3d6"
+        >
+          3d6
+        </b-radio>
+      </b-field>
+
+      <b-field>
+        <button class="button is-primary is-fullwidth">
+          Roll&nbsp;
+          <span style="font-feature-settings: 'lnum';">
+            {{ method }}
+          </span>
+        </button>
+      </b-field>
+
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <b-field
+          v-if="characterStats.length"
+          key="results"
+          class="columns"
+        >
+          <div class="column">
+            <p class="has-text-centered">
+              <strong>Method Used:</strong> {{ methodUsed }}
+            </p>
+
+            <div class="columns is-mobile">
+              <ul class="column stats has-text-centered">
+                <li>
+                  <strong>Stats</strong>
+                </li>
+                <li
+                  v-for="({ stat, d6Rolls }, index) in characterStats"
+                  :key="index"
+                >
+                  {{ stat }}
+                </li>
+              </ul>
+
+              <ul class="column stats has-text-centered">
+                <li>
+                  <strong>Rolls</strong>
+                </li>
+                <li
+                  v-for="({ stat, d6Rolls }, index) in characterStats"
+                  :key="index"
+                >
+                  {{ d6Rolls }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </b-field>
+
+        <b-field
+          v-else
+          key="placeholder"
+        >
+          <img
+            width="200"
+            style="display: block; margin: 0 auto;"
+            src="~/assets/d20.svg"
+          >
+        </b-field>
+      </transition>
+    </form>
+  </div>
 </template>
 
 <script>

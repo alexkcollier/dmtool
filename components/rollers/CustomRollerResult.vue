@@ -13,8 +13,12 @@
         <div class="is-size-1">
           {{ result.sum }}
         </div>
+
         <div class="is-size-7">
           Rolls: {{ result.rolls }}
+          <span v-if="result.modifier">
+            &nbsp;{{ result.modifier }}
+          </span>
         </div>
       </div>
     </div>

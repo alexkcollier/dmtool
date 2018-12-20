@@ -4,10 +4,6 @@
       class="column"
       @submit.prevent="rollFormDice"
     >
-      <h2>
-        Custom Dice
-      </h2>
-
       <div class="columns is-mobile">
         <b-field
           label="n"
@@ -214,58 +210,6 @@
           </button>
         </div>
       </b-field>
-
-      <!-- Saved rolls -->
-      <div class="columns">
-        <div
-          v-if="sortedRollers.length"
-          class="column"
-        >
-          <h2>Saved Dice</h2>
-          <transition-group
-            name="fade"
-            tag="ul"
-            style="margin-left: 0;"
-          >
-            <li
-              v-for="(roller, index) in sortedRollers"
-              :key="`roller-${index}`"
-              class="columns is-mobile"
-            >
-              <!-- Dice description -->
-              <span class="column">
-                {{ roller.options.name }}
-              </span>
-
-              <!-- Custom Roll/Delete Buttons -->
-              <div class="column is-narrow">
-                <div class="buttons">
-                  <button
-                    class="button is-text"
-                    type="submit"
-                    @click.prevent="deleteRoller(index)"
-                  >
-                    <span class="is-sr-only">
-                      Delete this roller
-                    </span>
-                    <b-icon
-                      icon="delete"
-                      style="margin-top: -1px; margin-left: calc(-0.375em - 1px);"
-                    />
-                  </button>
-
-                  <button
-                    class="button"
-                    @click.prevent="rollSavedDice(roller)"
-                  >
-                    Roll
-                  </button>
-                </div>
-              </div>
-            </li>
-          </transition-group>
-        </div>
-      </div>
     </form>
 
     <!-- Dice Config Name prompt -->
@@ -294,31 +238,18 @@
         </section>
       </form>
     </b-modal>
-
-    <!-- Roll result modal -->
-    <CustomRollerResult
-      :result="result"
-      :show-result="result.show"
-      @close-result="closeModal"
-    />
   </div>
 </template>
 
 <script>
-import { cloneDeep, get, orderBy } from 'lodash'
+import { cloneDeep } from 'lodash'
 import hyperid from 'hyperid'
 import DiceRoller from 'dice-roller-dnd'
-import { mapState, mapMutations } from 'vuex'
-import CustomRollerResult from '~/components/rollers/CustomRollerResult'
-
-const capitalize = str => str[0].toUppercase() + str.slice(1)
+import { mapMutations } from 'vuex'
+import { rollDice, makeModifierText } from './roller-utils'
 
 export default {
   name: 'CustomRoller',
-
-  components: {
-    CustomRollerResult
-  },
 
   data() {
     return {
@@ -357,32 +288,20 @@ export default {
   },
 
   computed: {
-    ...mapState('roll-dice', ['diceConfigs']),
-
     formIsDisabled() {
       return !this.dieSize
     },
 
     modifierText() {
       return this.makeModifierText(this.rollModifier)
-    },
-
-    sortedRollers() {
-      return orderBy(this.diceRollers, ['options.name', 'dice.size', 'dice.number', 'modifier'])
     }
   },
 
-  mounted() {
-    // restore dice on page load
-    this.loadSavedDice()
-  },
-
   methods: {
-    closeModal(event) {
-      this.result.show = false
-    },
+    rollDice,
+    makeModifierText,
 
-    ...mapMutations('roll-dice', ['addDiceConfig', 'deleteDiceConfig']),
+    ...mapMutations('roll-dice', ['addDiceConfig']),
 
     toggleOptions() {
       this.showOptions = !this.showOptions
@@ -402,42 +321,11 @@ export default {
         modifier: this.rollModifier
       }
 
-      this.setDiceResult({
+      this.$emit('roll-dice', {
         ...this.rollDice(formConfig),
-        rollDescription: this.makeRollerDescription(formConfig)
+        rollDescription: this.makeRollerDescription(formConfig),
+        modifier: this.makeModifierText(formConfig.modifier)
       })
-    },
-
-    rollSavedDice(config) {
-      this.setDiceResult({
-        ...this.rollDice(config),
-        rollDescription: config.options.name || this.makeRollerDescription(config)
-      })
-    },
-
-    rollDice({ uuid, dice, options = {}, modifier = 0 }) {
-      const dieRoll = dice.roll()
-
-      if (get(options, 'reroll.values.length')) dieRoll.reroll(...options.reroll.values)
-
-      let result = dieRoll.total + modifier
-      let rolls = dieRoll.rolls
-
-      if (get(options, 'keep.use')) {
-        const { amount, method } = options.keep
-        const keepMethod = 'keep' + capitalize(method)
-        const kept = dieRoll[keepMethod](amount)
-
-        result = kept.total + modifier
-        rolls = kept.rolls
-      }
-
-      if (get(options, 'advantage.use')) {
-        result = dieRoll[options.advantage.method]() + modifier
-        rolls = dieRoll.rolls
-      }
-
-      return { result, rolls }
     },
 
     checkAdvantageUse() {
@@ -451,19 +339,6 @@ export default {
       if (this.options.keep.use && this.numberOfDice < this.options.keep.amount) {
         this.numberOfDice = this.options.keep.amount
       }
-    },
-
-    loadSavedDice() {
-      // load the dice configs from the store
-      // can't store the dice because they mutate their own state
-      this.diceConfigs.forEach((config, index) => {
-        this.diceRollers.push({
-          uuid: config.uuid,
-          dice: new DiceRoller({ n: config.n, size: config.size }),
-          options: config.options,
-          modifier: config.modifier
-        })
-      })
     },
 
     promptForName() {
@@ -502,18 +377,6 @@ export default {
           modifier: this.rollModifier
         }
       })
-    },
-
-    deleteRoller(uuid) {
-      const index = this.diceRollers.findIndex(el => el.uuid === uuid)
-      this.diceRollers.splice(index, 1)
-      this.deleteDiceConfig({ uuid })
-    },
-
-    makeModifierText(modifier) {
-      if (!modifier) return
-
-      return modifier >= 0 ? `+ ${modifier}` : `- ${String(modifier).substr(1)}`
     },
 
     makeRollerDescription(roller) {
