@@ -34,7 +34,7 @@
           Encounter
         </nuxt-link>
         <nuxt-link
-          to="/dice"
+          to="/roll-dice"
           class="button is-medium"
         >
           Roll Dice

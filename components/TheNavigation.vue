@@ -54,7 +54,7 @@ export default {
         {
           icon: 'd20.svg',
           label: 'Roll Dice',
-          to: '/dice',
+          to: '/roll-dice',
           alt: 'Die Icon'
         }
       ]

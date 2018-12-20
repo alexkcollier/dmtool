@@ -51,7 +51,7 @@ export default {
 
   head() {
     return {
-      title: 'Dice'
+      title: 'Roll Dice'
     }
   },
 
