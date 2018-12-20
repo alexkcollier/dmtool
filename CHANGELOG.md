@@ -1,3 +1,22 @@
+<a name="2.23.0"></a>
+# [2.23.0](https://github.com/alexkcollier/dmtool/compare/v2.22.0...v2.23.0) (2018-12-20)
+
+
+### Bug Fixes
+
+* **dice-roller:** removes `AdvantageRoller`. It is now redundant. ([5f38062](https://github.com/alexkcollier/dmtool/commit/5f38062))
+* **dice-roller:** renames route ([03b569f](https://github.com/alexkcollier/dmtool/commit/03b569f))
+
+
+### Features
+
+* **dice-roller:** adds options and abilty to save rolls ([81b9f66](https://github.com/alexkcollier/dmtool/commit/81b9f66))
+* **dice-roller:** allows deletion of all rollers ([91465e4](https://github.com/alexkcollier/dmtool/commit/91465e4))
+* **dice-roller:** displays roll results in modal ([7aa99f1](https://github.com/alexkcollier/dmtool/commit/7aa99f1))
+* **dice-roller:** uses separate components for features ([00ca55a](https://github.com/alexkcollier/dmtool/commit/00ca55a))
+
+
+
 <a name="2.22.0"></a>
 # [2.22.0](https://github.com/alexkcollier/dmtool/compare/v2.21.6...v2.22.0) (2018-12-14)
 
