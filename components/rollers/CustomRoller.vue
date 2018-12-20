@@ -41,25 +41,8 @@
           <b-input
             v-model.number="rollModifier"
             type="number"
+            min="0"
           />
-        </b-field>
-        <b-field
-          class="column is-narrow"
-          :label="'\xa0'"
-        >
-          <button
-            class="button"
-            :disabled="formIsDisabled"
-            @click.prevent="showPrompt = true"
-          >
-            <span class="is-sr-only">
-              Save roll
-            </span>
-            <b-icon
-              icon="content-save"
-              style="margin-top: -2px; margin-left: calc(-0.375em - 1px);"
-            />
-          </button>
         </b-field>
       </div>
 
@@ -195,155 +178,129 @@
         </div>
       </div>
 
-      <!-- Roll -->
-      <div class="columns is-mobile">
+      <!-- Roll/Save buttons -->
+      <b-field
+        class="columns is-variable is-1 is-mobile"
+        :addons="false"
+      >
         <div class="column">
-          <b-field
-            class="columns"
-            :addons="false"
+          <button
+            class="button is-primary is-fullwidth"
+            :disabled="formIsDisabled"
           >
-            <div class="column">
-              <button
-                class="button is-primary is-fullwidth"
-                :disabled="formIsDisabled"
-              >
-                Roll&nbsp;
-                <span
-                  v-show="dieSize"
-                  style="font-feature-settings: 'lnum';"
-                >
-                  {{ numberOfDice || 1 }}d{{ dieSize }} {{ modifierText }}
-                </span>
-              </button>
-            </div>
-          </b-field>
+            Roll
+            <span
+              v-show="dieSize"
+              style="font-feature-settings: 'lnum';"
+            >
+              &nbsp;{{ numberOfDice || 1 }}d{{ dieSize }} {{ modifierText }}
+            </span>
+          </button>
         </div>
-      </div>
 
-      <!-- Result -->
-      <transition name="fade">
-        <div
-          v-show="result"
-          class="columns is-mobile"
-        >
-          <b-field
-            label="Result"
-            class="column has-text-centerd"
+        <div class="column is-narrow">
+          <button
+            class="button"
+            :disabled="formIsDisabled"
+            @click.prevent="promptForName"
           >
-            <output name="result">
-              {{ result }}
-            </output>
-          </b-field>
-          <b-field
-            label="Rolls"
-            class="column has-text-centerd"
-          >
-            <output name="rolls">
-              {{ rolls }}
-            </output>
-          </b-field>
+            <span class="is-sr-only">
+              Save roll
+            </span>
+            <b-icon
+              icon="content-save"
+              style="margin-top: -2px; margin-left: calc(-0.375em - 1px);"
+            />
+          </button>
         </div>
-      </transition>
+      </b-field>
 
       <!-- Saved rolls -->
       <div class="columns">
-        <div class="column">
-          <b-field
-            v-if="sortedRollers.length"
-            label="Saved Rolls"
+        <div
+          v-if="sortedRollers.length"
+          class="column"
+        >
+          <h2>Saved Dice</h2>
+          <transition-group
+            name="fade"
+            tag="ul"
+            style="margin-left: 0;"
           >
-            <transition-group
-              name="fade"
-              tag="ul"
-              style="margin-left: 0;"
+            <li
+              v-for="(roller, index) in sortedRollers"
+              :key="`roller-${index}`"
+              class="columns is-mobile"
             >
-              <li
-                v-for="(roller, index) in sortedRollers"
-                :key="`roller-${index}`"
-                class="columns is-mobile"
-              >
-                <!-- Die description -->
-                <span class="column">
-                  {{ roller.options.name || makeRollerDescription(roller) }}
-                </span>
+              <!-- Dice description -->
+              <span class="column">
+                {{ roller.options.name }}
+              </span>
 
-                <!-- Roll result -->
-                <span
-                  v-if="roller.rollResult"
-                  class="column"
-                >
-                  {{ roller.rollResult.result }}
-                </span>
-                <span
-                  v-if="roller.rollResult"
-                  class="column"
-                >
-                  {{ roller.rollResult.rolls }}
-                </span>
+              <!-- Custom Roll/Delete Buttons -->
+              <div class="column is-narrow">
+                <div class="buttons">
+                  <button
+                    class="button is-text"
+                    type="submit"
+                    @click.prevent="deleteRoller(index)"
+                  >
+                    <span class="is-sr-only">
+                      Delete this roller
+                    </span>
+                    <b-icon
+                      icon="delete"
+                      style="margin-top: -1px; margin-left: calc(-0.375em - 1px);"
+                    />
+                  </button>
 
-                <!-- Buttons -->
-                <div class="column is-narrow">
-                  <div class="buttons">
-                    <button
-                      class="button"
-                      @click.prevent="rollSavedDice(roller)"
-                    >
-                      Roll
-                    </button>
-
-                    <button
-                      class="button"
-                      type="submit"
-                      @click.prevent="deleteRoller(index)"
-                    >
-                      <span class="is-sr-only">
-                        Delete this roller
-                      </span>
-                      <b-icon
-                        icon="delete"
-                        style="margin-top: -1px; margin-left: calc(-0.375em - 1px);"
-                      />
-                    </button>
-                  </div>
+                  <button
+                    class="button"
+                    @click.prevent="rollSavedDice(roller)"
+                  >
+                    Roll
+                  </button>
                 </div>
-              </li>
-            </transition-group>
-          </b-field>
+              </div>
+            </li>
+          </transition-group>
         </div>
       </div>
     </form>
 
     <!-- Dice Config Name prompt -->
     <b-modal
-      :active.sync="showPrompt"
+      :active.sync="namePrompt.show"
       scroll="keep"
       :width="480"
     >
       <form class="card">
         <section class="card-content">
-          <b-field label="Give the dice a name?">
+          <b-field label="Dice name">
             <b-input
-              v-model="promptName"
+              v-model="namePrompt.name"
               name="dice name"
             />
           </b-field>
+
           <div class="buttons is-right">
-            <button
-              class="button is-text"
-              @click.prevent="skipName"
-            >
-              Skip name
-            </button>
             <button
               class="button is-primary"
               @click.prevent="addName"
             >
-              Add name
+              Save dice
             </button>
           </div>
         </section>
       </form>
     </b-modal>
+
+    <!-- Roll result modal -->
+    <CustomRollerResult
+      :result="result"
+      :show-result="result.show"
+      @close-result="closeModal"
+    />
   </div>
 </template>
 
@@ -352,23 +309,34 @@ import { cloneDeep, get, orderBy } from 'lodash'
 import hyperid from 'hyperid'
 import DiceRoller from 'dice-roller-dnd'
 import { mapState, mapMutations } from 'vuex'
+import CustomRollerResult from '~/components/rollers/CustomRollerResult'
 
 const capitalize = str => str[0].toUppercase() + str.slice(1)
 
 export default {
   name: 'CustomRoller',
 
+  components: {
+    CustomRollerResult
+  },
+
   data() {
     return {
-      result: null,
-      rolls: [],
+      showOptions: false,
       numberOfDice: 1,
       dieSize: 20,
-      rollModifier: null,
+      rollModifier: 0,
       diceRollers: [],
-      showPrompt: false,
-      promptName: '',
-      showOptions: false,
+      result: {
+        show: false,
+        sum: null,
+        rolls: [],
+        description: ''
+      },
+      namePrompt: {
+        show: false,
+        name: ''
+      },
       options: {
         name: '',
         advantage: {
@@ -384,9 +352,7 @@ export default {
           use: false,
           values: []
         }
-      },
-      savedDiceResult: '',
-      savedDiceRolls: []
+      }
     }
   },
 
@@ -402,13 +368,7 @@ export default {
     },
 
     sortedRollers() {
-      return orderBy(this.diceRollers, [
-        'options.name',
-        'dice.size',
-        'dice.number',
-        'options',
-        'modifier'
-      ])
+      return orderBy(this.diceRollers, ['options.name', 'dice.size', 'dice.number', 'modifier'])
     }
   },
 
@@ -418,28 +378,41 @@ export default {
   },
 
   methods: {
+    closeModal(event) {
+      this.result.show = false
+    },
+
     ...mapMutations('roll-dice', ['addDiceConfig', 'deleteDiceConfig']),
 
     toggleOptions() {
       this.showOptions = !this.showOptions
     },
 
+    setDiceResult({ result, rolls, rollDescription }) {
+      this.result.sum = result
+      this.result.rolls = rolls
+      this.result.description = rollDescription
+      this.result.show = true
+    },
+
     rollFormDice() {
-      const { result, rolls } = this.rollDice({
+      const formConfig = {
         dice: new DiceRoller({ n: this.numberOfDice, size: this.dieSize }),
         options: this.options,
         modifier: this.rollModifier
-      })
+      }
 
-      this.result = result
-      this.rolls = rolls
+      this.setDiceResult({
+        ...this.rollDice(formConfig),
+        rollDescription: this.makeRollerDescription(formConfig)
+      })
     },
 
     rollSavedDice(config) {
-      const { result, rolls } = this.rollDice(config)
-
-      this.result = result
-      this.rolls = rolls
+      this.setDiceResult({
+        ...this.rollDice(config),
+        rollDescription: config.options.name || this.makeRollerDescription(config)
+      })
     },
 
     rollDice({ uuid, dice, options = {}, modifier = 0 }) {
@@ -493,17 +466,21 @@ export default {
       })
     },
 
-    skipName() {
-      this.saveDiceRoller()
-      this.promptName = ''
-      this.showPrompt = false
+    promptForName() {
+      this.namePrompt.name = this.makeRollerDescription({
+        dice: { n: this.numberOfDice, size: this.dieSize },
+        options: this.options,
+        modifier: this.rollModifier
+      })
+
+      this.namePrompt.show = true
     },
 
     addName() {
-      this.options.name = this.promptName
+      this.options.name = this.namePrompt.name
       this.saveDiceRoller()
-      this.promptName = ''
-      this.showPrompt = false
+      this.namePrompt.name = ''
+      this.namePrompt.show = false
     },
 
     saveDiceRoller() {
@@ -545,9 +522,9 @@ export default {
 
       if (roller.modifier) base += ` ${this.makeModifierText(roller.modifier)}`
 
-      if (roller.options.reroll.use) {
+      if (roller.options.reroll.use && roller.options.reroll.values.length) {
         joiner = '; '
-        base += `${joiner} reroll ${roller.options.reroll.values.join(', ')}`
+        base += joiner + `reroll ${roller.options.reroll.values.join(', ')}`
       }
 
       if (roller.options.advantage.use) {
@@ -555,7 +532,7 @@ export default {
       }
 
       if (roller.options.keep.use) {
-        base += `${joiner} keep ${roller.options.keep.method} ${roller.options.keep.amount} rolls`
+        base += joiner + `keep ${roller.options.keep.method} ${roller.options.keep.amount} rolls`
       }
 
       return base
