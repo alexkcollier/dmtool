@@ -1,6 +1,6 @@
 # dmtool
 
-> Personal DM tools
+> D&D 5e Utilities
 
 ## Build Setup
 

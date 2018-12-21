@@ -1,12 +1,11 @@
 export default {
   mode: 'spa',
   head: {
-    title: 'dmtool',
-    titleTemplate: '%s - dmtool',
+    titleTemplate: t => (t ? `${t} - dmtool` : 'dmtool'),
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Personal DM tools' },
+      { hid: 'description', name: 'description', content: 'D&D 5e Utilities' },
       { name: 'theme-color', content: '#3d4f5d' }
     ],
     link: [
@@ -23,7 +22,11 @@ export default {
     ]
   },
   css: [{ src: '@assets/buefy-custom.scss', lang: 'sass' }],
-  plugins: ['@plugins/buefy', '@plugins/vue-scrollto'],
+  plugins: [
+    '@plugins/buefy',
+    '@plugins/vue-scrollto',
+    { src: '@/plugins/vuex-persist', ssr: false }
+  ],
   modules: ['@nuxtjs/pwa'],
   manifest: {
     name: 'DM Tool',
@@ -35,10 +38,7 @@ export default {
     offlineAssets: ['/data/bestiary.json', '/data/magic-items.json', '/data/spells.json'],
     runtimeCaching: [
       {
-        urlPattern:
-          process.env.NODE_ENV === 'production'
-            ? 'https://dmtool.acollier.ca/data/.*'
-            : '.*//localhost:3000/data/.*',
+        urlPattern: 'https://dmtool.acollier.ca/data/.*',
         strategyOptions: {
           cacheName: 'dmtool-cache',
           cacheExpiration: {

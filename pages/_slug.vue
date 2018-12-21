@@ -68,22 +68,24 @@ export default {
 
   head() {
     return {
-      title: () => {
-        switch (this.slug) {
-          case 'spells':
-            return 'Spells'
-          case 'magic-items':
-            return 'Magic Items'
-          case 'bestiary':
-            return 'Creatures'
-          default:
-            return null
-        }
-      }
+      title: this.title
     }
   },
 
   computed: {
+    title() {
+      switch (this.slug) {
+        case 'spells':
+          return 'Spells'
+        case 'magic-items':
+          return 'Magic Items'
+        case 'bestiary':
+          return 'Creatures'
+        default:
+          return null
+      }
+    },
+
     activeComponent() {
       switch (this.slug) {
         case 'spells':

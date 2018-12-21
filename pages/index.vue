@@ -6,7 +6,7 @@
           dmtool
         </h1>
         <h2 class="subtitle is-size-3">
-          Personal DM tools
+          D&amp;D 5e Utility
         </h2>
 
         <nuxt-link
