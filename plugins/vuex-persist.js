@@ -4,6 +4,6 @@ export default ({ store }) => {
   return new VuexPersist({
     key: 'vuex',
     storage: window.localStorage,
-    modules: ['encounter', 'roll-dice']
+    modules: ['roll-dice', 'encounter', 'dataVersion']
   }).plugin(store)
 }

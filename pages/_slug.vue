@@ -34,10 +34,21 @@
 
 <script>
 import { mapActions } from 'vuex'
+import firebase from 'firebase/app'
+import 'firebase/database'
 import { throttle } from 'lodash'
 import FilterPanel from '~/components/FilterPanel'
 import ResultCount from '~/components/ResultCount'
 import SearchBox from '~/components/SearchBox'
+import { routes } from '~/routes'
+import baseStore from '~/store/_slug'
+
+const firebaseConfig = {
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.API_DOMAIN,
+  databaseURL: process.env.API_DB,
+  storageBucket: process.env.API_BUCKET
+}
 
 export default {
   components: {
@@ -63,6 +74,37 @@ export default {
       },
       prevScroll: 0,
       count: 10
+    }
+  },
+
+  async fetch({ error, isDev, params, store }) {
+    const notFound = () => error({ statusCode: 404, message: 'Not Found' })
+    const hasStoreModule = Object.keys(store.state).includes(params.slug)
+
+    if (!routes.includes(`/${params.slug}`)) return notFound()
+    if (!hasStoreModule) store.registerModule(params.slug, baseStore)
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
+
+    const db = firebase.database()
+
+    try {
+      const loadStoredData = () => JSON.parse(localStorage.getItem(params.slug))
+      const oldVersion = store.state.dataVersion
+      const versionRef = await db.ref('version').once('value')
+      const newVersion = versionRef.val()
+      const shouldFetch = !loadStoredData() || oldVersion !== newVersion
+      store.commit('UPDATE_VERSION', { version: newVersion })
+
+      if (shouldFetch) {
+        const ref = await db.ref(params.slug).once('value')
+        localStorage.setItem(params.slug, JSON.stringify(ref.val()))
+      }
+
+      return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
+    } catch (err) {
+      if (isDev) console.error(err)
+
+      return notFound()
     }
   },
 
@@ -125,17 +167,6 @@ export default {
     }
   },
 
-  async asyncData({ params, error }) {
-    try {
-      const response = await fetch(`/data/${params.slug}.json`)
-
-      return { activeData: await response.json() }
-    } catch (e) {
-      console.error(e)
-      error({ statusCode: 404, message: 'This page could not be found' })
-    }
-  },
-
   watch: {
     results() {
       if (this.results.length === 1) {
@@ -146,10 +177,6 @@ export default {
 
   mounted() {
     window.addEventListener('scroll', this.loadMoreOnScroll)
-
-    if (!this.$store.state[this.slug].data.length) {
-      this.$store.dispatch(`${this.slug}/initStore`, { data: this.activeData })
-    }
   },
 
   destroyed() {

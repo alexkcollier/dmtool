@@ -1,3 +1,7 @@
+import dotenv from 'dotenv'
+import { routes } from './routes'
+dotenv.config()
+
 export default {
   mode: 'spa',
   head: {
@@ -35,18 +39,7 @@ export default {
     theme_color: '#3d4f5d'
   },
   workbox: {
-    offlineAssets: ['/data/bestiary.json', '/data/magic-items.json', '/data/spells.json'],
     runtimeCaching: [
-      {
-        urlPattern: 'https://dmtool.acollier.ca/data/.*',
-        strategyOptions: {
-          cacheName: 'dmtool-cache',
-          cacheExpiration: {
-            maxEntries: 10,
-            maxAgeSeconds: 300
-          }
-        }
-      },
       {
         urlPattern: '.*//cdn.materialdesignicons.com/.*',
         handler: 'cacheFirst'
@@ -60,8 +53,14 @@ export default {
   router: {
     middleware: 'clear-active-el'
   },
+  env: {
+    API_KEY: process.env.API_KEY,
+    API_DOMAIN: process.env.API_DOMAIN,
+    API_DB: process.env.API_DB,
+    API_BUCKET: process.env.API_BUCKET
+  },
   generate: {
-    routes: ['/bestiary', '/magic-items', '/spells'],
+    routes,
     fallback: true
   },
   build: {

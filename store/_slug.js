@@ -2,7 +2,7 @@ import { sortBy } from 'lodash'
 import Vue from 'vue'
 import Fuse from 'fuse.js'
 
-export const state = () => ({
+const state = () => ({
   data: [],
   searchString: '',
   searchFields: ['name'],
@@ -12,7 +12,7 @@ export const state = () => ({
   queryResult: []
 })
 
-export const mutations = {
+const mutations = {
   INIT_DATA: (state, { data }) => {
     state.data = data
     state.queryResult = data
@@ -29,7 +29,7 @@ export const mutations = {
   UPDATE_RESULT: (state, { queryResult }) => (state.queryResult = queryResult)
 }
 
-export const getters = {
+const getters = {
   hasFilterApplied: ({ filters }) => {
     return Object.keys(filters)
       .reduce((acc, filterName) => acc.concat(filters[filterName]), [])
@@ -37,10 +37,11 @@ export const getters = {
   }
 }
 
-export const actions = {
-  initStore: ({ commit, state }, { data }) => {
+const actions = {
+  initStore: ({ commit, state }, { data = state.data }) => {
     commit('INIT_DATA', { data: sortBy(data, state.searchFields[0]) })
     commit('INIT_SEARCH_INDEX', { data })
+    return Promise.resolve()
   },
 
   initFilters: async ({ state, commit }, { filterFields }) => {
@@ -147,6 +148,7 @@ function passesFilters(filters, el) {
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,
