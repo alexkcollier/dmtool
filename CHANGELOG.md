@@ -1,3 +1,18 @@
+<a name="2.24.0"></a>
+# [2.24.0](https://github.com/alexkcollier/dmtool/compare/v2.23.0...v2.24.0) (2019-01-07)
+
+
+### Bug Fixes
+
+* disables `vuex-persist` in ssr ([804241d](https://github.com/alexkcollier/dmtool/commit/804241d))
+
+
+### Features
+
+* fetches data from firebase ([334f768](https://github.com/alexkcollier/dmtool/commit/334f768))
+
+
+
 <a name="2.23.0"></a>
 # [2.23.0](https://github.com/alexkcollier/dmtool/compare/v2.22.0...v2.23.0) (2018-12-20)
 
