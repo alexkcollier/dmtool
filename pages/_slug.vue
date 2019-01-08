@@ -36,7 +36,7 @@
 import { mapActions } from 'vuex'
 import firebase from 'firebase/app'
 import 'firebase/database'
-import { throttle } from 'lodash'
+import { isNull, throttle } from 'lodash'
 import FilterPanel from '~/components/FilterPanel'
 import ResultCount from '~/components/ResultCount'
 import SearchBox from '~/components/SearchBox'
@@ -83,22 +83,28 @@ export default {
 
     if (!routes.includes(`/${params.slug}`)) return notFound()
     if (!hasStoreModule) store.registerModule(params.slug, baseStore)
-    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
-
-    const db = firebase.database()
 
     try {
       const loadStoredData = () => JSON.parse(localStorage.getItem(params.slug))
-      const oldVersion = store.state.dataVersion
-      const versionRef = await db.ref('version').once('value')
-      const newVersion = versionRef.val()
-      const shouldFetch = !loadStoredData() || oldVersion !== newVersion
-      store.commit('UPDATE_VERSION', { version: newVersion })
 
-      if (shouldFetch) {
-        const ref = await db.ref(params.slug).once('value')
-        localStorage.setItem(params.slug, JSON.stringify(ref.val()))
+      // don't make requests if client is offline
+      if (navigator.onLine) {
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
+
+        const db = firebase.database()
+        const oldVersion = store.state.dataVersion
+        const versionRef = await db.ref('version').once('value')
+        const newVersion = versionRef.val()
+        const shouldFetch = !loadStoredData() || oldVersion !== newVersion
+        store.commit('UPDATE_VERSION', { version: newVersion })
+
+        if (shouldFetch) {
+          const ref = await db.ref(params.slug).once('value')
+          localStorage.setItem(params.slug, JSON.stringify(ref.val()))
+        }
       }
+
+      if (isNull(loadStoredData())) throw new Error('There is no data')
 
       return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
     } catch (err) {
