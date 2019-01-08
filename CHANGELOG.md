@@ -1,3 +1,13 @@
+<a name="2.24.2"></a>
+## [2.24.2](https://github.com/alexkcollier/dmtool/compare/v2.24.1...v2.24.2) (2019-01-08)
+
+
+### Bug Fixes
+
+* **encounter:** fixes creatures not being removed on navigation/refresh ([abe86cc](https://github.com/alexkcollier/dmtool/commit/abe86cc))
+
+
+
 <a name="2.24.1"></a>
 ## [2.24.1](https://github.com/alexkcollier/dmtool/compare/v2.24.0...v2.24.1) (2019-01-08)
 
