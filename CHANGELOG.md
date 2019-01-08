@@ -1,3 +1,13 @@
+<a name="2.24.1"></a>
+## [2.24.1](https://github.com/alexkcollier/dmtool/compare/v2.24.0...v2.24.1) (2019-01-08)
+
+
+### Bug Fixes
+
+* improves offline support ([bab6182](https://github.com/alexkcollier/dmtool/commit/bab6182))
+
+
+
 <a name="2.24.0"></a>
 # [2.24.0](https://github.com/alexkcollier/dmtool/compare/v2.23.0...v2.24.0) (2019-01-07)
 
