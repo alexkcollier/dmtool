@@ -1,3 +1,19 @@
+<a name="2.24.3"></a>
+## [2.24.3](https://github.com/alexkcollier/dmtool/compare/v2.24.2...v2.24.3) (2019-01-11)
+
+
+### Bug Fixes
+
+* removes useless window checks ([58f594a](https://github.com/alexkcollier/dmtool/commit/58f594a))
+
+
+### Performance Improvements
+
+* PWA improvements ([3365e01](https://github.com/alexkcollier/dmtool/commit/3365e01))
+* uses functional components ([8cb4c72](https://github.com/alexkcollier/dmtool/commit/8cb4c72))
+
+
+
 <a name="2.24.2"></a>
 ## [2.24.2](https://github.com/alexkcollier/dmtool/compare/v2.24.1...v2.24.2) (2019-01-08)
 
