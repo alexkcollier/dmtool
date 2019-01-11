@@ -1,20 +1,20 @@
-<template>
+<template functional>
   <nuxt-link
-    :to="to"
-    :class="{ 'active': $route.path.includes(to) }"
+    :to="props.to"
+    :class="{ 'active': props.isActive }"
     class="navigation-link is-sans-serif is-size-7"
   >
     <img
-      v-if="icon"
-      :src="iconPath"
-      :alt="alt"
+      v-if="props.icon"
+      :src="require('~/assets/' + props.icon)"
+      :alt="props.alt"
       class="image is-32x32"
     >
     <div
       v-else
       class="navigation-link-icon"
     />
-    {{ label }}
+    {{ props.label }}
   </nuxt-link>
 </template>
 
@@ -39,12 +39,10 @@ export default {
     alt: {
       required: true,
       type: String
-    }
-  },
-
-  computed: {
-    iconPath() {
-      return require('~/assets/' + this.icon)
+    },
+    isActive: {
+      default: false,
+      type: Boolean
     }
   }
 }

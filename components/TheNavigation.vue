@@ -9,6 +9,7 @@
         :label="link.label"
         :icon="link.icon"
         :alt="link.alt"
+        :is-active="$route.path.includes(link.to)"
       />
     </div>
   </div>
