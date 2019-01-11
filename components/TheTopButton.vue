@@ -19,12 +19,12 @@ export default {
   },
 
   mounted() {
-    if (typeof window !== 'undefined') window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll)
     this.handleScroll()
   },
 
   destroyed() {
-    if (typeof window !== 'undefined') window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   },
 
   methods: {
