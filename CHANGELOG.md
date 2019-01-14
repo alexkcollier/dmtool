@@ -1,3 +1,15 @@
+<a name="2.24.4"></a>
+## [2.24.4](https://github.com/alexkcollier/dmtool/compare/v2.24.3...v2.24.4) (2019-01-14)
+
+
+### Bug Fixes
+
+* **bestiary:** adds fallback to tags ([d5d762f](https://github.com/alexkcollier/dmtool/commit/d5d762f))
+* does not extract css ([2b527b8](https://github.com/alexkcollier/dmtool/commit/2b527b8))
+* **bestiary:** removes old filter ([e750936](https://github.com/alexkcollier/dmtool/commit/e750936))
+
+
+
 <a name="2.24.3"></a>
 ## [2.24.3](https://github.com/alexkcollier/dmtool/compare/v2.24.2...v2.24.3) (2019-01-11)
 
