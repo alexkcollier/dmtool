@@ -90,7 +90,6 @@ export default {
       }
     },
     optimization: { splitChunks: { maxSize: 244000 } },
-    extractCSS: true,
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.devtool = '#eval-source-map'
