@@ -1,3 +1,13 @@
+<a name="2.24.5"></a>
+## [2.24.5](https://github.com/alexkcollier/dmtool/compare/v2.24.4...v2.24.5) (2019-01-18)
+
+
+### Bug Fixes
+
+* **magic-items:** fetches items correctly ([c75d121](https://github.com/alexkcollier/dmtool/commit/c75d121))
+
+
+
 <a name="2.24.4"></a>
 ## [2.24.4](https://github.com/alexkcollier/dmtool/compare/v2.24.3...v2.24.4) (2019-01-14)
 
