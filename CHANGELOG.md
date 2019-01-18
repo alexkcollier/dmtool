@@ -1,3 +1,13 @@
+<a name="2.24.6"></a>
+## [2.24.6](https://github.com/alexkcollier/dmtool/compare/v2.24.5...v2.24.6) (2019-01-18)
+
+
+### Bug Fixes
+
+* **bestiary:** ac parsing should only care if the AC is an array or not ([09455ae](https://github.com/alexkcollier/dmtool/commit/09455ae))
+
+
+
 <a name="2.24.5"></a>
 ## [2.24.5](https://github.com/alexkcollier/dmtool/compare/v2.24.4...v2.24.5) (2019-01-18)
 
