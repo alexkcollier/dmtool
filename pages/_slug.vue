@@ -85,7 +85,9 @@ export default {
     if (!hasStoreModule) store.registerModule(params.slug, baseStore)
 
     try {
-      const loadStoredData = () => JSON.parse(localStorage.getItem(params.slug))
+      // magic-items => items
+      const category = params.slug.split('-').pop()
+      const loadStoredData = () => JSON.parse(localStorage.getItem(category))
 
       // don't make requests if client is offline
       if (navigator.onLine) {
@@ -95,12 +97,12 @@ export default {
         const oldVersion = store.state.dataVersion
         const versionRef = await db.ref('version').once('value')
         const newVersion = versionRef.val()
-        const shouldFetch = !loadStoredData() || oldVersion !== newVersion
+        const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
         store.commit('UPDATE_VERSION', { version: newVersion })
 
         if (shouldFetch) {
-          const ref = await db.ref(params.slug).once('value')
-          localStorage.setItem(params.slug, JSON.stringify(ref.val()))
+          const ref = await db.ref(category).once('value')
+          localStorage.setItem(category, JSON.stringify(ref.val()))
         }
       }
 
