@@ -259,7 +259,7 @@ export default {
 
     armorClass() {
       const { ac } = this.model
-      return typeof ac === 'string' ? ac : ac.reduce(this.acToString, '').trim()
+      return !Array.isArray(ac) ? ac : ac.reduce(this.acToString, '').trim()
     },
 
     concatCR() {
