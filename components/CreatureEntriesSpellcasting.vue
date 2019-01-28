@@ -133,7 +133,7 @@ export default {
           time = type
           break
       }
-      return `${n[0]}/${time} ${n.match(eachRegExp) ? 'each' : ''}:`
+      return `${String(n)[0]}/${time} ${String(n).match(eachRegExp) ? 'each' : ''}:`
     },
 
     formatSpellList(spellList) {
