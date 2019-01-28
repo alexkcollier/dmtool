@@ -1,3 +1,13 @@
+<a name="2.24.7"></a>
+## [2.24.7](https://github.com/alexkcollier/dmtool/compare/v2.24.6...v2.24.7) (2019-01-28)
+
+
+### Bug Fixes
+
+* **bestiary:** uses string ([bc18f17](https://github.com/alexkcollier/dmtool/commit/bc18f17))
+
+
+
 <a name="2.24.6"></a>
 ## [2.24.6](https://github.com/alexkcollier/dmtool/compare/v2.24.5...v2.24.6) (2019-01-18)
 
