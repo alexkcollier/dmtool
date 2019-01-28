@@ -18,14 +18,14 @@
           v-for="(level, num) in model.spells"
           :key="'slot-' + num"
         >
-          {{ formatSpellSlots(num) }} <span v-html="formatSpellList(level.spells)" />
+          {{ formatSpellSlots(num) }} <span v-html="level.spells" />
         </dd>
       </dl>
     </template>
 
     <!-- At will spells -->
     <dl v-if="model.will">
-      <dd>At will: <span v-html="formatSpellList(model.will)" /></dd>
+      <dd>At will: <span v-html="model.will" /></dd>
     </dl>
 
     <!-- Spells with time-based recharge -->
@@ -37,7 +37,7 @@
               v-for="(list, key) in model[time]"
               :key="`${time}-recharge-${key}`"
             >
-              {{ formatTime(key, time) }} <span v-html="formatSpellList(list)" />
+              {{ formatTime(key, time) }} <span v-html="list" />
             </dd>
           </dl>
         </template>
@@ -134,15 +134,6 @@ export default {
           break
       }
       return `${String(n)[0]}/${time} ${String(n).match(eachRegExp) ? 'each' : ''}:`
-    },
-
-    formatSpellList(spellList) {
-      const spell = {
-        find: /{@spell\s(.*?)(\|(.*?))?(\|.*?)?}/g,
-        html: '<em>$1</em>'
-      }
-
-      return spellList.map(el => el.replace(spell.find, spell.html)).join(', ')
     }
   }
 }
