@@ -1,3 +1,13 @@
+<a name="2.24.8"></a>
+## [2.24.8](https://github.com/alexkcollier/dmtool/compare/v2.24.7...v2.24.8) (2019-01-28)
+
+
+### Bug Fixes
+
+* **bestiary:** removes format function ([4be2ca0](https://github.com/alexkcollier/dmtool/commit/4be2ca0))
+
+
+
 <a name="2.24.7"></a>
 ## [2.24.7](https://github.com/alexkcollier/dmtool/compare/v2.24.6...v2.24.7) (2019-01-28)
 
