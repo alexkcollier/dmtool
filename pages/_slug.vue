@@ -87,7 +87,13 @@ export default {
     try {
       // magic-items => items
       const category = params.slug.split('-').pop()
-      const loadStoredData = () => JSON.parse(localStorage.getItem(category))
+      const loadStoredData = () => {
+        try {
+          return JSON.parse(localStorage.getItem(category))
+        } catch (e) {
+          return null
+        }
+      }
 
       // don't make requests if client is offline
       if (navigator.onLine) {
@@ -102,10 +108,14 @@ export default {
         // fetch data if there is no local data or the version is outdated
         if (shouldFetch) {
           const ref = await db.ref(category).once('value')
-          localStorage.setItem(category, JSON.stringify(ref.val()))
+
+          try {
+            localStorage.setItem(category, JSON.stringify(ref.val()))
+          } catch (e) {}
+
           store.commit('UPDATE_VERSION', { version: newVersion })
           // update the data
-          return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
+          return store.dispatch(`${params.slug}/initStore`, { data: ref.val() })
         }
       }
 
