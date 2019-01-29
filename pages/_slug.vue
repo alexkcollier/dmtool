@@ -91,6 +91,7 @@ export default {
 
       // don't make requests if client is offline
       if (navigator.onLine) {
+        // only initialize firebase once
         if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
 
         const db = firebase.database()
@@ -98,17 +99,22 @@ export default {
         const versionRef = await db.ref('version').once('value')
         const newVersion = versionRef.val()
         const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
-
+        // fetch data if there is no local data or the version is outdated
         if (shouldFetch) {
           const ref = await db.ref(category).once('value')
           localStorage.setItem(category, JSON.stringify(ref.val()))
           store.commit('UPDATE_VERSION', { version: newVersion })
+          // update the data
+          return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
         }
       }
 
+      // Handle locally cached data when offline
       if (isNull(loadStoredData())) throw new Error('There is no data')
 
-      return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
+      if (!store.state[params.slug].data.length) {
+        return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
+      }
     } catch (err) {
       if (isDev) console.error(err)
 
