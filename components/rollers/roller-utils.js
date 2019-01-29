@@ -1,4 +1,4 @@
-import { get } from 'lodash'
+import get from 'lodash.get'
 
 const capitalize = str => str[0].toUppercase() + str.slice(1)
 

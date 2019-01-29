@@ -243,7 +243,7 @@
 </template>
 
 <script>
-import { cloneDeep } from 'lodash'
+import cloneDeep from 'lodash.clonedeep'
 import hyperid from 'hyperid'
 import DiceRoller from 'dice-roller-dnd'
 import { mapMutations } from 'vuex'

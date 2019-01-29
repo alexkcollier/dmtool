@@ -74,7 +74,7 @@
 
 <script>
 import DiceRoller from 'dice-roller-dnd'
-import { orderBy } from 'lodash'
+import orderBy from 'lodash.orderby'
 import { mapMutations, mapState } from 'vuex'
 import { rollDice, makeModifierText } from './roller-utils'
 

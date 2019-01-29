@@ -1,4 +1,4 @@
-import { sortBy } from 'lodash'
+import orderBy from 'lodash.orderby'
 import Vue from 'vue'
 import Fuse from 'fuse.js'
 
@@ -39,7 +39,7 @@ const getters = {
 
 const actions = {
   initStore: ({ commit, state }, { data = state.data }) => {
-    commit('INIT_DATA', { data: sortBy(data, state.searchFields[0]) })
+    commit('INIT_DATA', { data: orderBy(data, state.searchFields[0]) })
     commit('INIT_SEARCH_INDEX', { data })
     return Promise.resolve()
   },
@@ -121,7 +121,7 @@ function uniqueValues(data, filterName) {
 }
 
 function sortFilterOptions(options) {
-  return sortBy(options, filterSortFn)
+  return orderBy(options, filterSortFn)
 }
 
 function filterSortFn({ name }) {
