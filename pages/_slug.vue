@@ -98,11 +98,11 @@ export default {
         const versionRef = await db.ref('version').once('value')
         const newVersion = versionRef.val()
         const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
-        store.commit('UPDATE_VERSION', { version: newVersion })
 
         if (shouldFetch) {
           const ref = await db.ref(category).once('value')
           localStorage.setItem(category, JSON.stringify(ref.val()))
+          store.commit('UPDATE_VERSION', { version: newVersion })
         }
       }
 
