@@ -47,7 +47,7 @@
     "hyperid": "^2.0.2",
     "localforage": "^1.7.3",
     "lodash": "^4.17.11",
-    "nuxt": "^2.3.4",
+    "nuxt": "^2.4.0",
     "vue-scrollto": "^2.13.0",
     "vuex-persist": "^2.0.0"
   },

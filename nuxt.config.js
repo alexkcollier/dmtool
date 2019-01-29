@@ -5,11 +5,14 @@ dotenv.config()
 
 const brandColor = '#3d4f5d'
 const name = pkg.name
+
 export default {
   mode: 'spa',
   modern: 'client',
   head: {
-    titleTemplate: t => (t ? `${t} - dmtool` : 'dmtool'),
+    titleTemplate: t => {
+      return t ? `${t} - dmtool` : 'dmtool'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -44,9 +47,9 @@ export default {
   },
   css: [{ src: '@assets/buefy-custom.scss', lang: 'sass' }],
   plugins: [
-    '@plugins/buefy',
-    '@plugins/vue-scrollto',
-    { src: '@/plugins/vuex-persist', ssr: false }
+    '@plugins/buefy.js',
+    '@plugins/vue-scrollto.client.js',
+    '@/plugins/vuex-persist.client.js'
   ],
   modules: ['@nuxtjs/pwa'],
   manifest: {
