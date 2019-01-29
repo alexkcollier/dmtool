@@ -1,3 +1,19 @@
+<a name="2.25.0"></a>
+# [2.25.0](https://github.com/alexkcollier/dmtool/compare/v2.24.10...v2.25.0) (2019-01-29)
+
+
+### Bug Fixes
+
+* **filter:** fixes issues where setting all the filter options would not run a query ([f35a459](https://github.com/alexkcollier/dmtool/commit/f35a459))
+* handles localstorage being denied ([ec0b7ed](https://github.com/alexkcollier/dmtool/commit/ec0b7ed))
+
+
+### Features
+
+* updates to nuxt 2.4.0 ([5cdf460](https://github.com/alexkcollier/dmtool/commit/5cdf460))
+
+
+
 <a name="2.24.10"></a>
 ## [2.24.10](https://github.com/alexkcollier/dmtool/compare/v2.24.9...v2.24.10) (2019-01-29)
 
