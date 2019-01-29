@@ -3,6 +3,7 @@
     :to="props.to"
     :class="{ 'active': props.isActive }"
     class="navigation-link is-sans-serif is-size-7"
+    no-prefetch
   >
     <img
       v-if="props.icon"
