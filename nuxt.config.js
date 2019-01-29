@@ -69,11 +69,11 @@ export default {
     runtimeCaching: [
       {
         urlPattern: '.*//cdn.materialdesignicons.com/.*',
-        handler: 'networkFirst'
+        handler: 'staleWhileRevalidate'
       },
       {
         urlPattern: '.*//*.typekit.net/.*',
-        handler: 'networkFirst'
+        handler: 'staleWhileRevalidate'
       },
       {
         urlPattern: `${process.env.API_DB}/.*.json`,
