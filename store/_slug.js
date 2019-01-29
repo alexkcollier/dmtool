@@ -59,14 +59,18 @@ const actions = {
     return Promise.resolve()
   },
 
-  setAllOptions: ({ commit, state }, { filter, value }) => {
-    state.filters[filter].forEach((o, optionIndex) => {
-      commit('UPDATE_FILTER', { filter, optionIndex, value })
-    })
+  setAllOptions: ({ dispatch, state }, { filter, value }) => {
+    return Promise.all(
+      state.filters[filter].map((o, optionIndex) =>
+        dispatch('applyFilter', { filter, optionIndex, value })
+      )
+    )
   },
 
   resetFilters: ({ dispatch, state }) => {
-    Object.keys(state.filters).forEach(filter => dispatch('setAllOptions', { filter, value: true }))
+    return Promise.all(
+      Object.keys(state.filters).map(filter => dispatch('setAllOptions', { filter, value: true }))
+    )
   },
 
   applyFilter: ({ commit }, { filter, optionIndex, value }) => {

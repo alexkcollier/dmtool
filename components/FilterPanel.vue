@@ -175,20 +175,24 @@ export default {
 
     resetFilters() {
       this.$emit('update-data')
-      this.$store.dispatch(`${this.slug}/resetFilters`)
+      this.$store.dispatch(`${this.slug}/resetFilters`).then(this.debounceQuery)
     },
 
     setAllOptions(filter, value) {
       this.$emit('update-data')
-      this.$store.dispatch(`${this.slug}/setAllOptions`, { filter, value })
+      this.$store.dispatch(`${this.slug}/setAllOptions`, { filter, value }).then(this.debounceQuery)
     },
 
     applyFilter(filter, optionIndex, value) {
+      const payload = { filter, optionIndex, value }
       this.$emit('update-data')
-      this.$store
-        .dispatch(`${this.slug}/applyFilter`, { filter, optionIndex, value })
-        .then(debounce(() => this.$store.dispatch(`${this.slug}/query`), 300))
-    }
+      this.$store.dispatch(`${this.slug}/applyFilter`, payload).then(this.debounceQuery)
+    },
+
+    // uses function expression to maintain `this` binding
+    debounceQuery: debounce(function() {
+      return this.$store.dispatch(`${this.slug}/query`)
+    }, 300)
   }
 }
 </script>
