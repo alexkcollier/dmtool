@@ -1,3 +1,14 @@
+<a name="2.24.10"></a>
+## [2.24.10](https://github.com/alexkcollier/dmtool/compare/v2.24.9...v2.24.10) (2019-01-29)
+
+
+### Bug Fixes
+
+* ensures store modules do not reset on each navigation (fixes [#9](https://github.com/alexkcollier/dmtool/issues/9)) ([f8ce0e4](https://github.com/alexkcollier/dmtool/commit/f8ce0e4))
+* only updates data version after successful fetch (fixes [#7](https://github.com/alexkcollier/dmtool/issues/7)) ([0b70865](https://github.com/alexkcollier/dmtool/commit/0b70865))
+
+
+
 <a name="2.24.9"></a>
 ## [2.24.9](https://github.com/alexkcollier/dmtool/compare/v2.24.8...v2.24.9) (2019-01-29)
 
