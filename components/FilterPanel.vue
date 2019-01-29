@@ -144,11 +144,6 @@ export default {
     filters() {
       if (this.$store.state[this.slug]) return this.$store.state[this.slug].filters
       return {}
-    },
-
-    filterNames() {
-      if (this.$store.state[this.slug]) return Object.keys(this.filters)
-      return []
     }
   },
 
@@ -169,7 +164,7 @@ export default {
           }
         })
         .then(() => {
-          if (!this.visibleFilter) this.visibleFilter = this.filterNames[0]
+          if (!this.visibleFilter) this.visibleFilter = this.filterFields[0]
         })
     },
 
