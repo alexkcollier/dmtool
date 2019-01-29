@@ -1,3 +1,26 @@
+<a name="2.26.0"></a>
+# [2.26.0](https://github.com/alexkcollier/dmtool/compare/v2.25.0...v2.26.0) (2019-01-29)
+
+
+### Features
+
+* **pwa:** uses `staleWhileRevalidate` strategy ([7e6ea7e](https://github.com/alexkcollier/dmtool/commit/7e6ea7e))
+
+
+### Performance Improvements
+
+* disables pre-fetch on navigation links ([6d41ff7](https://github.com/alexkcollier/dmtool/commit/6d41ff7))
+* improves pwa caching and performance ([d33cde1](https://github.com/alexkcollier/dmtool/commit/d33cde1))
+* removes firebase and fetches raw json ([d9dbff8](https://github.com/alexkcollier/dmtool/commit/d9dbff8))
+* uses individual lodash packages ([fe114d8](https://github.com/alexkcollier/dmtool/commit/fe114d8))
+
+
+### Reverts
+
+* Revert "perf: disables pre-fetch on navigation links" ([cb03318](https://github.com/alexkcollier/dmtool/commit/cb03318))
+
+
+
 <a name="2.25.0"></a>
 # [2.25.0](https://github.com/alexkcollier/dmtool/compare/v2.24.10...v2.25.0) (2019-01-29)
 
