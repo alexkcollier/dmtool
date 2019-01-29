@@ -18,14 +18,14 @@
           v-for="(level, num) in model.spells"
           :key="'slot-' + num"
         >
-          {{ formatSpellSlots(num) }} <span v-html="level.spells" />
+          {{ formatSpellSlots(num) }} <span v-html="level.spells.join(', ')" />
         </dd>
       </dl>
     </template>
 
     <!-- At will spells -->
     <dl v-if="model.will">
-      <dd>At will: <span v-html="model.will" /></dd>
+      <dd>At will: <span v-html="model.will.join(', ')" /></dd>
     </dl>
 
     <!-- Spells with time-based recharge -->
@@ -33,12 +33,15 @@
       <template v-for="time in rechargeTimes">
         <template v-if="model[time]">
           <dl :key="time">
-            <dd
-              v-for="(list, key) in model[time]"
-              :key="`${time}-recharge-${key}`"
-            >
-              {{ formatTime(key, time) }} <span v-html="list" />
-            </dd>
+            <!-- We use yet another template because the object keys are numbers and makes it look like an array -->
+            <template v-for="(list, key) in model[time]">
+              <dd
+                v-if="!!list && list.length"
+                :key="`${time}-recharge-${key}`"
+              >
+                {{ formatTime(key, time) }} <span v-html="list && list.join(', ')" />
+              </dd>
+            </template>
           </dl>
         </template>
       </template>
@@ -116,6 +119,7 @@ export default {
     formatTime(n, type) {
       const eachRegExp = new RegExp('\\de')
       let time = ''
+
       switch (type) {
         case 'daily':
           time = 'day'
@@ -133,6 +137,7 @@ export default {
           time = type
           break
       }
+
       return `${String(n)[0]}/${time} ${String(n).match(eachRegExp) ? 'each' : ''}:`
     }
   }
@@ -148,7 +153,10 @@ dd {
   margin-left: 0;
   padding-left: 1em;
   text-indent: -1em;
+}
 
+dl,
+dd {
   &:not(:last-child) {
     margin-bottom: 0.25em;
   }
