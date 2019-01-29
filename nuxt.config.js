@@ -75,10 +75,7 @@ export default {
     middleware: 'clear-active-el'
   },
   env: {
-    API_KEY: process.env.API_KEY,
-    API_DOMAIN: process.env.API_DOMAIN,
-    API_DB: process.env.API_DB,
-    API_BUCKET: process.env.API_BUCKET
+    API_DB: process.env.API_DB
   },
   generate: {
     routes,

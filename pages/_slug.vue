@@ -34,8 +34,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import firebase from 'firebase/app'
-import 'firebase/database'
 import isNull from 'lodash.isnull'
 import throttle from 'lodash.throttle'
 import FilterPanel from '~/components/FilterPanel'
@@ -43,13 +41,6 @@ import ResultCount from '~/components/ResultCount'
 import SearchBox from '~/components/SearchBox'
 import { routes } from '~/routes'
 import baseStore from '~/store/_slug'
-
-const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.API_DOMAIN,
-  databaseURL: process.env.API_DB,
-  storageBucket: process.env.API_BUCKET
-}
 
 export default {
   components: {
@@ -78,7 +69,7 @@ export default {
     }
   },
 
-  async fetch({ error, isDev, params, store }) {
+  async fetch({ env, error, isDev, params, store }) {
     const notFound = () => error({ statusCode: 404, message: 'Not Found' })
     const hasStoreModule = Object.keys(store.state).includes(params.slug)
 
@@ -99,24 +90,24 @@ export default {
       // don't make requests if client is offline
       if (navigator.onLine) {
         // only initialize firebase once
-        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
+        // if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
 
-        const db = firebase.database()
         const oldVersion = store.state.dataVersion
-        const versionRef = await db.ref('version').once('value')
-        const newVersion = versionRef.val()
+        const versionRef = await fetch(`${env.API_DB}/version.json`)
+        const newVersion = await versionRef.json()
         const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
         // fetch data if there is no local data or the version is outdated
         if (shouldFetch) {
-          const ref = await db.ref(category).once('value')
+          const response = await fetch(`${env.API_DB}/${category}.json`)
+          const data = await response.json()
 
           try {
-            localStorage.setItem(category, JSON.stringify(ref.val()))
+            localStorage.setItem(category, JSON.stringify(data))
           } catch (e) {}
 
           store.commit('UPDATE_VERSION', { version: newVersion })
           // update the data
-          return store.dispatch(`${params.slug}/initStore`, { data: ref.val() })
+          return store.dispatch(`${params.slug}/initStore`, { data })
         }
       }
 
