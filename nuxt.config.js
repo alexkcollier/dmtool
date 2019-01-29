@@ -42,13 +42,17 @@ export default {
         href: 'https://use.typekit.net/fnw1iwa.css',
         crossorigin: 'anonymous',
         as: 'style'
+      },
+      {
+        rel: 'prefetch',
+        href: process.env.API_DB
       }
     ]
   },
   css: [{ src: '@assets/buefy-custom.scss', lang: 'sass' }],
   plugins: [
-    '@plugins/buefy.js',
-    '@plugins/vue-scrollto.client.js',
+    '@/plugins/buefy.js',
+    '@/plugins/vue-scrollto.client.js',
     '@/plugins/vuex-persist.client.js'
   ],
   modules: ['@nuxtjs/pwa'],
@@ -59,14 +63,21 @@ export default {
     theme_color: brandColor
   },
   workbox: {
+    offlineAssets: [...routes, '/version'].map(
+      route => `${process.env.API_DB}${route.replace('magic-', '')}.json`
+    ),
     runtimeCaching: [
       {
         urlPattern: '.*//cdn.materialdesignicons.com/.*',
-        handler: 'cacheFirst'
+        handler: 'networkFirst'
       },
       {
         urlPattern: '.*//*.typekit.net/.*',
-        handler: 'cacheFirst'
+        handler: 'networkFirst'
+      },
+      {
+        urlPattern: `${process.env.API_DB}/.*.json`,
+        handler: 'networkFirst'
       }
     ]
   },

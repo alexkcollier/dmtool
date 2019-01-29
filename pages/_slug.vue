@@ -87,33 +87,25 @@ export default {
         }
       }
 
-      // don't make requests if client is offline
-      if (navigator.onLine) {
-        // only initialize firebase once
-        // if (!firebase.apps.length) firebase.initializeApp(firebaseConfig)
+      const oldVersion = store.state.dataVersion
+      const versionRef = await fetch(`${env.API_DB}/version.json`)
+      const newVersion = await versionRef.json()
+      const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
+      // fetch data if there is no local data or the version is outdated
+      if (shouldFetch) {
+        const response = await fetch(`${env.API_DB}/${category}.json`)
+        const data = await response.json()
 
-        const oldVersion = store.state.dataVersion
-        const versionRef = await fetch(`${env.API_DB}/version.json`)
-        const newVersion = await versionRef.json()
-        const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
-        // fetch data if there is no local data or the version is outdated
-        if (shouldFetch) {
-          const response = await fetch(`${env.API_DB}/${category}.json`)
-          const data = await response.json()
+        try {
+          localStorage.setItem(category, JSON.stringify(data))
+        } catch (e) {}
 
-          try {
-            localStorage.setItem(category, JSON.stringify(data))
-          } catch (e) {}
-
-          store.commit('UPDATE_VERSION', { version: newVersion })
-          // update the data
-          return store.dispatch(`${params.slug}/initStore`, { data })
-        }
+        store.commit('UPDATE_VERSION', { version: newVersion })
+        // update the data
+        return store.dispatch(`${params.slug}/initStore`, { data })
       }
 
-      // Handle locally cached data when offline
-      if (isNull(loadStoredData())) throw new Error('There is no data')
-
+      // restore data from localstore if necessary
       if (!store.state[params.slug].data.length) {
         return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
       }
