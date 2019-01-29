@@ -1,3 +1,13 @@
+<a name="2.24.9"></a>
+## [2.24.9](https://github.com/alexkcollier/dmtool/compare/v2.24.8...v2.24.9) (2019-01-29)
+
+
+### Bug Fixes
+
+* **bestiary:** fixes spell list rendering (fixes [#6](https://github.com/alexkcollier/dmtool/issues/6)) ([ff3e948](https://github.com/alexkcollier/dmtool/commit/ff3e948))
+
+
+
 <a name="2.24.8"></a>
 ## [2.24.8](https://github.com/alexkcollier/dmtool/compare/v2.24.7...v2.24.8) (2019-01-28)
 
