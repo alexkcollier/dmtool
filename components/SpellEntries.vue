@@ -64,7 +64,10 @@ export default {
     },
 
     spellComponents() {
+      // keys.sort().reverse() ensures order is always v, s, m
       let stack = Object.keys(this.model.components)
+        .sort()
+        .reverse()
         .join(', ')
         .toUpperCase()
 
