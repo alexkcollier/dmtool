@@ -1,3 +1,14 @@
+<a name="2.26.1"></a>
+## [2.26.1](https://github.com/alexkcollier/dmtool/compare/v2.26.0...v2.26.1) (2019-02-06)
+
+
+### Bug Fixes
+
+* **spells:** adds ritual tags ([#10](https://github.com/alexkcollier/dmtool/issues/10)) ([0e5e5e6](https://github.com/alexkcollier/dmtool/commit/0e5e5e6))
+* **spells:** fixes components order ([2420c44](https://github.com/alexkcollier/dmtool/commit/2420c44))
+
+
+
 <a name="2.26.0"></a>
 # [2.26.0](https://github.com/alexkcollier/dmtool/compare/v2.25.0...v2.26.0) (2019-01-29)
 
