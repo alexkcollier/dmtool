@@ -4,7 +4,7 @@
     :info="spellLevelSchool"
     :source="model.source"
   >
-    <p><strong>Casting Time:</strong> {{ model.time[0].number }} {{ model.time[0].unit }}</p>
+    <p v-html="`<strong>Casting Time:</strong> ${castingTime}`" />
     <p><strong>Range:</strong> {{ spellRange }}</p>
     <p><strong>Components:</strong> {{ spellComponents }}</p>
     <p><strong>Duration:</strong> {{ spellDuration }}</p>
@@ -38,6 +38,22 @@ export default {
   },
 
   computed: {
+    castingTime() {
+      let time = this.model.time
+        .map(t => {
+          let stack = `${t.number} ${t.unit}`
+
+          if (t.condition) stack += ` ${t.condition}`
+
+          return stack
+        })
+        .join(' or ')
+
+      if (this.model.meta && this.model.meta.ritual) time += ' (ritual)'
+
+      return time
+    },
+
     spellLevelSchool() {
       let sf = ''
       switch (this.model.level) {
@@ -64,16 +80,15 @@ export default {
     },
 
     spellComponents() {
+      const { components } = this.model
       // keys.sort().reverse() ensures order is always v, s, m
-      let stack = Object.keys(this.model.components)
+      let stack = Object.keys(components)
         .sort()
         .reverse()
         .join(', ')
         .toUpperCase()
 
-      if (this.model.components.m) {
-        stack += ` (${this.model.components.m.text || this.model.components.m})`
-      }
+      if (components.m) stack += ` (${components.m.text || components.m})`
 
       return stack
     },
