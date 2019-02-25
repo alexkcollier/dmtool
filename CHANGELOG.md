@@ -1,3 +1,18 @@
+<a name="2.27.1"></a>
+## [2.27.1](https://github.com/alexkcollier/dmtool/compare/v2.27.0...v2.27.1) (2019-02-25)
+
+
+### Bug Fixes
+
+* fixes snackbar positioning ([ca19107](https://github.com/alexkcollier/dmtool/commit/ca19107))
+
+
+### Performance Improvements
+
+* skips store update if content not changed ([45870ce](https://github.com/alexkcollier/dmtool/commit/45870ce))
+
+
+
 <a name="2.27.0"></a>
 # [2.27.0](https://github.com/alexkcollier/dmtool/compare/v2.26.0...v2.27.0) (2019-02-25)
 
