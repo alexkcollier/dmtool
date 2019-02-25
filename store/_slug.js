@@ -9,7 +9,8 @@ const state = () => ({
   hasFilters: false,
   filters: {},
   searchIndex: null,
-  queryResult: []
+  queryResult: [],
+  eTag: ''
 })
 
 const mutations = {
@@ -22,6 +23,7 @@ const mutations = {
   INIT_SEARCH_INDEX: (state, { data }) => {
     state.searchIndex = new Fuse(data, configureFuse(state.searchFields))
   },
+  UPDATE_ETAG: (state, { eTag }) => (state.eTag = eTag),
   UPDATE_FILTER: (state, { filter, optionIndex, value }) => {
     state.filters[filter][optionIndex].allowed = value
   },
@@ -38,9 +40,10 @@ const getters = {
 }
 
 const actions = {
-  initStore: ({ commit, state }, { data = state.data }) => {
+  initStore: ({ commit, state }, { data = state.data, eTag }) => {
     commit('INIT_DATA', { data: orderBy(data, state.searchFields[0]) })
     commit('INIT_SEARCH_INDEX', { data })
+    commit('UPDATE_ETAG', { eTag })
     return Promise.resolve()
   },
 

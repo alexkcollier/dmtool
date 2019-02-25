@@ -63,17 +63,15 @@ export default {
     theme_color: brandColor
   },
   workbox: {
-    offlineAssets: [...routes, '/version'].map(
-      route => `${process.env.API_DB}${route.replace('magic-', '')}.json`
-    ),
+    importScripts: ['data-sw.js'],
     runtimeCaching: [
       {
         urlPattern: '.*//cdn.materialdesignicons.com/.*',
-        handler: 'staleWhileRevalidate'
+        handler: 'networkFirst'
       },
       {
         urlPattern: '.*//*.typekit.net/.*',
-        handler: 'staleWhileRevalidate'
+        handler: 'networkFirst'
       },
       {
         urlPattern: `${process.env.API_DB}/.*.json`,

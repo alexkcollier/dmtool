@@ -34,7 +34,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import isNull from 'lodash.isnull'
 import throttle from 'lodash.throttle'
 import FilterPanel from '~/components/FilterPanel'
 import ResultCount from '~/components/ResultCount'
@@ -76,39 +75,24 @@ export default {
     if (!routes.includes(`/${params.slug}`)) return notFound()
     if (!hasStoreModule) store.registerModule(params.slug, baseStore)
 
-    try {
-      // magic-items => items
-      const category = params.slug.split('-').pop()
-      const loadStoredData = () => {
-        try {
-          return JSON.parse(localStorage.getItem(category))
-        } catch (e) {
-          return null
-        }
-      }
+    // magic-items => items
+    const category = params.slug.split('-').pop()
 
-      const oldVersion = store.state.dataVersion
+    // Try fetching data
+    try {
       const versionRef = await fetch(`${env.API_DB}/version.json`)
       const newVersion = await versionRef.json()
-      const shouldFetch = isNull(loadStoredData()) || oldVersion !== newVersion
       // fetch data if there is no local data or the version is outdated
-      if (shouldFetch) {
-        const response = await fetch(`${env.API_DB}/${category}.json`)
-        const data = await response.json()
+      const request = new Request(`${env.API_DB}/${category}.json`, {
+        headers: new Headers({ 'X-Firebase-ETag': true })
+      })
+      const response = await fetch(request)
+      const data = await response.json()
+      const eTag = response.headers.get('ETag')
 
-        try {
-          localStorage.setItem(category, JSON.stringify(data))
-        } catch (e) {}
+      store.commit('UPDATE_VERSION', { version: newVersion })
 
-        store.commit('UPDATE_VERSION', { version: newVersion })
-        // update the data
-        return store.dispatch(`${params.slug}/initStore`, { data })
-      }
-
-      // restore data from localstore if necessary
-      if (!store.state[params.slug].data.length) {
-        return store.dispatch(`${params.slug}/initStore`, { data: loadStoredData() })
-      }
+      return store.dispatch(`${params.slug}/initStore`, { data, eTag })
     } catch (err) {
       if (isDev) console.error(err)
 
@@ -185,6 +169,28 @@ export default {
 
   mounted() {
     window.addEventListener('scroll', this.loadMoreOnScroll)
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.onmessage = event => {
+        const message = JSON.parse(event.data)
+        const isPath = message.url.includes(this.slug.replace('magic-', ''))
+        const isRefresh = message.type === 'refresh'
+        const isNew = this.$store.state[this.slug].eTag !== message.eTag
+        const shouldRefresh = isRefresh && isPath && isNew
+
+        if (shouldRefresh) {
+          this.$store.commit(`${this.slug}/UPDATE_ETAG`, { eTag: message.eTag })
+          this.$snackbar.open({
+            message: 'Updated data is available',
+            actionText: 'Refresh',
+            position: 'is-bottom',
+            type: 'is-gold',
+            indefinite: 'true',
+            onAction: () => window.location.reload(true)
+          })
+        }
+      }
+    }
   },
 
   destroyed() {

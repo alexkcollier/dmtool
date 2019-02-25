@@ -8,6 +8,7 @@ export default ({ store }) => {
     localStorage.getItem('test')
 
     hasLocalStorage = localStorage.getItem('test') === 'test'
+    localStorage.removeItem('test')
   } catch (e) {
     console.warn('Local storage is not available')
     hasLocalStorage = false

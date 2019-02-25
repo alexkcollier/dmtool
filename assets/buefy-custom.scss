@@ -220,3 +220,16 @@ $icon-transition: transform 200ms ease-in-out;
   transform: rotateZ(-180deg);
   transition: $icon-transition;
 }
+
+.notices {
+  .snackbar {
+    font-family: $family-sans-serif;
+
+    .action {
+      .button {
+        font-weight: inherit;
+        text-transform: none;
+      }
+    }
+  }
+}
