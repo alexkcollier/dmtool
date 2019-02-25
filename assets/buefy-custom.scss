@@ -232,4 +232,8 @@ $icon-transition: transform 200ms ease-in-out;
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+    padding-bottom: 3.25rem;
+  }
 }
