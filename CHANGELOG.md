@@ -1,3 +1,19 @@
+<a name="2.27.0"></a>
+# [2.27.0](https://github.com/alexkcollier/dmtool/compare/v2.26.0...v2.27.0) (2019-02-25)
+
+
+### Bug Fixes
+
+* **spells:** adds ritual tags (fixes [#10](https://github.com/alexkcollier/dmtool/issues/10)) ([6372169](https://github.com/alexkcollier/dmtool/commit/6372169))
+* **spells:** fixes components order ([2420c44](https://github.com/alexkcollier/dmtool/commit/2420c44))
+
+
+### Features
+
+* uses serviceworker to fetch and cache properly ([3334494](https://github.com/alexkcollier/dmtool/commit/3334494))
+
+
+
 <a name="2.26.1"></a>
 ## [2.26.1](https://github.com/alexkcollier/dmtool/compare/v2.26.0...v2.26.1) (2019-02-06)
 
