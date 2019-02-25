@@ -68,35 +68,38 @@ export default {
     }
   },
 
-  async fetch({ env, error, isDev, params, store }) {
+  async fetch(ctx) {
+    const { error, isDev, params, store } = ctx
     const notFound = () => error({ statusCode: 404, message: 'Not Found' })
     const hasStoreModule = Object.keys(store.state).includes(params.slug)
 
     if (!routes.includes(`/${params.slug}`)) return notFound()
     if (!hasStoreModule) store.registerModule(params.slug, baseStore)
 
-    // magic-items => items
-    const category = params.slug.split('-').pop()
-
-    // Try fetching data
+    // Try fetching data if store empty
     try {
-      const versionRef = await fetch(`${env.API_DB}/version.json`)
-      const newVersion = await versionRef.json()
-      // fetch data if there is no local data or the version is outdated
-      const request = new Request(`${env.API_DB}/${category}.json`, {
-        headers: new Headers({ 'X-Firebase-ETag': true })
-      })
-      const response = await fetch(request)
-      const data = await response.json()
-      const eTag = response.headers.get('ETag')
-
-      store.commit('UPDATE_VERSION', { version: newVersion })
-
-      return store.dispatch(`${params.slug}/initStore`, { data, eTag })
+      return getData(ctx)
     } catch (err) {
       if (isDev) console.error(err)
 
       return notFound()
+    }
+
+    async function getData({ env, params, store }) {
+      const versionRef = await fetch(`${env.API_DB}/version.json`)
+      const version = await versionRef.json()
+      // magic-items => items
+      const reqUrl = new URL(`/${params.slug.split('-').pop()}.json`, env.API_DB)
+      const init = { headers: new Headers({ 'X-Firebase-ETag': true }) }
+      const response = await fetch(reqUrl, init)
+      const data = await response.json()
+      const eTag = response.headers.get('ETag')
+
+      if (eTag === store.state[params.slug].eTag) return
+
+      store.commit('UPDATE_VERSION', { version })
+
+      return store.dispatch(`${params.slug}/initStore`, { data, eTag })
     }
   },
 
@@ -180,6 +183,7 @@ export default {
 
         if (shouldRefresh) {
           this.$store.commit(`${this.slug}/UPDATE_ETAG`, { eTag: message.eTag })
+
           this.$snackbar.open({
             message: 'Updated data is available',
             actionText: 'Refresh',
