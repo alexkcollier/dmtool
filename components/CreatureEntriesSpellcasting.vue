@@ -91,29 +91,18 @@ export default {
     },
 
     formatSpellSlots(lvl) {
-      let sf = ''
-      switch (lvl) {
-        case '0':
-          return `Cantrips (at will):`
+      if (String(lvl) === '0') return 'Cantrips (at will):'
 
-        case '1':
-          sf = 'st'
-          break
-
-        case '2':
-          sf = 'nd'
-          break
-
-        case '3':
-          sf = 'rd'
-          break
-
-        default:
-          sf = 'th'
-          break
+      const suffixes = {
+        1: 'st',
+        2: 'nd',
+        3: 'rd'
       }
-      const slots = this.model.spells[lvl].slots
-      return `${lvl}${sf} level (${slots} slot${slots > 1 ? 's' : ''}):`
+      const sfx = suffixes[lvl] || 'th'
+      const totalSlots = this.model.spells[lvl].slots || 4
+      const slots = totalSlots > 1 ? 'slots' : 'slot'
+
+      return `${lvl}${sfx} level (${totalSlots} ${slots}):`
     },
 
     formatTime(n, type) {
