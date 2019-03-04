@@ -1,3 +1,13 @@
+<a name="2.28.1"></a>
+## [2.28.1](https://github.com/alexkcollier/dmtool/compare/v2.28.0...v2.28.1) (2019-03-04)
+
+
+### Bug Fixes
+
+* **bestiary:** parses spell slots correctly ([112f2d4](https://github.com/alexkcollier/dmtool/commit/112f2d4))
+
+
+
 <a name="2.28.0"></a>
 # [2.28.0](https://github.com/alexkcollier/dmtool/compare/v2.27.1...v2.28.0) (2019-03-04)
 
