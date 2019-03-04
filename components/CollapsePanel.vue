@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="columns is-mobile"
+      class="columns is-mobile is-sans-serif"
       style="margin-bottom:0"
     >
       <div class="column">

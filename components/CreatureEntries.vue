@@ -4,7 +4,6 @@
     :name="model.name"
     :info="creatureMeta"
     :source="source"
-    class="is-sans-serif"
   >
     <!-- Encounter buttons -->
     <div
