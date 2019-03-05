@@ -131,7 +131,7 @@ $fade-time: 500ms;
 .page {
   &-enter-active,
   &-leave-active {
-    transition: all $fade-time ease-out;
+    transition: all $fade-time / 2 ease-out;
   }
 
   &-enter,
@@ -147,7 +147,7 @@ $fade-time: 500ms;
 .layout {
   &-enter-active,
   &-leave-active {
-    transition: all $fade-time ease-out;
+    transition: all $fade-time / 2 ease-out;
   }
 
   &-enter,
