@@ -1,3 +1,13 @@
+<a name="2.28.2"></a>
+## [2.28.2](https://github.com/alexkcollier/dmtool/compare/v2.28.1...v2.28.2) (2019-03-05)
+
+
+### Bug Fixes
+
+* reduces page transition duration ([20c1b23](https://github.com/alexkcollier/dmtool/commit/20c1b23))
+
+
+
 <a name="2.28.1"></a>
 ## [2.28.1](https://github.com/alexkcollier/dmtool/compare/v2.28.0...v2.28.1) (2019-03-04)
 
