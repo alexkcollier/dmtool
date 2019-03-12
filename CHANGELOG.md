@@ -1,3 +1,13 @@
+<a name="2.28.3"></a>
+## [2.28.3](https://github.com/alexkcollier/dmtool/compare/v2.28.2...v2.28.3) (2019-03-12)
+
+
+### Bug Fixes
+
+* **pwa:** don't fetch version, network fallback ([20a6faf](https://github.com/alexkcollier/dmtool/commit/20a6faf))
+
+
+
 <a name="2.28.2"></a>
 ## [2.28.2](https://github.com/alexkcollier/dmtool/compare/v2.28.1...v2.28.2) (2019-03-05)
 
