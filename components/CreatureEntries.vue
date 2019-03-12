@@ -7,7 +7,7 @@
   >
     <!-- Encounter buttons -->
     <div
-      slot="col2"
+      v-slot:col2
       class="column is-narrow"
     >
       <div class="buttons is-encounter-buttons">
