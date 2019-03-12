@@ -1,6 +1,6 @@
 const CACHE = 'dmtool-data'
 const DATA_URL = new URL('https://dmtool-e98e4.firebaseio.com')
-const dataTypes = ['bestiary', 'items', 'spells', 'version']
+const dataTypes = ['bestiary', 'items', 'spells']
 
 self.addEventListener('install', event => event.waitUntil(precache()))
 
@@ -27,7 +27,9 @@ async function precache() {
 async function fromCache(request) {
   // get the cached response for a given request
   const cache = await caches.open(CACHE)
-  return cache.match(request)
+  const matching = await cache.match(request)
+  // fall back to network if no match
+  return matching || fetch(request)
 }
 
 async function updateCache(request) {

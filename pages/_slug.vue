@@ -86,8 +86,6 @@ export default {
     }
 
     async function getData({ env, params, store }) {
-      const versionRef = await fetch(`${env.API_DB}/version.json`)
-      const version = await versionRef.json()
       // magic-items => items
       const reqUrl = new URL(`/${params.slug.split('-').pop()}.json`, env.API_DB)
       const init = { headers: new Headers({ 'X-Firebase-ETag': true }) }
@@ -96,8 +94,6 @@ export default {
       const eTag = response.headers.get('ETag')
 
       if (eTag === store.state[params.slug].eTag) return
-
-      store.commit('UPDATE_VERSION', { version })
 
       return store.dispatch(`${params.slug}/initStore`, { data, eTag })
     }
