@@ -17,7 +17,7 @@
               @click="removeFromEncounter(model)"
             >
               <span class="sr-only">
-                add to encounter
+                remove from encounter
               </span>
               <b-icon
                 style="margin-left: calc(-0.375em - 1px);"
@@ -34,7 +34,7 @@
             @click="addToEncounter(model)"
           >
             <span class="sr-only">
-              remove from encounter
+              add to encounter
             </span>
             <b-icon
               style="margin-left: calc(-0.375em - 1px);"
