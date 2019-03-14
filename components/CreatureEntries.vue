@@ -6,45 +6,44 @@
     :source="source"
   >
     <!-- Encounter buttons -->
-    <div
-      v-slot:col2
-      class="column is-narrow"
-    >
-      <div class="buttons is-encounter-buttons">
-        <!-- Remove from encounter -->
-        <transition name="fade">
+    <template v-slot:col2>
+      <div class="column is-narrow">
+        <div class="buttons is-encounter-buttons">
+          <!-- Remove from encounter -->
+          <transition name="fade">
+            <button
+              v-if="encounterIncludesCreature"
+              class="button"
+              @click="removeFromEncounter(model)"
+            >
+              <span class="sr-only">
+                add to encounter
+              </span>
+              <b-icon
+                style="margin-left: calc(-0.375em - 1px);"
+                icon="minus"
+              />
+            </button>
+          </transition>
+
+          <!-- Add to encounter -->
           <button
-            v-if="encounterIncludesCreature"
-            class="button"
-            @click="removeFromEncounter(model)"
+            v-if="$route.params.slug === 'bestiary'"
+            :disabled="encounterIncludesCreature"
+            class="button is-primary"
+            @click="addToEncounter(model)"
           >
             <span class="sr-only">
-              add to encounter
+              remove from encounter
             </span>
             <b-icon
               style="margin-left: calc(-0.375em - 1px);"
-              icon="minus"
+              :icon="encounterIncludesCreature ? 'check' : 'plus'"
             />
           </button>
-        </transition>
-
-        <!-- Add to encounter -->
-        <button
-          v-if="$route.params.slug === 'bestiary'"
-          :disabled="encounterIncludesCreature"
-          class="button is-primary"
-          @click="addToEncounter(model)"
-        >
-          <span class="sr-only">
-            remove from encounter
-          </span>
-          <b-icon
-            style="margin-left: calc(-0.375em - 1px);"
-            :icon="encounterIncludesCreature ? 'check' : 'plus'"
-          />
-        </button>
+        </div>
       </div>
-    </div>
+    </template>
 
     <!-- Panel body -->
     <div class="is-sans-serif has-text-red">
