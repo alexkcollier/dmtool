@@ -1,3 +1,14 @@
+<a name="2.28.4"></a>
+## [2.28.4](https://github.com/alexkcollier/dmtool/compare/v2.28.3...v2.28.4) (2019-03-14)
+
+
+### Bug Fixes
+
+* **bestiary:** fixes screen reader text ([d855f1b](https://github.com/alexkcollier/dmtool/commit/d855f1b))
+* **bestiary:** implements v-slot properly ([d5c2314](https://github.com/alexkcollier/dmtool/commit/d5c2314))
+
+
+
 <a name="2.28.3"></a>
 ## [2.28.3](https://github.com/alexkcollier/dmtool/compare/v2.28.2...v2.28.3) (2019-03-12)
 
