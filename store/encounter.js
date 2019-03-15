@@ -16,9 +16,11 @@ export const mutations = {
   },
 
   REMOVE_FROM_ENCOUNTER: (state, payload) => {
-    state.encounter = state.encounter.filter(c => {
-      return c.name !== payload.name && c.source !== payload.source
+    const deleteIdx = state.encounter.findIndex(c => {
+      return c.name === payload.name && c.source === payload.source
     })
+
+    state.encounter.splice(deleteIdx, 1)
   },
 
   CLEAR_ENCOUNTER: state => (state.encounter = [])

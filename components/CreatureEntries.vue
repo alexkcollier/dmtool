@@ -14,7 +14,7 @@
             <button
               v-if="encounterIncludesCreature"
               class="button"
-              @click="removeFromEncounter(model)"
+              @click="removeFromEncounter"
             >
               <span class="sr-only">
                 remove from encounter
@@ -31,7 +31,7 @@
             v-if="$route.params.slug === 'bestiary'"
             :disabled="encounterIncludesCreature"
             class="button is-primary"
-            @click="addToEncounter(model)"
+            @click="addToEncounter"
           >
             <span class="sr-only">
               add to encounter
@@ -464,9 +464,17 @@ export default {
     },
 
     ...mapMutations('encounter', {
-      addToEncounter: 'ADD_TO_ENCOUNTER',
-      removeFromEncounter: 'REMOVE_FROM_ENCOUNTER'
-    })
+      add: 'ADD_TO_ENCOUNTER',
+      remove: 'REMOVE_FROM_ENCOUNTER'
+    }),
+
+    addToEncounter() {
+      this.add(this.model)
+    },
+
+    removeFromEncounter() {
+      this.remove(this.model)
+    }
   }
 }
 </script>
