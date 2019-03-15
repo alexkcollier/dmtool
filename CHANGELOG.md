@@ -1,3 +1,14 @@
+<a name="2.28.5"></a>
+## [2.28.5](https://github.com/alexkcollier/dmtool/compare/v2.28.4...v2.28.5) (2019-03-15)
+
+
+### Bug Fixes
+
+* **collapse-panel:** only looks for searchbox if it exists ([ddbed24](https://github.com/alexkcollier/dmtool/commit/ddbed24))
+* **encounter:** fixes removal from encoutners ([8219190](https://github.com/alexkcollier/dmtool/commit/8219190))
+
+
+
 <a name="2.28.4"></a>
 ## [2.28.4](https://github.com/alexkcollier/dmtool/compare/v2.28.3...v2.28.4) (2019-03-14)
 
