@@ -158,7 +158,7 @@ div:not(:last-child) {
   }
 }
 
-/deep/ .link {
+>>> .link {
   @include item-link();
 }
 </style>

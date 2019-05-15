@@ -98,6 +98,12 @@ export default {
         }
       }
     },
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+        fiber: require('fibers')
+      }
+    },
     extend(config, ctx) {
       if (ctx.isDev && ctx.isClient) {
         config.devtool = '#eval-source-map'
