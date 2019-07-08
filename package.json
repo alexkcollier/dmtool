@@ -62,7 +62,7 @@
     "eslint-loader": "^2.1.2",
     "fibers": "^4.0.1",
     "husky": "^2.3.0",
-    "lint-staged": "^8.1.7",
+    "lint-staged": "^9.1.0",
     "prettier": "1.14.3",
     "sass": "^1.20.1",
     "sass-loader": "^7.1.0",
