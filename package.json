@@ -66,6 +66,6 @@
     "prettier": "1.14.3",
     "sass": "^1.20.1",
     "sass-loader": "^7.1.0",
-    "stylelint": "^10.0.1"
+    "stylelint": "^10.1.0"
   }
 }
