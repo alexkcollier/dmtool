@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.16",
-    "buefy": "^0.7.10",
+    "buefy": "^0.8.2",
     "dice-roller-dnd": "^1.0.5",
     "fuse.js": "^3.4.4",
     "hyperid": "^2.0.2",
@@ -57,15 +57,15 @@
     "@acollier/stylelint-config-scss": "^2.1.2",
     "babel-eslint": "^10.0.2",
     "corp-semantic-release": "^7.0.0",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.1.0",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.2.1",
     "fibers": "^4.0.1",
-    "lint-staged": "^9.2.0",
+    "lint-staged": "^9.2.3",
     "husky": "^3.0.4",
     "prettier": "1.14.3",
-    "sass": "^1.22.5",
-    "sass-loader": "^7.1.0",
+    "sass": "^1.22.10",
+    "sass-loader": "^7.2.0",
     "stylelint": "^10.1.0"
   }
 }
