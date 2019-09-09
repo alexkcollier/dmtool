@@ -56,28 +56,30 @@ export default {
     '@/plugins/vuex-persist.client.js'
   ],
   modules: ['@nuxtjs/pwa'],
-  manifest: {
-    name: 'DM Tool',
-    short_name: name,
-    background_color: brandColor,
-    theme_color: brandColor
-  },
-  workbox: {
-    importScripts: ['data-sw.js'],
-    runtimeCaching: [
-      {
-        urlPattern: '.*//cdn.materialdesignicons.com/.*',
-        handler: 'networkFirst'
-      },
-      {
-        urlPattern: '.*//*.typekit.net/.*',
-        handler: 'networkFirst'
-      },
-      {
-        urlPattern: `${process.env.API_DB}/.*.json`,
-        handler: 'networkFirst'
-      }
-    ]
+  pwa: {
+    manifest: {
+      name: 'DM Tool',
+      short_name: name,
+      background_color: brandColor,
+      theme_color: brandColor
+    },
+    workbox: {
+      importScripts: ['data-sw.js'],
+      runtimeCaching: [
+        {
+          urlPattern: '.*//cdn.materialdesignicons.com/.*',
+          handler: 'networkFirst'
+        },
+        {
+          urlPattern: '.*//*.typekit.net/.*',
+          handler: 'networkFirst'
+        },
+        {
+          urlPattern: `${process.env.API_DB}/.*.json`,
+          handler: 'networkFirst'
+        }
+      ]
+    }
   },
   loading: { color: '#3B8070' },
   router: {
