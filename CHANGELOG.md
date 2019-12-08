@@ -1,3 +1,13 @@
+<a name="2.28.6"></a>
+## [2.28.6](https://github.com/alexkcollier/dmtool/compare/v2.28.5...v2.28.6) (2019-12-08)
+
+
+### Bug Fixes
+
+* **deps:** updates dependencies ([7cbe7fe](https://github.com/alexkcollier/dmtool/commit/7cbe7fe))
+
+
+
 <a name="2.28.5"></a>
 ## [2.28.5](https://github.com/alexkcollier/dmtool/compare/v2.28.4...v2.28.5) (2019-03-15)
 
