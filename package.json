@@ -58,7 +58,7 @@
     "babel-eslint": "^10.0.3",
     "corp-semantic-release": "^7.0.0",
     "dotenv": "^8.2.0",
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
     "eslint-loader": "^3.0.3",
     "fibers": "^4.0.2",
     "husky": "^3.1.0",
