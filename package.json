@@ -48,7 +48,7 @@
     "lodash.get": "^4.4.2",
     "lodash.orderby": "^4.6.0",
     "lodash.throttle": "^4.1.1",
-    "nuxt": "^2.10.2",
+    "nuxt": "^2.11.0",
     "vue-scrollto": "^2.17.1",
     "vuex-persist": "^2.2.0"
   },
@@ -59,7 +59,7 @@
     "corp-semantic-release": "^7.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^5.16.0",
-    "eslint-loader": "^3.0.2",
+    "eslint-loader": "^3.0.3",
     "fibers": "^4.0.2",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
