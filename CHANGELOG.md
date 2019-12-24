@@ -1,3 +1,13 @@
+<a name="2.28.7"></a>
+## [2.28.7](https://github.com/alexkcollier/dmtool/compare/v2.28.6...v2.28.7) (2019-12-24)
+
+
+### Bug Fixes
+
+* uses yarn, regenerates lockfile ([dee7f16](https://github.com/alexkcollier/dmtool/commit/dee7f16))
+
+
+
 <a name="2.28.6"></a>
 ## [2.28.6](https://github.com/alexkcollier/dmtool/compare/v2.28.5...v2.28.6) (2019-12-08)
 
