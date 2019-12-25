@@ -102,8 +102,7 @@ export default {
     },
     loaders: {
       scss: {
-        implementation: require('sass'),
-        fiber: require('fibers')
+        implementation: require('sass')
       }
     },
     extend(config, ctx) {
