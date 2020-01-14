@@ -65,7 +65,7 @@
     "lint-staged": "^9.5.0",
     "prettier": "1.14.3",
     "sass": "^1.24.4",
-    "sass-loader": "^8.0.1",
+    "sass-loader": "^8.0.2",
     "stylelint": "^10.1.0"
   }
 }
