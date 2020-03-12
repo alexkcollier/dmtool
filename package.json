@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "buefy": "^0.8.12",
+    "buefy": "^0.8.13",
     "dice-roller-dnd": "^1.0.7",
     "fuse.js": "^3.6.1",
     "hyperid": "^2.0.3",
