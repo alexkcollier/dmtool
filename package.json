@@ -42,7 +42,7 @@
     "buefy": "^0.8.16",
     "dice-roller-dnd": "^1.0.7",
     "fuse.js": "^5.2.3",
-    "hyperid": "^2.0.3",
+    "hyperid": "^2.0.4",
     "lodash.clonedeep": "^4.5.0",
     "lodash.debounce": "^4.0.8",
     "lodash.get": "^4.4.2",
