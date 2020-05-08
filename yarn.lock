@@ -4800,10 +4800,10 @@ husky@^4.2.5:
     slash "^3.0.0"
     which-pm-runs "^1.0.0"
 
-hyperid@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/hyperid/-/hyperid-2.0.4.tgz#c8a2a85e09c81736da74dde24b9ad2aa36b5d75e"
-  integrity sha512-pkouNBrIhytynj5U5dQIEy8kSKdiiYjq7AXmsuJFDGb/tuwPeibsA+9715uFlCqVkzWLaJGtdHpv5mCKlz2VwQ==
+hyperid@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/hyperid/-/hyperid-2.0.5.tgz#fecedad4e9868d548c096482917c33090bccd2be"
+  integrity sha512-kg0+DOmWo3HSFvWWMCQJJhzEB4kg5z/83l4eFDaeAMJ5E2zbQzTEewAmVtOqdRElU9yRFJhCOuegUk0M6RZfiw==
   dependencies:
     uuid "^3.4.0"
     uuid-parse "^1.1.0"
