@@ -1,3 +1,15 @@
+<a name="2.28.8"></a>
+## [2.28.8](https://github.com/alexkcollier/dmtool/compare/v2.28.7...v2.28.8) (2020-08-26)
+
+
+### Bug Fixes
+
+* fixes bulma import ([85baf5c](https://github.com/alexkcollier/dmtool/commit/85baf5c))
+* removes fiber ([faad87e](https://github.com/alexkcollier/dmtool/commit/faad87e))
+* removes nvmrc ([92cf652](https://github.com/alexkcollier/dmtool/commit/92cf652))
+
+
+
 <a name="2.28.7"></a>
 ## [2.28.7](https://github.com/alexkcollier/dmtool/compare/v2.28.6...v2.28.7) (2019-12-24)
 
