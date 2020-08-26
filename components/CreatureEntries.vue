@@ -10,7 +10,7 @@
       <div class="column is-narrow">
         <div class="buttons is-encounter-buttons">
           <!-- Remove from encounter -->
-          <transition name="fade">
+          <Transition name="fade">
             <button
               v-if="encounterIncludesCreature"
               class="button"
@@ -19,12 +19,12 @@
               <span class="sr-only">
                 remove from encounter
               </span>
-              <b-icon
+              <BIcon
                 style="margin-left: calc(-0.375em - 1px);"
                 icon="minus"
               />
             </button>
-          </transition>
+          </Transition>
 
           <!-- Add to encounter -->
           <button
@@ -36,7 +36,7 @@
             <span class="sr-only">
               add to encounter
             </span>
-            <b-icon
+            <BIcon
               style="margin-left: calc(-0.375em - 1px);"
               :icon="encounterIncludesCreature ? 'check' : 'plus'"
             />
@@ -49,6 +49,7 @@
     <div class="is-sans-serif has-text-red">
       <!-- AC/HP/Speed -->
       <div>
+        <!-- eslint-disable-next-line vue/no-v-html -->
         <strong>Armor Class</strong> <span v-html="armorClass" />
       </div>
       <div>
@@ -190,7 +191,10 @@
       </template>
 
       <p v-else>
-        {{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. {{ creatureName }} regains spent legendary actions at the start of its turn.
+        {{ creatureName }} can take {{ legendaryActionCount }} legendary actions, choosing
+        from the options below. Only one legendary action option can be used at a time and
+        only at the end of another creature's turn. {{ creatureName }} regains spent legendary
+        actions at the start of its turn.
       </p>
 
       <Action
@@ -216,24 +220,24 @@ export default {
     Action,
     CollapsePanel,
     Spellcasting,
-    Trait
+    Trait,
   },
 
   filters: {
-    getStatMod(stat) {
+    getStatMod (stat) {
       const mod = Math.floor((stat - 10) / 2)
       return `${stat} (${mod < 0 ? '' : '+'}${mod})` // \xa0 is nbsp
-    }
+    },
   },
 
   props: {
     model: {
       type: Object,
-      default: () => {}
-    }
+      default: () => { },
+    },
   },
 
-  data() {
+  data () {
     return {
       sizes: {
         T: 'tiny',
@@ -241,49 +245,49 @@ export default {
         M: 'medium',
         L: 'large',
         H: 'huge',
-        G: 'gargantuan'
-      }
+        G: 'gargantuan',
+      },
     }
   },
 
   computed: {
     ...mapState('encounter', {
-      encounter: 'encounter'
+      encounter: 'encounter',
     }),
 
     ...mapGetters('encounter', {
-      encounterCreatures: 'encounterCreatures'
+      encounterCreatures: 'encounterCreatures',
     }),
 
-    armorClass() {
+    armorClass () {
       const { ac } = this.model
       return !Array.isArray(ac) ? ac : ac.reduce(this.acToString, '').trim()
     },
 
-    concatCR() {
+    concatCR () {
       const { cr, coven, lair } = this.model.cr
       if (coven) return `${cr}; ${coven} when part of a coven`
       if (lair) return `${cr}; ${lair} when encountered in its lair`
       return this.model.cr
     },
 
-    concatType() {
+    concatType () {
       const { type, tags, parsedTags, swarmSize } = this.model.type
       if (tags || parsedTags) return `${type} (${parsedTags || tags.join(', ')})`
       if (swarmSize) return `swarm of ${this.parseSize(swarmSize)} ${type}s`
       return this.model.type
     },
 
-    concatSave() {
+    concatSave () {
       return this.concatKeyVal(this.model.save)
     },
 
-    concatSkill() {
+    concatSkill () {
       const { other, ...skills } = this.model.skill
       let st = this.concatKeyVal(skills)
 
       if (other) {
-        other.map(el => {
+        other.map((el) => {
           const { oneOf: sk } = el
           if (sk) st += `, plus one of the following: ${this.concatKeyVal(sk)}`
         })
@@ -292,67 +296,67 @@ export default {
       return st
     },
 
-    conditionImmune() {
+    conditionImmune () {
       return this.dmgCon(this.model.conditionImmune, 'immune')
     },
 
-    creatureMeta() {
+    creatureMeta () {
       const { size, prettyAlignment } = this.model
       return `${size} ${this.concatType}, ${prettyAlignment}`
     },
 
-    creatureName() {
+    creatureName () {
       return this.model.isNamedCreature ? this.model.name : 'The creature'
     },
 
-    dmgImmune() {
+    dmgImmune () {
       return this.dmgCon(this.model.immune, 'immune')
     },
 
-    dmgResist() {
+    dmgResist () {
       return this.dmgCon(this.model.resist, 'resist')
     },
 
-    dmgVulnerable() {
+    dmgVulnerable () {
       return this.dmgCon(this.model.vulnerable, 'vulnerable')
     },
 
-    encounterIncludesCreature() {
+    encounterIncludesCreature () {
       return this.encounterCreatures.includes(`${this.model.name} - ${this.model.source}`)
     },
 
-    hp() {
+    hp () {
       const { average, formula, special } = this.model.hp
       return special || `${average} (${formula})`
     },
 
-    languages() {
+    languages () {
       return this.model.languages || '—'
     },
 
-    legendaryActionCount() {
+    legendaryActionCount () {
       return this.model.legendaryActions || 3
     },
 
-    legendaryActions() {
+    legendaryActions () {
       if (this.model.legendary[0].name === 'Options') return this.model.legendary.slice(1)
 
       return this.model.legendary
     },
 
-    senses() {
+    senses () {
       const { senses, passive } = this.model
       const passiveStr = `passive Perception ${passive}`
       return senses ? `${senses}, ${passiveStr}` : passiveStr
     },
 
-    source() {
+    source () {
       const { page, source, sourceSub } = this.model
       // eslint-disable-next-line
-      return `${source}${sourceSub ? ` - ${sourceSub}` : ''}${page ? `, p. ${page}` : ''}`
+      return `${source}${sourceSub ? ` - ${sourceSub}` : ''}${page ? `, p. ${page}` : ''}`;
     },
 
-    speed() {
+    speed () {
       let { walk, canHover, ...speeds } = this.model.speed
 
       if (walk) {
@@ -365,7 +369,7 @@ export default {
         walk = ''
       }
 
-      speeds = Object.keys(speeds).map(k => {
+      speeds = Object.keys(speeds).map((k) => {
         if (typeof speeds[k] === 'object' && speeds[k].condition) {
           return `${k} ${speeds[k].number} ft. ${speeds[k].condition}`
         }
@@ -376,14 +380,14 @@ export default {
       return walk ? [walk, ...speeds].join(', ') : speeds.join(', ')
     },
 
-    stats() {
+    stats () {
       // Create stats object
       const { str, dex, con, wis, int, cha } = this.model
       return { str, dex, con, wis, int, cha }
-    }
+    },
   },
 
-  mounted() {
+  mounted () {
     const { name, trait } = this.model
 
     if (process.env !== 'production' && trait && trait.entries.entries) {
@@ -392,13 +396,13 @@ export default {
   },
 
   methods: {
-    concatKeyVal(o) {
+    concatKeyVal (o) {
       return Object.keys(o)
         .map(k => `${k} ${o[k]}`)
         .join(', ')
     },
 
-    dmgCon(arr, type) {
+    dmgCon (arr, type) {
       const flatten = (it, depth = false) => {
         if (typeof it === 'string') return it
 
@@ -420,13 +424,13 @@ export default {
       return this.joinDmgCon(arr.map(it => flatten(it)))
     },
 
-    conjunctWith(arr, conjunction) {
+    conjunctWith (arr, conjunction) {
       if (arr.length === 1) return String(arr[0])
       if (arr.length === 2) return arr.join(` ${conjunction} `)
       return `${arr.slice(0, -1).join(', ')} ${conjunction} ${arr.slice(-1)}`
     },
 
-    joinDmgCon(arr) {
+    joinDmgCon (arr) {
       if (arr.length <= 1) return arr.join('')
 
       let stack = ''
@@ -443,7 +447,7 @@ export default {
       return stack
     },
 
-    acToString(stack, cur, idx, arr) {
+    acToString (stack, cur, idx, arr) {
       if (cur.ac) {
         stack += cur.ac
         if (cur.from) stack += ` (${Array.isArray(cur.from) ? cur.from.join(', ') : cur.from})`
@@ -459,33 +463,30 @@ export default {
       return stack.replace(regExp, '$2')
     },
 
-    parseSize(size) {
+    parseSize (size) {
       return this.sizes[size] || size
     },
 
     ...mapMutations('encounter', {
       add: 'ADD_TO_ENCOUNTER',
-      remove: 'REMOVE_FROM_ENCOUNTER'
+      remove: 'REMOVE_FROM_ENCOUNTER',
     }),
 
-    addToEncounter() {
+    addToEncounter () {
       this.add(this.model)
     },
 
-    removeFromEncounter() {
+    removeFromEncounter () {
       this.remove(this.model)
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.content table {
-  @media screen and (max-width: 768px) {
-    display: block;
-    overflow-x: scroll;
-  }
+$fade-time: 200ms;
 
+.content table {
   & td,
   & tr {
     @media screen and (max-width: 768px) {
@@ -503,6 +504,11 @@ export default {
       background-color: inherit;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    overflow-x: scroll;
+  }
 }
 
 h2 {
@@ -515,12 +521,10 @@ hr {
 }
 
 .is-encounter-buttons {
-  height: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100%;
 }
-
-$fade-time: 200ms;
 
 .fade {
   &-enter-active,

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'BaseContainer'
+  name: 'BaseContainer',
 }
 </script>
 

@@ -6,17 +6,17 @@
           Roll Dice
         </h1>
 
-        <b-tabs class="is-sans-serif">
-          <b-tab-item label="Custom Dice">
+        <BTabs class="is-sans-serif">
+          <BTabItem label="Custom Dice">
             <CustomRoller @roll-dice="setResult" />
-          </b-tab-item>
-          <b-tab-item label="Saved Dice">
+          </BTabItem>
+          <BTabItem label="Saved Dice">
             <SavedRollers @roll-dice="setResult" />
-          </b-tab-item>
-          <b-tab-item label="Roll a Character">
+          </BTabItem>
+          <BTabItem label="Roll a Character">
             <CharacterRoller />
-          </b-tab-item>
-        </b-tabs>
+          </BTabItem>
+        </BTabs>
       </div>
     </section>
 
@@ -39,24 +39,18 @@ export default {
     CharacterRoller,
     CustomRoller,
     CustomRollerResult,
-    SavedRollers
+    SavedRollers,
   },
 
-  data() {
+  data () {
     return {
       showResult: false,
-      result: {}
-    }
-  },
-
-  head() {
-    return {
-      title: 'Roll Dice'
+      result: {},
     }
   },
 
   methods: {
-    setResult({ result, rolls, rollDescription, modifier }) {
+    setResult ({ result, rolls, rollDescription, modifier }) {
       this.$set(this.result, 'sum', result)
       this.$set(this.result, 'rolls', rolls)
       this.$set(this.result, 'description', rollDescription)
@@ -64,9 +58,15 @@ export default {
       this.showResult = true
     },
 
-    closeModal(event) {
+    closeModal (event) {
       this.showResult = false
+    },
+  },
+
+  head () {
+    return {
+      title: 'Roll Dice',
     }
-  }
+  },
 }
 </script>

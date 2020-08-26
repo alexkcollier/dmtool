@@ -1,11 +1,11 @@
 <template>
   <main
     class="ampersand"
-    style="height:60vh;"
+    style="height: 60vh;"
   >
     <div
       class="has-text-centered"
-      style="position:relative; top:40%;"
+      style="position: relative; top: 40%;"
     >
       <h1 class="title is-size-1">
         {{ message }}
@@ -19,13 +19,13 @@ export default {
   props: ['error'], // eslint-disable-line
 
   computed: {
-    statusCode() {
+    statusCode () {
       return (this.error && this.error.statusCode) || 500
     },
-    message() {
+    message () {
       return this.error.message || '<%= messages.client_error %>'
-    }
-  }
+    },
+  },
 }
 </script>
 

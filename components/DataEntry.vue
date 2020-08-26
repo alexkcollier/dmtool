@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- eslint-disable vue/no-v-html -->
     <!-- Iterate item entries and set up entry types -->
     <template v-for="entry in model">
       <!-- Paragraphs -->
@@ -68,12 +69,12 @@
           <span v-html="formatEntry(entry.entries[0])" />
         </p>
 
-        <data-entry
+        <DataEntry
           v-else
           :key="entry.index"
           :model="entry.entries.slice(0, 1)"
         />
-        <data-entry
+        <DataEntry
           v-if="entry.entries.slice(1).length"
           :key="entry.index"
           :model="entry.entries.slice(1)"
@@ -99,18 +100,18 @@ export default {
   props: {
     model: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
 
-  mounted() {
+  mounted () {
     this.$el
       .querySelectorAll('a[href*="/magic-items?name="]')
       .forEach(link => link.addEventListener('click', event => this.lookupFromHref(event)))
   },
 
   methods: {
-    formatEntry(str) {
+    formatEntry (str) {
       const inlineTitle = /^(([a-zA-Z]*\s*){0,3}\.)(?=.+)/g
 
       if (str.roll) str = String(str.roll.exact) || `${str.roll.min}-${str.roll.max}`
@@ -118,13 +119,13 @@ export default {
       return str.replace(inlineTitle, `<strong><i>$1</i></strong>`)
     },
 
-    lookupFromHref(event) {
+    lookupFromHref (event) {
       event.preventDefault()
       const path = new URLSearchParams(event.target.search).get('name')
       const filters = this.$store.state['magic-items'].filters
 
       // reset the filters
-      Object.keys(filters).forEach(filter => {
+      Object.keys(filters).forEach((filter) => {
         filters[filter].forEach((f, optionIndex) => {
           const payload = { filter, optionIndex, value: true }
           this.$store.commit('magic-items/UPDATE_FILTER', payload)
@@ -136,8 +137,8 @@ export default {
       if (this.$route.query.name) this.$router.push({ query: { name: path } })
       // search for the clicked item
       this.$store.commit('magic-items/UPDATE_SEARCH_STRING', path)
-    }
-  }
+    },
+  },
 }
 </script>
 

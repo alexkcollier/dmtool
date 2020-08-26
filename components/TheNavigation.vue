@@ -22,57 +22,65 @@ export default {
   name: 'TheNavigation',
 
   components: {
-    NavigationLink
+    NavigationLink,
   },
 
-  data() {
+  data () {
     return {
       links: [
         {
           icon: 'spell-book.svg',
           label: 'Spells',
           to: '/spells',
-          alt: 'Spellbook Icon'
+          alt: 'Spellbook Icon',
         },
         {
           icon: 'chest.svg',
           label: 'Magic Items',
           to: '/magic-items',
-          alt: 'Chest Icon'
+          alt: 'Chest Icon',
         },
         {
           icon: 'bestiary.svg',
           label: 'Bestiary',
           to: '/bestiary',
-          alt: 'Bestiary Icon'
+          alt: 'Bestiary Icon',
         },
         {
           icon: 'sword.svg',
           label: 'Encounter',
           to: '/encounter',
-          alt: 'Sword Icon'
+          alt: 'Sword Icon',
         },
         {
           icon: 'd20.svg',
           label: 'Roll Dice',
           to: '/roll-dice',
-          alt: 'Die Icon'
-        }
-      ]
+          alt: 'Die Icon',
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
 .navigation {
   $section-offset: 2em;
+
   background: hsl(60, 19%, 87%);
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 1px 10px 0 rgba(0, 0, 0, 0.1);
   margin-bottom: -$section-offset;
   position: fixed;
   width: 100%;
   z-index: 10;
+
+  .container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 3em;
+  }
 
   @media screen and (max-width: 1023px) {
     bottom: $section-offset;
@@ -81,13 +89,6 @@ export default {
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% + 0.5em);
-  }
-
-  .container {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    min-height: 3em;
   }
 }
 </style>

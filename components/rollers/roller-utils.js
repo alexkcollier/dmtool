@@ -2,7 +2,7 @@ import get from 'lodash.get'
 
 const capitalize = str => str[0].toUppercase() + str.slice(1)
 
-export function rollDice({ uuid, dice, options = {}, modifier = 0 }) {
+export function rollDice ({ uuid, dice, options = {}, modifier = 0 }) {
   const dieRoll = dice.roll()
 
   if (get(options, 'reroll.values.length')) dieRoll.reroll(...options.reroll.values)
@@ -27,7 +27,7 @@ export function rollDice({ uuid, dice, options = {}, modifier = 0 }) {
   return { result, rolls }
 }
 
-export function makeModifierText(modifier) {
+export function makeModifierText (modifier) {
   if (!modifier) return
 
   return modifier >= 0 ? `+ ${modifier}` : `- ${String(modifier).substr(1)}`

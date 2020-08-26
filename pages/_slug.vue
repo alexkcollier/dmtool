@@ -16,7 +16,7 @@
     <hr>
 
     <template v-if="results.length > 0">
-      <component
+      <Component
         :is="activeComponent"
         v-for="result in truncatedResults"
         :id="setId(result)"
@@ -50,25 +50,10 @@ export default {
     /* eslint-enable */
     ResultCount,
     SearchBox,
-    FilterPanel
+    FilterPanel,
   },
 
-  data() {
-    return {
-      filterFields: {
-        spells: ['level', 'school', 'source', 'class'],
-        'magic-items': ['rarity', 'type', 'source'],
-        bestiary: ['cr', 'size', 'source', 'type', 'tags']
-      },
-      filtersToSort: {
-        'magic-items': ['rarity', 'source', 'type']
-      },
-      prevScroll: 0,
-      count: 10
-    }
-  },
-
-  async fetch(ctx) {
+  async fetch (ctx) {
     const { error, isDev, params, store } = ctx
     const notFound = () => error({ statusCode: 404, message: 'Not Found' })
     const hasStoreModule = Object.keys(store.state).includes(params.slug)
@@ -85,7 +70,7 @@ export default {
       return notFound()
     }
 
-    async function getData({ env, params, store }) {
+    async function getData ({ env, params, store }) {
       // magic-items => items
       const reqUrl = new URL(`/${params.slug.split('-').pop()}.json`, env.API_DB)
       const init = { headers: new Headers({ 'X-Firebase-ETag': true }) }
@@ -99,14 +84,23 @@ export default {
     }
   },
 
-  head() {
+  data () {
     return {
-      title: this.title
+      filterFields: {
+        spells: ['level', 'school', 'source', 'class'],
+        'magic-items': ['rarity', 'type', 'source'],
+        bestiary: ['cr', 'size', 'source', 'type', 'tags'],
+      },
+      filtersToSort: {
+        'magic-items': ['rarity', 'source', 'type'],
+      },
+      prevScroll: 0,
+      count: 10,
     }
   },
 
   computed: {
-    title() {
+    title () {
       switch (this.slug) {
         case 'spells':
           return 'Spells'
@@ -119,7 +113,7 @@ export default {
       }
     },
 
-    activeComponent() {
+    activeComponent () {
       switch (this.slug) {
         case 'spells':
           return 'SpellEntries'
@@ -132,7 +126,7 @@ export default {
       }
     },
 
-    searchType() {
+    searchType () {
       switch (this.slug) {
         case 'spells':
           return 'spell'
@@ -145,32 +139,32 @@ export default {
       }
     },
 
-    slug() {
+    slug () {
       return this.$route.params.slug
     },
 
-    results() {
+    results () {
       return this.$store.state[this.slug].queryResult
     },
 
-    truncatedResults() {
+    truncatedResults () {
       return this.results.slice(0, this.count)
-    }
+    },
   },
 
   watch: {
-    results() {
+    results () {
       if (this.results.length === 1) {
         this.setActiveEl({ el: `${this.slug}-${this.results[0].source}-1`, delay: 300 })
       }
-    }
+    },
   },
 
-  mounted() {
+  mounted () {
     window.addEventListener('scroll', this.loadMoreOnScroll)
 
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.onmessage = event => {
+      navigator.serviceWorker.onmessage = (event) => {
         const message = JSON.parse(event.data)
         const isPath = message.url.includes(this.slug.replace('magic-', ''))
         const isRefresh = message.type === 'refresh'
@@ -186,37 +180,43 @@ export default {
             position: 'is-bottom',
             type: 'is-gold',
             indefinite: 'true',
-            onAction: () => window.location.reload(true)
+            onAction: () => window.location.reload(true),
           })
         }
       }
     }
   },
 
-  destroyed() {
+  destroyed () {
     window.removeEventListener('scroll', this.loadMoreOnScroll)
   },
 
   methods: {
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL',
-      clearActiveEl: 'CLEAR_ACTIVE_EL'
+      clearActiveEl: 'CLEAR_ACTIVE_EL',
     }),
 
-    setId({ name, source }) {
+    setId ({ name, source }) {
       const index = this.results.findIndex(r => r.name === name && r.source === source) + 1
       return `${this.slug}-${source}-${index}`
     },
 
-    loadMoreOnScroll: throttle(function(event) {
+    loadMoreOnScroll: throttle(function (event) {
       const { offsetHeight, scrollTop } = document.documentElement
       const scrollDistance = scrollTop + window.innerHeight
       const atBottom = scrollDistance >= offsetHeight - 300
       const hiddenResults = this.truncatedResults.length < this.results.length
       if (atBottom && hiddenResults) this.count += 1
       this.prevScroll = scrollTop
-    }, 50)
-  }
+    }, 50),
+  },
+
+  head () {
+    return {
+      title: this.title,
+    }
+  },
 }
 </script>
 

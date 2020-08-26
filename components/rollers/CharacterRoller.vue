@@ -5,38 +5,38 @@
       class="column"
       @submit.prevent="rollCharacter(`roll${method}`)"
     >
-      <b-field>
-        <b-radio
+      <BField>
+        <BRadio
           v-model="method"
           native-value="4d6"
         >
           4d6
-        </b-radio>
-      </b-field>
+        </BRadio>
+      </BField>
 
-      <b-field>
-        <b-radio
+      <BField>
+        <BRadio
           v-model="method"
           native-value="3d6"
         >
           3d6
-        </b-radio>
-      </b-field>
+        </BRadio>
+      </BField>
 
-      <b-field>
+      <BField>
         <button class="button is-primary is-fullwidth">
           Roll&nbsp;
           <span style="font-feature-settings: 'lnum';">
             {{ method }}
           </span>
         </button>
-      </b-field>
+      </BField>
 
-      <transition
+      <Transition
         name="fade"
         mode="out-in"
       >
-        <b-field
+        <BField
           v-if="characterStats.length"
           key="results"
           class="columns"
@@ -72,9 +72,9 @@
               </ul>
             </div>
           </div>
-        </b-field>
+        </BField>
 
-        <b-field
+        <BField
           v-else
           key="placeholder"
         >
@@ -83,8 +83,8 @@
             style="display: block; margin: 0 auto;"
             src="~/assets/d20.svg"
           >
-        </b-field>
-      </transition>
+        </BField>
+      </Transition>
     </form>
   </div>
 </template>
@@ -97,28 +97,28 @@ const dice = new DiceRoller()
 export default {
   name: 'CharacterRoller',
 
-  data() {
+  data () {
     return {
       characterStats: [],
       method: '4d6',
-      methodUsed: ''
+      methodUsed: '',
     }
   },
 
   computed: {
-    hasRolls() {
+    hasRolls () {
       return !!this.characterStats.length
-    }
+    },
   },
 
   watch: {
-    hasRolls() {
+    hasRolls () {
       setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 50)
-    }
+    },
   },
 
   methods: {
-    rollCharacter(method = 'roll4d6') {
+    rollCharacter (method = 'roll4d6') {
       const statMethod = {
         roll4d6: () => {
           const diceRoll = dice.roll(4).d6()
@@ -130,13 +130,13 @@ export default {
           const { rolls, total } = dice.roll(3).d6()
 
           return { stat: total, d6Rolls: rolls }
-        }
+        },
       }
 
       this.methodUsed = method.substr(-3)
       this.characterStats = Array.from({ length: 6 }, statMethod[method])
-    }
-  }
+    },
+  },
 }
 </script>
 

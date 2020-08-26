@@ -2,7 +2,7 @@
   <div>
     <div
       class="columns is-mobile is-sans-serif"
-      style="margin-bottom:0"
+      style="margin-bottom: 0;"
     >
       <div class="column">
         <a
@@ -29,14 +29,14 @@
       <slot name="col2" />
     </div>
 
-    <transition name="fade-grow">
+    <Transition name="fade-grow">
       <div
         v-if="isActive"
         :style="{'transition-duration': `${transitionDuration}ms`}"
       >
         <slot />
       </div>
-    </transition>
+    </Transition>
     <hr>
   </div>
 </template>
@@ -48,73 +48,73 @@ export default {
   props: {
     name: {
       required: true,
-      type: String
+      type: String,
     },
 
     info: {
       default: '',
       required: false,
-      type: String
+      type: String,
     },
 
     source: {
       default: '',
       required: false,
-      type: String
-    }
+      type: String,
+    },
   },
 
-  data() {
+  data () {
     return {
       id: '',
-      transitionDuration: 500
+      transitionDuration: 500,
     }
   },
 
   computed: {
     ...mapState('toggle-active-el', ['activeEl']),
 
-    isActive() {
+    isActive () {
       return this.id === this.activeEl
-    }
+    },
   },
 
-  mounted() {
+  mounted () {
     this.setId()
   },
 
-  updated() {
+  updated () {
     this.setId()
   },
 
   methods: {
     ...mapActions('toggle-active-el', {
       setActiveEl: 'SET_ACTIVE_EL',
-      clearActiveEl: 'CLEAR_ACTIVE_EL'
+      clearActiveEl: 'CLEAR_ACTIVE_EL',
     }),
 
-    setId() {
+    setId () {
       this.id = this.$el.id
     },
 
-    toggleActive() {
+    toggleActive () {
       const newEl = {
         el: this.id,
-        delay: this.transitionDuration
+        delay: this.transitionDuration,
       }
       const { clearActiveEl, setActiveEl, isActive, scrollToEl } = this
       isActive ? clearActiveEl() : setActiveEl(newEl).then(scrollToEl)
     },
 
-    scrollToEl() {
+    scrollToEl () {
       const isDesktop = window.innerWidth > 1023
       const navHeight = document.querySelector('.navigation').clientHeight
       const searchHeight = document.querySelector('#search-box').clientHeight || 0
       const offset = -1 * (isDesktop ? navHeight : searchHeight)
       const easing = 'ease-in-out'
       this.$scrollTo(`#${this.activeEl}`, 500, { offset, easing })
-    }
-  }
+    },
+  },
 }
 </script>
 

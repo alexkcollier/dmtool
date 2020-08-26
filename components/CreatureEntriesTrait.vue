@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- eslint-disable vue/no-v-html -->
     <p>
       <strong><i>{{ model.name }}. </i></strong>
       <span
@@ -79,24 +80,24 @@ export default {
   props: {
     model: {
       type: Object,
-      default: () => {}
-    }
+      default: () => { },
+    },
   },
 
   computed: {
-    shiftModel() {
+    shiftModel () {
       const r = this.model.entries.slice(1)
       return r.length > 0 ? r : null
-    }
+    },
   },
 
   methods: {
     // Super sketchy hack. Definitely won't break in the future.
-    inlineEntryHack({ entries }) {
+    inlineEntryHack ({ entries }) {
       const text = `${entries[0]} ${entries[1].text} (DMG p.\xa0260) ${entries[2]}`
       return text
-    }
-  }
+    },
+  },
 }
 </script>
 

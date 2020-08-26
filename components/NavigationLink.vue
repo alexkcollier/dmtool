@@ -1,5 +1,5 @@
 <template functional>
-  <nuxt-link
+  <NuxtLink
     :to="props.to"
     :class="{ 'active': props.isActive }"
     class="navigation-link is-sans-serif is-size-7"
@@ -15,7 +15,7 @@
       class="navigation-link-icon"
     />
     {{ props.label }}
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script>
@@ -26,25 +26,25 @@ export default {
     icon: {
       default: '',
       required: false,
-      type: String
+      type: String,
     },
     label: {
       required: true,
-      type: String
+      type: String,
     },
     to: {
       required: true,
-      type: String
+      type: String,
     },
     alt: {
       required: true,
-      type: String
+      type: String,
     },
     isActive: {
       default: false,
-      type: Boolean
-    }
-  }
+      type: Boolean,
+    },
+  },
 }
 </script>
 
@@ -52,9 +52,9 @@ export default {
 $navigation-background-color: hsl(60, 19%, 87%);
 
 .navigation-link {
-  width: 8em;
   padding: 0.25em;
   text-align: center;
+  width: 8em;
 
   .image {
     margin: 0 auto;

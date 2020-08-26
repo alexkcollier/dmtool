@@ -1,5 +1,5 @@
 export const state = () => ({
-  diceConfigs: []
+  diceConfigs: [],
 })
 
 export const mutations = {
@@ -8,5 +8,5 @@ export const mutations = {
     const index = state.diceConfigs.findIndex(el => el.uuid === uuid)
     state.diceConfigs.splice(index, 1)
   },
-  clearDice: state => (state.diceConfigs = [])
+  clearDice: (state) => { state.diceConfigs = [] },
 }

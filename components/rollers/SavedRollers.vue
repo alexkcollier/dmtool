@@ -1,6 +1,6 @@
 <template>
   <div class="columns is-sans-serif">
-    <transition name="fade">
+    <Transition name="fade">
       <!-- Saved rolls -->
       <div
         v-if="sortedRollers.length"
@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <transition-group
+        <TransitionGroup
           name="fade"
           tag="ul"
           style="margin-left: 0;"
@@ -43,9 +43,9 @@
                   <span class="is-sr-only">
                     Delete this roller
                   </span>
-                  <b-icon
+                  <BIcon
                     icon="delete"
-                    style="margin-top: -1px; margin-left: calc(-0.375em - 1px);"
+                    style=" margin-left: calc(-0.375em - 1px); margin-top: -1px;"
                   />
                 </button>
 
@@ -58,7 +58,7 @@
               </div>
             </div>
           </li>
-        </transition-group>
+        </TransitionGroup>
       </div>
 
       <!-- Empty -->
@@ -68,7 +68,7 @@
       >
         Add some dice in <em>Custom Dice</em> first!
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 
@@ -85,18 +85,18 @@ export default {
     ...mapState('roll-dice', ['diceConfigs']),
 
     // TODO: improve performance (i.e.: break into load saved and add new steps)
-    rollers() {
+    rollers () {
       return this.diceConfigs.map((config, index) => ({
         uuid: config.uuid,
         dice: new DiceRoller({ n: config.n, size: config.size }),
         options: config.options,
-        modifier: config.modifier
+        modifier: config.modifier,
       }))
     },
 
-    sortedRollers() {
+    sortedRollers () {
       return orderBy(this.rollers, ['options.name', 'dice.size', 'dice.number', 'modifier'])
-    }
+    },
   },
 
   methods: {
@@ -105,19 +105,19 @@ export default {
 
     ...mapMutations('roll-dice', ['clearDice', 'deleteDiceConfig']),
 
-    deleteRoller(uuid) {
+    deleteRoller (uuid) {
       const index = this.rollers.findIndex(el => el.uuid === uuid)
       this.rollers.splice(index, 1)
       this.deleteDiceConfig({ uuid })
     },
 
-    rollSavedDice(config) {
+    rollSavedDice (config) {
       this.$emit('roll-dice', {
         ...this.rollDice(config),
         rollDescription: config.options.name,
-        modifier: makeModifierText(config.modifier)
+        modifier: makeModifierText(config.modifier),
       })
-    }
-  }
+    },
+  },
 }
 </script>

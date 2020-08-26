@@ -17,18 +17,18 @@ export default {
 
   components: {
     CollapsePanel,
-    DataEntry
+    DataEntry,
   },
 
   props: {
     model: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
 
   computed: {
-    itemMeta() {
+    itemMeta () {
       const { type, subtype, rarity, reqAttune } = this.model
       const attuneOptions = reqAttune === true ? '' : ` ${reqAttune}`
       let stack = type
@@ -42,13 +42,13 @@ export default {
       return stack.toLowerCase()
     },
 
-    source() {
+    source () {
       let stack = `${this.model.source}`
 
       if (this.model.page) stack += `, p. ${this.model.page}`
 
       return stack
-    }
-  }
+    },
+  },
 }
 </script>

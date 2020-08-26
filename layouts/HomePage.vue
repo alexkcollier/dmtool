@@ -1,3 +1,3 @@
 <template functional>
-  <nuxt />
+  <Nuxt />
 </template>

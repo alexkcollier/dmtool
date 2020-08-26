@@ -23,22 +23,22 @@ export default {
   props: {
     searchType: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
 
   computed: {
-    slug() {
+    slug () {
       return this.$route.params.slug
     },
 
-    activeData() {
+    activeData () {
       return this.$store.state[this.slug].data
     },
 
-    queryResult() {
+    queryResult () {
       return this.$store.state[this.slug].queryResult
-    }
-  }
+    },
+  },
 }
 </script>

@@ -9,36 +9,36 @@
           D&amp;D 5e Utility
         </h2>
 
-        <nuxt-link
+        <NuxtLink
           to="/magic-items"
           class="button is-medium"
         >
           Magic Items
-        </nuxt-link>
-        <nuxt-link
+        </NuxtLink>
+        <NuxtLink
           to="/spells"
           class="button is-medium"
         >
           Spells
-        </nuxt-link>
-        <nuxt-link
+        </NuxtLink>
+        <NuxtLink
           to="/bestiary"
           class="button is-medium"
         >
           Bestiary
-        </nuxt-link>
-        <nuxt-link
+        </NuxtLink>
+        <NuxtLink
           to="/encounter"
           class="button is-medium"
         >
           Encounter
-        </nuxt-link>
-        <nuxt-link
+        </NuxtLink>
+        <NuxtLink
           to="/roll-dice"
           class="button is-medium"
         >
           Roll Dice
-        </nuxt-link>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -48,9 +48,9 @@
 export default {
   layout: 'HomePage',
 
-  head() {
+  head () {
     return { title: 'Home' }
-  }
+  },
 }
 </script>
 

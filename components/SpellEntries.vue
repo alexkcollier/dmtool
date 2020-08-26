@@ -4,6 +4,7 @@
     :info="spellLevelSchool"
     :source="model.source"
   >
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <p v-html="`<strong>Casting Time:</strong> ${castingTime}`" />
     <p><strong>Range:</strong> {{ spellRange }}</p>
     <p><strong>Components:</strong> {{ spellComponents }}</p>
@@ -27,20 +28,20 @@ export default {
 
   components: {
     CollapsePanel,
-    DataEntry
+    DataEntry,
   },
 
   props: {
     model: {
       type: Object,
-      default: () => {}
-    }
+      default: () => { },
+    },
   },
 
   computed: {
-    castingTime() {
+    castingTime () {
       let time = this.model.time
-        .map(t => {
+        .map((t) => {
           let stack = `${t.number} ${t.unit}`
 
           if (t.condition) stack += ` ${t.condition}`
@@ -54,7 +55,7 @@ export default {
       return time
     },
 
-    spellLevelSchool() {
+    spellLevelSchool () {
       let sf = ''
       switch (this.model.level) {
         case 'Cantrip':
@@ -79,7 +80,7 @@ export default {
       return `${this.model.level}${sf}-level ${this.model.school}`.toLowerCase()
     },
 
-    spellComponents() {
+    spellComponents () {
       const { components } = this.model
       // keys.sort().reverse() ensures order is always v, s, m
       let stack = Object.keys(components)
@@ -93,7 +94,7 @@ export default {
       return stack
     },
 
-    spellDuration() {
+    spellDuration () {
       const { type, concentration, condition, duration, ends } = this.model.duration[0]
 
       switch (type) {
@@ -120,12 +121,12 @@ export default {
       }
     },
 
-    spellRange() {
+    spellRange () {
       const { distance, type } = this.model.range
       if (type === 'special') return type
       if (distance.amount) return `${distance.amount} ${distance.type}`
       return distance.type
-    }
-  }
+    },
+  },
 }
 </script>

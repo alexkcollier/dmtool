@@ -10,7 +10,7 @@ const state = () => ({
   filters: {},
   searchIndex: null,
   queryResult: [],
-  eTag: ''
+  eTag: '',
 })
 
 const mutations = {
@@ -19,16 +19,16 @@ const mutations = {
     state.queryResult = data
   },
   INIT_FILTER: (state, { filter, options }) => Vue.set(state.filters, filter, options),
-  INIT_FILTER_STATUS: (state, { status }) => (state.hasFilters = status),
+  INIT_FILTER_STATUS: (state, { status }) => { state.hasFilters = status },
   INIT_SEARCH_INDEX: (state, { data }) => {
     state.searchIndex = new Fuse(data, configureFuse(state.searchFields))
   },
-  UPDATE_ETAG: (state, { eTag }) => (state.eTag = eTag),
+  UPDATE_ETAG: (state, { eTag }) => { state.eTag = eTag },
   UPDATE_FILTER: (state, { filter, optionIndex, value }) => {
     state.filters[filter][optionIndex].allowed = value
   },
-  UPDATE_SEARCH_STRING: (state, searchTerm) => (state.searchString = searchTerm),
-  UPDATE_RESULT: (state, { queryResult }) => (state.queryResult = queryResult)
+  UPDATE_SEARCH_STRING: (state, searchTerm) => { state.searchString = searchTerm },
+  UPDATE_RESULT: (state, { queryResult }) => { state.queryResult = queryResult },
 }
 
 const getters = {
@@ -36,7 +36,7 @@ const getters = {
     return Object.keys(filters)
       .reduce((acc, filterName) => acc.concat(filters[filterName]), [])
       .some(o => !o.allowed)
-  }
+  },
 }
 
 const actions = {
@@ -49,7 +49,7 @@ const actions = {
 
   initFilters: async ({ state, commit }, { filterFields }) => {
     const filters = await Promise.all(
-      filterFields.map(async filter => {
+      filterFields.map(async (filter) => {
         const values = await uniqueValues(state.data, filter)
         const initOptions = values.map(name => ({ name, allowed: true }))
 
@@ -77,14 +77,14 @@ const actions = {
   },
 
   applyFilter: ({ commit }, { filter, optionIndex, value }) => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       commit('UPDATE_FILTER', { filter, optionIndex, value })
       resolve()
     })
   },
 
   query: ({ commit, state }) => {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const { searchIndex, searchString, data, filters } = state
       const shouldSeach = searchIndex && searchString
       const searchResult = shouldSeach ? searchIndex.search(searchString.trim()) : data
@@ -93,10 +93,10 @@ const actions = {
       commit('UPDATE_RESULT', { queryResult })
       resolve()
     })
-  }
+  },
 }
 
-function configureFuse(searchFields) {
+function configureFuse (searchFields) {
   return {
     shouldSort: true,
     threshold: 0.25,
@@ -106,11 +106,11 @@ function configureFuse(searchFields) {
     matchAllTokens: true,
     maxPatternLength: 32,
     minMatchCharLength: 1,
-    keys: searchFields
+    keys: searchFields,
   }
 }
 
-function uniqueValues(data, filterName) {
+function uniqueValues (data, filterName) {
   const isClass = filterName === 'class'
   const values = data.reduce((acc, el) => {
     // `el.class` never exists, but we want a pretty filter name
@@ -123,11 +123,11 @@ function uniqueValues(data, filterName) {
   return Promise.resolve([...new Set(values)])
 }
 
-function sortFilterOptions(options) {
+function sortFilterOptions (options) {
   return orderBy(options, filterSortFn)
 }
 
-function filterSortFn({ name }) {
+function filterSortFn ({ name }) {
   if (isNaN(name)) {
     if (name === 'Cantrip') return 0
     if (name.match(/\d\/\d/)) return name[0] / name[2]
@@ -138,9 +138,9 @@ function filterSortFn({ name }) {
   return Number(name)
 }
 
-function passesFilters(filters, el) {
+function passesFilters (filters, el) {
   const filterNames = Object.keys(filters)
-  return filterNames.every(filterName => {
+  return filterNames.every((filterName) => {
     if (filters[filterName].every(option => option.allowed)) return true
     const getTestValues = (test, option) => (option.allowed ? test.concat(option.name) : test)
     const isClass = filterName === 'class'
@@ -159,5 +159,5 @@ export default {
   state,
   getters,
   mutations,
-  actions
+  actions,
 }

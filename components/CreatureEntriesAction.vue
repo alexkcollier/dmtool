@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable vue/no-v-html -->
   <div>
     <!-- Paragraphs -->
     <p :key="model.index">
@@ -83,9 +84,9 @@ export default {
   props: {
     model: {
       type: Object,
-      default: () => {}
-    }
-  }
+      default: () => { },
+    },
+  },
 }
 </script>
 

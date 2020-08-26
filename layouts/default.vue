@@ -4,7 +4,7 @@
 
     <!-- content -->
     <BaseContainer>
-      <nuxt />
+      <Nuxt />
     </BaseContainer>
 
     <TheTopButton />
@@ -21,17 +21,17 @@ export default {
   components: {
     BaseContainer,
     TheNavigation,
-    TheTopButton
+    TheTopButton,
   },
 
-  destroyed() {
+  destroyed () {
     this.clearActiveEl()
   },
 
   methods: {
     ...mapActions('toggle-active-el', {
-      clearActiveEl: 'CLEAR_ACTIVE_EL'
-    })
-  }
+      clearActiveEl: 'CLEAR_ACTIVE_EL',
+    }),
+  },
 }
 </script>

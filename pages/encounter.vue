@@ -4,12 +4,12 @@
       v-if="encounter.length"
       class="buttons"
     >
-      <nuxt-link
+      <NuxtLink
         to="/bestiary"
         class="button is-primary"
       >
         Add a creature
-      </nuxt-link>
+      </NuxtLink>
       <button
         :disabled="encounter.length === 0"
         class="button is-red"
@@ -32,21 +32,21 @@
     <div
       v-else
       class="ampersand"
-      style="height:60vh;"
+      style="height: 60vh;"
     >
       <div
         class="is-sans-serif has-text-centered is-size-2"
-        style="position:relative; top:40%;"
+        style="position: relative; top: 40%;"
       >
         <div>
           <strong>There's nothing here.</strong>
         </div>
-        <nuxt-link
+        <NuxtLink
           to="/bestiary"
           class="button is-primary is-large"
         >
           Add a Creature
-        </nuxt-link>
+        </NuxtLink>
       </div>
     </div>
   </main>
@@ -57,29 +57,30 @@ import { mapMutations, mapState } from 'vuex'
 import CreatureEntries from '~/components/CreatureEntries'
 
 export default {
-  head() {
-    return { title: 'Encounter' }
-  },
 
   components: {
-    CreatureEntries
+    CreatureEntries,
   },
 
   computed: {
     ...mapState('encounter', {
-      encounter: 'encounter'
-    })
+      encounter: 'encounter',
+    }),
   },
 
   methods: {
-    creatureIndex({ name: n, source: s }) {
+    creatureIndex ({ name: n, source: s }) {
       const i = this.encounter.findIndex(c => c.name === n && c.source === s) + 1
       return `creature-${i}`
     },
 
     ...mapMutations('encounter', {
-      clearEncounter: 'CLEAR_ENCOUNTER'
-    })
-  }
+      clearEncounter: 'CLEAR_ENCOUNTER',
+    }),
+  },
+
+  head () {
+    return { title: 'Encounter' }
+  },
 }
 </script>

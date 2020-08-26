@@ -2,14 +2,14 @@
 
 $red: rgb(128, 0, 0);
 // stylelint-disable-next-line
-$red-invert: findColorInvert($red);
+$red-invert: findcolorinvert($red);
 $danger: $red;
 $gold: rgb(194, 174, 109);
 // stylelint-disable-next-line
-$gold-invert: findColorInvert($gold);
+$gold-invert: findcolorinvert($gold);
 $navbtn: rgb(70, 90, 100);
 // stylelint-disable-next-line
-$navbtn-invert: findColorInvert($navbtn);
+$navbtn-invert: findcolorinvert($navbtn);
 
 // Add custom colors to map
 $custom-colors: (

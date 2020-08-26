@@ -1,5 +1,5 @@
 <template>
-  <b-modal
+  <BModal
     :active="showResult"
     scroll="keep"
     :width="240"
@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-  </b-modal>
+  </BModal>
 </template>
 
 <script>
@@ -32,13 +32,13 @@ export default {
   props: {
     result: {
       type: Object,
-      required: true
+      required: true,
     },
 
     showResult: {
       type: Boolean,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 }
 </script>

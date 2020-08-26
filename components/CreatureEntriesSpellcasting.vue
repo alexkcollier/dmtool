@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- eslint-disable vue/no-v-html -->
     <p>
       <strong><em>{{ model.name }}. </em></strong>
       <span v-html="model.headerEntries[0]" />
@@ -33,7 +34,6 @@
       <template v-for="time in rechargeTimes">
         <template v-if="model[time]">
           <dl :key="time">
-            <!-- We use yet another template because the object keys are numbers and makes it look like an array -->
             <template v-for="(list, key) in model[time]">
               <dd
                 v-if="!!list && list.length"
@@ -64,39 +64,39 @@ export default {
   props: {
     model: {
       type: Object,
-      default: () => {}
-    }
+      default: () => { },
+    },
   },
 
-  data() {
+  data () {
     return {
-      rechargeTimes: ['daily', 'weekly', 'rest']
+      rechargeTimes: ['daily', 'weekly', 'rest'],
     }
   },
 
   computed: {
-    hasRechargeSpells() {
+    hasRechargeSpells () {
       return this.rechargeTimes.some(time => this.model.hasOwnProperty(time))
     },
 
-    sliceHeaderEntries() {
+    sliceHeaderEntries () {
       return this.arrRemoveFirst(this.model.headerEntries)
-    }
+    },
   },
 
   methods: {
-    arrRemoveFirst(arr) {
+    arrRemoveFirst (arr) {
       const r = arr.slice(1)
       return r.length > 0 ? r : null
     },
 
-    formatSpellSlots(lvl) {
+    formatSpellSlots (lvl) {
       if (String(lvl) === '0') return 'Cantrips (at will):'
 
       const suffixes = {
         1: 'st',
         2: 'nd',
-        3: 'rd'
+        3: 'rd',
       }
       const sfx = suffixes[lvl] || 'th'
       const totalSlots = this.model.spells[lvl].slots || 4
@@ -105,7 +105,7 @@ export default {
       return `${lvl}${sfx} level (${totalSlots} ${slots}):`
     },
 
-    formatTime(n, type) {
+    formatTime (n, type) {
       const eachRegExp = new RegExp('\\de')
       let time = ''
 
@@ -128,8 +128,8 @@ export default {
       }
 
       return `${String(n)[0]}/${time} ${String(n).match(eachRegExp) ? 'each' : ''}:`
-    }
-  }
+    },
+  },
 }
 </script>
 

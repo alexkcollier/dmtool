@@ -7,16 +7,16 @@
         href="#"
         @click.prevent="toggleFilterView"
       >
-        <b-icon
+        <BIcon
           icon="filter"
           size="is-small"
-          style="margin-right:0.25rem;"
+          style="margin-right: 0.25rem;"
           type="is-dark"
         />
 
         Filters
 
-        <b-icon
+        <BIcon
           :class="{ 'point-up': !collapseFilters }"
           icon="chevron-down"
           class="icon-point"
@@ -27,7 +27,7 @@
       <button
         v-show="hasFilterApplied"
         class="button is-text"
-        style="margin: 0.35em 0"
+        style="margin: 0.35em 0;"
         @click="resetFilters"
       >
         Reset filters
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Filter options display -->
-    <transition name="fade-grow">
+    <Transition name="fade-grow">
       <div v-if="!collapseFilters">
         <!-- Filter options select -->
         <div class="card-header">
@@ -59,11 +59,11 @@
           :key="filter"
           class="card-content"
         >
-          <b-field grouped>
+          <BField grouped>
             <div class="control">
               <button
                 class="control button"
-                style="margin-left:0;"
+                style="margin-left: 0;"
                 @click="setAllOptions(filter, false)"
               >
                 Disable all
@@ -81,9 +81,9 @@
                 Enable all
               </button>
             </div>
-          </b-field>
+          </BField>
 
-          <b-field
+          <BField
             grouped
             group-multiline
           >
@@ -92,17 +92,17 @@
               :key="index"
               class="control"
             >
-              <b-switch
+              <BSwitch
                 :value="option.allowed"
                 @input="applyFilter(filter, index, $event)"
               >
                 {{ option.name | parseNumToFrac }}
-              </b-switch>
+              </BSwitch>
             </div>
-          </b-field>
+          </BField>
         </div>
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 
@@ -115,47 +115,47 @@ export default {
   filters: {
     // converts decimal to denominator
     parseNumToFrac: num => (typeof num === 'number' && num > 0 && num < 1 ? `1/${1 / num}` : num),
-    formatFilterOptionName: str => (str.length <= 2 ? str.toUpperCase() : str)
+    formatFilterOptionName: str => (str.length <= 2 ? str.toUpperCase() : str),
   },
 
   props: {
     filterFields: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
 
-  data() {
+  data () {
     return {
       collapseFilters: true,
-      visibleFilter: ''
+      visibleFilter: '',
     }
   },
 
   computed: {
-    slug() {
+    slug () {
       return this.$route.params.slug
     },
 
-    hasFilterApplied() {
+    hasFilterApplied () {
       return this.$store.getters[`${this.slug}/hasFilterApplied`]
     },
 
-    filters() {
+    filters () {
       if (this.$store.state[this.slug]) return this.$store.state[this.slug].filters
       return {}
-    }
+    },
   },
 
   methods: {
-    toggleCollapse() {
-      return new Promise(resolve => {
+    toggleCollapse () {
+      return new Promise((resolve) => {
         this.collapseFilters = !this.collapseFilters
         resolve()
       })
     },
 
-    toggleFilterView() {
+    toggleFilterView () {
       this.toggleCollapse()
         .then(() => {
           if (!this.$store.state[this.slug].hasFilters) {
@@ -168,27 +168,27 @@ export default {
         })
     },
 
-    resetFilters() {
+    resetFilters () {
       this.$emit('update-data')
       this.$store.dispatch(`${this.slug}/resetFilters`).then(this.debounceQuery)
     },
 
-    setAllOptions(filter, value) {
+    setAllOptions (filter, value) {
       this.$emit('update-data')
       this.$store.dispatch(`${this.slug}/setAllOptions`, { filter, value }).then(this.debounceQuery)
     },
 
-    applyFilter(filter, optionIndex, value) {
+    applyFilter (filter, optionIndex, value) {
       const payload = { filter, optionIndex, value }
       this.$emit('update-data')
       this.$store.dispatch(`${this.slug}/applyFilter`, payload).then(this.debounceQuery)
     },
 
     // uses function expression to maintain `this` binding
-    debounceQuery: debounce(function() {
+    debounceQuery: debounce(function () {
       return this.$store.dispatch(`${this.slug}/query`)
-    }, 300)
-  }
+    }, 300),
+  },
 }
 </script>
 

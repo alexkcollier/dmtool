@@ -6,41 +6,41 @@
       @submit.prevent="rollFormDice"
     >
       <div class="columns is-mobile">
-        <b-field
+        <BField
           label="n"
           class="column"
           style="margin-bottom: 0;"
         >
-          <b-input
+          <BInput
             v-model.number="numberOfDice"
             :min="options.advantage.use ? 2 : 1"
             type="number"
           />
-        </b-field>
+        </BField>
 
-        <b-field
+        <BField
           label="d"
           class="column"
           style="margin-bottom: 0;"
         >
-          <b-input
+          <BInput
             v-model.number="dieSize"
             min="2"
             type="number"
           />
-        </b-field>
+        </BField>
 
-        <b-field
+        <BField
           label="Modifier"
           class="column"
           style="margin-bottom: 0;"
         >
-          <b-input
+          <BInput
             v-model.number="rollModifier"
             type="number"
             min="0"
           />
-        </b-field>
+        </BField>
       </div>
 
       <div class="columns">
@@ -53,7 +53,7 @@
               @click.prevent="toggleOptions"
             >
               <div class="card-header-title">
-                <b-icon
+                <BIcon
                   icon="settings"
                   size="is-small"
                   style="margin-right: 0.25em;"
@@ -62,7 +62,7 @@
               </div>
 
               <div class="card-header-icon">
-                <b-icon
+                <BIcon
                   :class="{ 'point-up': showOptions }"
                   class="icon-point"
                   icon="chevron-down"
@@ -70,49 +70,49 @@
               </div>
             </a>
 
-            <transition name="fade-grow">
-              <b-tabs
+            <Transition name="fade-grow">
+              <BTabs
                 v-show="showOptions"
                 expanded
               >
-                <b-tab-item label="Advantage">
-                  <b-field>
-                    <b-switch
+                <BTabItem label="Advantage">
+                  <BField>
+                    <BSwitch
                       v-model="options.advantage.use"
                       @input="checkAdvantageUse"
                     >
                       Roll with {{ options.advantage.method }}
-                    </b-switch>
-                  </b-field>
+                    </BSwitch>
+                  </BField>
 
-                  <b-field>
-                    <b-radio
+                  <BField>
+                    <BRadio
                       v-model="options.advantage.method"
                       native-value="advantage"
                       :disabled="!options.advantage.use"
                     >
                       Advantage
-                    </b-radio>
+                    </BRadio>
 
-                    <b-radio
+                    <BRadio
                       v-model="options.advantage.method"
                       native-value="disadvantage"
                       :disabled="!options.advantage.use"
                     >
                       Disadvantage
-                    </b-radio>
-                  </b-field>
-                </b-tab-item>
+                    </BRadio>
+                  </BField>
+                </BTabItem>
 
-                <b-tab-item label="Reroll">
-                  <b-field>
-                    <b-switch v-model="options.reroll.use">
+                <BTabItem label="Reroll">
+                  <BField>
+                    <BSwitch v-model="options.reroll.use">
                       Reroll values
-                    </b-switch>
-                  </b-field>
+                    </BSwitch>
+                  </BField>
 
-                  <b-field label="Values to reroll">
-                    <b-select
+                  <BField label="Values to reroll">
+                    <BSelect
                       v-model="options.reroll.values"
                       expanded
                       :disabled="!options.reroll.use"
@@ -127,56 +127,57 @@
                       >
                         {{ i }}
                       </option>
-                    </b-select>
-                  </b-field>
-                </b-tab-item>
+                    </BSelect>
+                  </BField>
+                </BTabItem>
 
-                <b-tab-item label="Keep">
-                  <b-field>
-                    <b-switch
+                <BTabItem label="Keep">
+                  <BField>
+                    <BSwitch
                       v-model="options.keep.use"
                       @input="options.advantage.use = false"
                     >
-                      Keep {{ options.keep.amount > 1 ? options.keep.amount : '' }} {{ options.keep.method }} roll{{ options.keep.amount !== 1 ? 's' : '' }}
-                    </b-switch>
-                  </b-field>
+                      Keep {{ options.keep.amount > 1 ? options.keep.amount : '' }}
+                      {{ options.keep.method }} roll{{ options.keep.amount !== 1 ? 's' : '' }}
+                    </BSwitch>
+                  </BField>
 
-                  <b-field>
-                    <b-radio
+                  <BField>
+                    <BRadio
                       v-model="options.keep.method"
                       native-value="highest"
                       :disabled="!options.keep.use"
                     >
                       Highest
-                    </b-radio>
+                    </BRadio>
 
-                    <b-radio
+                    <BRadio
                       v-model="options.keep.method"
                       native-value="lowest"
                       :disabled="!options.keep.use"
                     >
                       Lowest
-                    </b-radio>
-                  </b-field>
+                    </BRadio>
+                  </BField>
 
-                  <b-field label="Number of rolls to keep">
-                    <b-input
+                  <BField label="Number of rolls to keep">
+                    <BInput
                       v-model.number="options.keep.amount"
                       min="1"
                       type="number"
                       :disabled="!options.keep.use"
                       @input="checkDiceNumber"
                     />
-                  </b-field>
-                </b-tab-item>
-              </b-tabs>
-            </transition>
+                  </BField>
+                </BTabItem>
+              </BTabs>
+            </Transition>
           </div>
         </div>
       </div>
 
       <!-- Roll/Save buttons -->
-      <b-field
+      <BField
         class="columns is-variable is-1 is-mobile"
         :addons="false"
       >
@@ -204,29 +205,29 @@
             <span class="is-sr-only">
               Save roll
             </span>
-            <b-icon
+            <BIcon
               icon="content-save"
-              style="margin-top: -2px; margin-left: calc(-0.375em - 1px);"
+              style=" margin-left: calc(-0.375em - 1px); margin-top: -2px;"
             />
           </button>
         </div>
-      </b-field>
+      </BField>
     </form>
 
     <!-- Dice Config Name prompt -->
-    <b-modal
+    <BModal
       :active.sync="namePrompt.show"
       scroll="keep"
       :width="480"
     >
       <form class="card">
         <section class="card-content">
-          <b-field label="Dice name">
-            <b-input
+          <BField label="Dice name">
+            <BInput
               v-model="namePrompt.name"
               name="dice name"
             />
-          </b-field>
+          </BField>
 
           <div class="buttons is-right">
             <button
@@ -238,7 +239,7 @@
           </div>
         </section>
       </form>
-    </b-modal>
+    </BModal>
   </div>
 </template>
 
@@ -252,7 +253,7 @@ import { rollDice, makeModifierText } from './roller-utils'
 export default {
   name: 'CustomRoller',
 
-  data() {
+  data () {
     return {
       showOptions: false,
       numberOfDice: 1,
@@ -263,39 +264,39 @@ export default {
         show: false,
         sum: null,
         rolls: [],
-        description: ''
+        description: '',
       },
       namePrompt: {
         show: false,
-        name: ''
+        name: '',
       },
       options: {
         name: '',
         advantage: {
           use: false,
-          method: 'advantage'
+          method: 'advantage',
         },
         keep: {
           use: false,
           method: 'highest',
-          amount: 1
+          amount: 1,
         },
         reroll: {
           use: false,
-          values: []
-        }
-      }
+          values: [],
+        },
+      },
     }
   },
 
   computed: {
-    formIsDisabled() {
+    formIsDisabled () {
       return !this.dieSize
     },
 
-    modifierText() {
+    modifierText () {
       return this.makeModifierText(this.rollModifier)
-    }
+    },
   },
 
   methods: {
@@ -304,37 +305,37 @@ export default {
 
     ...mapMutations('roll-dice', ['addDiceConfig']),
 
-    toggleOptions() {
+    toggleOptions () {
       this.showOptions = !this.showOptions
     },
 
-    setDiceResult({ result, rolls, rollDescription }) {
+    setDiceResult ({ result, rolls, rollDescription }) {
       this.result.sum = result
       this.result.rolls = rolls
       this.result.description = rollDescription
       this.result.show = true
     },
 
-    rollFormDice() {
+    rollFormDice () {
       const formConfig = {
         dice: new DiceRoller({ n: this.numberOfDice, size: this.dieSize }),
         options: this.options,
-        modifier: this.rollModifier
+        modifier: this.rollModifier,
       }
 
       this.$emit('roll-dice', {
         ...this.rollDice(formConfig),
         rollDescription: this.makeRollerDescription(formConfig),
-        modifier: this.makeModifierText(formConfig.modifier)
+        modifier: this.makeModifierText(formConfig.modifier),
       })
     },
 
-    checkAdvantageUse() {
+    checkAdvantageUse () {
       this.options.keep.use = false
       this.checkDiceNumber()
     },
 
-    checkDiceNumber() {
+    checkDiceNumber () {
       if (this.options.advantage.use && this.numberOfDice < 2) this.numberOfDice = 2
 
       if (this.options.keep.use && this.numberOfDice < this.options.keep.amount) {
@@ -342,31 +343,31 @@ export default {
       }
     },
 
-    promptForName() {
+    promptForName () {
       this.namePrompt.name = this.makeRollerDescription({
         dice: { n: this.numberOfDice, size: this.dieSize },
         options: this.options,
-        modifier: this.rollModifier
+        modifier: this.rollModifier,
       })
 
       this.namePrompt.show = true
     },
 
-    addName() {
+    addName () {
       this.options.name = this.namePrompt.name
       this.saveDiceRoller()
       this.namePrompt.name = ''
       this.namePrompt.show = false
     },
 
-    saveDiceRoller() {
+    saveDiceRoller () {
       const uuid = hyperid()()
 
       this.diceRollers.push({
         uuid,
         dice: new DiceRoller({ n: this.numberOfDice, size: this.dieSize }),
         options: cloneDeep(this.options),
-        modifier: this.rollModifier
+        modifier: this.rollModifier,
       })
       // save the config in the store
       this.addDiceConfig({
@@ -375,12 +376,12 @@ export default {
           n: this.numberOfDice,
           size: this.dieSize,
           options: cloneDeep(this.options),
-          modifier: this.rollModifier
-        }
+          modifier: this.rollModifier,
+        },
       })
     },
 
-    makeRollerDescription(roller) {
+    makeRollerDescription (roller) {
       let base = `${roller.dice.n}d${roller.dice.size}`
       let joiner = ', '
 
@@ -400,7 +401,7 @@ export default {
       }
 
       return base
-    }
-  }
+    },
+  },
 }
 </script>

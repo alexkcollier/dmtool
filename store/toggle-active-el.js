@@ -1,9 +1,9 @@
 export const state = () => ({
-  activeEl: null
+  activeEl: null,
 })
 
 export const mutations = {
-  SET_ACTIVE_EL: (state, payload) => (state.activeEl = payload)
+  SET_ACTIVE_EL: (state, payload) => { state.activeEl = payload },
 }
 
 export const actions = {
@@ -22,5 +22,5 @@ export const actions = {
   CLEAR_ACTIVE_EL: ({ commit }) => {
     commit('SET_ACTIVE_EL', null)
     return Promise.resolve()
-  }
+  },
 }
