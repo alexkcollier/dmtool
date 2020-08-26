@@ -24,16 +24,16 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run lint:js",
+      "yarn lint:js",
       "git add"
     ],
     "*.vue": [
-      "npm run lint:js",
-      "npm run lint:style",
+      "yarn lint:js",
+      "yarn lint:style",
       "git add"
     ],
     "*.scss": [
-      "npm run lint:style",
+      "yarn lint:style",
       "git add"
     ]
   },
