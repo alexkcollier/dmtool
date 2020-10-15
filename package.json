@@ -48,7 +48,7 @@
     "lodash.get": "^4.4.2",
     "lodash.orderby": "^4.6.0",
     "lodash.throttle": "^4.1.1",
-    "nuxt": "^2.14.6",
+    "nuxt": "^2.14.7",
     "vue-scrollto": "^2.19.1",
     "vuex-persist": "^3.1.3"
   },
