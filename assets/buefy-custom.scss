@@ -1,5 +1,3 @@
-// Import Bulma's core
-
 $red: rgb(128, 0, 0);
 // stylelint-disable-next-line
 $red-invert: findcolorinvert($red);
@@ -27,18 +25,18 @@ $custom-colors: (
   ),
 );
 
-@import '~bulma/sass/utilities/_all';
-
-// Import typekit
-
-@import url('https://use.typekit.net/fnw1iwa.css');
-
 // Custom colors
 $primary: #3d4f5d;
 $body-background-color: hsl(60, 19%, 87%);
 $input-background-color: hsl(50, 23%, 95%);
 $card-background-color: hsl(60, 21%, 91%);
 $table-background-color: $card-background-color;
+
+// Import Bulma's core
+@import '~bulma/sass/utilities/_all';
+
+// Import typekit
+@import url('https://use.typekit.net/fnw1iwa.css');
 
 // Typography
 $body-size: 18px;
@@ -216,8 +214,6 @@ hr {
 .button {
   font-family: $family-sans-serif;
   font-variant-caps: normal;
-  // fix centering
-  padding-top: 0.4em;
 }
 
 .sr-only {
