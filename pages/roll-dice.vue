@@ -49,6 +49,12 @@ export default {
     }
   },
 
+  head () {
+    return {
+      title: 'Roll Dice',
+    }
+  },
+
   methods: {
     setResult ({ result, rolls, rollDescription, modifier }) {
       this.$set(this.result, 'sum', result)
@@ -61,12 +67,6 @@ export default {
     closeModal (event) {
       this.showResult = false
     },
-  },
-
-  head () {
-    return {
-      title: 'Roll Dice',
-    }
   },
 }
 </script>

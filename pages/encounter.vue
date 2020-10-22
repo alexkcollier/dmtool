@@ -62,6 +62,10 @@ export default {
     CreatureEntries,
   },
 
+  head () {
+    return { title: 'Encounter' }
+  },
+
   computed: {
     ...mapState('encounter', {
       encounter: 'encounter',
@@ -77,10 +81,6 @@ export default {
     ...mapMutations('encounter', {
       clearEncounter: 'CLEAR_ENCOUNTER',
     }),
-  },
-
-  head () {
-    return { title: 'Encounter' }
   },
 }
 </script>

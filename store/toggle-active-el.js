@@ -14,7 +14,7 @@ export const actions = {
         setTimeout(() => {
           commit('SET_ACTIVE_EL', el)
           resolve()
-        }, oldActive ? delay : 0)
+        }, oldActive ? delay : 0),
       )
     return dispatch('CLEAR_ACTIVE_EL').then(activateNext)
   },

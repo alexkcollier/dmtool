@@ -116,7 +116,7 @@ export default {
 
       if (str.roll) str = String(str.roll.exact) || `${str.roll.min}-${str.roll.max}`
 
-      return str.replace(inlineTitle, `<strong><i>$1</i></strong>`)
+      return str.replace(inlineTitle, '<strong><i>$1</i></strong>')
     },
 
     lookupFromHref (event) {

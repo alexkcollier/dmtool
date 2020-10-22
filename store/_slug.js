@@ -54,7 +54,7 @@ const actions = {
         const initOptions = values.map(name => ({ name, allowed: true }))
 
         return { filter, options: sortFilterOptions(initOptions) }
-      })
+      }),
     )
 
     filters.forEach(filter => commit('INIT_FILTER', filter))
@@ -65,14 +65,14 @@ const actions = {
   setAllOptions: ({ dispatch, state }, { filter, value }) => {
     return Promise.all(
       state.filters[filter].map((o, optionIndex) =>
-        dispatch('applyFilter', { filter, optionIndex, value })
-      )
+        dispatch('applyFilter', { filter, optionIndex, value }),
+      ),
     )
   },
 
   resetFilters: ({ dispatch, state }) => {
     return Promise.all(
-      Object.keys(state.filters).map(filter => dispatch('setAllOptions', { filter, value: true }))
+      Object.keys(state.filters).map(filter => dispatch('setAllOptions', { filter, value: true })),
     )
   },
 
@@ -116,7 +116,7 @@ function uniqueValues (data, filterName) {
     // `el.class` never exists, but we want a pretty filter name
     if (isClass) return acc.concat(el.classes.fromClassList.map(cl => cl.name))
     // Allows key to not exist on every element in model
-    if (!el.hasOwnProperty(filterName)) return acc
+    if (!el?.[filterName]) return acc
     return acc.concat(el[filterName][filterName] || el[filterName])
   }, [])
 
@@ -145,7 +145,7 @@ function passesFilters (filters, el) {
     const getTestValues = (test, option) => (option.allowed ? test.concat(option.name) : test)
     const isClass = filterName === 'class'
     // spells use 'classes' rather than 'class' as the key; `el.class` never exists
-    if (!el.hasOwnProperty(filterName) && !isClass) return false
+    if (!el?.[filterName] && !isClass) return false
     const testArr = filters[filterName].reduce(getTestValues, [])
     // exception for character classes; they have a different structure
     if (isClass) return el.classes.fromClassList.some(cl => testArr.includes(cl.name))

@@ -52,7 +52,7 @@
                   <strong>Stats</strong>
                 </li>
                 <li
-                  v-for="({ stat, d6Rolls }, index) in characterStats"
+                  v-for="({ stat }, index) in characterStats"
                   :key="index"
                 >
                   {{ stat }}
@@ -64,7 +64,7 @@
                   <strong>Rolls</strong>
                 </li>
                 <li
-                  v-for="({ stat, d6Rolls }, index) in characterStats"
+                  v-for="({ d6Rolls }, index) in characterStats"
                   :key="index"
                 >
                   {{ d6Rolls }}

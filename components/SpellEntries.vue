@@ -99,8 +99,9 @@ export default {
 
       switch (type) {
         case 'timed':
-          const dur = `${duration.amount} ${duration.type}`
-          return concentration ? `Concentration, up to ${dur}` : dur
+          return concentration
+            ? `Concentration, up to ${duration.amount} ${duration.type}`
+            : `${duration.amount} ${duration.type}`
 
         case 'instant':
           return `Instantaneous${condition ? ` (${condition})` : ''}`
@@ -112,8 +113,8 @@ export default {
           // `ends` can be triggered and/or dispelled
           return ends
             ? ends.length === 2
-              ? `Until ${ends[0]}ed or ${ends[1]}ed`
-              : `Until ${ends[0]}ed`
+                ? `Until ${ends[0]}ed or ${ends[1]}ed`
+                : `Until ${ends[0]}ed`
             : 'Permanent'
 
         default:

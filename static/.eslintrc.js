@@ -1,5 +1,5 @@
 module.exports = {
   env: {
-    worker: true
-  }
+    worker: true,
+  },
 }

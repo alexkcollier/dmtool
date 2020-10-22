@@ -6,7 +6,7 @@
     :source="source"
   >
     <!-- Encounter buttons -->
-    <template v-slot:col2>
+    <template #col2>
       <div class="column is-narrow">
         <div class="buttons is-encounter-buttons">
           <!-- Remove from encounter -->

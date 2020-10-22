@@ -20,7 +20,7 @@ async function precache () {
       const url = new URL(`${type}.json`, DATA_URL)
       const headers = new Headers({ 'X-Firebase-ETag': true })
       return new Request(url, { headers })
-    })
+    }),
   )
 }
 

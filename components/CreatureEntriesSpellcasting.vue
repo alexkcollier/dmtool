@@ -76,7 +76,7 @@ export default {
 
   computed: {
     hasRechargeSpells () {
-      return this.rechargeTimes.some(time => this.model.hasOwnProperty(time))
+      return this.rechargeTimes.some(time => this.model?.[time])
     },
 
     sliceHeaderEntries () {

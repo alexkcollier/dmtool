@@ -53,6 +53,21 @@ export default {
     FilterPanel,
   },
 
+  data () {
+    return {
+      filterFields: {
+        spells: ['level', 'school', 'source', 'class'],
+        'magic-items': ['rarity', 'type', 'source'],
+        bestiary: ['cr', 'size', 'source', 'type', 'tags'],
+      },
+      filtersToSort: {
+        'magic-items': ['rarity', 'source', 'type'],
+      },
+      prevScroll: 0,
+      count: 10,
+    }
+  },
+
   async fetch (ctx) {
     const { error, isDev, params, store } = ctx
     const notFound = () => error({ statusCode: 404, message: 'Not Found' })
@@ -84,18 +99,9 @@ export default {
     }
   },
 
-  data () {
+  head () {
     return {
-      filterFields: {
-        spells: ['level', 'school', 'source', 'class'],
-        'magic-items': ['rarity', 'type', 'source'],
-        bestiary: ['cr', 'size', 'source', 'type', 'tags'],
-      },
-      filtersToSort: {
-        'magic-items': ['rarity', 'source', 'type'],
-      },
-      prevScroll: 0,
-      count: 10,
+      title: this.title,
     }
   },
 
@@ -210,12 +216,6 @@ export default {
       if (atBottom && hiddenResults) this.count += 1
       this.prevScroll = scrollTop
     }, 50),
-  },
-
-  head () {
-    return {
-      title: this.title,
-    }
   },
 }
 </script>
