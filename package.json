@@ -41,7 +41,7 @@
     "@nuxtjs/pwa": "^3.3.3",
     "buefy": "^0.9.4",
     "dice-roller-dnd": "^1.0.7",
-    "fuse.js": "^6.4.5",
+    "fuse.js": "^6.4.6",
     "hyperid": "^2.1.0",
     "lodash.clonedeep": "^4.5.0",
     "lodash.debounce": "^4.0.8",
