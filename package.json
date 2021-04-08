@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@acollier/eslint-config": "2.1.0",
-    "@acollier/eslint-config-vue": "1.4.0",
+    "@acollier/eslint-config-vue": "1.5.0",
     "@acollier/stylelint-config-scss": "^2.1.2",
     "babel-eslint": "^10.1.0",
     "corp-semantic-release": "^7.0.0",

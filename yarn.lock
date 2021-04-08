@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@acollier/eslint-config-vue@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@acollier/eslint-config-vue/-/eslint-config-vue-1.4.0.tgz#714c38bf62d43c27c8a8234978de68d6f4c1b42a"
-  integrity sha512-/laUh+QN5Wzy3jsQjp1YytQDw8I36mHRDGVv6pQUWtQ98ZGk+h1qHdO7q7joj2CKNkUgxrug5a5ndNWkg1AjJg==
+"@acollier/eslint-config-vue@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@acollier/eslint-config-vue/-/eslint-config-vue-1.5.0.tgz#4976f2093a570f5c32d97346af3873b9b209e2ed"
+  integrity sha512-wuhaA/HJMEagtVrkGj0DfzkL9F0oFXiWTEzYIr9ZCzbIH8vX3Gyt5mGZ11Np4P7h30x6CgHjLQyXBs7e/c+pUA==
   dependencies:
     "@acollier/eslint-config" "^2.0.2"
 
