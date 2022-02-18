@@ -2835,10 +2835,10 @@ browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.14.5, browserslist@^4
     escalade "^3.1.1"
     node-releases "^1.1.71"
 
-buefy@^0.9.8:
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.8.tgz#51fb52bf3bcf4b8db7668f0ca17f1a5e8cf7f499"
-  integrity sha512-VBGAD6WtmgpPdiRnBXaTleS3ifpNu9rbInAr54YL8KJw1RhCb8JtGYYYVRjllnDQmN0jQjC5lYoPR9KpfTe+Cw==
+buefy@^0.9.16:
+  version "0.9.16"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.16.tgz#0d3eb371c0eeee5ea2fc6b3d774f62779dba7e4c"
+  integrity sha512-RTuCFkMLBkZWXe3lMqEab/OpXwbCidcUSZpjsTZewDsOEFOuUMtbaody4buJB+7Zh2msOMowq1gSb1ARix6/vA==
   dependencies:
     bulma "0.9.3"
 
